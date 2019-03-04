@@ -1,6 +1,7 @@
 {
 	'runningConfigure' : { 
-		'projectName' : "AWSiOSSDKv2.xcodeproj" ,
+		'projectName' : "AWSiOSSDKv2" ,
+		'projectPath' : "AWSiOSSDKv2.xcodeproj" ,
 		'schemeName' : "AWSAllTests",
 		'sdkName' : "iphonesimulator",
 		'paltformName' : "iOS Simulator",
@@ -8,7 +9,146 @@
 		'osVersion' : "12.1"
 	} ,
 
-	'testList' : { 
-    	'AWSSQSTests':{ }
-    }
+
+    'AWSMobileClient' : { 
+		'test_list' : {
+			'AWSMobileClientTests':{ }	
+		},		
+		'projectName' : 'AWSAuthSDK' ,
+		'projectPath' : 'AWSAuthSDK/AWSAuthSDK.xcodeproj',
+		'schemeName' : 'AWSMobileClient',
+	},
+
+	'SQS_MAL_MA' : { 
+		'test_list' : {
+    		'AWSSQSTests':{ },
+			'AWSMobileAnalyticsLegacyTests':{ 
+ 				'ignoreFailures':[
+ 					'AISessionClientTests/test_PauseSession_WaitTimeNotCountedAsSessionTime'
+ 				]
+			},
+			'AWSMobileAnalyticsTests':{ }
+
+		}
+    },
+
+	'RG_SES_CW_AW_AG_TL_SNS' : { 
+		'test_list' : {
+    		'AWSRekognitionTests':{ },
+    		'AWSSESTests':{ },
+    		'AWSCloudWatchTests':{ },
+    		'AWSAutoScalingTests':{ },	
+    		'AWSAPIGatewayTests':{ },
+    		'AWSTranslateTests':{ }	,
+    		'AWSSNSTests':{ }	
+		}
+    },
+
+	'Transcribe' : { 
+		'test_list' : {
+    		'AWSTranscribeTests':{ },	   					
+		}
+    },
+	'Polly' : { 
+		'test_list' : {
+ 			'AWSPollyTests':{
+ 				'ignoreFailures':[
+ 					'AWSPollyTests/testSynthesize',
+ 					'AWSPollyTests/testSynthesisOperations'
+ 				]
+ 			 }		   					
+		}
+    },    
+
+	'Cognito_Comprehend_Core_Kinesis' : { 
+		'test_list' : {
+    		'AWSCognitoIdentityProviderTests':{ },
+    		'AWSCognitoTests':{ },
+    		'AWSComprehendTests':{ },	
+    		'AWSCoreTests':{ },
+     		'AWSKinesisVideoTests':{ },
+    		'AWSKinesisVideoArchivedMediaTests':{ },
+    		'AWSKinesisTests':{ }	   			
+
+		}
+    },
+	'KMS_ELB_EC2_Lambda_Lex' : { 
+		'test_list' : {
+    		'AWSKMSTests':{ 
+    			'ignoreFailures':[
+    				'AWSKMSTests/testCreateAlias'
+    			]
+
+    		},
+    		'AWSElasticLoadBalancingTests':{ },
+    		'AWSEC2Tests':{ },
+    		'AWSLambdaTests':{ },
+    		'AWSLexTests':{ }		  			
+		}
+    },  
+	'IoT' : { 
+		'test_list' : {
+    		'AWSIoTTests':{ 
+
+ 				'ignoreFailures':[
+ 					'AWSIoTTests.AWSIoTDataManagerTests/testDoubleConnectAndDisconnectWithCert',
+ 				]
+    		}			
+		}
+    },    
+
+ 
+
+ 	'MachineLearning' : { 
+		'test_list' : {
+    		'AWSMachineLearningTests':{ }			
+		}
+    },
+	'Pinpoint' : { 
+		'test_list' : {
+    		'AWSPinpointTests':{ 
+ 				'ignoreFailures':[
+ 					'AWSPinpointEventRecorderTests/testMultipleEventsIAD',
+ 					'AWSPinpointEventRecorderTests/testMultipleEventsWithOneBatchWithSingleSubmitCall',
+ 					'AWSPinpointSessionClientTests/testSessionImmediateTimeout',
+ 					'AWSPinpointSessionClientTests/testSessionImmediateTimeoutNoCompletion',
+ 					'AWSPinpointSessionClientTests/testSessionPause',
+ 					'AWSPinpointSessionClientTests,testSessionTimeout',
+ 					'AWSPinpointSessionClientTests/testSessionTimeoutNoCompletion',
+ 				]
+
+    		}			
+		}
+    },   
+
+	'S3' : { 
+		'test_list' : {
+    		'AWSS3Tests':{ 
+
+    			'ignoreFailures':[
+    					'AWSS3TransferManagerTests/testTMDownloadPauseAndResumeWithProgressFeedback',
+ 						'AWSS3Tests.AWSS3TransferUtilityTests/testSuspendResumeMultipartUpload',
+ 						'AWSS3Tests.AWSS3TransferUtilityTests/testSuspendResumeUploadAndDownloadLargeDataLongDelay',
+	    				'AWSS3Tests.AWSS3TransferUtilityTests/testSuspendResumeLargeFileUpload',
+	    				'AWSS3Tests.AWSS3TransferUtilityTests/testSuspendResumeMultipartUploadLongDelay',
+	    				'AWSS3Tests.AWSS3TransferUtilityTests/testSuspendResumeUploadAndDownloadLargeData',		
+	    				'AWSS3Tests.AWSS3TransferUtilityTests/testMultiPartUploadSmallFile'	,
+	    				'AWSS3Tests.AWSS3TransferUtilityTests/testMultiPartUploadLargeFileWithCustomMetaData'	
+ 				]		
+
+    		}			
+		}
+    },   
+
+	'DynamoDB' : { 
+		'test_list' : {
+    		'AWSDynamoDBTests':{
+    			'ignoreFailures':[
+    				'AWSDynamoDBTests/testUpdateTable',
+    				'AWSDynamoDBObjectMapperTests/testUpdatedIndexQueryAndScan',
+    			]
+    		 }			
+		}
+    },
+
 }

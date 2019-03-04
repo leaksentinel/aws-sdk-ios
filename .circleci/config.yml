@@ -39,6 +39,9 @@ commands:
             sdkName=aws-ios-sdk
             echo "export sdkName=$sdkName" >> $BASH_ENV
 
+            destination="platform=iOS Simulator,name=iPhone 8,OS=12.1"
+            echo "export destination='platform=iOS Simulator,name=iPhone 8,OS=12.1'" >> $BASH_ENV
+
             release_bucket=${S3_RELEASE_BUCKET}
             echo "export release_bucket=$release_bucket" >> $BASH_ENV
 
@@ -146,12 +149,13 @@ jobs:
           command: |
             touch AWSCoreTests/Resources/credentials.json   
             touch AWSAuthSDK/Tests/AWSMobileClientTests/awsconfiguration.json
-            touch AWSAuthSDK/Tests/AWSMobileClientTests/credentials-mc.json
+            touch AWSAuthSDK/Tests/AWSMobileClientTests/credentials-mc.json          
       - run:
           name: build sdk
-          command: |
-            xcodebuild  build -project AWSiOSSDKv2.xcodeproj -scheme AWSAllTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.1'         
-            xcodebuild  build -project AWSAuthSDK/AWSAuthSDK.xcodeproj -scheme AWSAuthSDKAllTargets -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.1'
+          command: 
+            xcodebuild  build -project AWSiOSSDKv2.xcodeproj -scheme AWSAllTests -sdk iphonesimulator -destination "${destination}""       
+            xcodebuild  build -project AWSAuthSDK/AWSAuthSDK.xcodeproj -scheme AWSAuthSDKAllTargets -sdk iphonesimulator -destination "${destination}"  
+
  
   unittest:
     macos:
@@ -173,13 +177,70 @@ jobs:
           command : bash CircleciScripts/check_test_result.sh  "test_result"         
       - store_artifacts:
           path: test_result
+  pre_integrationtest:
+    macos: 
+      xcode: "10.1.0"
+    steps:
+      - run:
+          name: check environment variabe 
+          command: |
+              if [ "${SKIP_INTEGRATIONTEST}" == "TRUE" ]; then
+                echo "project enviroment variabe SKIP_INTEGRATIONTEST should not be TRUE at the moment, this will skip all integration tests"
+                exit 1
+              fi    
+      - checkout
+      - set_enviroment_variables
+      - configure_aws
+      - run:
+          name: create credentials
+          command: |
+            echo "${destination}" 
+            aws s3 cp s3://ios-circleci-payload/credentials.json  AWSCoreTests/Resources/credentials.json 
+            aws s3 cp s3://ios-circleci-payload/awsconfiguration.json  AWSAuthSDK/Tests/AWSMobileClientTests/awsconfiguration.json
+            aws s3 cp s3://ios-circleci-payload/credentials-mc.json   AWSAuthSDK/Tests/AWSMobileClientTests/credentials-mc.json     
+
+      - run:
+          name: build sdk
+          command: |
+            xcodebuild  build-for-testing -project AWSiOSSDKv2.xcodeproj -scheme AWSAllTests -sdk iphonesimulator -destination  "${destination}"   -derivedDataPath  ./build_result/AWSiOSSDKv2        
+            xcodebuild  build-for-testing -project AWSAuthSDK/AWSAuthSDK.xcodeproj -scheme AWSMobileClient -sdk iphonesimulator -destination "${destination}"   -derivedDataPath  ./build_result/AWSAuthSDK  
+      - save_cache:
+          key: build_result-{{ .Revision }}
+          paths:
+            - build_result
+  post_integrationtest:
+    macos: 
+      xcode: "10.1.0"
+    steps:
+      - restore_cache:
+          keys: 
+            - test_result-{{ .Revision }}-DynamoDB
+            - test_result-{{ .Revision }}-Polly
+            - test_result-{{ .Revision }}-S3
+            - test_result-{{ .Revision }}-Pinpoint
+            - test_result-{{ .Revision }}-IoT
+            - test_result-{{ .Revision }}-KMS_ELB_EC2_Lambda_Lex
+            - test_result-{{ .Revision }}-Cognito_Comprehend_Core_Kinesis
+            - test_result-{{ .Revision }}-RG_SES_CW_AW_AG_TL_SNS
+            - test_result-{{ .Revision }}-Transcribe
+            - test_result-{{ .Revision }}-SQS_MAL_MA
+      - store_artifacts:
+          path: integration_test_result          
 
   integrationtest:
+    description: run integration tests
+    parameters:
+      groupname:
+        default: stable_testList
+        type: string    
     macos:
       xcode: "10.1.0"   
     steps:
       - early_return_for_forked_prs
+      - set_enviroment_variables
       - checkout 
+      - restore_cache:
+          key: build_result-{{ .Revision }}  
       - run: 
           name: install json parser
           command: pip3 install demjson
@@ -187,16 +248,31 @@ jobs:
           name: create credentials
           command: |
             echo ${IOS_TESTS_CREDENTIALS_JSON}  | base64 --decode  > AWSCoreTests/Resources/credentials.json  
+      - run:   
+          name: pre-start simulator
+          command: xcrun instruments -w "iPhone 8 (10.2) [" || true   
       - run :
           name: run integration tests
           command: |
             mkdir integration_test_result
-            python3 CircleciScripts/run_integrationtests.py  CircleciScripts/IntegrationTestsConfiguration.json  "integration_test_result"
+            python3 CircleciScripts/run_integrationtests.py  CircleciScripts/IntegrationTestsConfiguration.json  "integration_test_result" "<< parameters.groupname >>" "${destination}"  "./build_result"
       - run:
           name : check integration test result 
-          command : bash CircleciScripts/check_test_result.sh "integration_test_result"
+          command : |
+            echo "testresult=$testresult"
+            if [ "$testresult" == "0" ] 
+            then
+                echo "test succeed!"
+            else
+                echo "There are test failures"
+                exit 1
+            fi
       - store_artifacts:
           path: integration_test_result
+      - save_cache:
+          key: test_result-{{ .Revision }}-{{ .Environment.CIRCLE_JOB }}
+          paths:
+            - integration_test_result       
 
   release_tag:
     # Specify the Xcode version to use
@@ -478,32 +554,169 @@ workflows:
 
   build_and_test:
     jobs: 
-      - build:
-          filters:
-            branches:
-              ignore: /gh-.*/
-      - unittest:
-          requires:
-            - build
-          filters:
-            branches:
-              ignore: /gh-.*/
+      # - build:
+      #     filters:
+      #       branches:
+      #         ignore: /gh-.*/
+      # - unittest:
+      #     requires:
+      #       - build
+      #     filters:
+      #       branches:
+      #         ignore: /gh-.*/
+      - pre_integrationtest
       - integrationtest:
+          name: SQS_MAL_MA
+          groupname: SQS_MAL_MA
           requires:
-            - build
+            - pre_integrationtest
           filters:
             branches:
               only:
                 - master
                 - develop
-      - run_ui_test:
+                - integrationtest
+      - integrationtest:
+          name: AWSMobileClient
+          groupname: "AWSMobileClient"
           requires:
-            - build
+            - pre_integrationtest
           filters:
             branches:
               only:
                 - master
                 - develop
+                - integrationtest
+      - integrationtest:
+          name: RG_SES_CW_AW_AG_TL_SNS
+          groupname: RG_SES_CW_AW_AG_TL_SNS
+          requires:
+            - pre_integrationtest
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+                - integrationtest
+      - integrationtest:
+          name: Transcribe
+          groupname: Transcribe
+          requires:
+            - pre_integrationtest
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+                - integrationtest                     
+      - integrationtest:
+          name: Cognito_Comprehend_Core_Kinesis
+          groupname: Cognito_Comprehend_Core_Kinesis
+          requires:
+            - pre_integrationtest
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+                - integrationtest   
+      - integrationtest:
+          name: KMS_ELB_EC2_Lambda_Lex
+          groupname: KMS_ELB_EC2_Lambda_Lex
+          requires:
+            - pre_integrationtest
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+                - integrationtest   
+      - integrationtest:
+          name: IoT
+          groupname: IoT
+          requires:
+            - pre_integrationtest
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+                - integrationtest                        
+      - integrationtest:
+          name: Pinpoint
+          groupname: Pinpoint
+          requires:
+            - pre_integrationtest
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+                - integrationtest                    
+      - integrationtest:
+          name: S3
+          groupname: S3
+          requires:
+            - pre_integrationtest
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+                - integrationtest 
+      - integrationtest:
+          name: Polly
+          groupname: Polly
+          requires:
+            - pre_integrationtest
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+                - integrationtest 
+      - integrationtest:
+          name: DynamoDB
+          groupname: DynamoDB
+          requires:
+            - pre_integrationtest
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+                - integrationtest 
+
+      - post_integrationtest:
+          requires:
+            - DynamoDB
+            - Polly
+            - S3
+            - Pinpoint
+            - IoT
+            - KMS_ELB_EC2_Lambda_Lex
+            - Cognito_Comprehend_Core_Kinesis
+            - RG_SES_CW_AW_AG_TL_SNS
+            - Transcribe
+            - SQS_MAL_MA
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+                - integrationtest 
+
+
+
+                                                                                                     
+      # - run_ui_test:
+      #     requires:
+      #       - build
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      #           - develop
   release_sdk:
     jobs: 
       - build:
