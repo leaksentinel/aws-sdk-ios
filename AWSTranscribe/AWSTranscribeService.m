@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -14,7 +14,6 @@
 //
 
 #import "AWSTranscribeService.h"
-#import <AWSCore/AWSNetworking.h>
 #import <AWSCore/AWSCategory.h>
 #import <AWSCore/AWSNetworking.h>
 #import <AWSCore/AWSSignature.h>
@@ -26,7 +25,7 @@
 #import "AWSTranscribeResources.h"
 
 static NSString *const AWSInfoTranscribe = @"Transcribe";
-NSString *const AWSTranscribeSDKVersion = @"2.9.8";
+NSString *const AWSTranscribeSDKVersion = @"2.24.5";
 
 
 @interface AWSTranscribeResponseSerializer : AWSJSONResponseSerializer
@@ -279,6 +278,75 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
 #pragma mark - Service method
 
+- (AWSTask<AWSTranscribeCreateCallAnalyticsCategoryResponse *> *)createCallAnalyticsCategory:(AWSTranscribeCreateCallAnalyticsCategoryRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"CreateCallAnalyticsCategory"
+                   outputClass:[AWSTranscribeCreateCallAnalyticsCategoryResponse class]];
+}
+
+- (void)createCallAnalyticsCategory:(AWSTranscribeCreateCallAnalyticsCategoryRequest *)request
+     completionHandler:(void (^)(AWSTranscribeCreateCallAnalyticsCategoryResponse *response, NSError *error))completionHandler {
+    [[self createCallAnalyticsCategory:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeCreateCallAnalyticsCategoryResponse *> * _Nonnull task) {
+        AWSTranscribeCreateCallAnalyticsCategoryResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeCreateLanguageModelResponse *> *)createLanguageModel:(AWSTranscribeCreateLanguageModelRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"CreateLanguageModel"
+                   outputClass:[AWSTranscribeCreateLanguageModelResponse class]];
+}
+
+- (void)createLanguageModel:(AWSTranscribeCreateLanguageModelRequest *)request
+     completionHandler:(void (^)(AWSTranscribeCreateLanguageModelResponse *response, NSError *error))completionHandler {
+    [[self createLanguageModel:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeCreateLanguageModelResponse *> * _Nonnull task) {
+        AWSTranscribeCreateLanguageModelResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeCreateMedicalVocabularyResponse *> *)createMedicalVocabulary:(AWSTranscribeCreateMedicalVocabularyRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"CreateMedicalVocabulary"
+                   outputClass:[AWSTranscribeCreateMedicalVocabularyResponse class]];
+}
+
+- (void)createMedicalVocabulary:(AWSTranscribeCreateMedicalVocabularyRequest *)request
+     completionHandler:(void (^)(AWSTranscribeCreateMedicalVocabularyResponse *response, NSError *error))completionHandler {
+    [[self createMedicalVocabulary:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeCreateMedicalVocabularyResponse *> * _Nonnull task) {
+        AWSTranscribeCreateMedicalVocabularyResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
 - (AWSTask<AWSTranscribeCreateVocabularyResponse *> *)createVocabulary:(AWSTranscribeCreateVocabularyRequest *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -296,6 +364,141 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
         if (completionHandler) {
             completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeCreateVocabularyFilterResponse *> *)createVocabularyFilter:(AWSTranscribeCreateVocabularyFilterRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"CreateVocabularyFilter"
+                   outputClass:[AWSTranscribeCreateVocabularyFilterResponse class]];
+}
+
+- (void)createVocabularyFilter:(AWSTranscribeCreateVocabularyFilterRequest *)request
+     completionHandler:(void (^)(AWSTranscribeCreateVocabularyFilterResponse *response, NSError *error))completionHandler {
+    [[self createVocabularyFilter:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeCreateVocabularyFilterResponse *> * _Nonnull task) {
+        AWSTranscribeCreateVocabularyFilterResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeDeleteCallAnalyticsCategoryResponse *> *)deleteCallAnalyticsCategory:(AWSTranscribeDeleteCallAnalyticsCategoryRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"DeleteCallAnalyticsCategory"
+                   outputClass:[AWSTranscribeDeleteCallAnalyticsCategoryResponse class]];
+}
+
+- (void)deleteCallAnalyticsCategory:(AWSTranscribeDeleteCallAnalyticsCategoryRequest *)request
+     completionHandler:(void (^)(AWSTranscribeDeleteCallAnalyticsCategoryResponse *response, NSError *error))completionHandler {
+    [[self deleteCallAnalyticsCategory:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeDeleteCallAnalyticsCategoryResponse *> * _Nonnull task) {
+        AWSTranscribeDeleteCallAnalyticsCategoryResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeDeleteCallAnalyticsJobResponse *> *)deleteCallAnalyticsJob:(AWSTranscribeDeleteCallAnalyticsJobRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"DeleteCallAnalyticsJob"
+                   outputClass:[AWSTranscribeDeleteCallAnalyticsJobResponse class]];
+}
+
+- (void)deleteCallAnalyticsJob:(AWSTranscribeDeleteCallAnalyticsJobRequest *)request
+     completionHandler:(void (^)(AWSTranscribeDeleteCallAnalyticsJobResponse *response, NSError *error))completionHandler {
+    [[self deleteCallAnalyticsJob:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeDeleteCallAnalyticsJobResponse *> * _Nonnull task) {
+        AWSTranscribeDeleteCallAnalyticsJobResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask *)deleteLanguageModel:(AWSTranscribeDeleteLanguageModelRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"DeleteLanguageModel"
+                   outputClass:nil];
+}
+
+- (void)deleteLanguageModel:(AWSTranscribeDeleteLanguageModelRequest *)request
+     completionHandler:(void (^)(NSError *error))completionHandler {
+    [[self deleteLanguageModel:request] continueWithBlock:^id _Nullable(AWSTask * _Nonnull task) {
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask *)deleteMedicalTranscriptionJob:(AWSTranscribeDeleteMedicalTranscriptionJobRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"DeleteMedicalTranscriptionJob"
+                   outputClass:nil];
+}
+
+- (void)deleteMedicalTranscriptionJob:(AWSTranscribeDeleteMedicalTranscriptionJobRequest *)request
+     completionHandler:(void (^)(NSError *error))completionHandler {
+    [[self deleteMedicalTranscriptionJob:request] continueWithBlock:^id _Nullable(AWSTask * _Nonnull task) {
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask *)deleteMedicalVocabulary:(AWSTranscribeDeleteMedicalVocabularyRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"DeleteMedicalVocabulary"
+                   outputClass:nil];
+}
+
+- (void)deleteMedicalVocabulary:(AWSTranscribeDeleteMedicalVocabularyRequest *)request
+     completionHandler:(void (^)(NSError *error))completionHandler {
+    [[self deleteMedicalVocabulary:request] continueWithBlock:^id _Nullable(AWSTask * _Nonnull task) {
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(error);
         }
 
         return nil;
@@ -346,6 +549,143 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
+- (AWSTask *)deleteVocabularyFilter:(AWSTranscribeDeleteVocabularyFilterRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"DeleteVocabularyFilter"
+                   outputClass:nil];
+}
+
+- (void)deleteVocabularyFilter:(AWSTranscribeDeleteVocabularyFilterRequest *)request
+     completionHandler:(void (^)(NSError *error))completionHandler {
+    [[self deleteVocabularyFilter:request] continueWithBlock:^id _Nullable(AWSTask * _Nonnull task) {
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeDescribeLanguageModelResponse *> *)describeLanguageModel:(AWSTranscribeDescribeLanguageModelRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"DescribeLanguageModel"
+                   outputClass:[AWSTranscribeDescribeLanguageModelResponse class]];
+}
+
+- (void)describeLanguageModel:(AWSTranscribeDescribeLanguageModelRequest *)request
+     completionHandler:(void (^)(AWSTranscribeDescribeLanguageModelResponse *response, NSError *error))completionHandler {
+    [[self describeLanguageModel:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeDescribeLanguageModelResponse *> * _Nonnull task) {
+        AWSTranscribeDescribeLanguageModelResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeGetCallAnalyticsCategoryResponse *> *)getCallAnalyticsCategory:(AWSTranscribeGetCallAnalyticsCategoryRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"GetCallAnalyticsCategory"
+                   outputClass:[AWSTranscribeGetCallAnalyticsCategoryResponse class]];
+}
+
+- (void)getCallAnalyticsCategory:(AWSTranscribeGetCallAnalyticsCategoryRequest *)request
+     completionHandler:(void (^)(AWSTranscribeGetCallAnalyticsCategoryResponse *response, NSError *error))completionHandler {
+    [[self getCallAnalyticsCategory:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeGetCallAnalyticsCategoryResponse *> * _Nonnull task) {
+        AWSTranscribeGetCallAnalyticsCategoryResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeGetCallAnalyticsJobResponse *> *)getCallAnalyticsJob:(AWSTranscribeGetCallAnalyticsJobRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"GetCallAnalyticsJob"
+                   outputClass:[AWSTranscribeGetCallAnalyticsJobResponse class]];
+}
+
+- (void)getCallAnalyticsJob:(AWSTranscribeGetCallAnalyticsJobRequest *)request
+     completionHandler:(void (^)(AWSTranscribeGetCallAnalyticsJobResponse *response, NSError *error))completionHandler {
+    [[self getCallAnalyticsJob:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeGetCallAnalyticsJobResponse *> * _Nonnull task) {
+        AWSTranscribeGetCallAnalyticsJobResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeGetMedicalTranscriptionJobResponse *> *)getMedicalTranscriptionJob:(AWSTranscribeGetMedicalTranscriptionJobRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"GetMedicalTranscriptionJob"
+                   outputClass:[AWSTranscribeGetMedicalTranscriptionJobResponse class]];
+}
+
+- (void)getMedicalTranscriptionJob:(AWSTranscribeGetMedicalTranscriptionJobRequest *)request
+     completionHandler:(void (^)(AWSTranscribeGetMedicalTranscriptionJobResponse *response, NSError *error))completionHandler {
+    [[self getMedicalTranscriptionJob:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeGetMedicalTranscriptionJobResponse *> * _Nonnull task) {
+        AWSTranscribeGetMedicalTranscriptionJobResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeGetMedicalVocabularyResponse *> *)getMedicalVocabulary:(AWSTranscribeGetMedicalVocabularyRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"GetMedicalVocabulary"
+                   outputClass:[AWSTranscribeGetMedicalVocabularyResponse class]];
+}
+
+- (void)getMedicalVocabulary:(AWSTranscribeGetMedicalVocabularyRequest *)request
+     completionHandler:(void (^)(AWSTranscribeGetMedicalVocabularyResponse *response, NSError *error))completionHandler {
+    [[self getMedicalVocabulary:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeGetMedicalVocabularyResponse *> * _Nonnull task) {
+        AWSTranscribeGetMedicalVocabularyResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
 - (AWSTask<AWSTranscribeGetTranscriptionJobResponse *> *)getTranscriptionJob:(AWSTranscribeGetTranscriptionJobRequest *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -382,6 +722,144 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
      completionHandler:(void (^)(AWSTranscribeGetVocabularyResponse *response, NSError *error))completionHandler {
     [[self getVocabulary:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeGetVocabularyResponse *> * _Nonnull task) {
         AWSTranscribeGetVocabularyResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeGetVocabularyFilterResponse *> *)getVocabularyFilter:(AWSTranscribeGetVocabularyFilterRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"GetVocabularyFilter"
+                   outputClass:[AWSTranscribeGetVocabularyFilterResponse class]];
+}
+
+- (void)getVocabularyFilter:(AWSTranscribeGetVocabularyFilterRequest *)request
+     completionHandler:(void (^)(AWSTranscribeGetVocabularyFilterResponse *response, NSError *error))completionHandler {
+    [[self getVocabularyFilter:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeGetVocabularyFilterResponse *> * _Nonnull task) {
+        AWSTranscribeGetVocabularyFilterResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeListCallAnalyticsCategoriesResponse *> *)listCallAnalyticsCategories:(AWSTranscribeListCallAnalyticsCategoriesRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"ListCallAnalyticsCategories"
+                   outputClass:[AWSTranscribeListCallAnalyticsCategoriesResponse class]];
+}
+
+- (void)listCallAnalyticsCategories:(AWSTranscribeListCallAnalyticsCategoriesRequest *)request
+     completionHandler:(void (^)(AWSTranscribeListCallAnalyticsCategoriesResponse *response, NSError *error))completionHandler {
+    [[self listCallAnalyticsCategories:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeListCallAnalyticsCategoriesResponse *> * _Nonnull task) {
+        AWSTranscribeListCallAnalyticsCategoriesResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeListCallAnalyticsJobsResponse *> *)listCallAnalyticsJobs:(AWSTranscribeListCallAnalyticsJobsRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"ListCallAnalyticsJobs"
+                   outputClass:[AWSTranscribeListCallAnalyticsJobsResponse class]];
+}
+
+- (void)listCallAnalyticsJobs:(AWSTranscribeListCallAnalyticsJobsRequest *)request
+     completionHandler:(void (^)(AWSTranscribeListCallAnalyticsJobsResponse *response, NSError *error))completionHandler {
+    [[self listCallAnalyticsJobs:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeListCallAnalyticsJobsResponse *> * _Nonnull task) {
+        AWSTranscribeListCallAnalyticsJobsResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeListLanguageModelsResponse *> *)listLanguageModels:(AWSTranscribeListLanguageModelsRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"ListLanguageModels"
+                   outputClass:[AWSTranscribeListLanguageModelsResponse class]];
+}
+
+- (void)listLanguageModels:(AWSTranscribeListLanguageModelsRequest *)request
+     completionHandler:(void (^)(AWSTranscribeListLanguageModelsResponse *response, NSError *error))completionHandler {
+    [[self listLanguageModels:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeListLanguageModelsResponse *> * _Nonnull task) {
+        AWSTranscribeListLanguageModelsResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeListMedicalTranscriptionJobsResponse *> *)listMedicalTranscriptionJobs:(AWSTranscribeListMedicalTranscriptionJobsRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"ListMedicalTranscriptionJobs"
+                   outputClass:[AWSTranscribeListMedicalTranscriptionJobsResponse class]];
+}
+
+- (void)listMedicalTranscriptionJobs:(AWSTranscribeListMedicalTranscriptionJobsRequest *)request
+     completionHandler:(void (^)(AWSTranscribeListMedicalTranscriptionJobsResponse *response, NSError *error))completionHandler {
+    [[self listMedicalTranscriptionJobs:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeListMedicalTranscriptionJobsResponse *> * _Nonnull task) {
+        AWSTranscribeListMedicalTranscriptionJobsResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeListMedicalVocabulariesResponse *> *)listMedicalVocabularies:(AWSTranscribeListMedicalVocabulariesRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"ListMedicalVocabularies"
+                   outputClass:[AWSTranscribeListMedicalVocabulariesResponse class]];
+}
+
+- (void)listMedicalVocabularies:(AWSTranscribeListMedicalVocabulariesRequest *)request
+     completionHandler:(void (^)(AWSTranscribeListMedicalVocabulariesResponse *response, NSError *error))completionHandler {
+    [[self listMedicalVocabularies:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeListMedicalVocabulariesResponse *> * _Nonnull task) {
+        AWSTranscribeListMedicalVocabulariesResponse *result = task.result;
         NSError *error = task.error;
 
         if (completionHandler) {
@@ -438,6 +916,75 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
+- (AWSTask<AWSTranscribeListVocabularyFiltersResponse *> *)listVocabularyFilters:(AWSTranscribeListVocabularyFiltersRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"ListVocabularyFilters"
+                   outputClass:[AWSTranscribeListVocabularyFiltersResponse class]];
+}
+
+- (void)listVocabularyFilters:(AWSTranscribeListVocabularyFiltersRequest *)request
+     completionHandler:(void (^)(AWSTranscribeListVocabularyFiltersResponse *response, NSError *error))completionHandler {
+    [[self listVocabularyFilters:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeListVocabularyFiltersResponse *> * _Nonnull task) {
+        AWSTranscribeListVocabularyFiltersResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeStartCallAnalyticsJobResponse *> *)startCallAnalyticsJob:(AWSTranscribeStartCallAnalyticsJobRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"StartCallAnalyticsJob"
+                   outputClass:[AWSTranscribeStartCallAnalyticsJobResponse class]];
+}
+
+- (void)startCallAnalyticsJob:(AWSTranscribeStartCallAnalyticsJobRequest *)request
+     completionHandler:(void (^)(AWSTranscribeStartCallAnalyticsJobResponse *response, NSError *error))completionHandler {
+    [[self startCallAnalyticsJob:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeStartCallAnalyticsJobResponse *> * _Nonnull task) {
+        AWSTranscribeStartCallAnalyticsJobResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeStartMedicalTranscriptionJobResponse *> *)startMedicalTranscriptionJob:(AWSTranscribeStartMedicalTranscriptionJobRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"StartMedicalTranscriptionJob"
+                   outputClass:[AWSTranscribeStartMedicalTranscriptionJobResponse class]];
+}
+
+- (void)startMedicalTranscriptionJob:(AWSTranscribeStartMedicalTranscriptionJobRequest *)request
+     completionHandler:(void (^)(AWSTranscribeStartMedicalTranscriptionJobResponse *response, NSError *error))completionHandler {
+    [[self startMedicalTranscriptionJob:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeStartMedicalTranscriptionJobResponse *> * _Nonnull task) {
+        AWSTranscribeStartMedicalTranscriptionJobResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
 - (AWSTask<AWSTranscribeStartTranscriptionJobResponse *> *)startTranscriptionJob:(AWSTranscribeStartTranscriptionJobRequest *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -461,6 +1008,52 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
+- (AWSTask<AWSTranscribeUpdateCallAnalyticsCategoryResponse *> *)updateCallAnalyticsCategory:(AWSTranscribeUpdateCallAnalyticsCategoryRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"UpdateCallAnalyticsCategory"
+                   outputClass:[AWSTranscribeUpdateCallAnalyticsCategoryResponse class]];
+}
+
+- (void)updateCallAnalyticsCategory:(AWSTranscribeUpdateCallAnalyticsCategoryRequest *)request
+     completionHandler:(void (^)(AWSTranscribeUpdateCallAnalyticsCategoryResponse *response, NSError *error))completionHandler {
+    [[self updateCallAnalyticsCategory:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeUpdateCallAnalyticsCategoryResponse *> * _Nonnull task) {
+        AWSTranscribeUpdateCallAnalyticsCategoryResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeUpdateMedicalVocabularyResponse *> *)updateMedicalVocabulary:(AWSTranscribeUpdateMedicalVocabularyRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"UpdateMedicalVocabulary"
+                   outputClass:[AWSTranscribeUpdateMedicalVocabularyResponse class]];
+}
+
+- (void)updateMedicalVocabulary:(AWSTranscribeUpdateMedicalVocabularyRequest *)request
+     completionHandler:(void (^)(AWSTranscribeUpdateMedicalVocabularyResponse *response, NSError *error))completionHandler {
+    [[self updateMedicalVocabulary:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeUpdateMedicalVocabularyResponse *> * _Nonnull task) {
+        AWSTranscribeUpdateMedicalVocabularyResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
 - (AWSTask<AWSTranscribeUpdateVocabularyResponse *> *)updateVocabulary:(AWSTranscribeUpdateVocabularyRequest *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -474,6 +1067,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
      completionHandler:(void (^)(AWSTranscribeUpdateVocabularyResponse *response, NSError *error))completionHandler {
     [[self updateVocabulary:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeUpdateVocabularyResponse *> * _Nonnull task) {
         AWSTranscribeUpdateVocabularyResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSTranscribeUpdateVocabularyFilterResponse *> *)updateVocabularyFilter:(AWSTranscribeUpdateVocabularyFilterRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"Transcribe"
+                 operationName:@"UpdateVocabularyFilter"
+                   outputClass:[AWSTranscribeUpdateVocabularyFilterResponse class]];
+}
+
+- (void)updateVocabularyFilter:(AWSTranscribeUpdateVocabularyFilterRequest *)request
+     completionHandler:(void (^)(AWSTranscribeUpdateVocabularyFilterResponse *response, NSError *error))completionHandler {
+    [[self updateVocabularyFilter:request] continueWithBlock:^id _Nullable(AWSTask<AWSTranscribeUpdateVocabularyFilterResponse *> * _Nonnull task) {
+        AWSTranscribeUpdateVocabularyFilterResponse *result = task.result;
         NSError *error = task.error;
 
         if (completionHandler) {

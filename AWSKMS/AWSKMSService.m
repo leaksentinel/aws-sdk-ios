@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -14,7 +14,6 @@
 //
 
 #import "AWSKMSService.h"
-#import <AWSCore/AWSNetworking.h>
 #import <AWSCore/AWSCategory.h>
 #import <AWSCore/AWSNetworking.h>
 #import <AWSCore/AWSSignature.h>
@@ -26,7 +25,7 @@
 #import "AWSKMSResources.h"
 
 static NSString *const AWSInfoKMS = @"KMS";
-NSString *const AWSKMSSDKVersion = @"2.9.8";
+NSString *const AWSKMSSDKVersion = @"2.24.5";
 
 
 @interface AWSKMSResponseSerializer : AWSJSONResponseSerializer
@@ -53,6 +52,7 @@ static NSDictionary *errorCodeDictionary = nil;
                             @"DependencyTimeoutException" : @(AWSKMSErrorDependencyTimeout),
                             @"DisabledException" : @(AWSKMSErrorDisabled),
                             @"ExpiredImportTokenException" : @(AWSKMSErrorExpiredImportToken),
+                            @"IncorrectKeyException" : @(AWSKMSErrorIncorrectKey),
                             @"IncorrectKeyMaterialException" : @(AWSKMSErrorIncorrectKeyMaterial),
                             @"IncorrectTrustAnchorException" : @(AWSKMSErrorIncorrectTrustAnchor),
                             @"InvalidAliasNameException" : @(AWSKMSErrorInvalidAliasName),
@@ -64,6 +64,7 @@ static NSDictionary *errorCodeDictionary = nil;
                             @"InvalidKeyUsageException" : @(AWSKMSErrorInvalidKeyUsage),
                             @"InvalidMarkerException" : @(AWSKMSErrorInvalidMarker),
                             @"KMSInternalException" : @(AWSKMSErrorKMSInternal),
+                            @"KMSInvalidSignatureException" : @(AWSKMSErrorKMSInvalidSignature),
                             @"KMSInvalidStateException" : @(AWSKMSErrorKMSInvalidState),
                             @"KeyUnavailableException" : @(AWSKMSErrorKeyUnavailable),
                             @"LimitExceededException" : @(AWSKMSErrorLimitExceeded),
@@ -735,6 +736,52 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
+- (AWSTask<AWSKMSGenerateDataKeyPairResponse *> *)generateDataKeyPair:(AWSKMSGenerateDataKeyPairRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"TrentService"
+                 operationName:@"GenerateDataKeyPair"
+                   outputClass:[AWSKMSGenerateDataKeyPairResponse class]];
+}
+
+- (void)generateDataKeyPair:(AWSKMSGenerateDataKeyPairRequest *)request
+     completionHandler:(void (^)(AWSKMSGenerateDataKeyPairResponse *response, NSError *error))completionHandler {
+    [[self generateDataKeyPair:request] continueWithBlock:^id _Nullable(AWSTask<AWSKMSGenerateDataKeyPairResponse *> * _Nonnull task) {
+        AWSKMSGenerateDataKeyPairResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSKMSGenerateDataKeyPairWithoutPlaintextResponse *> *)generateDataKeyPairWithoutPlaintext:(AWSKMSGenerateDataKeyPairWithoutPlaintextRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"TrentService"
+                 operationName:@"GenerateDataKeyPairWithoutPlaintext"
+                   outputClass:[AWSKMSGenerateDataKeyPairWithoutPlaintextResponse class]];
+}
+
+- (void)generateDataKeyPairWithoutPlaintext:(AWSKMSGenerateDataKeyPairWithoutPlaintextRequest *)request
+     completionHandler:(void (^)(AWSKMSGenerateDataKeyPairWithoutPlaintextResponse *response, NSError *error))completionHandler {
+    [[self generateDataKeyPairWithoutPlaintext:request] continueWithBlock:^id _Nullable(AWSTask<AWSKMSGenerateDataKeyPairWithoutPlaintextResponse *> * _Nonnull task) {
+        AWSKMSGenerateDataKeyPairWithoutPlaintextResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
 - (AWSTask<AWSKMSGenerateDataKeyWithoutPlaintextResponse *> *)generateDataKeyWithoutPlaintext:(AWSKMSGenerateDataKeyWithoutPlaintextRequest *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -840,6 +887,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
      completionHandler:(void (^)(AWSKMSGetParametersForImportResponse *response, NSError *error))completionHandler {
     [[self getParametersForImport:request] continueWithBlock:^id _Nullable(AWSTask<AWSKMSGetParametersForImportResponse *> * _Nonnull task) {
         AWSKMSGetParametersForImportResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSKMSGetPublicKeyResponse *> *)getPublicKey:(AWSKMSGetPublicKeyRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"TrentService"
+                 operationName:@"GetPublicKey"
+                   outputClass:[AWSKMSGetPublicKeyResponse class]];
+}
+
+- (void)getPublicKey:(AWSKMSGetPublicKeyRequest *)request
+     completionHandler:(void (^)(AWSKMSGetPublicKeyResponse *response, NSError *error))completionHandler {
+    [[self getPublicKey:request] continueWithBlock:^id _Nullable(AWSTask<AWSKMSGetPublicKeyResponse *> * _Nonnull task) {
+        AWSKMSGetPublicKeyResponse *result = task.result;
         NSError *error = task.error;
 
         if (completionHandler) {
@@ -1056,6 +1126,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
+- (AWSTask<AWSKMSReplicateKeyResponse *> *)replicateKey:(AWSKMSReplicateKeyRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"TrentService"
+                 operationName:@"ReplicateKey"
+                   outputClass:[AWSKMSReplicateKeyResponse class]];
+}
+
+- (void)replicateKey:(AWSKMSReplicateKeyRequest *)request
+     completionHandler:(void (^)(AWSKMSReplicateKeyResponse *response, NSError *error))completionHandler {
+    [[self replicateKey:request] continueWithBlock:^id _Nullable(AWSTask<AWSKMSReplicateKeyResponse *> * _Nonnull task) {
+        AWSKMSReplicateKeyResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
 - (AWSTask *)retireGrant:(AWSKMSRetireGrantRequest *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -1113,6 +1206,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
      completionHandler:(void (^)(AWSKMSScheduleKeyDeletionResponse *response, NSError *error))completionHandler {
     [[self scheduleKeyDeletion:request] continueWithBlock:^id _Nullable(AWSTask<AWSKMSScheduleKeyDeletionResponse *> * _Nonnull task) {
         AWSKMSScheduleKeyDeletionResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSKMSSignResponse *> *)sign:(AWSKMSSignRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"TrentService"
+                 operationName:@"Sign"
+                   outputClass:[AWSKMSSignResponse class]];
+}
+
+- (void)sign:(AWSKMSSignRequest *)request
+     completionHandler:(void (^)(AWSKMSSignResponse *response, NSError *error))completionHandler {
+    [[self sign:request] continueWithBlock:^id _Nullable(AWSTask<AWSKMSSignResponse *> * _Nonnull task) {
+        AWSKMSSignResponse *result = task.result;
         NSError *error = task.error;
 
         if (completionHandler) {
@@ -1228,6 +1344,51 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
         if (completionHandler) {
             completionHandler(error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask *)updatePrimaryRegion:(AWSKMSUpdatePrimaryRegionRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"TrentService"
+                 operationName:@"UpdatePrimaryRegion"
+                   outputClass:nil];
+}
+
+- (void)updatePrimaryRegion:(AWSKMSUpdatePrimaryRegionRequest *)request
+     completionHandler:(void (^)(NSError *error))completionHandler {
+    [[self updatePrimaryRegion:request] continueWithBlock:^id _Nullable(AWSTask * _Nonnull task) {
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSKMSVerifyResponse *> *)verify:(AWSKMSVerifyRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@"TrentService"
+                 operationName:@"Verify"
+                   outputClass:[AWSKMSVerifyResponse class]];
+}
+
+- (void)verify:(AWSKMSVerifyRequest *)request
+     completionHandler:(void (^)(AWSKMSVerifyResponse *response, NSError *error))completionHandler {
+    [[self verify:request] continueWithBlock:^id _Nullable(AWSTask<AWSKMSVerifyResponse *> * _Nonnull task) {
+        AWSKMSVerifyResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
         }
 
         return nil;

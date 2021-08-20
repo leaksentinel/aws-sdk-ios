@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -86,7 +86,7 @@
         {\"shape\":\"PolicyLengthExceededException\"},\
         {\"shape\":\"PreconditionFailedException\"}\
       ],\
-      \"documentation\":\"<p>Adds permissions to the resource-based policy of a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layer</a>. Use this action to grant layer usage permission to other accounts. You can grant permission to a single account, all AWS accounts, or all accounts in an organization.</p> <p>To revoke permission, call <a>RemoveLayerVersionPermission</a> with the statement ID that you specified when you added it.</p>\"\
+      \"documentation\":\"<p>Adds permissions to the resource-based policy of a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layer</a>. Use this action to grant layer usage permission to other accounts. You can grant permission to a single account, all accounts in an organization, or all Amazon Web Services accounts. </p> <p>To revoke permission, call <a>RemoveLayerVersionPermission</a> with the statement ID that you specified when you added it.</p>\"\
     },\
     \"AddPermission\":{\
       \"name\":\"AddPermission\",\
@@ -106,7 +106,7 @@
         {\"shape\":\"TooManyRequestsException\"},\
         {\"shape\":\"PreconditionFailedException\"}\
       ],\
-      \"documentation\":\"<p>Grants an AWS service or another account permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function.</p> <p>To grant permission to another account, specify the account ID as the <code>Principal</code>. For AWS services, the principal is a domain-style identifier defined by the service, like <code>s3.amazonaws.com</code> or <code>sns.amazonaws.com</code>. For AWS services, you can also specify the ARN or owning account of the associated resource as the <code>SourceArn</code> or <code>SourceAccount</code>. If you grant permission to a service principal without specifying the source, other accounts could potentially configure resources in their account to invoke your Lambda function.</p> <p>This action adds a statement to a resource-based permission policy for the function. For more information about function policies, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html\\\">Lambda Function Policies</a>. </p>\"\
+      \"documentation\":\"<p>Grants an Amazon Web Services service or another account permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function.</p> <p>To grant permission to another account, specify the account ID as the <code>Principal</code>. For Amazon Web Services services, the principal is a domain-style identifier defined by the service, like <code>s3.amazonaws.com</code> or <code>sns.amazonaws.com</code>. For Amazon Web Services services, you can also specify the ARN of the associated resource as the <code>SourceArn</code>. If you grant permission to a service principal without specifying the source, other accounts could potentially configure resources in their account to invoke your Lambda function.</p> <p>This action adds a statement to a resource-based permissions policy for the function. For more information about function policies, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html\\\">Lambda Function Policies</a>. </p>\"\
     },\
     \"CreateAlias\":{\
       \"name\":\"CreateAlias\",\
@@ -126,6 +126,21 @@
       ],\
       \"documentation\":\"<p>Creates an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html\\\">alias</a> for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.</p> <p>You can also map an alias to split invocation requests between two versions. Use the <code>RoutingConfig</code> parameter to specify a second version and the percentage of invocation requests that it receives.</p>\"\
     },\
+    \"CreateCodeSigningConfig\":{\
+      \"name\":\"CreateCodeSigningConfig\",\
+      \"http\":{\
+        \"method\":\"POST\",\
+        \"requestUri\":\"/2020-04-22/code-signing-configs/\",\
+        \"responseCode\":201\
+      },\
+      \"input\":{\"shape\":\"CreateCodeSigningConfigRequest\"},\
+      \"output\":{\"shape\":\"CreateCodeSigningConfigResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"InvalidParameterValueException\"}\
+      ],\
+      \"documentation\":\"<p>Creates a code signing configuration. A <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-trustedcode.html\\\">code signing configuration</a> defines a list of allowed signing profiles and defines the code-signing validation policy (action to be taken if deployment validation checks fail). </p>\"\
+    },\
     \"CreateEventSourceMapping\":{\
       \"name\":\"CreateEventSourceMapping\",\
       \"http\":{\
@@ -142,7 +157,7 @@
         {\"shape\":\"TooManyRequestsException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Creates a mapping between an event source and an AWS Lambda function. Lambda reads items from the event source and triggers the function.</p> <p>For details about each event source type, see the following topics.</p> <ul> <li> <p> <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html\\\">Using AWS Lambda with Amazon Kinesis</a> </p> </li> <li> <p> <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html\\\">Using AWS Lambda with Amazon SQS</a> </p> </li> <li> <p> <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html\\\">Using AWS Lambda with Amazon DynamoDB</a> </p> </li> </ul>\"\
+      \"documentation\":\"<p>Creates a mapping between an event source and an Lambda function. Lambda reads items from the event source and triggers the function.</p> <p>For details about each event source type, see the following topics. In particular, each of the topics describes the required and optional parameters for the specific event source. </p> <ul> <li> <p> <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html#services-dynamodb-eventsourcemapping\\\"> Configuring a Dynamo DB stream as an event source</a> </p> </li> <li> <p> <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html#services-kinesis-eventsourcemapping\\\"> Configuring a Kinesis stream as an event source</a> </p> </li> <li> <p> <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-eventsource\\\"> Configuring an SQS queue as an event source</a> </p> </li> <li> <p> <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html#services-mq-eventsourcemapping\\\"> Configuring an MQ broker as an event source</a> </p> </li> <li> <p> <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html\\\"> Configuring MSK as an event source</a> </p> </li> <li> <p> <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/kafka-smaa.html\\\"> Configuring Self-Managed Apache Kafka as an event source</a> </p> </li> </ul> <p>The following error handling options are only available for stream sources (DynamoDB and Kinesis):</p> <ul> <li> <p> <code>BisectBatchOnFunctionError</code> - If the function returns an error, split the batch in two and retry.</p> </li> <li> <p> <code>DestinationConfig</code> - Send discarded records to an Amazon SQS queue or Amazon SNS topic.</p> </li> <li> <p> <code>MaximumRecordAgeInSeconds</code> - Discard records older than the specified age. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires</p> </li> <li> <p> <code>MaximumRetryAttempts</code> - Discard records after the specified number of retries. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires.</p> </li> <li> <p> <code>ParallelizationFactor</code> - Process multiple batches from each shard concurrently.</p> </li> </ul>\"\
     },\
     \"CreateFunction\":{\
       \"name\":\"CreateFunction\",\
@@ -159,9 +174,12 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"ResourceConflictException\"},\
         {\"shape\":\"TooManyRequestsException\"},\
-        {\"shape\":\"CodeStorageExceededException\"}\
+        {\"shape\":\"CodeStorageExceededException\"},\
+        {\"shape\":\"CodeVerificationFailedException\"},\
+        {\"shape\":\"InvalidCodeSignatureException\"},\
+        {\"shape\":\"CodeSigningConfigNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Creates a Lambda function. To create a function, you need a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html\\\">deployment package</a> and an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role\\\">execution role</a>. The deployment package contains your function code. The execution role grants the function permission to use AWS services, such as Amazon CloudWatch Logs for log streaming and AWS X-Ray for request tracing.</p> <p>A function has an unpublished version, and can have published versions and aliases. The unpublished version changes when you update your function's code and configuration. A published version is a snapshot of your function code and configuration that can't be changed. An alias is a named resource that maps to a version, and can be changed to map to a different version. Use the <code>Publish</code> parameter to create version <code>1</code> of your function from its initial configuration.</p> <p>The other parameters let you configure version-specific and function-level settings. You can modify version-specific settings later with <a>UpdateFunctionConfiguration</a>. Function-level settings apply to both the unpublished and published versions of the function, and include tags (<a>TagResource</a>) and per-function concurrency limits (<a>PutFunctionConcurrency</a>).</p> <p>If another account or an AWS service invokes your function, use <a>AddPermission</a> to grant permission by creating a resource-based IAM policy. You can grant permissions at the function level, on a version, or on an alias.</p> <p>To invoke your function directly, use <a>Invoke</a>. To invoke your function in response to events in other AWS services, create an event source mapping (<a>CreateEventSourceMapping</a>), or configure a function trigger in the other service. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-functions.html\\\">Invoking Functions</a>.</p>\"\
+      \"documentation\":\"<p>Creates a Lambda function. To create a function, you need a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html\\\">deployment package</a> and an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role\\\">execution role</a>. The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Services services, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.</p> <p>You set the package type to <code>Image</code> if the deployment package is a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-images.html\\\">container image</a>. For a container image, the code property must include the URI of a container image in the Amazon ECR registry. You do not need to specify the handler and runtime properties. </p> <p>You set the package type to <code>Zip</code> if the deployment package is a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip\\\">.zip file archive</a>. For a .zip file archive, the code property specifies the location of the .zip file. You must also specify the handler and runtime properties.</p> <p>When you create a function, Lambda provisions an instance of the function and its supporting resources. If your function connects to a VPC, this process can take a minute or so. During this time, you can't invoke or modify the function. The <code>State</code>, <code>StateReason</code>, and <code>StateReasonCode</code> fields in the response from <a>GetFunctionConfiguration</a> indicate when the function is ready to invoke. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html\\\">Function States</a>.</p> <p>A function has an unpublished version, and can have published versions and aliases. The unpublished version changes when you update your function's code and configuration. A published version is a snapshot of your function code and configuration that can't be changed. An alias is a named resource that maps to a version, and can be changed to map to a different version. Use the <code>Publish</code> parameter to create version <code>1</code> of your function from its initial configuration.</p> <p>The other parameters let you configure version-specific and function-level settings. You can modify version-specific settings later with <a>UpdateFunctionConfiguration</a>. Function-level settings apply to both the unpublished and published versions of the function, and include tags (<a>TagResource</a>) and per-function concurrency limits (<a>PutFunctionConcurrency</a>).</p> <p>You can use code signing if your deployment package is a .zip file archive. To enable code signing for this function, specify the ARN of a code-signing configuration. When a user attempts to deploy a code package with <a>UpdateFunctionCode</a>, Lambda checks that the code package has a valid signature from a trusted publisher. The code-signing configuration includes set set of signing profiles, which define the trusted publishers for this function.</p> <p>If another account or an Amazon Web Services service invokes your function, use <a>AddPermission</a> to grant permission by creating a resource-based IAM policy. You can grant permissions at the function level, on a version, or on an alias.</p> <p>To invoke your function directly, use <a>Invoke</a>. To invoke your function in response to events in other Amazon Web Services services, create an event source mapping (<a>CreateEventSourceMapping</a>), or configure a function trigger in the other service. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html\\\">Invoking Functions</a>.</p>\"\
     },\
     \"DeleteAlias\":{\
       \"name\":\"DeleteAlias\",\
@@ -174,9 +192,27 @@
       \"errors\":[\
         {\"shape\":\"ServiceException\"},\
         {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceConflictException\"},\
         {\"shape\":\"TooManyRequestsException\"}\
       ],\
       \"documentation\":\"<p>Deletes a Lambda function <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html\\\">alias</a>.</p>\"\
+    },\
+    \"DeleteCodeSigningConfig\":{\
+      \"name\":\"DeleteCodeSigningConfig\",\
+      \"http\":{\
+        \"method\":\"DELETE\",\
+        \"requestUri\":\"/2020-04-22/code-signing-configs/{CodeSigningConfigArn}\",\
+        \"responseCode\":204\
+      },\
+      \"input\":{\"shape\":\"DeleteCodeSigningConfigRequest\"},\
+      \"output\":{\"shape\":\"DeleteCodeSigningConfigResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"ResourceConflictException\"}\
+      ],\
+      \"documentation\":\"<p>Deletes the code signing configuration. You can delete the code signing configuration only if no function is using it. </p>\"\
     },\
     \"DeleteEventSourceMapping\":{\
       \"name\":\"DeleteEventSourceMapping\",\
@@ -194,7 +230,7 @@
         {\"shape\":\"TooManyRequestsException\"},\
         {\"shape\":\"ResourceInUseException\"}\
       ],\
-      \"documentation\":\"<p>Deletes an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html\\\">event source mapping</a>. You can get the identifier of a mapping from the output of <a>ListEventSourceMappings</a>.</p>\"\
+      \"documentation\":\"<p>Deletes an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html\\\">event source mapping</a>. You can get the identifier of a mapping from the output of <a>ListEventSourceMappings</a>.</p> <p>When you delete an event source mapping, it enters a <code>Deleting</code> state and might not be completely deleted for several seconds.</p>\"\
     },\
     \"DeleteFunction\":{\
       \"name\":\"DeleteFunction\",\
@@ -211,7 +247,25 @@
         {\"shape\":\"InvalidParameterValueException\"},\
         {\"shape\":\"ResourceConflictException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a Lambda function. To delete a specific function version, use the <code>Qualifier</code> parameter. Otherwise, all versions and aliases are deleted.</p> <p>To delete Lambda event source mappings that invoke a function, use <a>DeleteEventSourceMapping</a>. For AWS services and resources that invoke your function directly, delete the trigger in the service where you originally configured it.</p>\"\
+      \"documentation\":\"<p>Deletes a Lambda function. To delete a specific function version, use the <code>Qualifier</code> parameter. Otherwise, all versions and aliases are deleted.</p> <p>To delete Lambda event source mappings that invoke a function, use <a>DeleteEventSourceMapping</a>. For Amazon Web Services services and resources that invoke your function directly, delete the trigger in the service where you originally configured it.</p>\"\
+    },\
+    \"DeleteFunctionCodeSigningConfig\":{\
+      \"name\":\"DeleteFunctionCodeSigningConfig\",\
+      \"http\":{\
+        \"method\":\"DELETE\",\
+        \"requestUri\":\"/2020-06-30/functions/{FunctionName}/code-signing-config\",\
+        \"responseCode\":204\
+      },\
+      \"input\":{\"shape\":\"DeleteFunctionCodeSigningConfigRequest\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"CodeSigningConfigNotFoundException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ResourceConflictException\"}\
+      ],\
+      \"documentation\":\"<p>Removes the code signing configuration from the function.</p>\"\
     },\
     \"DeleteFunctionConcurrency\":{\
       \"name\":\"DeleteFunctionConcurrency\",\
@@ -225,9 +279,27 @@
         {\"shape\":\"ServiceException\"},\
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"TooManyRequestsException\"},\
-        {\"shape\":\"InvalidParameterValueException\"}\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceConflictException\"}\
       ],\
       \"documentation\":\"<p>Removes a concurrent execution limit from a function.</p>\"\
+    },\
+    \"DeleteFunctionEventInvokeConfig\":{\
+      \"name\":\"DeleteFunctionEventInvokeConfig\",\
+      \"http\":{\
+        \"method\":\"DELETE\",\
+        \"requestUri\":\"/2019-09-25/functions/{FunctionName}/event-invoke-config\",\
+        \"responseCode\":204\
+      },\
+      \"input\":{\"shape\":\"DeleteFunctionEventInvokeConfigRequest\"},\
+      \"errors\":[\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ResourceConflictException\"}\
+      ],\
+      \"documentation\":\"<p>Deletes the configuration for asynchronous invocation for a function, version, or alias.</p> <p>To configure options for asynchronous invocation, use <a>PutFunctionEventInvokeConfig</a>.</p>\"\
     },\
     \"DeleteLayerVersion\":{\
       \"name\":\"DeleteLayerVersion\",\
@@ -241,7 +313,24 @@
         {\"shape\":\"ServiceException\"},\
         {\"shape\":\"TooManyRequestsException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layer</a>. Deleted versions can no longer be viewed or added to functions. To avoid breaking functions, a copy of the version remains in Lambda until no functions refer to it.</p>\"\
+      \"documentation\":\"<p>Deletes a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layer</a>. Deleted versions can no longer be viewed or added to functions. To avoid breaking functions, a copy of the version remains in Lambda until no functions refer to it.</p>\"\
+    },\
+    \"DeleteProvisionedConcurrencyConfig\":{\
+      \"name\":\"DeleteProvisionedConcurrencyConfig\",\
+      \"http\":{\
+        \"method\":\"DELETE\",\
+        \"requestUri\":\"/2019-09-30/functions/{FunctionName}/provisioned-concurrency\",\
+        \"responseCode\":204\
+      },\
+      \"input\":{\"shape\":\"DeleteProvisionedConcurrencyConfigRequest\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceConflictException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ServiceException\"}\
+      ],\
+      \"documentation\":\"<p>Deletes the provisioned concurrency configuration for a function.</p>\"\
     },\
     \"GetAccountSettings\":{\
       \"name\":\"GetAccountSettings\",\
@@ -256,7 +345,7 @@
         {\"shape\":\"TooManyRequestsException\"},\
         {\"shape\":\"ServiceException\"}\
       ],\
-      \"documentation\":\"<p>Retrieves details about your account's <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/limits.html\\\">limits</a> and usage in an AWS Region.</p>\"\
+      \"documentation\":\"<p>Retrieves details about your account's <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/limits.html\\\">limits</a> and usage in an Amazon Web Services Region.</p>\"\
     },\
     \"GetAlias\":{\
       \"name\":\"GetAlias\",\
@@ -274,6 +363,22 @@
         {\"shape\":\"TooManyRequestsException\"}\
       ],\
       \"documentation\":\"<p>Returns details about a Lambda function <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html\\\">alias</a>.</p>\"\
+    },\
+    \"GetCodeSigningConfig\":{\
+      \"name\":\"GetCodeSigningConfig\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/2020-04-22/code-signing-configs/{CodeSigningConfigArn}\",\
+        \"responseCode\":200\
+      },\
+      \"input\":{\"shape\":\"GetCodeSigningConfigRequest\"},\
+      \"output\":{\"shape\":\"GetCodeSigningConfigResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceNotFoundException\"}\
+      ],\
+      \"documentation\":\"<p>Returns information about the specified code signing configuration.</p>\"\
     },\
     \"GetEventSourceMapping\":{\
       \"name\":\"GetEventSourceMapping\",\
@@ -309,6 +414,40 @@
       ],\
       \"documentation\":\"<p>Returns information about the function or function version, with a link to download the deployment package that's valid for 10 minutes. If you specify a function version, only details that are specific to that version are returned.</p>\"\
     },\
+    \"GetFunctionCodeSigningConfig\":{\
+      \"name\":\"GetFunctionCodeSigningConfig\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/2020-06-30/functions/{FunctionName}/code-signing-config\",\
+        \"responseCode\":200\
+      },\
+      \"input\":{\"shape\":\"GetFunctionCodeSigningConfigRequest\"},\
+      \"output\":{\"shape\":\"GetFunctionCodeSigningConfigResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"TooManyRequestsException\"}\
+      ],\
+      \"documentation\":\"<p>Returns the code signing configuration for the specified function.</p>\"\
+    },\
+    \"GetFunctionConcurrency\":{\
+      \"name\":\"GetFunctionConcurrency\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/2019-09-30/functions/{FunctionName}/concurrency\",\
+        \"responseCode\":200\
+      },\
+      \"input\":{\"shape\":\"GetFunctionConcurrencyRequest\"},\
+      \"output\":{\"shape\":\"GetFunctionConcurrencyResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ServiceException\"}\
+      ],\
+      \"documentation\":\"<p>Returns details about the reserved concurrency configuration for a function. To set a concurrency limit for a function, use <a>PutFunctionConcurrency</a>.</p>\"\
+    },\
     \"GetFunctionConfiguration\":{\
       \"name\":\"GetFunctionConfiguration\",\
       \"http\":{\
@@ -326,6 +465,23 @@
       ],\
       \"documentation\":\"<p>Returns the version-specific settings of a Lambda function or version. The output includes only options that can vary between versions of a function. To modify these settings, use <a>UpdateFunctionConfiguration</a>.</p> <p>To get all of a function's details, including function-level settings, use <a>GetFunction</a>.</p>\"\
     },\
+    \"GetFunctionEventInvokeConfig\":{\
+      \"name\":\"GetFunctionEventInvokeConfig\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/2019-09-25/functions/{FunctionName}/event-invoke-config\",\
+        \"responseCode\":200\
+      },\
+      \"input\":{\"shape\":\"GetFunctionEventInvokeConfigRequest\"},\
+      \"output\":{\"shape\":\"FunctionEventInvokeConfig\"},\
+      \"errors\":[\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"TooManyRequestsException\"}\
+      ],\
+      \"documentation\":\"<p>Retrieves the configuration for asynchronous invocation for a function, version, or alias.</p> <p>To configure options for asynchronous invocation, use <a>PutFunctionEventInvokeConfig</a>.</p>\"\
+    },\
     \"GetLayerVersion\":{\
       \"name\":\"GetLayerVersion\",\
       \"http\":{\
@@ -341,7 +497,7 @@
         {\"shape\":\"TooManyRequestsException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Returns information about a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layer</a>, with a link to download the layer archive that's valid for 10 minutes.</p>\"\
+      \"documentation\":\"<p>Returns information about a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layer</a>, with a link to download the layer archive that's valid for 10 minutes.</p>\"\
     },\
     \"GetLayerVersionByArn\":{\
       \"name\":\"GetLayerVersionByArn\",\
@@ -358,7 +514,7 @@
         {\"shape\":\"TooManyRequestsException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Returns information about a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layer</a>, with a link to download the layer archive that's valid for 10 minutes.</p>\"\
+      \"documentation\":\"<p>Returns information about a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layer</a>, with a link to download the layer archive that's valid for 10 minutes.</p>\"\
     },\
     \"GetLayerVersionPolicy\":{\
       \"name\":\"GetLayerVersionPolicy\",\
@@ -375,7 +531,7 @@
         {\"shape\":\"TooManyRequestsException\"},\
         {\"shape\":\"InvalidParameterValueException\"}\
       ],\
-      \"documentation\":\"<p>Returns the permission policy for a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layer</a>. For more information, see <a>AddLayerVersionPermission</a>.</p>\"\
+      \"documentation\":\"<p>Returns the permission policy for a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layer</a>. For more information, see <a>AddLayerVersionPermission</a>.</p>\"\
     },\
     \"GetPolicy\":{\
       \"name\":\"GetPolicy\",\
@@ -393,6 +549,24 @@
         {\"shape\":\"InvalidParameterValueException\"}\
       ],\
       \"documentation\":\"<p>Returns the <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html\\\">resource-based IAM policy</a> for a function, version, or alias.</p>\"\
+    },\
+    \"GetProvisionedConcurrencyConfig\":{\
+      \"name\":\"GetProvisionedConcurrencyConfig\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/2019-09-30/functions/{FunctionName}/provisioned-concurrency\",\
+        \"responseCode\":200\
+      },\
+      \"input\":{\"shape\":\"GetProvisionedConcurrencyConfigRequest\"},\
+      \"output\":{\"shape\":\"GetProvisionedConcurrencyConfigResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"ProvisionedConcurrencyConfigNotFoundException\"}\
+      ],\
+      \"documentation\":\"<p>Retrieves the provisioned concurrency configuration for a function's alias or version.</p>\"\
     },\
     \"Invoke\":{\
       \"name\":\"Invoke\",\
@@ -413,6 +587,10 @@
         {\"shape\":\"EC2UnexpectedException\"},\
         {\"shape\":\"SubnetIPAddressLimitReachedException\"},\
         {\"shape\":\"ENILimitReachedException\"},\
+        {\"shape\":\"EFSMountConnectivityException\"},\
+        {\"shape\":\"EFSMountFailureException\"},\
+        {\"shape\":\"EFSMountTimeoutException\"},\
+        {\"shape\":\"EFSIOException\"},\
         {\"shape\":\"EC2ThrottledException\"},\
         {\"shape\":\"EC2AccessDeniedException\"},\
         {\"shape\":\"InvalidSubnetIDException\"},\
@@ -422,9 +600,11 @@
         {\"shape\":\"KMSInvalidStateException\"},\
         {\"shape\":\"KMSAccessDeniedException\"},\
         {\"shape\":\"KMSNotFoundException\"},\
-        {\"shape\":\"InvalidRuntimeException\"}\
+        {\"shape\":\"InvalidRuntimeException\"},\
+        {\"shape\":\"ResourceConflictException\"},\
+        {\"shape\":\"ResourceNotReadyException\"}\
       ],\
-      \"documentation\":\"<p>Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or asynchronously. To invoke a function asynchronously, set <code>InvocationType</code> to <code>Event</code>.</p> <p>For synchronous invocation, details about the function response, including errors, are included in the response body and headers. For either invocation type, you can find more information in the <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html\\\">execution log</a> and <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/dlq.html\\\">trace</a>. To record function errors for asynchronous invocations, configure your function with a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/dlq.html\\\">dead letter queue</a>.</p> <p>When an error occurs, your function may be invoked multiple times. Retry behavior varies by error type, client, event source, and invocation type. For example, if you invoke a function asynchronously and it returns an error, Lambda executes the function up to two more times. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html\\\">Retry Behavior</a>.</p> <p>The status code in the API response doesn't reflect function errors. Error codes are reserved for errors that prevent your function from executing, such as permissions errors, <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/limits.html\\\">limit errors</a>, or issues with your function's code and configuration. For example, Lambda returns <code>TooManyRequestsException</code> if executing the function would cause you to exceed a concurrency limit at either the account level (<code>ConcurrentInvocationLimitExceeded</code>) or function level (<code>ReservedFunctionConcurrentInvocationLimitExceeded</code>).</p> <p>For functions with a long timeout, your client might be disconnected during synchronous invocation while it waits for a response. Configure your HTTP client, SDK, firewall, proxy, or operating system to allow for long connections with timeout or keep-alive settings.</p> <p>This operation requires permission for the <code>lambda:InvokeFunction</code> action.</p>\"\
+      \"documentation\":\"<p>Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or asynchronously. To invoke a function asynchronously, set <code>InvocationType</code> to <code>Event</code>.</p> <p>For <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html\\\">synchronous invocation</a>, details about the function response, including errors, are included in the response body and headers. For either invocation type, you can find more information in the <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html\\\">execution log</a> and <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html\\\">trace</a>.</p> <p>When an error occurs, your function may be invoked multiple times. Retry behavior varies by error type, client, event source, and invocation type. For example, if you invoke a function asynchronously and it returns an error, Lambda executes the function up to two more times. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html\\\">Retry Behavior</a>.</p> <p>For <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html\\\">asynchronous invocation</a>, Lambda adds events to a queue before sending them to your function. If your function does not have enough capacity to keep up with the queue, events may be lost. Occasionally, your function may receive the same event multiple times, even if no error occurs. To retain events that were not processed, configure your function with a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq\\\">dead-letter queue</a>.</p> <p>The status code in the API response doesn't reflect function errors. Error codes are reserved for errors that prevent your function from executing, such as permissions errors, <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/limits.html\\\">limit errors</a>, or issues with your function's code and configuration. For example, Lambda returns <code>TooManyRequestsException</code> if executing the function would cause you to exceed a concurrency limit at either the account level (<code>ConcurrentInvocationLimitExceeded</code>) or function level (<code>ReservedFunctionConcurrentInvocationLimitExceeded</code>).</p> <p>For functions with a long timeout, your client might be disconnected during synchronous invocation while it waits for a response. Configure your HTTP client, SDK, firewall, proxy, or operating system to allow for long connections with timeout or keep-alive settings.</p> <p>This operation requires permission for the <a href=\\\"https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awslambda.html\\\">lambda:InvokeFunction</a> action.</p>\"\
     },\
     \"InvokeAsync\":{\
       \"name\":\"InvokeAsync\",\
@@ -439,7 +619,8 @@
         {\"shape\":\"ServiceException\"},\
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"InvalidRequestContentException\"},\
-        {\"shape\":\"InvalidRuntimeException\"}\
+        {\"shape\":\"InvalidRuntimeException\"},\
+        {\"shape\":\"ResourceConflictException\"}\
       ],\
       \"documentation\":\"<important> <p>For asynchronous function invocation, use <a>Invoke</a>.</p> </important> <p>Invokes a function asynchronously.</p>\",\
       \"deprecated\":true\
@@ -461,6 +642,21 @@
       ],\
       \"documentation\":\"<p>Returns a list of <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html\\\">aliases</a> for a Lambda function.</p>\"\
     },\
+    \"ListCodeSigningConfigs\":{\
+      \"name\":\"ListCodeSigningConfigs\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/2020-04-22/code-signing-configs/\",\
+        \"responseCode\":200\
+      },\
+      \"input\":{\"shape\":\"ListCodeSigningConfigsRequest\"},\
+      \"output\":{\"shape\":\"ListCodeSigningConfigsResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"InvalidParameterValueException\"}\
+      ],\
+      \"documentation\":\"<p>Returns a list of <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuring-codesigning.html\\\">code signing configurations</a>. A request returns up to 10,000 configurations per call. You can use the <code>MaxItems</code> parameter to return fewer configurations per call. </p>\"\
+    },\
     \"ListEventSourceMappings\":{\
       \"name\":\"ListEventSourceMappings\",\
       \"http\":{\
@@ -478,6 +674,23 @@
       ],\
       \"documentation\":\"<p>Lists event source mappings. Specify an <code>EventSourceArn</code> to only show event source mappings for a single event source.</p>\"\
     },\
+    \"ListFunctionEventInvokeConfigs\":{\
+      \"name\":\"ListFunctionEventInvokeConfigs\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/2019-09-25/functions/{FunctionName}/event-invoke-config/list\",\
+        \"responseCode\":200\
+      },\
+      \"input\":{\"shape\":\"ListFunctionEventInvokeConfigsRequest\"},\
+      \"output\":{\"shape\":\"ListFunctionEventInvokeConfigsResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ServiceException\"}\
+      ],\
+      \"documentation\":\"<p>Retrieves a list of configurations for asynchronous invocation for a function.</p> <p>To configure options for asynchronous invocation, use <a>PutFunctionEventInvokeConfig</a>.</p>\"\
+    },\
     \"ListFunctions\":{\
       \"name\":\"ListFunctions\",\
       \"http\":{\
@@ -492,7 +705,23 @@
         {\"shape\":\"TooManyRequestsException\"},\
         {\"shape\":\"InvalidParameterValueException\"}\
       ],\
-      \"documentation\":\"<p>Returns a list of Lambda functions, with the version-specific configuration of each.</p> <p>Set <code>FunctionVersion</code> to <code>ALL</code> to include all published versions of each function in addition to the unpublished version. To get more information about a function or version, use <a>GetFunction</a>.</p>\"\
+      \"documentation\":\"<p>Returns a list of Lambda functions, with the version-specific configuration of each. Lambda returns up to 50 functions per call.</p> <p>Set <code>FunctionVersion</code> to <code>ALL</code> to include all published versions of each function in addition to the unpublished version. </p> <note> <p>The <code>ListFunctions</code> action returns a subset of the <a>FunctionConfiguration</a> fields. To get the additional fields (State, StateReasonCode, StateReason, LastUpdateStatus, LastUpdateStatusReason, LastUpdateStatusReasonCode) for a function or version, use <a>GetFunction</a>.</p> </note>\"\
+    },\
+    \"ListFunctionsByCodeSigningConfig\":{\
+      \"name\":\"ListFunctionsByCodeSigningConfig\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/2020-04-22/code-signing-configs/{CodeSigningConfigArn}/functions\",\
+        \"responseCode\":200\
+      },\
+      \"input\":{\"shape\":\"ListFunctionsByCodeSigningConfigRequest\"},\
+      \"output\":{\"shape\":\"ListFunctionsByCodeSigningConfigResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceNotFoundException\"}\
+      ],\
+      \"documentation\":\"<p>List the functions that use the specified code signing configuration. You can use this method prior to deleting a code signing configuration, to verify that no functions are using it.</p>\"\
     },\
     \"ListLayerVersions\":{\
       \"name\":\"ListLayerVersions\",\
@@ -509,7 +738,7 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"TooManyRequestsException\"}\
       ],\
-      \"documentation\":\"<p>Lists the versions of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layer</a>. Versions that have been deleted aren't listed. Specify a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html\\\">runtime identifier</a> to list only versions that indicate that they're compatible with that runtime.</p>\"\
+      \"documentation\":\"<p>Lists the versions of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layer</a>. Versions that have been deleted aren't listed. Specify a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html\\\">runtime identifier</a> to list only versions that indicate that they're compatible with that runtime.</p>\"\
     },\
     \"ListLayers\":{\
       \"name\":\"ListLayers\",\
@@ -525,7 +754,24 @@
         {\"shape\":\"InvalidParameterValueException\"},\
         {\"shape\":\"TooManyRequestsException\"}\
       ],\
-      \"documentation\":\"<p>Lists <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layers</a> and shows information about the latest version of each. Specify a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html\\\">runtime identifier</a> to list only layers that indicate that they're compatible with that runtime.</p>\"\
+      \"documentation\":\"<p>Lists <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layers</a> and shows information about the latest version of each. Specify a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html\\\">runtime identifier</a> to list only layers that indicate that they're compatible with that runtime.</p>\"\
+    },\
+    \"ListProvisionedConcurrencyConfigs\":{\
+      \"name\":\"ListProvisionedConcurrencyConfigs\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/2019-09-30/functions/{FunctionName}/provisioned-concurrency?List=ALL\",\
+        \"responseCode\":200\
+      },\
+      \"input\":{\"shape\":\"ListProvisionedConcurrencyConfigsRequest\"},\
+      \"output\":{\"shape\":\"ListProvisionedConcurrencyConfigsResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ServiceException\"}\
+      ],\
+      \"documentation\":\"<p>Retrieves a list of provisioned concurrency configurations for a function.</p>\"\
     },\
     \"ListTags\":{\
       \"name\":\"ListTags\",\
@@ -558,7 +804,7 @@
         {\"shape\":\"InvalidParameterValueException\"},\
         {\"shape\":\"TooManyRequestsException\"}\
       ],\
-      \"documentation\":\"<p>Returns a list of <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html\\\">versions</a>, with the version-specific configuration of each. </p>\"\
+      \"documentation\":\"<p>Returns a list of <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html\\\">versions</a>, with the version-specific configuration of each. Lambda returns up to 50 versions per call.</p>\"\
     },\
     \"PublishLayerVersion\":{\
       \"name\":\"PublishLayerVersion\",\
@@ -576,7 +822,7 @@
         {\"shape\":\"InvalidParameterValueException\"},\
         {\"shape\":\"CodeStorageExceededException\"}\
       ],\
-      \"documentation\":\"<p>Creates an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layer</a> from a ZIP archive. Each time you call <code>PublishLayerVersion</code> with the same version name, a new version is created.</p> <p>Add layers to your function with <a>CreateFunction</a> or <a>UpdateFunctionConfiguration</a>.</p>\"\
+      \"documentation\":\"<p>Creates an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layer</a> from a ZIP archive. Each time you call <code>PublishLayerVersion</code> with the same layer name, a new version is created.</p> <p>Add layers to your function with <a>CreateFunction</a> or <a>UpdateFunctionConfiguration</a>.</p>\"\
     },\
     \"PublishVersion\":{\
       \"name\":\"PublishVersion\",\
@@ -593,9 +839,29 @@
         {\"shape\":\"InvalidParameterValueException\"},\
         {\"shape\":\"TooManyRequestsException\"},\
         {\"shape\":\"CodeStorageExceededException\"},\
-        {\"shape\":\"PreconditionFailedException\"}\
+        {\"shape\":\"PreconditionFailedException\"},\
+        {\"shape\":\"ResourceConflictException\"}\
       ],\
-      \"documentation\":\"<p>Creates a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html\\\">version</a> from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.</p> <p>AWS Lambda doesn't publish a version if the function's configuration and code haven't changed since the last version. Use <a>UpdateFunctionCode</a> or <a>UpdateFunctionConfiguration</a> to update the function before publishing a version.</p> <p>Clients can invoke versions directly or with an alias. To create an alias, use <a>CreateAlias</a>.</p>\"\
+      \"documentation\":\"<p>Creates a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html\\\">version</a> from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.</p> <p>Lambda doesn't publish a version if the function's configuration and code haven't changed since the last version. Use <a>UpdateFunctionCode</a> or <a>UpdateFunctionConfiguration</a> to update the function before publishing a version.</p> <p>Clients can invoke versions directly or with an alias. To create an alias, use <a>CreateAlias</a>.</p>\"\
+    },\
+    \"PutFunctionCodeSigningConfig\":{\
+      \"name\":\"PutFunctionCodeSigningConfig\",\
+      \"http\":{\
+        \"method\":\"PUT\",\
+        \"requestUri\":\"/2020-06-30/functions/{FunctionName}/code-signing-config\",\
+        \"responseCode\":200\
+      },\
+      \"input\":{\"shape\":\"PutFunctionCodeSigningConfigRequest\"},\
+      \"output\":{\"shape\":\"PutFunctionCodeSigningConfigResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ResourceConflictException\"},\
+        {\"shape\":\"CodeSigningConfigNotFoundException\"}\
+      ],\
+      \"documentation\":\"<p>Update the code signing configuration for the function. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function. </p>\"\
     },\
     \"PutFunctionConcurrency\":{\
       \"name\":\"PutFunctionConcurrency\",\
@@ -610,9 +876,46 @@
         {\"shape\":\"ServiceException\"},\
         {\"shape\":\"InvalidParameterValueException\"},\
         {\"shape\":\"ResourceNotFoundException\"},\
-        {\"shape\":\"TooManyRequestsException\"}\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ResourceConflictException\"}\
       ],\
-      \"documentation\":\"<p>Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level.</p> <p>Concurrency settings apply to the function as a whole, including all published versions and the unpublished version. Reserving concurrency both ensures that your function has capacity to process the specified number of events simultaneously, and prevents it from scaling beyond that level. Use <a>GetFunction</a> to see the current setting for a function.</p> <p>Use <a>GetAccountSettings</a> to see your regional concurrency limit. You can reserve concurrency for as many functions as you like, as long as you leave at least 100 simultaneous executions unreserved for functions that aren't configured with a per-function limit. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html\\\">Managing Concurrency</a>.</p>\"\
+      \"documentation\":\"<p>Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level.</p> <p>Concurrency settings apply to the function as a whole, including all published versions and the unpublished version. Reserving concurrency both ensures that your function has capacity to process the specified number of events simultaneously, and prevents it from scaling beyond that level. Use <a>GetFunction</a> to see the current setting for a function.</p> <p>Use <a>GetAccountSettings</a> to see your Regional concurrency limit. You can reserve concurrency for as many functions as you like, as long as you leave at least 100 simultaneous executions unreserved for functions that aren't configured with a per-function limit. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html\\\">Managing Concurrency</a>.</p>\"\
+    },\
+    \"PutFunctionEventInvokeConfig\":{\
+      \"name\":\"PutFunctionEventInvokeConfig\",\
+      \"http\":{\
+        \"method\":\"PUT\",\
+        \"requestUri\":\"/2019-09-25/functions/{FunctionName}/event-invoke-config\",\
+        \"responseCode\":200\
+      },\
+      \"input\":{\"shape\":\"PutFunctionEventInvokeConfigRequest\"},\
+      \"output\":{\"shape\":\"FunctionEventInvokeConfig\"},\
+      \"errors\":[\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ResourceConflictException\"}\
+      ],\
+      \"documentation\":\"<p>Configures options for <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html\\\">asynchronous invocation</a> on a function, version, or alias. If a configuration already exists for a function, version, or alias, this operation overwrites it. If you exclude any settings, they are removed. To set one option without affecting existing settings for other options, use <a>UpdateFunctionEventInvokeConfig</a>.</p> <p>By default, Lambda retries an asynchronous invocation twice if the function returns an error. It retains events in a queue for up to six hours. When an event fails all processing attempts or stays in the asynchronous invocation queue for too long, Lambda discards it. To retain discarded events, configure a dead-letter queue with <a>UpdateFunctionConfiguration</a>.</p> <p>To send an invocation record to a queue, topic, function, or event bus, specify a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations\\\">destination</a>. You can configure separate destinations for successful invocations (on-success) and events that fail all processing attempts (on-failure). You can configure destinations in addition to or instead of a dead-letter queue.</p>\"\
+    },\
+    \"PutProvisionedConcurrencyConfig\":{\
+      \"name\":\"PutProvisionedConcurrencyConfig\",\
+      \"http\":{\
+        \"method\":\"PUT\",\
+        \"requestUri\":\"/2019-09-30/functions/{FunctionName}/provisioned-concurrency\",\
+        \"responseCode\":202\
+      },\
+      \"input\":{\"shape\":\"PutProvisionedConcurrencyConfigRequest\"},\
+      \"output\":{\"shape\":\"PutProvisionedConcurrencyConfigResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"ResourceConflictException\"},\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ServiceException\"}\
+      ],\
+      \"documentation\":\"<p>Adds a provisioned concurrency configuration to a function's alias or version.</p>\"\
     },\
     \"RemoveLayerVersionPermission\":{\
       \"name\":\"RemoveLayerVersionPermission\",\
@@ -629,7 +932,7 @@
         {\"shape\":\"TooManyRequestsException\"},\
         {\"shape\":\"PreconditionFailedException\"}\
       ],\
-      \"documentation\":\"<p>Removes a statement from the permissions policy for a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layer</a>. For more information, see <a>AddLayerVersionPermission</a>.</p>\"\
+      \"documentation\":\"<p>Removes a statement from the permissions policy for a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layer</a>. For more information, see <a>AddLayerVersionPermission</a>.</p>\"\
     },\
     \"RemovePermission\":{\
       \"name\":\"RemovePermission\",\
@@ -646,7 +949,7 @@
         {\"shape\":\"TooManyRequestsException\"},\
         {\"shape\":\"PreconditionFailedException\"}\
       ],\
-      \"documentation\":\"<p>Revokes function-use permission from an AWS service or another account. You can get the ID of the statement from the output of <a>GetPolicy</a>.</p>\"\
+      \"documentation\":\"<p>Revokes function-use permission from an Amazon Web Services service or another account. You can get the ID of the statement from the output of <a>GetPolicy</a>.</p>\"\
     },\
     \"TagResource\":{\
       \"name\":\"TagResource\",\
@@ -660,7 +963,8 @@
         {\"shape\":\"ServiceException\"},\
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"InvalidParameterValueException\"},\
-        {\"shape\":\"TooManyRequestsException\"}\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ResourceConflictException\"}\
       ],\
       \"documentation\":\"<p>Adds <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/tagging.html\\\">tags</a> to a function.</p>\"\
     },\
@@ -676,7 +980,8 @@
         {\"shape\":\"ServiceException\"},\
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"InvalidParameterValueException\"},\
-        {\"shape\":\"TooManyRequestsException\"}\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ResourceConflictException\"}\
       ],\
       \"documentation\":\"<p>Removes <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/tagging.html\\\">tags</a> from a function.</p>\"\
     },\
@@ -694,9 +999,26 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"InvalidParameterValueException\"},\
         {\"shape\":\"TooManyRequestsException\"},\
-        {\"shape\":\"PreconditionFailedException\"}\
+        {\"shape\":\"PreconditionFailedException\"},\
+        {\"shape\":\"ResourceConflictException\"}\
       ],\
       \"documentation\":\"<p>Updates the configuration of a Lambda function <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html\\\">alias</a>.</p>\"\
+    },\
+    \"UpdateCodeSigningConfig\":{\
+      \"name\":\"UpdateCodeSigningConfig\",\
+      \"http\":{\
+        \"method\":\"PUT\",\
+        \"requestUri\":\"/2020-04-22/code-signing-configs/{CodeSigningConfigArn}\",\
+        \"responseCode\":200\
+      },\
+      \"input\":{\"shape\":\"UpdateCodeSigningConfigRequest\"},\
+      \"output\":{\"shape\":\"UpdateCodeSigningConfigResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"ResourceNotFoundException\"}\
+      ],\
+      \"documentation\":\"<p>Update the code signing configuration. Changes to the code signing configuration take effect the next time a user tries to deploy a code package to the function. </p>\"\
     },\
     \"UpdateEventSourceMapping\":{\
       \"name\":\"UpdateEventSourceMapping\",\
@@ -715,7 +1037,7 @@
         {\"shape\":\"ResourceConflictException\"},\
         {\"shape\":\"ResourceInUseException\"}\
       ],\
-      \"documentation\":\"<p>Updates an event source mapping. You can change the function that AWS Lambda invokes, or pause invocation and resume later from the same location.</p>\"\
+      \"documentation\":\"<p>Updates an event source mapping. You can change the function that Lambda invokes, or pause invocation and resume later from the same location.</p> <p>The following error handling options are only available for stream sources (DynamoDB and Kinesis):</p> <ul> <li> <p> <code>BisectBatchOnFunctionError</code> - If the function returns an error, split the batch in two and retry.</p> </li> <li> <p> <code>DestinationConfig</code> - Send discarded records to an Amazon SQS queue or Amazon SNS topic.</p> </li> <li> <p> <code>MaximumRecordAgeInSeconds</code> - Discard records older than the specified age. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires</p> </li> <li> <p> <code>MaximumRetryAttempts</code> - Discard records after the specified number of retries. The default value is infinite (-1). When set to infinite (-1), failed records are retried until the record expires.</p> </li> <li> <p> <code>ParallelizationFactor</code> - Process multiple batches from each shard concurrently.</p> </li> </ul>\"\
     },\
     \"UpdateFunctionCode\":{\
       \"name\":\"UpdateFunctionCode\",\
@@ -732,9 +1054,13 @@
         {\"shape\":\"InvalidParameterValueException\"},\
         {\"shape\":\"TooManyRequestsException\"},\
         {\"shape\":\"CodeStorageExceededException\"},\
-        {\"shape\":\"PreconditionFailedException\"}\
+        {\"shape\":\"PreconditionFailedException\"},\
+        {\"shape\":\"ResourceConflictException\"},\
+        {\"shape\":\"CodeVerificationFailedException\"},\
+        {\"shape\":\"InvalidCodeSignatureException\"},\
+        {\"shape\":\"CodeSigningConfigNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Updates a Lambda function's code.</p> <p>The function's code is locked when you publish a version. You can't modify the code of a published version, only the unpublished version.</p>\"\
+      \"documentation\":\"<p>Updates a Lambda function's code. If code signing is enabled for the function, the code package must be signed by a trusted publisher. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-trustedcode.html\\\">Configuring code signing</a>.</p> <p>The function's code is locked when you publish a version. You can't modify the code of a published version, only the unpublished version.</p> <note> <p>For a function defined as a container image, Lambda resolves the image tag to an image digest. In Amazon ECR, if you update the image tag to a new image, Lambda does not automatically update the function.</p> </note>\"\
     },\
     \"UpdateFunctionConfiguration\":{\
       \"name\":\"UpdateFunctionConfiguration\",\
@@ -751,9 +1077,30 @@
         {\"shape\":\"InvalidParameterValueException\"},\
         {\"shape\":\"TooManyRequestsException\"},\
         {\"shape\":\"ResourceConflictException\"},\
-        {\"shape\":\"PreconditionFailedException\"}\
+        {\"shape\":\"PreconditionFailedException\"},\
+        {\"shape\":\"CodeVerificationFailedException\"},\
+        {\"shape\":\"InvalidCodeSignatureException\"},\
+        {\"shape\":\"CodeSigningConfigNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Modify the version-specific settings of a Lambda function.</p> <p>These settings can vary between versions of a function and are locked when you publish a version. You can't modify the configuration of a published version, only the unpublished version.</p> <p>To configure function concurrency, use <a>PutFunctionConcurrency</a>. To grant invoke permissions to an account or AWS service, use <a>AddPermission</a>.</p>\"\
+      \"documentation\":\"<p>Modify the version-specific settings of a Lambda function.</p> <p>When you update a function, Lambda provisions an instance of the function and its supporting resources. If your function connects to a VPC, this process can take a minute. During this time, you can't modify the function, but you can still invoke it. The <code>LastUpdateStatus</code>, <code>LastUpdateStatusReason</code>, and <code>LastUpdateStatusReasonCode</code> fields in the response from <a>GetFunctionConfiguration</a> indicate when the update is complete and the function is processing events with the new configuration. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html\\\">Function States</a>.</p> <p>These settings can vary between versions of a function and are locked when you publish a version. You can't modify the configuration of a published version, only the unpublished version.</p> <p>To configure function concurrency, use <a>PutFunctionConcurrency</a>. To grant invoke permissions to an account or Amazon Web Services service, use <a>AddPermission</a>.</p>\"\
+    },\
+    \"UpdateFunctionEventInvokeConfig\":{\
+      \"name\":\"UpdateFunctionEventInvokeConfig\",\
+      \"http\":{\
+        \"method\":\"POST\",\
+        \"requestUri\":\"/2019-09-25/functions/{FunctionName}/event-invoke-config\",\
+        \"responseCode\":200\
+      },\
+      \"input\":{\"shape\":\"UpdateFunctionEventInvokeConfigRequest\"},\
+      \"output\":{\"shape\":\"FunctionEventInvokeConfig\"},\
+      \"errors\":[\
+        {\"shape\":\"ServiceException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"InvalidParameterValueException\"},\
+        {\"shape\":\"TooManyRequestsException\"},\
+        {\"shape\":\"ResourceConflictException\"}\
+      ],\
+      \"documentation\":\"<p>Updates the configuration for asynchronous invocation for a function, version, or alias.</p> <p>To configure options for asynchronous invocation, use <a>PutFunctionEventInvokeConfig</a>.</p>\"\
     }\
   },\
   \"shapes\":{\
@@ -766,11 +1113,11 @@
         },\
         \"CodeSizeUnzipped\":{\
           \"shape\":\"Long\",\
-          \"documentation\":\"<p>The maximum size of your function's code and layers when they're extracted.</p>\"\
+          \"documentation\":\"<p>The maximum size of a function's deployment package and layers when they're extracted.</p>\"\
         },\
         \"CodeSizeZipped\":{\
           \"shape\":\"Long\",\
-          \"documentation\":\"<p>The maximum size of a deployment package when it's uploaded directly to AWS Lambda. Use Amazon S3 for larger files.</p>\"\
+          \"documentation\":\"<p>The maximum size of a deployment package when it's uploaded directly to Lambda. Use Amazon S3 for larger files.</p>\"\
         },\
         \"ConcurrentExecutions\":{\
           \"shape\":\"Integer\",\
@@ -781,7 +1128,7 @@
           \"documentation\":\"<p>The maximum number of simultaneous function executions, minus the capacity that's reserved for individual functions with <a>PutFunctionConcurrency</a>.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>Limits that are related to concurrency and code storage. All file and storage sizes are in bytes.</p>\"\
+      \"documentation\":\"<p>Limits that are related to concurrency and storage. All file and storage sizes are in bytes.</p>\"\
     },\
     \"AccountUsage\":{\
       \"type\":\"structure\",\
@@ -833,7 +1180,7 @@
         },\
         \"Principal\":{\
           \"shape\":\"LayerPermissionAllowedPrincipal\",\
-          \"documentation\":\"<p>An account ID, or <code>*</code> to grant permission to all AWS accounts.</p>\"\
+          \"documentation\":\"<p>An account ID, or <code>*</code> to grant layer usage permission to all accounts in an organization, or all Amazon Web Services accounts (if <code>organizationId</code> is not specified). For the last case, make sure that you really do want all Amazon Web Services accounts to have usage permission to this layer. </p>\"\
         },\
         \"OrganizationId\":{\
           \"shape\":\"OrganizationId\",\
@@ -885,15 +1232,15 @@
         },\
         \"Principal\":{\
           \"shape\":\"Principal\",\
-          \"documentation\":\"<p>The AWS service or account that invokes the function. If you specify a service, use <code>SourceArn</code> or <code>SourceAccount</code> to limit who can invoke the function through that service.</p>\"\
+          \"documentation\":\"<p>The Amazon Web Services service or account that invokes the function. If you specify a service, use <code>SourceArn</code> or <code>SourceAccount</code> to limit who can invoke the function through that service.</p>\"\
         },\
         \"SourceArn\":{\
           \"shape\":\"Arn\",\
-          \"documentation\":\"<p>For AWS services, the ARN of the AWS resource that invokes the function. For example, an Amazon S3 bucket or Amazon SNS topic.</p>\"\
+          \"documentation\":\"<p>For Amazon Web Services services, the ARN of the Amazon Web Services resource that invokes the function. For example, an Amazon S3 bucket or Amazon SNS topic.</p>\"\
         },\
         \"SourceAccount\":{\
           \"shape\":\"SourceOwner\",\
-          \"documentation\":\"<p>For AWS services, the ID of the account that owns the resource. Use this instead of <code>SourceArn</code> to grant permission to resources that are owned by another account (for example, all of an account's Amazon S3 buckets). Or use it together with <code>SourceArn</code> to ensure that the resource is owned by the specified account. For example, an Amazon S3 bucket could be deleted by its owner and recreated by another account.</p>\"\
+          \"documentation\":\"<p>For Amazon S3, the ID of the account that owns the resource. Use this together with <code>SourceArn</code> to ensure that the resource is owned by the specified account. It is possible for an Amazon S3 bucket to be deleted by its owner and recreated by another account.</p>\"\
         },\
         \"EventSourceToken\":{\
           \"shape\":\"EventSourceToken\",\
@@ -976,10 +1323,21 @@
       \"members\":{\
         \"AdditionalVersionWeights\":{\
           \"shape\":\"AdditionalVersionWeights\",\
-          \"documentation\":\"<p>The name of the second alias, and the percentage of traffic that's routed to it.</p>\"\
+          \"documentation\":\"<p>The second version, and the percentage of traffic that's routed to it.</p>\"\
         }\
       },\
       \"documentation\":\"<p>The <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html\\\">traffic-shifting</a> configuration of a Lambda function alias.</p>\"\
+    },\
+    \"AllowedPublishers\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"SigningProfileVersionArns\"],\
+      \"members\":{\
+        \"SigningProfileVersionArns\":{\
+          \"shape\":\"SigningProfileVersionArns\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) for each of the signing profiles. A signing profile defines a trusted user who can sign a code package. </p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>List of signing profiles that can sign a code package. </p>\"\
     },\
     \"Arn\":{\
       \"type\":\"string\",\
@@ -990,6 +1348,7 @@
       \"max\":10000,\
       \"min\":1\
     },\
+    \"BisectBatchOnFunctionError\":{\"type\":\"boolean\"},\
     \"Blob\":{\
       \"type\":\"blob\",\
       \"sensitive\":true\
@@ -999,6 +1358,83 @@
       \"streaming\":true\
     },\
     \"Boolean\":{\"type\":\"boolean\"},\
+    \"CodeSigningConfig\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"CodeSigningConfigId\",\
+        \"CodeSigningConfigArn\",\
+        \"AllowedPublishers\",\
+        \"CodeSigningPolicies\",\
+        \"LastModified\"\
+      ],\
+      \"members\":{\
+        \"CodeSigningConfigId\":{\
+          \"shape\":\"CodeSigningConfigId\",\
+          \"documentation\":\"<p>Unique identifer for the Code signing configuration.</p>\"\
+        },\
+        \"CodeSigningConfigArn\":{\
+          \"shape\":\"CodeSigningConfigArn\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) of the Code signing configuration.</p>\"\
+        },\
+        \"Description\":{\
+          \"shape\":\"Description\",\
+          \"documentation\":\"<p>Code signing configuration description.</p>\"\
+        },\
+        \"AllowedPublishers\":{\
+          \"shape\":\"AllowedPublishers\",\
+          \"documentation\":\"<p>List of allowed publishers.</p>\"\
+        },\
+        \"CodeSigningPolicies\":{\
+          \"shape\":\"CodeSigningPolicies\",\
+          \"documentation\":\"<p>The code signing policy controls the validation failure action for signature mismatch or expiry.</p>\"\
+        },\
+        \"LastModified\":{\
+          \"shape\":\"Timestamp\",\
+          \"documentation\":\"<p>The date and time that the Code signing configuration was last modified, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD). </p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>Details about a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html\\\">Code signing configuration</a>. </p>\"\
+    },\
+    \"CodeSigningConfigArn\":{\
+      \"type\":\"string\",\
+      \"max\":200,\
+      \"pattern\":\"arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\\\\d{1}:\\\\d{12}:code-signing-config:csc-[a-z0-9]{17}\"\
+    },\
+    \"CodeSigningConfigId\":{\
+      \"type\":\"string\",\
+      \"pattern\":\"csc-[a-zA-Z0-9-_\\\\.]{17}\"\
+    },\
+    \"CodeSigningConfigList\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"CodeSigningConfig\"}\
+    },\
+    \"CodeSigningConfigNotFoundException\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Type\":{\"shape\":\"String\"},\
+        \"Message\":{\"shape\":\"String\"}\
+      },\
+      \"documentation\":\"<p>The specified code signing configuration does not exist.</p>\",\
+      \"error\":{\"httpStatusCode\":404},\
+      \"exception\":true\
+    },\
+    \"CodeSigningPolicies\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"UntrustedArtifactOnDeployment\":{\
+          \"shape\":\"CodeSigningPolicy\",\
+          \"documentation\":\"<p>Code signing configuration policy for deployment validation failure. If you set the policy to <code>Enforce</code>, Lambda blocks the deployment request if signature validation checks fail. If you set the policy to <code>Warn</code>, Lambda allows the deployment and creates a CloudWatch log. </p> <p>Default value: <code>Warn</code> </p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>Code signing configuration <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html#config-codesigning-policies\\\">policies</a> specify the validation failure action for signature mismatch or expiry.</p>\"\
+    },\
+    \"CodeSigningPolicy\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"Warn\",\
+        \"Enforce\"\
+      ]\
+    },\
     \"CodeStorageExceededException\":{\
       \"type\":\"structure\",\
       \"members\":{\
@@ -1012,10 +1448,20 @@
       \"error\":{\"httpStatusCode\":400},\
       \"exception\":true\
     },\
+    \"CodeVerificationFailedException\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Type\":{\"shape\":\"String\"},\
+        \"Message\":{\"shape\":\"String\"}\
+      },\
+      \"documentation\":\"<p>The code signature failed one or more of the validation checks for signature mismatch or expiry, and the code signing policy is set to ENFORCE. Lambda blocks the deployment. </p>\",\
+      \"error\":{\"httpStatusCode\":400},\
+      \"exception\":true\
+    },\
     \"CompatibleRuntimes\":{\
       \"type\":\"list\",\
       \"member\":{\"shape\":\"Runtime\"},\
-      \"max\":5\
+      \"max\":15\
     },\
     \"Concurrency\":{\
       \"type\":\"structure\",\
@@ -1054,20 +1500,45 @@
         },\
         \"RoutingConfig\":{\
           \"shape\":\"AliasRoutingConfiguration\",\
-          \"documentation\":\"<p>The <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html\\\">routing configuration</a> of the alias.</p>\"\
+          \"documentation\":\"<p>The <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html#configuring-alias-routing\\\">routing configuration</a> of the alias.</p>\"\
+        }\
+      }\
+    },\
+    \"CreateCodeSigningConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"AllowedPublishers\"],\
+      \"members\":{\
+        \"Description\":{\
+          \"shape\":\"Description\",\
+          \"documentation\":\"<p>Descriptive name for this code signing configuration.</p>\"\
+        },\
+        \"AllowedPublishers\":{\
+          \"shape\":\"AllowedPublishers\",\
+          \"documentation\":\"<p>Signing profiles for this code signing configuration.</p>\"\
+        },\
+        \"CodeSigningPolicies\":{\
+          \"shape\":\"CodeSigningPolicies\",\
+          \"documentation\":\"<p>The code signing policies define the actions to take if the validation checks fail. </p>\"\
+        }\
+      }\
+    },\
+    \"CreateCodeSigningConfigResponse\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"CodeSigningConfig\"],\
+      \"members\":{\
+        \"CodeSigningConfig\":{\
+          \"shape\":\"CodeSigningConfig\",\
+          \"documentation\":\"<p>The code signing configuration.</p>\"\
         }\
       }\
     },\
     \"CreateEventSourceMappingRequest\":{\
       \"type\":\"structure\",\
-      \"required\":[\
-        \"EventSourceArn\",\
-        \"FunctionName\"\
-      ],\
+      \"required\":[\"FunctionName\"],\
       \"members\":{\
         \"EventSourceArn\":{\
           \"shape\":\"Arn\",\
-          \"documentation\":\"<p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p> <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p> </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li> <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li> </ul>\"\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p> <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p> </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li> <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li> <li> <p> <b>Amazon Managed Streaming for Apache Kafka</b> - The ARN of the cluster.</p> </li> </ul>\"\
         },\
         \"FunctionName\":{\
           \"shape\":\"FunctionName\",\
@@ -1075,19 +1546,67 @@
         },\
         \"Enabled\":{\
           \"shape\":\"Enabled\",\
-          \"documentation\":\"<p>Disables the event source mapping to pause polling and invocation.</p>\"\
+          \"documentation\":\"<p>If true, the event source mapping is active. Set to false to pause polling and invocation.</p>\"\
         },\
         \"BatchSize\":{\
           \"shape\":\"BatchSize\",\
-          \"documentation\":\"<p>The maximum number of items to retrieve in a single batch.</p> <ul> <li> <p> <b>Amazon Kinesis</b> - Default 100. Max 10,000.</p> </li> <li> <p> <b>Amazon DynamoDB Streams</b> - Default 100. Max 1,000.</p> </li> <li> <p> <b>Amazon Simple Queue Service</b> - Default 10. Max 10.</p> </li> </ul>\"\
+          \"documentation\":\"<p>The maximum number of items to retrieve in a single batch.</p> <ul> <li> <p> <b>Amazon Kinesis</b> - Default 100. Max 10,000.</p> </li> <li> <p> <b>Amazon DynamoDB Streams</b> - Default 100. Max 1,000.</p> </li> <li> <p> <b>Amazon Simple Queue Service</b> - Default 10. For standard queues the max is 10,000. For FIFO queues the max is 10.</p> </li> <li> <p> <b>Amazon Managed Streaming for Apache Kafka</b> - Default 100. Max 10,000.</p> </li> <li> <p> <b>Self-Managed Apache Kafka</b> - Default 100. Max 10,000.</p> </li> </ul>\"\
+        },\
+        \"MaximumBatchingWindowInSeconds\":{\
+          \"shape\":\"MaximumBatchingWindowInSeconds\",\
+          \"documentation\":\"<p>(Streams and SQS standard queues) The maximum amount of time to gather records before invoking the function, in seconds.</p>\"\
+        },\
+        \"ParallelizationFactor\":{\
+          \"shape\":\"ParallelizationFactor\",\
+          \"documentation\":\"<p>(Streams only) The number of batches to process from each shard concurrently.</p>\"\
         },\
         \"StartingPosition\":{\
           \"shape\":\"EventSourcePosition\",\
-          \"documentation\":\"<p>The position in a stream from which to start reading. Required for Amazon Kinesis and Amazon DynamoDB Streams sources. <code>AT_TIMESTAMP</code> is only supported for Amazon Kinesis streams.</p>\"\
+          \"documentation\":\"<p>The position in a stream from which to start reading. Required for Amazon Kinesis, Amazon DynamoDB, and Amazon MSK Streams sources. <code>AT_TIMESTAMP</code> is only supported for Amazon Kinesis streams.</p>\"\
         },\
         \"StartingPositionTimestamp\":{\
           \"shape\":\"Date\",\
           \"documentation\":\"<p>With <code>StartingPosition</code> set to <code>AT_TIMESTAMP</code>, the time from which to start reading.</p>\"\
+        },\
+        \"DestinationConfig\":{\
+          \"shape\":\"DestinationConfig\",\
+          \"documentation\":\"<p>(Streams only) An Amazon SQS queue or Amazon SNS topic destination for discarded records.</p>\"\
+        },\
+        \"MaximumRecordAgeInSeconds\":{\
+          \"shape\":\"MaximumRecordAgeInSeconds\",\
+          \"documentation\":\"<p>(Streams only) Discard records older than the specified age. The default value is infinite (-1).</p>\"\
+        },\
+        \"BisectBatchOnFunctionError\":{\
+          \"shape\":\"BisectBatchOnFunctionError\",\
+          \"documentation\":\"<p>(Streams only) If the function returns an error, split the batch in two and retry.</p>\"\
+        },\
+        \"MaximumRetryAttempts\":{\
+          \"shape\":\"MaximumRetryAttemptsEventSourceMapping\",\
+          \"documentation\":\"<p>(Streams only) Discard records after the specified number of retries. The default value is infinite (-1). When set to infinite (-1), failed records will be retried until the record expires.</p>\"\
+        },\
+        \"TumblingWindowInSeconds\":{\
+          \"shape\":\"TumblingWindowInSeconds\",\
+          \"documentation\":\"<p>(Streams only) The duration in seconds of a processing window. The range is between 1 second up to 900 seconds.</p>\"\
+        },\
+        \"Topics\":{\
+          \"shape\":\"Topics\",\
+          \"documentation\":\"<p>The name of the Kafka topic.</p>\"\
+        },\
+        \"Queues\":{\
+          \"shape\":\"Queues\",\
+          \"documentation\":\"<p> (MQ) The name of the Amazon MQ broker destination queue to consume. </p>\"\
+        },\
+        \"SourceAccessConfigurations\":{\
+          \"shape\":\"SourceAccessConfigurations\",\
+          \"documentation\":\"<p>An array of authentication protocols or VPC components required to secure your event source.</p>\"\
+        },\
+        \"SelfManagedEventSource\":{\
+          \"shape\":\"SelfManagedEventSource\",\
+          \"documentation\":\"<p>The Self-Managed Apache Kafka cluster to send records.</p>\"\
+        },\
+        \"FunctionResponseTypes\":{\
+          \"shape\":\"FunctionResponseTypeList\",\
+          \"documentation\":\"<p>(Streams only) A list of current response type enums applied to the event source mapping.</p>\"\
         }\
       }\
     },\
@@ -1095,9 +1614,7 @@
       \"type\":\"structure\",\
       \"required\":[\
         \"FunctionName\",\
-        \"Runtime\",\
         \"Role\",\
-        \"Handler\",\
         \"Code\"\
       ],\
       \"members\":{\
@@ -1127,11 +1644,11 @@
         },\
         \"Timeout\":{\
           \"shape\":\"Timeout\",\
-          \"documentation\":\"<p>The amount of time that Lambda allows a function to run before stopping it. The default is 3 seconds. The maximum allowed value is 900 seconds.</p>\"\
+          \"documentation\":\"<p>The amount of time that Lambda allows a function to run before stopping it. The default is 3 seconds. The maximum allowed value is 900 seconds. For additional information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html\\\">Lambda execution environment</a>.</p>\"\
         },\
         \"MemorySize\":{\
           \"shape\":\"MemorySize\",\
-          \"documentation\":\"<p>The amount of memory that your function has access to. Increasing the function's memory also increases its CPU allocation. The default value is 128 MB. The value must be a multiple of 64 MB.</p>\"\
+          \"documentation\":\"<p>The amount of <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html\\\">memory available to the function</a> at runtime. Increasing the function memory also increases its CPU allocation. The default value is 128 MB. The value can be any multiple of 1 MB.</p>\"\
         },\
         \"Publish\":{\
           \"shape\":\"Boolean\",\
@@ -1139,11 +1656,15 @@
         },\
         \"VpcConfig\":{\
           \"shape\":\"VpcConfig\",\
-          \"documentation\":\"<p>For network connectivity to AWS resources in a VPC, specify a list of security groups and subnets in the VPC. When you connect a function to a VPC, it can only access resources and the internet through that VPC. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/vpc.html\\\">VPC Settings</a>.</p>\"\
+          \"documentation\":\"<p>For network connectivity to Amazon Web Services resources in a VPC, specify a list of security groups and subnets in the VPC. When you connect a function to a VPC, it can only access resources and the internet through that VPC. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html\\\">VPC Settings</a>.</p>\"\
+        },\
+        \"PackageType\":{\
+          \"shape\":\"PackageType\",\
+          \"documentation\":\"<p>The type of deployment package. Set to <code>Image</code> for container image and set <code>Zip</code> for ZIP archive.</p>\"\
         },\
         \"DeadLetterConfig\":{\
           \"shape\":\"DeadLetterConfig\",\
-          \"documentation\":\"<p>A dead letter queue configuration that specifies the queue or topic where Lambda sends asynchronous events when they fail processing. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/dlq.html\\\">Dead Letter Queues</a>.</p>\"\
+          \"documentation\":\"<p>A dead letter queue configuration that specifies the queue or topic where Lambda sends asynchronous events when they fail processing. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq\\\">Dead Letter Queues</a>.</p>\"\
         },\
         \"Environment\":{\
           \"shape\":\"Environment\",\
@@ -1151,11 +1672,11 @@
         },\
         \"KMSKeyArn\":{\
           \"shape\":\"KMSKeyArn\",\
-          \"documentation\":\"<p>The ARN of the AWS Key Management Service (AWS KMS) key that's used to encrypt your function's environment variables. If it's not provided, AWS Lambda uses a default service key.</p>\"\
+          \"documentation\":\"<p>The ARN of the Amazon Web Services Key Management Service (KMS) key that's used to encrypt your function's environment variables. If it's not provided, Lambda uses a default service key.</p>\"\
         },\
         \"TracingConfig\":{\
           \"shape\":\"TracingConfig\",\
-          \"documentation\":\"<p>Set <code>Mode</code> to <code>Active</code> to sample and trace a subset of incoming requests with AWS X-Ray.</p>\"\
+          \"documentation\":\"<p>Set <code>Mode</code> to <code>Active</code> to sample and trace a subset of incoming requests with <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html\\\">X-Ray</a>.</p>\"\
         },\
         \"Tags\":{\
           \"shape\":\"Tags\",\
@@ -1164,6 +1685,18 @@
         \"Layers\":{\
           \"shape\":\"LayerList\",\
           \"documentation\":\"<p>A list of <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">function layers</a> to add to the function's execution environment. Specify each layer by its ARN, including the version.</p>\"\
+        },\
+        \"FileSystemConfigs\":{\
+          \"shape\":\"FileSystemConfigList\",\
+          \"documentation\":\"<p>Connection settings for an Amazon EFS file system.</p>\"\
+        },\
+        \"ImageConfig\":{\
+          \"shape\":\"ImageConfig\",\
+          \"documentation\":\"<p>Container image <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-images.html#configuration-images-settings\\\">configuration values</a> that override the values in the container image Dockerfile.</p>\"\
+        },\
+        \"CodeSigningConfigArn\":{\
+          \"shape\":\"CodeSigningConfigArn\",\
+          \"documentation\":\"<p>To enable code signing for this function, specify the ARN of a code-signing configuration. A code-signing configuration includes a set of signing profiles, which define the trusted publishers for this function.</p>\"\
         }\
       }\
     },\
@@ -1176,7 +1709,7 @@
           \"documentation\":\"<p>The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>The <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/dlq.html\\\">dead letter queue</a> for failed asynchronous invocations.</p>\"\
+      \"documentation\":\"<p>The <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq\\\">dead-letter queue</a> for failed asynchronous invocations.</p>\"\
     },\
     \"DeleteAliasRequest\":{\
       \"type\":\"structure\",\
@@ -1199,6 +1732,23 @@
         }\
       }\
     },\
+    \"DeleteCodeSigningConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"CodeSigningConfigArn\"],\
+      \"members\":{\
+        \"CodeSigningConfigArn\":{\
+          \"shape\":\"CodeSigningConfigArn\",\
+          \"documentation\":\"<p>The The Amazon Resource Name (ARN) of the code signing configuration.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"CodeSigningConfigArn\"\
+        }\
+      }\
+    },\
+    \"DeleteCodeSigningConfigResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+      }\
+    },\
     \"DeleteEventSourceMappingRequest\":{\
       \"type\":\"structure\",\
       \"required\":[\"UUID\"],\
@@ -1211,6 +1761,18 @@
         }\
       }\
     },\
+    \"DeleteFunctionCodeSigningConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"FunctionName\"],\
+      \"members\":{\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"FunctionName\"\
+        }\
+      }\
+    },\
     \"DeleteFunctionConcurrencyRequest\":{\
       \"type\":\"structure\",\
       \"required\":[\"FunctionName\"],\
@@ -1220,6 +1782,24 @@
           \"documentation\":\"<p>The name of the Lambda function.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
           \"location\":\"uri\",\
           \"locationName\":\"FunctionName\"\
+        }\
+      }\
+    },\
+    \"DeleteFunctionEventInvokeConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"FunctionName\"],\
+      \"members\":{\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function, version, or alias.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code> (name-only), <code>my-function:v1</code> (with alias).</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>You can append a version number or alias to any of the formats. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"FunctionName\"\
+        },\
+        \"Qualifier\":{\
+          \"shape\":\"Qualifier\",\
+          \"documentation\":\"<p>A version number or alias name.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"Qualifier\"\
         }\
       }\
     },\
@@ -1262,10 +1842,51 @@
         }\
       }\
     },\
+    \"DeleteProvisionedConcurrencyConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"FunctionName\",\
+        \"Qualifier\"\
+      ],\
+      \"members\":{\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"FunctionName\"\
+        },\
+        \"Qualifier\":{\
+          \"shape\":\"Qualifier\",\
+          \"documentation\":\"<p>The version number or alias name.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"Qualifier\"\
+        }\
+      }\
+    },\
     \"Description\":{\
       \"type\":\"string\",\
       \"max\":256,\
       \"min\":0\
+    },\
+    \"DestinationArn\":{\
+      \"type\":\"string\",\
+      \"max\":350,\
+      \"min\":0,\
+      \"pattern\":\"^$|arn:(aws[a-zA-Z0-9-]*):([a-zA-Z0-9\\\\-])+:([a-z]{2}(-gov)?-[a-z]+-\\\\d{1})?:(\\\\d{12})?:(.*)\"\
+    },\
+    \"DestinationConfig\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"OnSuccess\":{\
+          \"shape\":\"OnSuccess\",\
+          \"documentation\":\"<p>The destination configuration for successful invocations.</p>\"\
+        },\
+        \"OnFailure\":{\
+          \"shape\":\"OnFailure\",\
+          \"documentation\":\"<p>The destination configuration for failed invocations.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>A configuration object that specifies the destination of an event after Lambda processes it.</p>\"\
     },\
     \"EC2AccessDeniedException\":{\
       \"type\":\"structure\",\
@@ -1283,7 +1904,7 @@
         \"Type\":{\"shape\":\"String\"},\
         \"Message\":{\"shape\":\"String\"}\
       },\
-      \"documentation\":\"<p>AWS Lambda was throttled by Amazon EC2 during Lambda function initialization using the execution role provided for the Lambda function.</p>\",\
+      \"documentation\":\"<p>Lambda was throttled by Amazon EC2 during Lambda function initialization using the execution role provided for the Lambda function.</p>\",\
       \"error\":{\"httpStatusCode\":502},\
       \"exception\":true\
     },\
@@ -1294,8 +1915,48 @@
         \"Message\":{\"shape\":\"String\"},\
         \"EC2ErrorCode\":{\"shape\":\"String\"}\
       },\
-      \"documentation\":\"<p>AWS Lambda received an unexpected EC2 client exception while setting up for the Lambda function.</p>\",\
+      \"documentation\":\"<p>Lambda received an unexpected EC2 client exception while setting up for the Lambda function.</p>\",\
       \"error\":{\"httpStatusCode\":502},\
+      \"exception\":true\
+    },\
+    \"EFSIOException\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Type\":{\"shape\":\"String\"},\
+        \"Message\":{\"shape\":\"String\"}\
+      },\
+      \"documentation\":\"<p>An error occured when reading from or writing to a connected file system.</p>\",\
+      \"error\":{\"httpStatusCode\":410},\
+      \"exception\":true\
+    },\
+    \"EFSMountConnectivityException\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Type\":{\"shape\":\"String\"},\
+        \"Message\":{\"shape\":\"String\"}\
+      },\
+      \"documentation\":\"<p>The function couldn't make a network connection to the configured file system.</p>\",\
+      \"error\":{\"httpStatusCode\":408},\
+      \"exception\":true\
+    },\
+    \"EFSMountFailureException\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Type\":{\"shape\":\"String\"},\
+        \"Message\":{\"shape\":\"String\"}\
+      },\
+      \"documentation\":\"<p>The function couldn't mount the configured file system due to a permission or configuration issue.</p>\",\
+      \"error\":{\"httpStatusCode\":403},\
+      \"exception\":true\
+    },\
+    \"EFSMountTimeoutException\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Type\":{\"shape\":\"String\"},\
+        \"Message\":{\"shape\":\"String\"}\
+      },\
+      \"documentation\":\"<p>The function was able to make a network connection to the configured file system, but the mount operation timed out.</p>\",\
+      \"error\":{\"httpStatusCode\":408},\
       \"exception\":true\
     },\
     \"ENILimitReachedException\":{\
@@ -1304,20 +1965,43 @@
         \"Type\":{\"shape\":\"String\"},\
         \"Message\":{\"shape\":\"String\"}\
       },\
-      \"documentation\":\"<p>AWS Lambda was not able to create an Elastic Network Interface (ENI) in the VPC, specified as part of Lambda function configuration, because the limit for network interfaces has been reached.</p>\",\
+      \"documentation\":\"<p>Lambda was not able to create an elastic network interface in the VPC, specified as part of Lambda function configuration, because the limit for network interfaces has been reached.</p>\",\
       \"error\":{\"httpStatusCode\":502},\
       \"exception\":true\
     },\
     \"Enabled\":{\"type\":\"boolean\"},\
+    \"EndPointType\":{\
+      \"type\":\"string\",\
+      \"enum\":[\"KAFKA_BOOTSTRAP_SERVERS\"]\
+    },\
+    \"Endpoint\":{\
+      \"type\":\"string\",\
+      \"max\":300,\
+      \"min\":1,\
+      \"pattern\":\"^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\\\-]*[a-zA-Z0-9])\\\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\\\-]*[A-Za-z0-9]):[0-9]{1,5}\"\
+    },\
+    \"EndpointLists\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"Endpoint\"},\
+      \"max\":10,\
+      \"min\":1\
+    },\
+    \"Endpoints\":{\
+      \"type\":\"map\",\
+      \"key\":{\"shape\":\"EndPointType\"},\
+      \"value\":{\"shape\":\"EndpointLists\"},\
+      \"max\":2,\
+      \"min\":1\
+    },\
     \"Environment\":{\
       \"type\":\"structure\",\
       \"members\":{\
         \"Variables\":{\
           \"shape\":\"EnvironmentVariables\",\
-          \"documentation\":\"<p>Environment variable key-value pairs.</p>\"\
+          \"documentation\":\"<p>Environment variable key-value pairs. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html\\\">Using Lambda environment variables</a>.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>A function's environment variable settings.</p>\"\
+      \"documentation\":\"<p>A function's environment variable settings. You can use environment variables to adjust your function's behavior without updating code. An environment variable is a pair of strings that are stored in a function's version-specific configuration. </p>\"\
     },\
     \"EnvironmentError\":{\
       \"type\":\"structure\",\
@@ -1345,7 +2029,7 @@
           \"documentation\":\"<p>Error messages for environment variables that couldn't be applied.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>The results of a configuration update that applied environment variables.</p>\"\
+      \"documentation\":\"<p>The results of an operation to update or read environment variables. If the operation is successful, the response contains the environment variables. If it failed, the response contains details about the error.</p>\"\
     },\
     \"EnvironmentVariableName\":{\
       \"type\":\"string\",\
@@ -1369,9 +2053,25 @@
           \"shape\":\"String\",\
           \"documentation\":\"<p>The identifier of the event source mapping.</p>\"\
         },\
+        \"StartingPosition\":{\
+          \"shape\":\"EventSourcePosition\",\
+          \"documentation\":\"<p>The position in a stream from which to start reading. Required for Amazon Kinesis, Amazon DynamoDB, and Amazon MSK stream sources. <code>AT_TIMESTAMP</code> is supported only for Amazon Kinesis streams.</p>\"\
+        },\
+        \"StartingPositionTimestamp\":{\
+          \"shape\":\"Date\",\
+          \"documentation\":\"<p>With <code>StartingPosition</code> set to <code>AT_TIMESTAMP</code>, the time from which to start reading.</p>\"\
+        },\
         \"BatchSize\":{\
           \"shape\":\"BatchSize\",\
           \"documentation\":\"<p>The maximum number of items to retrieve in a single batch.</p>\"\
+        },\
+        \"MaximumBatchingWindowInSeconds\":{\
+          \"shape\":\"MaximumBatchingWindowInSeconds\",\
+          \"documentation\":\"<p>(Streams and Amazon SQS standard queues) The maximum amount of time to gather records before invoking the function, in seconds. The default value is zero.</p>\"\
+        },\
+        \"ParallelizationFactor\":{\
+          \"shape\":\"ParallelizationFactor\",\
+          \"documentation\":\"<p>(Streams only) The number of batches to process concurrently from each shard. The default value is 1.</p>\"\
         },\
         \"EventSourceArn\":{\
           \"shape\":\"Arn\",\
@@ -1383,11 +2083,11 @@
         },\
         \"LastModified\":{\
           \"shape\":\"Date\",\
-          \"documentation\":\"<p>The date that the event source mapping was last updated.</p>\"\
+          \"documentation\":\"<p>The date that the event source mapping was last updated or that its state changed.</p>\"\
         },\
         \"LastProcessingResult\":{\
           \"shape\":\"String\",\
-          \"documentation\":\"<p>The result of the last AWS Lambda invocation of your Lambda function.</p>\"\
+          \"documentation\":\"<p>The result of the last Lambda invocation of your function.</p>\"\
         },\
         \"State\":{\
           \"shape\":\"String\",\
@@ -1395,10 +2095,50 @@
         },\
         \"StateTransitionReason\":{\
           \"shape\":\"String\",\
-          \"documentation\":\"<p>The cause of the last state change, either <code>User initiated</code> or <code>Lambda initiated</code>.</p>\"\
+          \"documentation\":\"<p>Indicates whether a user or Lambda made the last change to the event source mapping.</p>\"\
+        },\
+        \"DestinationConfig\":{\
+          \"shape\":\"DestinationConfig\",\
+          \"documentation\":\"<p>(Streams only) An Amazon SQS queue or Amazon SNS topic destination for discarded records.</p>\"\
+        },\
+        \"Topics\":{\
+          \"shape\":\"Topics\",\
+          \"documentation\":\"<p>The name of the Kafka topic.</p>\"\
+        },\
+        \"Queues\":{\
+          \"shape\":\"Queues\",\
+          \"documentation\":\"<p> (Amazon MQ) The name of the Amazon MQ broker destination queue to consume.</p>\"\
+        },\
+        \"SourceAccessConfigurations\":{\
+          \"shape\":\"SourceAccessConfigurations\",\
+          \"documentation\":\"<p>An array of the authentication protocol, VPC components, or virtual host to secure and define your event source.</p>\"\
+        },\
+        \"SelfManagedEventSource\":{\
+          \"shape\":\"SelfManagedEventSource\",\
+          \"documentation\":\"<p>The self-managed Apache Kafka cluster for your event source.</p>\"\
+        },\
+        \"MaximumRecordAgeInSeconds\":{\
+          \"shape\":\"MaximumRecordAgeInSeconds\",\
+          \"documentation\":\"<p>(Streams only) Discard records older than the specified age. The default value is -1, which sets the maximum age to infinite. When the value is set to infinite, Lambda never discards old records. </p>\"\
+        },\
+        \"BisectBatchOnFunctionError\":{\
+          \"shape\":\"BisectBatchOnFunctionError\",\
+          \"documentation\":\"<p>(Streams only) If the function returns an error, split the batch in two and retry. The default value is false.</p>\"\
+        },\
+        \"MaximumRetryAttempts\":{\
+          \"shape\":\"MaximumRetryAttemptsEventSourceMapping\",\
+          \"documentation\":\"<p>(Streams only) Discard records after the specified number of retries. The default value is -1, which sets the maximum number of retries to infinite. When MaximumRetryAttempts is infinite, Lambda retries failed records until the record expires in the event source.</p>\"\
+        },\
+        \"TumblingWindowInSeconds\":{\
+          \"shape\":\"TumblingWindowInSeconds\",\
+          \"documentation\":\"<p>(Streams only) The duration in seconds of a processing window. The range is 1â900 seconds.</p>\"\
+        },\
+        \"FunctionResponseTypes\":{\
+          \"shape\":\"FunctionResponseTypeList\",\
+          \"documentation\":\"<p>(Streams only) A list of current response type enums applied to the event source mapping.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>A mapping between an AWS resource and an AWS Lambda function. See <a>CreateEventSourceMapping</a> for details.</p>\"\
+      \"documentation\":\"<p>A mapping between an Amazon Web Services resource and a Lambda function. For details, see <a>CreateEventSourceMapping</a>.</p>\"\
     },\
     \"EventSourceMappingsList\":{\
       \"type\":\"list\",\
@@ -1418,20 +2158,52 @@
       \"min\":0,\
       \"pattern\":\"[a-zA-Z0-9._\\\\-]+\"\
     },\
+    \"FileSystemArn\":{\
+      \"type\":\"string\",\
+      \"max\":200,\
+      \"pattern\":\"arn:aws[a-zA-Z-]*:elasticfilesystem:[a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\\\\d{1}:\\\\d{12}:access-point/fsap-[a-f0-9]{17}\"\
+    },\
+    \"FileSystemConfig\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"Arn\",\
+        \"LocalMountPath\"\
+      ],\
+      \"members\":{\
+        \"Arn\":{\
+          \"shape\":\"FileSystemArn\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) of the Amazon EFS access point that provides access to the file system.</p>\"\
+        },\
+        \"LocalMountPath\":{\
+          \"shape\":\"LocalMountPath\",\
+          \"documentation\":\"<p>The path where the function can access the file system, starting with <code>/mnt/</code>.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>Details about the connection between a Lambda function and an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html\\\">Amazon EFS file system</a>.</p>\"\
+    },\
+    \"FileSystemConfigList\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"FileSystemConfig\"},\
+      \"max\":1\
+    },\
     \"FunctionArn\":{\
       \"type\":\"string\",\
       \"pattern\":\"arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}(-gov)?-[a-z]+-\\\\d{1}:\\\\d{12}:function:[a-zA-Z0-9-_]+(:(\\\\$LATEST|[a-zA-Z0-9-_]+))?\"\
+    },\
+    \"FunctionArnList\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"FunctionArn\"}\
     },\
     \"FunctionCode\":{\
       \"type\":\"structure\",\
       \"members\":{\
         \"ZipFile\":{\
           \"shape\":\"Blob\",\
-          \"documentation\":\"<p>The base64-encoded contents of the deployment package. AWS SDK and AWS CLI clients handle the encoding for you.</p>\"\
+          \"documentation\":\"<p>The base64-encoded contents of the deployment package. Amazon Web Services SDK and Amazon Web Services CLI clients handle the encoding for you.</p>\"\
         },\
         \"S3Bucket\":{\
           \"shape\":\"S3Bucket\",\
-          \"documentation\":\"<p>An Amazon S3 bucket in the same AWS Region as your function. The bucket can be in a different AWS account.</p>\"\
+          \"documentation\":\"<p>An Amazon S3 bucket in the same Amazon Web Services Region as your function. The bucket can be in a different Amazon Web Services account.</p>\"\
         },\
         \"S3Key\":{\
           \"shape\":\"S3Key\",\
@@ -1440,9 +2212,13 @@
         \"S3ObjectVersion\":{\
           \"shape\":\"S3ObjectVersion\",\
           \"documentation\":\"<p>For versioned objects, the version of the deployment package object to use.</p>\"\
+        },\
+        \"ImageUri\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>URI of a <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-images.html\\\">container image</a> in the Amazon ECR registry.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>The code for the Lambda function. You can specify either an object in Amazon S3, or upload a deployment package directly.</p>\"\
+      \"documentation\":\"<p>The code for the Lambda function. You can specify either an object in Amazon S3, upload a .zip file archive deployment package directly, or specify the URI of a container image.</p>\"\
     },\
     \"FunctionCodeLocation\":{\
       \"type\":\"structure\",\
@@ -1454,6 +2230,14 @@
         \"Location\":{\
           \"shape\":\"String\",\
           \"documentation\":\"<p>A presigned URL that you can use to download the deployment package.</p>\"\
+        },\
+        \"ImageUri\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>URI of a container image in the Amazon ECR registry.</p>\"\
+        },\
+        \"ResolvedImageUri\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>The resolved URI for the image.</p>\"\
         }\
       },\
       \"documentation\":\"<p>Details about a function's deployment package.</p>\"\
@@ -1491,11 +2275,11 @@
         },\
         \"Timeout\":{\
           \"shape\":\"Timeout\",\
-          \"documentation\":\"<p>The amount of time that Lambda allows a function to run before stopping it.</p>\"\
+          \"documentation\":\"<p>The amount of time in seconds that Lambda allows a function to run before stopping it.</p>\"\
         },\
         \"MemorySize\":{\
           \"shape\":\"MemorySize\",\
-          \"documentation\":\"<p>The memory that's allocated to the function.</p>\"\
+          \"documentation\":\"<p>The amount of memory available to the function at runtime. </p>\"\
         },\
         \"LastModified\":{\
           \"shape\":\"Timestamp\",\
@@ -1519,15 +2303,15 @@
         },\
         \"Environment\":{\
           \"shape\":\"EnvironmentResponse\",\
-          \"documentation\":\"<p>The function's environment variables.</p>\"\
+          \"documentation\":\"<p>The function's <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html\\\">environment variables</a>.</p>\"\
         },\
         \"KMSKeyArn\":{\
           \"shape\":\"KMSKeyArn\",\
-          \"documentation\":\"<p>The KMS key that's used to encrypt the function's environment variables. This key is only returned if you've configured a customer-managed CMK.</p>\"\
+          \"documentation\":\"<p>The KMS key that's used to encrypt the function's environment variables. This key is only returned if you've configured a customer managed CMK.</p>\"\
         },\
         \"TracingConfig\":{\
           \"shape\":\"TracingConfigResponse\",\
-          \"documentation\":\"<p>The function's AWS X-Ray tracing configuration.</p>\"\
+          \"documentation\":\"<p>The function's X-Ray tracing configuration.</p>\"\
         },\
         \"MasterArn\":{\
           \"shape\":\"FunctionArn\",\
@@ -1540,9 +2324,82 @@
         \"Layers\":{\
           \"shape\":\"LayersReferenceList\",\
           \"documentation\":\"<p>The function's <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\"> layers</a>.</p>\"\
+        },\
+        \"State\":{\
+          \"shape\":\"State\",\
+          \"documentation\":\"<p>The current state of the function. When the state is <code>Inactive</code>, you can reactivate the function by invoking it.</p>\"\
+        },\
+        \"StateReason\":{\
+          \"shape\":\"StateReason\",\
+          \"documentation\":\"<p>The reason for the function's current state.</p>\"\
+        },\
+        \"StateReasonCode\":{\
+          \"shape\":\"StateReasonCode\",\
+          \"documentation\":\"<p>The reason code for the function's current state. When the code is <code>Creating</code>, you can't invoke or modify the function.</p>\"\
+        },\
+        \"LastUpdateStatus\":{\
+          \"shape\":\"LastUpdateStatus\",\
+          \"documentation\":\"<p>The status of the last update that was performed on the function. This is first set to <code>Successful</code> after function creation completes.</p>\"\
+        },\
+        \"LastUpdateStatusReason\":{\
+          \"shape\":\"LastUpdateStatusReason\",\
+          \"documentation\":\"<p>The reason for the last update that was performed on the function.</p>\"\
+        },\
+        \"LastUpdateStatusReasonCode\":{\
+          \"shape\":\"LastUpdateStatusReasonCode\",\
+          \"documentation\":\"<p>The reason code for the last update that was performed on the function.</p>\"\
+        },\
+        \"FileSystemConfigs\":{\
+          \"shape\":\"FileSystemConfigList\",\
+          \"documentation\":\"<p>Connection settings for an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html\\\">Amazon EFS file system</a>.</p>\"\
+        },\
+        \"PackageType\":{\
+          \"shape\":\"PackageType\",\
+          \"documentation\":\"<p>The type of deployment package. Set to <code>Image</code> for container image and set <code>Zip</code> for .zip file archive.</p>\"\
+        },\
+        \"ImageConfigResponse\":{\
+          \"shape\":\"ImageConfigResponse\",\
+          \"documentation\":\"<p>The function's image configuration values.</p>\"\
+        },\
+        \"SigningProfileVersionArn\":{\
+          \"shape\":\"Arn\",\
+          \"documentation\":\"<p>The ARN of the signing profile version.</p>\"\
+        },\
+        \"SigningJobArn\":{\
+          \"shape\":\"Arn\",\
+          \"documentation\":\"<p>The ARN of the signing job.</p>\"\
         }\
       },\
       \"documentation\":\"<p>Details about a function's configuration.</p>\"\
+    },\
+    \"FunctionEventInvokeConfig\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"LastModified\":{\
+          \"shape\":\"Date\",\
+          \"documentation\":\"<p>The date and time that the configuration was last updated.</p>\"\
+        },\
+        \"FunctionArn\":{\
+          \"shape\":\"FunctionArn\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) of the function.</p>\"\
+        },\
+        \"MaximumRetryAttempts\":{\
+          \"shape\":\"MaximumRetryAttempts\",\
+          \"documentation\":\"<p>The maximum number of times to retry when the function returns an error.</p>\"\
+        },\
+        \"MaximumEventAgeInSeconds\":{\
+          \"shape\":\"MaximumEventAgeInSeconds\",\
+          \"documentation\":\"<p>The maximum age of a request that Lambda sends to a function for processing.</p>\"\
+        },\
+        \"DestinationConfig\":{\
+          \"shape\":\"DestinationConfig\",\
+          \"documentation\":\"<p>A destination for events after they have been sent to a function for processing.</p> <p class=\\\"title\\\"> <b>Destinations</b> </p> <ul> <li> <p> <b>Function</b> - The Amazon Resource Name (ARN) of a Lambda function.</p> </li> <li> <p> <b>Queue</b> - The ARN of an SQS queue.</p> </li> <li> <p> <b>Topic</b> - The ARN of an SNS topic.</p> </li> <li> <p> <b>Event Bus</b> - The ARN of an Amazon EventBridge event bus.</p> </li> </ul>\"\
+        }\
+      }\
+    },\
+    \"FunctionEventInvokeConfigList\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"FunctionEventInvokeConfig\"}\
     },\
     \"FunctionList\":{\
       \"type\":\"list\",\
@@ -1553,6 +2410,16 @@
       \"max\":140,\
       \"min\":1,\
       \"pattern\":\"(arn:(aws[a-zA-Z-]*)?:lambda:)?([a-z]{2}(-gov)?-[a-z]+-\\\\d{1}:)?(\\\\d{12}:)?(function:)?([a-zA-Z0-9-_]+)(:(\\\\$LATEST|[a-zA-Z0-9-_]+))?\"\
+    },\
+    \"FunctionResponseType\":{\
+      \"type\":\"string\",\
+      \"enum\":[\"ReportBatchItemFailures\"]\
+    },\
+    \"FunctionResponseTypeList\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"FunctionResponseType\"},\
+      \"max\":1,\
+      \"min\":0\
     },\
     \"FunctionVersion\":{\
       \"type\":\"string\",\
@@ -1597,6 +2464,28 @@
         }\
       }\
     },\
+    \"GetCodeSigningConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"CodeSigningConfigArn\"],\
+      \"members\":{\
+        \"CodeSigningConfigArn\":{\
+          \"shape\":\"CodeSigningConfigArn\",\
+          \"documentation\":\"<p>The The Amazon Resource Name (ARN) of the code signing configuration. </p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"CodeSigningConfigArn\"\
+        }\
+      }\
+    },\
+    \"GetCodeSigningConfigResponse\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"CodeSigningConfig\"],\
+      \"members\":{\
+        \"CodeSigningConfig\":{\
+          \"shape\":\"CodeSigningConfig\",\
+          \"documentation\":\"<p>The code signing configuration</p>\"\
+        }\
+      }\
+    },\
     \"GetEventSourceMappingRequest\":{\
       \"type\":\"structure\",\
       \"required\":[\"UUID\"],\
@@ -1606,6 +2495,56 @@
           \"documentation\":\"<p>The identifier of the event source mapping.</p>\",\
           \"location\":\"uri\",\
           \"locationName\":\"UUID\"\
+        }\
+      }\
+    },\
+    \"GetFunctionCodeSigningConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"FunctionName\"],\
+      \"members\":{\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"FunctionName\"\
+        }\
+      }\
+    },\
+    \"GetFunctionCodeSigningConfigResponse\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"CodeSigningConfigArn\",\
+        \"FunctionName\"\
+      ],\
+      \"members\":{\
+        \"CodeSigningConfigArn\":{\
+          \"shape\":\"CodeSigningConfigArn\",\
+          \"documentation\":\"<p>The The Amazon Resource Name (ARN) of the code signing configuration.</p>\"\
+        },\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\"\
+        }\
+      }\
+    },\
+    \"GetFunctionConcurrencyRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"FunctionName\"],\
+      \"members\":{\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"FunctionName\"\
+        }\
+      }\
+    },\
+    \"GetFunctionConcurrencyResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"ReservedConcurrentExecutions\":{\
+          \"shape\":\"ReservedConcurrentExecutions\",\
+          \"documentation\":\"<p>The number of simultaneous executions that are reserved for the function.</p>\"\
         }\
       }\
     },\
@@ -1622,6 +2561,24 @@
         \"Qualifier\":{\
           \"shape\":\"Qualifier\",\
           \"documentation\":\"<p>Specify a version or alias to get details about a published version of the function.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"Qualifier\"\
+        }\
+      }\
+    },\
+    \"GetFunctionEventInvokeConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"FunctionName\"],\
+      \"members\":{\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function, version, or alias.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code> (name-only), <code>my-function:v1</code> (with alias).</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>You can append a version number or alias to any of the formats. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"FunctionName\"\
+        },\
+        \"Qualifier\":{\
+          \"shape\":\"Qualifier\",\
+          \"documentation\":\"<p>A version number or alias name.</p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"Qualifier\"\
         }\
@@ -1801,13 +2758,119 @@
         }\
       }\
     },\
+    \"GetProvisionedConcurrencyConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"FunctionName\",\
+        \"Qualifier\"\
+      ],\
+      \"members\":{\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"FunctionName\"\
+        },\
+        \"Qualifier\":{\
+          \"shape\":\"Qualifier\",\
+          \"documentation\":\"<p>The version number or alias name.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"Qualifier\"\
+        }\
+      }\
+    },\
+    \"GetProvisionedConcurrencyConfigResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"RequestedProvisionedConcurrentExecutions\":{\
+          \"shape\":\"PositiveInteger\",\
+          \"documentation\":\"<p>The amount of provisioned concurrency requested.</p>\"\
+        },\
+        \"AvailableProvisionedConcurrentExecutions\":{\
+          \"shape\":\"NonNegativeInteger\",\
+          \"documentation\":\"<p>The amount of provisioned concurrency available.</p>\"\
+        },\
+        \"AllocatedProvisionedConcurrentExecutions\":{\
+          \"shape\":\"NonNegativeInteger\",\
+          \"documentation\":\"<p>The amount of provisioned concurrency allocated.</p>\"\
+        },\
+        \"Status\":{\
+          \"shape\":\"ProvisionedConcurrencyStatusEnum\",\
+          \"documentation\":\"<p>The status of the allocation process.</p>\"\
+        },\
+        \"StatusReason\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>For failed allocations, the reason that provisioned concurrency could not be allocated.</p>\"\
+        },\
+        \"LastModified\":{\
+          \"shape\":\"Timestamp\",\
+          \"documentation\":\"<p>The date and time that a user last updated the configuration, in <a href=\\\"https://www.iso.org/iso-8601-date-and-time-format.html\\\">ISO 8601 format</a>.</p>\"\
+        }\
+      }\
+    },\
     \"Handler\":{\
       \"type\":\"string\",\
       \"max\":128,\
       \"pattern\":\"[^\\\\s]+\"\
     },\
     \"HttpStatus\":{\"type\":\"integer\"},\
+    \"ImageConfig\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"EntryPoint\":{\
+          \"shape\":\"StringList\",\
+          \"documentation\":\"<p>Specifies the entry point to their application, which is typically the location of the runtime executable.</p>\"\
+        },\
+        \"Command\":{\
+          \"shape\":\"StringList\",\
+          \"documentation\":\"<p>Specifies parameters that you want to pass in with ENTRYPOINT. </p>\"\
+        },\
+        \"WorkingDirectory\":{\
+          \"shape\":\"WorkingDirectory\",\
+          \"documentation\":\"<p>Specifies the working directory.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>Configuration values that override the container image Dockerfile settings. See <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms\\\">Container settings</a>. </p>\"\
+    },\
+    \"ImageConfigError\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"ErrorCode\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>Error code.</p>\"\
+        },\
+        \"Message\":{\
+          \"shape\":\"SensitiveString\",\
+          \"documentation\":\"<p>Error message.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>Error response to GetFunctionConfiguration.</p>\"\
+    },\
+    \"ImageConfigResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"ImageConfig\":{\
+          \"shape\":\"ImageConfig\",\
+          \"documentation\":\"<p>Configuration values that override the container image Dockerfile.</p>\"\
+        },\
+        \"Error\":{\
+          \"shape\":\"ImageConfigError\",\
+          \"documentation\":\"<p>Error response to GetFunctionConfiguration.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>Response to GetFunctionConfiguration request.</p>\"\
+    },\
     \"Integer\":{\"type\":\"integer\"},\
+    \"InvalidCodeSignatureException\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Type\":{\"shape\":\"String\"},\
+        \"Message\":{\"shape\":\"String\"}\
+      },\
+      \"documentation\":\"<p>The code signature failed the integrity check. Lambda always blocks deployment if the integrity check fails, even if code signing policy is set to WARN.</p>\",\
+      \"error\":{\"httpStatusCode\":400},\
+      \"exception\":true\
+    },\
     \"InvalidParameterValueException\":{\
       \"type\":\"structure\",\
       \"members\":{\
@@ -1820,7 +2883,7 @@
           \"documentation\":\"<p>The exception message.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that AWS Lambda is unable to assume you will get this exception.</p>\",\
+      \"documentation\":\"<p>One of the parameters in the request is invalid.</p>\",\
       \"error\":{\"httpStatusCode\":400},\
       \"exception\":true\
     },\
@@ -1876,7 +2939,7 @@
         \"Type\":{\"shape\":\"String\"},\
         \"Message\":{\"shape\":\"String\"}\
       },\
-      \"documentation\":\"<p>AWS Lambda could not unzip the deployment package.</p>\",\
+      \"documentation\":\"<p>Lambda could not unzip the deployment package.</p>\",\
       \"error\":{\"httpStatusCode\":502},\
       \"exception\":true\
     },\
@@ -1931,7 +2994,7 @@
         },\
         \"FunctionError\":{\
           \"shape\":\"String\",\
-          \"documentation\":\"<p>If present, indicates that an error occurred during function execution. Details about the error are included in the response payload.</p> <ul> <li> <p> <code>Handled</code> - The runtime caught an error thrown by the function and formatted it into a JSON document.</p> </li> <li> <p> <code>Unhandled</code> - The runtime didn't handle the error. For example, the function ran out of memory or timed out.</p> </li> </ul>\",\
+          \"documentation\":\"<p>If present, indicates that an error occurred during function execution. Details about the error are included in the response payload.</p>\",\
           \"location\":\"header\",\
           \"locationName\":\"X-Amz-Function-Error\"\
         },\
@@ -2039,6 +3102,30 @@
       \"error\":{\"httpStatusCode\":502},\
       \"exception\":true\
     },\
+    \"LastUpdateStatus\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"Successful\",\
+        \"Failed\",\
+        \"InProgress\"\
+      ]\
+    },\
+    \"LastUpdateStatusReason\":{\"type\":\"string\"},\
+    \"LastUpdateStatusReasonCode\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"EniLimitExceeded\",\
+        \"InsufficientRolePermissions\",\
+        \"InvalidConfiguration\",\
+        \"InternalError\",\
+        \"SubnetOutOfIPAddresses\",\
+        \"InvalidSubnet\",\
+        \"InvalidSecurityGroup\",\
+        \"ImageDeleted\",\
+        \"ImageAccessDenied\",\
+        \"InvalidImage\"\
+      ]\
+    },\
     \"Layer\":{\
       \"type\":\"structure\",\
       \"members\":{\
@@ -2049,9 +3136,17 @@
         \"CodeSize\":{\
           \"shape\":\"Long\",\
           \"documentation\":\"<p>The size of the layer archive in bytes.</p>\"\
+        },\
+        \"SigningProfileVersionArn\":{\
+          \"shape\":\"Arn\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) for a signing profile version.</p>\"\
+        },\
+        \"SigningJobArn\":{\
+          \"shape\":\"Arn\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) of a signing job.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>An <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layer</a>.</p>\"\
+      \"documentation\":\"<p>An <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layer</a>.</p>\"\
     },\
     \"LayerArn\":{\
       \"type\":\"string\",\
@@ -2071,6 +3166,7 @@
     },\
     \"LayerPermissionAllowedAction\":{\
       \"type\":\"string\",\
+      \"max\":22,\
       \"pattern\":\"lambda:GetLayerVersion\"\
     },\
     \"LayerPermissionAllowedPrincipal\":{\
@@ -2100,10 +3196,10 @@
         },\
         \"ZipFile\":{\
           \"shape\":\"Blob\",\
-          \"documentation\":\"<p>The base64-encoded contents of the layer archive. AWS SDK and AWS CLI clients handle the encoding for you.</p>\"\
+          \"documentation\":\"<p>The base64-encoded contents of the layer archive. Amazon Web Services SDK and Amazon Web Services CLI clients handle the encoding for you.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>A ZIP archive that contains the contents of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layer</a>. You can specify either an Amazon S3 location, or upload a layer archive directly.</p>\"\
+      \"documentation\":\"<p>A ZIP archive that contains the contents of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layer</a>. You can specify either an Amazon S3 location, or upload a layer archive directly.</p>\"\
     },\
     \"LayerVersionContentOutput\":{\
       \"type\":\"structure\",\
@@ -2119,9 +3215,17 @@
         \"CodeSize\":{\
           \"shape\":\"Long\",\
           \"documentation\":\"<p>The size of the layer archive in bytes.</p>\"\
+        },\
+        \"SigningProfileVersionArn\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) for a signing profile version.</p>\"\
+        },\
+        \"SigningJobArn\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) of a signing job.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>Details about a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layer</a>.</p>\"\
+      \"documentation\":\"<p>Details about a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layer</a>.</p>\"\
     },\
     \"LayerVersionNumber\":{\"type\":\"long\"},\
     \"LayerVersionsList\":{\
@@ -2156,7 +3260,7 @@
           \"documentation\":\"<p>The layer's open-source license.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>Details about a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layer</a>.</p>\"\
+      \"documentation\":\"<p>Details about a version of an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layer</a>.</p>\"\
     },\
     \"LayersList\":{\
       \"type\":\"list\",\
@@ -2178,7 +3282,7 @@
           \"documentation\":\"<p>The newest version of the layer.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>Details about an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">AWS Lambda layer</a>.</p>\"\
+      \"documentation\":\"<p>Details about an <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">Lambda layer</a>.</p>\"\
     },\
     \"LayersReferenceList\":{\
       \"type\":\"list\",\
@@ -2231,12 +3335,42 @@
         }\
       }\
     },\
+    \"ListCodeSigningConfigsRequest\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Marker\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>Specify the pagination token that's returned by a previous request to retrieve the next page of results.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"Marker\"\
+        },\
+        \"MaxItems\":{\
+          \"shape\":\"MaxListItems\",\
+          \"documentation\":\"<p>Maximum number of items to return.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"MaxItems\"\
+        }\
+      }\
+    },\
+    \"ListCodeSigningConfigsResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"NextMarker\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>The pagination token that's included if more results are available.</p>\"\
+        },\
+        \"CodeSigningConfigs\":{\
+          \"shape\":\"CodeSigningConfigList\",\
+          \"documentation\":\"<p>The code signing configurations</p>\"\
+        }\
+      }\
+    },\
     \"ListEventSourceMappingsRequest\":{\
       \"type\":\"structure\",\
       \"members\":{\
         \"EventSourceArn\":{\
           \"shape\":\"Arn\",\
-          \"documentation\":\"<p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p> <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p> </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li> <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li> </ul>\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) of the event source.</p> <ul> <li> <p> <b>Amazon Kinesis</b> - The ARN of the data stream or a stream consumer.</p> </li> <li> <p> <b>Amazon DynamoDB Streams</b> - The ARN of the stream.</p> </li> <li> <p> <b>Amazon Simple Queue Service</b> - The ARN of the queue.</p> </li> <li> <p> <b>Amazon Managed Streaming for Apache Kafka</b> - The ARN of the cluster.</p> </li> </ul>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"EventSourceArn\"\
         },\
@@ -2254,7 +3388,7 @@
         },\
         \"MaxItems\":{\
           \"shape\":\"MaxListItems\",\
-          \"documentation\":\"<p>The maximum number of event source mappings to return.</p>\",\
+          \"documentation\":\"<p>The maximum number of event source mappings to return. Note that ListEventSourceMappings returns a maximum of 100 items in each response, even if you set the number higher.</p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"MaxItems\"\
         }\
@@ -2273,12 +3407,86 @@
         }\
       }\
     },\
+    \"ListFunctionEventInvokeConfigsRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"FunctionName\"],\
+      \"members\":{\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"FunctionName\"\
+        },\
+        \"Marker\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>Specify the pagination token that's returned by a previous request to retrieve the next page of results.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"Marker\"\
+        },\
+        \"MaxItems\":{\
+          \"shape\":\"MaxFunctionEventInvokeConfigListItems\",\
+          \"documentation\":\"<p>The maximum number of configurations to return.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"MaxItems\"\
+        }\
+      }\
+    },\
+    \"ListFunctionEventInvokeConfigsResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"FunctionEventInvokeConfigs\":{\
+          \"shape\":\"FunctionEventInvokeConfigList\",\
+          \"documentation\":\"<p>A list of configurations.</p>\"\
+        },\
+        \"NextMarker\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>The pagination token that's included if more results are available.</p>\"\
+        }\
+      }\
+    },\
+    \"ListFunctionsByCodeSigningConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"CodeSigningConfigArn\"],\
+      \"members\":{\
+        \"CodeSigningConfigArn\":{\
+          \"shape\":\"CodeSigningConfigArn\",\
+          \"documentation\":\"<p>The The Amazon Resource Name (ARN) of the code signing configuration.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"CodeSigningConfigArn\"\
+        },\
+        \"Marker\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>Specify the pagination token that's returned by a previous request to retrieve the next page of results.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"Marker\"\
+        },\
+        \"MaxItems\":{\
+          \"shape\":\"MaxListItems\",\
+          \"documentation\":\"<p>Maximum number of items to return.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"MaxItems\"\
+        }\
+      }\
+    },\
+    \"ListFunctionsByCodeSigningConfigResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"NextMarker\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>The pagination token that's included if more results are available.</p>\"\
+        },\
+        \"FunctionArns\":{\
+          \"shape\":\"FunctionArnList\",\
+          \"documentation\":\"<p>The function ARNs. </p>\"\
+        }\
+      }\
+    },\
     \"ListFunctionsRequest\":{\
       \"type\":\"structure\",\
       \"members\":{\
         \"MasterRegion\":{\
           \"shape\":\"MasterRegion\",\
-          \"documentation\":\"<p>For Lambda@Edge functions, the AWS Region of the master function. For example, <code>us-east-2</code> or <code>ALL</code>. If specified, you must set <code>FunctionVersion</code> to <code>ALL</code>.</p>\",\
+          \"documentation\":\"<p>For Lambda@Edge functions, the Region of the master function. For example, <code>us-east-1</code> filters the list of functions to only include Lambda@Edge functions replicated from a master function in US East (N. Virginia). If specified, you must set <code>FunctionVersion</code> to <code>ALL</code>.</p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"MasterRegion\"\
         },\
@@ -2296,7 +3504,7 @@
         },\
         \"MaxItems\":{\
           \"shape\":\"MaxListItems\",\
-          \"documentation\":\"<p>Specify a value between 1 and 50 to limit the number of functions in the response.</p>\",\
+          \"documentation\":\"<p>The maximum number of functions to return in the response. Note that <code>ListFunctions</code> returns a maximum of 50 items in each response, even if you set the number higher.</p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"MaxItems\"\
         }\
@@ -2395,6 +3603,43 @@
         }\
       }\
     },\
+    \"ListProvisionedConcurrencyConfigsRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"FunctionName\"],\
+      \"members\":{\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"FunctionName\"\
+        },\
+        \"Marker\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>Specify the pagination token that's returned by a previous request to retrieve the next page of results.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"Marker\"\
+        },\
+        \"MaxItems\":{\
+          \"shape\":\"MaxProvisionedConcurrencyConfigListItems\",\
+          \"documentation\":\"<p>Specify a number to limit the number of configurations returned.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"MaxItems\"\
+        }\
+      }\
+    },\
+    \"ListProvisionedConcurrencyConfigsResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"ProvisionedConcurrencyConfigs\":{\
+          \"shape\":\"ProvisionedConcurrencyConfigList\",\
+          \"documentation\":\"<p>A list of provisioned concurrency configurations.</p>\"\
+        },\
+        \"NextMarker\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>The pagination token that's included if more results are available.</p>\"\
+        }\
+      }\
+    },\
     \"ListTagsRequest\":{\
       \"type\":\"structure\",\
       \"required\":[\"Resource\"],\
@@ -2434,7 +3679,7 @@
         },\
         \"MaxItems\":{\
           \"shape\":\"MaxListItems\",\
-          \"documentation\":\"<p>Limit the number of versions that are returned.</p>\",\
+          \"documentation\":\"<p>The maximum number of versions to return. Note that <code>ListVersionsByFunction</code> returns a maximum of 50 items in each response, even if you set the number higher.</p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"MaxItems\"\
         }\
@@ -2453,6 +3698,11 @@
         }\
       }\
     },\
+    \"LocalMountPath\":{\
+      \"type\":\"string\",\
+      \"max\":160,\
+      \"pattern\":\"^/mnt/[a-zA-Z0-9-_.]+$\"\
+    },\
     \"LogType\":{\
       \"type\":\"string\",\
       \"enum\":[\
@@ -2465,6 +3715,11 @@
       \"type\":\"string\",\
       \"pattern\":\"ALL|[a-z]{2}(-gov)?-[a-z]+-\\\\d{1}\"\
     },\
+    \"MaxFunctionEventInvokeConfigListItems\":{\
+      \"type\":\"integer\",\
+      \"max\":50,\
+      \"min\":1\
+    },\
     \"MaxLayerListItems\":{\
       \"type\":\"integer\",\
       \"max\":50,\
@@ -2475,9 +3730,39 @@
       \"max\":10000,\
       \"min\":1\
     },\
+    \"MaxProvisionedConcurrencyConfigListItems\":{\
+      \"type\":\"integer\",\
+      \"max\":50,\
+      \"min\":1\
+    },\
+    \"MaximumBatchingWindowInSeconds\":{\
+      \"type\":\"integer\",\
+      \"max\":300,\
+      \"min\":0\
+    },\
+    \"MaximumEventAgeInSeconds\":{\
+      \"type\":\"integer\",\
+      \"max\":21600,\
+      \"min\":60\
+    },\
+    \"MaximumRecordAgeInSeconds\":{\
+      \"type\":\"integer\",\
+      \"max\":604800,\
+      \"min\":-1\
+    },\
+    \"MaximumRetryAttempts\":{\
+      \"type\":\"integer\",\
+      \"max\":2,\
+      \"min\":0\
+    },\
+    \"MaximumRetryAttemptsEventSourceMapping\":{\
+      \"type\":\"integer\",\
+      \"max\":10000,\
+      \"min\":-1\
+    },\
     \"MemorySize\":{\
       \"type\":\"integer\",\
-      \"max\":3008,\
+      \"max\":10240,\
       \"min\":128\
     },\
     \"NameSpacedFunctionArn\":{\
@@ -2496,9 +3781,46 @@
       \"min\":1,\
       \"pattern\":\"([a-zA-Z0-9-_.]+)\"\
     },\
+    \"NonNegativeInteger\":{\
+      \"type\":\"integer\",\
+      \"min\":0\
+    },\
+    \"OnFailure\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Destination\":{\
+          \"shape\":\"DestinationArn\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) of the destination resource.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>A destination for events that failed processing.</p>\"\
+    },\
+    \"OnSuccess\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Destination\":{\
+          \"shape\":\"DestinationArn\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) of the destination resource.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>A destination for events that were processed successfully.</p>\"\
+    },\
     \"OrganizationId\":{\
       \"type\":\"string\",\
+      \"max\":34,\
       \"pattern\":\"o-[a-z0-9]{10,32}\"\
+    },\
+    \"PackageType\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"Zip\",\
+        \"Image\"\
+      ]\
+    },\
+    \"ParallelizationFactor\":{\
+      \"type\":\"integer\",\
+      \"max\":10,\
+      \"min\":1\
     },\
     \"PolicyLengthExceededException\":{\
       \"type\":\"structure\",\
@@ -2509,6 +3831,10 @@
       \"documentation\":\"<p>The permissions policy for the resource is too large. <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/limits.html\\\">Learn more</a> </p>\",\
       \"error\":{\"httpStatusCode\":400},\
       \"exception\":true\
+    },\
+    \"PositiveInteger\":{\
+      \"type\":\"integer\",\
+      \"min\":1\
     },\
     \"PreconditionFailedException\":{\
       \"type\":\"structure\",\
@@ -2528,7 +3854,63 @@
     },\
     \"Principal\":{\
       \"type\":\"string\",\
-      \"pattern\":\".*\"\
+      \"pattern\":\"[^\\\\s]+\"\
+    },\
+    \"ProvisionedConcurrencyConfigList\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"ProvisionedConcurrencyConfigListItem\"}\
+    },\
+    \"ProvisionedConcurrencyConfigListItem\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"FunctionArn\":{\
+          \"shape\":\"FunctionArn\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) of the alias or version.</p>\"\
+        },\
+        \"RequestedProvisionedConcurrentExecutions\":{\
+          \"shape\":\"PositiveInteger\",\
+          \"documentation\":\"<p>The amount of provisioned concurrency requested.</p>\"\
+        },\
+        \"AvailableProvisionedConcurrentExecutions\":{\
+          \"shape\":\"NonNegativeInteger\",\
+          \"documentation\":\"<p>The amount of provisioned concurrency available.</p>\"\
+        },\
+        \"AllocatedProvisionedConcurrentExecutions\":{\
+          \"shape\":\"NonNegativeInteger\",\
+          \"documentation\":\"<p>The amount of provisioned concurrency allocated.</p>\"\
+        },\
+        \"Status\":{\
+          \"shape\":\"ProvisionedConcurrencyStatusEnum\",\
+          \"documentation\":\"<p>The status of the allocation process.</p>\"\
+        },\
+        \"StatusReason\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>For failed allocations, the reason that provisioned concurrency could not be allocated.</p>\"\
+        },\
+        \"LastModified\":{\
+          \"shape\":\"Timestamp\",\
+          \"documentation\":\"<p>The date and time that a user last updated the configuration, in <a href=\\\"https://www.iso.org/iso-8601-date-and-time-format.html\\\">ISO 8601 format</a>.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>Details about the provisioned concurrency configuration for a function alias or version.</p>\"\
+    },\
+    \"ProvisionedConcurrencyConfigNotFoundException\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Type\":{\"shape\":\"String\"},\
+        \"message\":{\"shape\":\"String\"}\
+      },\
+      \"documentation\":\"<p>The specified configuration does not exist.</p>\",\
+      \"error\":{\"httpStatusCode\":404},\
+      \"exception\":true\
+    },\
+    \"ProvisionedConcurrencyStatusEnum\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"IN_PROGRESS\",\
+        \"READY\",\
+        \"FAILED\"\
+      ]\
     },\
     \"PublishLayerVersionRequest\":{\
       \"type\":\"structure\",\
@@ -2622,6 +4004,42 @@
         }\
       }\
     },\
+    \"PutFunctionCodeSigningConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"CodeSigningConfigArn\",\
+        \"FunctionName\"\
+      ],\
+      \"members\":{\
+        \"CodeSigningConfigArn\":{\
+          \"shape\":\"CodeSigningConfigArn\",\
+          \"documentation\":\"<p>The The Amazon Resource Name (ARN) of the code signing configuration.</p>\"\
+        },\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"FunctionName\"\
+        }\
+      }\
+    },\
+    \"PutFunctionCodeSigningConfigResponse\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"CodeSigningConfigArn\",\
+        \"FunctionName\"\
+      ],\
+      \"members\":{\
+        \"CodeSigningConfigArn\":{\
+          \"shape\":\"CodeSigningConfigArn\",\
+          \"documentation\":\"<p>The The Amazon Resource Name (ARN) of the code signing configuration.</p>\"\
+        },\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\"\
+        }\
+      }\
+    },\
     \"PutFunctionConcurrencyRequest\":{\
       \"type\":\"structure\",\
       \"required\":[\
@@ -2641,11 +4059,108 @@
         }\
       }\
     },\
+    \"PutFunctionEventInvokeConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"FunctionName\"],\
+      \"members\":{\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function, version, or alias.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code> (name-only), <code>my-function:v1</code> (with alias).</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>You can append a version number or alias to any of the formats. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"FunctionName\"\
+        },\
+        \"Qualifier\":{\
+          \"shape\":\"Qualifier\",\
+          \"documentation\":\"<p>A version number or alias name.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"Qualifier\"\
+        },\
+        \"MaximumRetryAttempts\":{\
+          \"shape\":\"MaximumRetryAttempts\",\
+          \"documentation\":\"<p>The maximum number of times to retry when the function returns an error.</p>\"\
+        },\
+        \"MaximumEventAgeInSeconds\":{\
+          \"shape\":\"MaximumEventAgeInSeconds\",\
+          \"documentation\":\"<p>The maximum age of a request that Lambda sends to a function for processing.</p>\"\
+        },\
+        \"DestinationConfig\":{\
+          \"shape\":\"DestinationConfig\",\
+          \"documentation\":\"<p>A destination for events after they have been sent to a function for processing.</p> <p class=\\\"title\\\"> <b>Destinations</b> </p> <ul> <li> <p> <b>Function</b> - The Amazon Resource Name (ARN) of a Lambda function.</p> </li> <li> <p> <b>Queue</b> - The ARN of an SQS queue.</p> </li> <li> <p> <b>Topic</b> - The ARN of an SNS topic.</p> </li> <li> <p> <b>Event Bus</b> - The ARN of an Amazon EventBridge event bus.</p> </li> </ul>\"\
+        }\
+      }\
+    },\
+    \"PutProvisionedConcurrencyConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"FunctionName\",\
+        \"Qualifier\",\
+        \"ProvisionedConcurrentExecutions\"\
+      ],\
+      \"members\":{\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code>.</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"FunctionName\"\
+        },\
+        \"Qualifier\":{\
+          \"shape\":\"Qualifier\",\
+          \"documentation\":\"<p>The version number or alias name.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"Qualifier\"\
+        },\
+        \"ProvisionedConcurrentExecutions\":{\
+          \"shape\":\"PositiveInteger\",\
+          \"documentation\":\"<p>The amount of provisioned concurrency to allocate for the version or alias.</p>\"\
+        }\
+      }\
+    },\
+    \"PutProvisionedConcurrencyConfigResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"RequestedProvisionedConcurrentExecutions\":{\
+          \"shape\":\"PositiveInteger\",\
+          \"documentation\":\"<p>The amount of provisioned concurrency requested.</p>\"\
+        },\
+        \"AvailableProvisionedConcurrentExecutions\":{\
+          \"shape\":\"NonNegativeInteger\",\
+          \"documentation\":\"<p>The amount of provisioned concurrency available.</p>\"\
+        },\
+        \"AllocatedProvisionedConcurrentExecutions\":{\
+          \"shape\":\"NonNegativeInteger\",\
+          \"documentation\":\"<p>The amount of provisioned concurrency allocated.</p>\"\
+        },\
+        \"Status\":{\
+          \"shape\":\"ProvisionedConcurrencyStatusEnum\",\
+          \"documentation\":\"<p>The status of the allocation process.</p>\"\
+        },\
+        \"StatusReason\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>For failed allocations, the reason that provisioned concurrency could not be allocated.</p>\"\
+        },\
+        \"LastModified\":{\
+          \"shape\":\"Timestamp\",\
+          \"documentation\":\"<p>The date and time that a user last updated the configuration, in <a href=\\\"https://www.iso.org/iso-8601-date-and-time-format.html\\\">ISO 8601 format</a>.</p>\"\
+        }\
+      }\
+    },\
     \"Qualifier\":{\
       \"type\":\"string\",\
       \"max\":128,\
       \"min\":1,\
       \"pattern\":\"(|[a-zA-Z0-9$_-]+)\"\
+    },\
+    \"Queue\":{\
+      \"type\":\"string\",\
+      \"max\":1000,\
+      \"min\":1,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
+    },\
+    \"Queues\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"Queue\"},\
+      \"max\":1,\
+      \"min\":1\
     },\
     \"RemoveLayerVersionPermissionRequest\":{\
       \"type\":\"structure\",\
@@ -2744,7 +4259,7 @@
           \"documentation\":\"<p>The exception message.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>The resource already exists.</p>\",\
+      \"documentation\":\"<p>The resource already exists, or another operation is in progress.</p>\",\
       \"error\":{\"httpStatusCode\":409},\
       \"exception\":true\
     },\
@@ -2754,7 +4269,7 @@
         \"Type\":{\"shape\":\"String\"},\
         \"Message\":{\"shape\":\"String\"}\
       },\
-      \"documentation\":\"<p>The operation conflicts with the resource's availability. For example, you attempted to update an EventSource Mapping in CREATING, or tried to delete a EventSource mapping currently in the UPDATING state. </p>\",\
+      \"documentation\":\"<p>The operation conflicts with the resource's availability. For example, you attempted to update an EventSource Mapping in CREATING, or tried to delete a EventSource mapping currently in the UPDATING state.</p>\",\
       \"error\":{\"httpStatusCode\":400},\
       \"exception\":true\
     },\
@@ -2764,8 +4279,24 @@
         \"Type\":{\"shape\":\"String\"},\
         \"Message\":{\"shape\":\"String\"}\
       },\
-      \"documentation\":\"<p>The resource (for example, a Lambda function or access policy statement) specified in the request does not exist.</p>\",\
+      \"documentation\":\"<p>The resource specified in the request does not exist.</p>\",\
       \"error\":{\"httpStatusCode\":404},\
+      \"exception\":true\
+    },\
+    \"ResourceNotReadyException\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Type\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>The exception type.</p>\"\
+        },\
+        \"message\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>The exception message.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>The function is inactive and its VPC connection is no longer available. Wait for the VPC connection to reestablish and try again.</p>\",\
+      \"error\":{\"httpStatusCode\":502},\
       \"exception\":true\
     },\
     \"RoleArn\":{\
@@ -2779,17 +4310,26 @@
         \"nodejs4.3\",\
         \"nodejs6.10\",\
         \"nodejs8.10\",\
+        \"nodejs10.x\",\
+        \"nodejs12.x\",\
+        \"nodejs14.x\",\
         \"java8\",\
+        \"java8.al2\",\
+        \"java11\",\
         \"python2.7\",\
         \"python3.6\",\
         \"python3.7\",\
+        \"python3.8\",\
         \"dotnetcore1.0\",\
         \"dotnetcore2.0\",\
         \"dotnetcore2.1\",\
+        \"dotnetcore3.1\",\
         \"nodejs4.3-edge\",\
         \"go1.x\",\
         \"ruby2.5\",\
-        \"provided\"\
+        \"ruby2.7\",\
+        \"provided\",\
+        \"provided.al2\"\
       ]\
     },\
     \"S3Bucket\":{\
@@ -2814,6 +4354,16 @@
       \"member\":{\"shape\":\"SecurityGroupId\"},\
       \"max\":5\
     },\
+    \"SelfManagedEventSource\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Endpoints\":{\
+          \"shape\":\"Endpoints\",\
+          \"documentation\":\"<p>The list of bootstrap servers for your Kafka brokers in the following format: <code>\\\"KAFKA_BOOTSTRAP_SERVERS\\\": [\\\"abc.xyz.com:xxxx\\\",\\\"abc2.xyz.com:xxxx\\\"]</code>.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>The self-managed Apache Kafka cluster for your event source.</p>\"\
+    },\
     \"SensitiveString\":{\
       \"type\":\"string\",\
       \"sensitive\":true\
@@ -2824,13 +4374,79 @@
         \"Type\":{\"shape\":\"String\"},\
         \"Message\":{\"shape\":\"String\"}\
       },\
-      \"documentation\":\"<p>The AWS Lambda service encountered an internal error.</p>\",\
+      \"documentation\":\"<p>The Lambda service encountered an internal error.</p>\",\
       \"error\":{\"httpStatusCode\":500},\
       \"exception\":true\
     },\
+    \"SigningProfileVersionArns\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"Arn\"},\
+      \"max\":20,\
+      \"min\":1\
+    },\
+    \"SourceAccessConfiguration\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"Type\":{\
+          \"shape\":\"SourceAccessType\",\
+          \"documentation\":\"<p>The type of authentication protocol, VPC components, or virtual host for your event source. For example: <code>\\\"Type\\\":\\\"SASL_SCRAM_512_AUTH\\\"</code>.</p> <ul> <li> <p> <code>BASIC_AUTH</code> - (Amazon MQ) The Secrets Manager secret that stores your broker credentials.</p> </li> <li> <p> <code>BASIC_AUTH</code> - (Self-managed Apache Kafka) The Secrets Manager ARN of your secret key used for SASL/PLAIN authentication of your Apache Kafka brokers.</p> </li> <li> <p> <code>VPC_SUBNET</code> - The subnets associated with your VPC. Lambda connects to these subnets to fetch data from your self-managed Apache Kafka cluster.</p> </li> <li> <p> <code>VPC_SECURITY_GROUP</code> - The VPC security group used to manage access to your self-managed Apache Kafka brokers.</p> </li> <li> <p> <code>SASL_SCRAM_256_AUTH</code> - The Secrets Manager ARN of your secret key used for SASL SCRAM-256 authentication of your self-managed Apache Kafka brokers.</p> </li> <li> <p> <code>SASL_SCRAM_512_AUTH</code> - The Secrets Manager ARN of your secret key used for SASL SCRAM-512 authentication of your self-managed Apache Kafka brokers.</p> </li> <li> <p> <code>VIRTUAL_HOST</code> - (Amazon MQ) The name of the virtual host in your RabbitMQ broker. Lambda uses this RabbitMQ host as the event source.</p> </li> </ul>\"\
+        },\
+        \"URI\":{\
+          \"shape\":\"URI\",\
+          \"documentation\":\"<p>The value for your chosen configuration in <code>Type</code>. For example: <code>\\\"URI\\\": \\\"arn:aws:secretsmanager:us-east-1:01234567890:secret:MyBrokerSecretName\\\"</code>.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>To secure and define access to your event source, you can specify the authentication protocol, VPC components, or virtual host.</p>\"\
+    },\
+    \"SourceAccessConfigurations\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"SourceAccessConfiguration\"},\
+      \"max\":22,\
+      \"min\":0\
+    },\
+    \"SourceAccessType\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"BASIC_AUTH\",\
+        \"VPC_SUBNET\",\
+        \"VPC_SECURITY_GROUP\",\
+        \"SASL_SCRAM_512_AUTH\",\
+        \"SASL_SCRAM_256_AUTH\",\
+        \"VIRTUAL_HOST\"\
+      ]\
+    },\
     \"SourceOwner\":{\
       \"type\":\"string\",\
+      \"max\":12,\
       \"pattern\":\"\\\\d{12}\"\
+    },\
+    \"State\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"Pending\",\
+        \"Active\",\
+        \"Inactive\",\
+        \"Failed\"\
+      ]\
+    },\
+    \"StateReason\":{\"type\":\"string\"},\
+    \"StateReasonCode\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"Idle\",\
+        \"Creating\",\
+        \"Restoring\",\
+        \"EniLimitExceeded\",\
+        \"InsufficientRolePermissions\",\
+        \"InvalidConfiguration\",\
+        \"InternalError\",\
+        \"SubnetOutOfIPAddresses\",\
+        \"InvalidSubnet\",\
+        \"InvalidSecurityGroup\",\
+        \"ImageDeleted\",\
+        \"ImageAccessDenied\",\
+        \"InvalidImage\"\
+      ]\
     },\
     \"StatementId\":{\
       \"type\":\"string\",\
@@ -2839,13 +4455,18 @@
       \"pattern\":\"([a-zA-Z0-9-_]+)\"\
     },\
     \"String\":{\"type\":\"string\"},\
+    \"StringList\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"String\"},\
+      \"max\":1500\
+    },\
     \"SubnetIPAddressLimitReachedException\":{\
       \"type\":\"structure\",\
       \"members\":{\
         \"Type\":{\"shape\":\"String\"},\
         \"Message\":{\"shape\":\"String\"}\
       },\
-      \"documentation\":\"<p>AWS Lambda was not able to set up VPC access for the Lambda function because one or more configured subnets has no available IP addresses.</p>\",\
+      \"documentation\":\"<p>Lambda was not able to set up VPC access for the Lambda function because one or more configured subnets has no available IP addresses.</p>\",\
       \"error\":{\"httpStatusCode\":502},\
       \"exception\":true\
     },\
@@ -2913,9 +4534,21 @@
         \"message\":{\"shape\":\"String\"},\
         \"Reason\":{\"shape\":\"ThrottleReason\"}\
       },\
-      \"documentation\":\"<p>Request throughput limit exceeded.</p>\",\
+      \"documentation\":\"<p>The request throughput limit was exceeded.</p>\",\
       \"error\":{\"httpStatusCode\":429},\
       \"exception\":true\
+    },\
+    \"Topic\":{\
+      \"type\":\"string\",\
+      \"max\":249,\
+      \"min\":1,\
+      \"pattern\":\"^[^.]([a-zA-Z0-9\\\\-_.]+)\"\
+    },\
+    \"Topics\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"Topic\"},\
+      \"max\":1,\
+      \"min\":1\
     },\
     \"TracingConfig\":{\
       \"type\":\"structure\",\
@@ -2925,7 +4558,7 @@
           \"documentation\":\"<p>The tracing mode.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>The function's AWS X-Ray tracing configuration.</p>\"\
+      \"documentation\":\"<p>The function's <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html\\\">X-Ray</a> tracing configuration. To sample and record incoming requests, set <code>Mode</code> to <code>Active</code>.</p>\"\
     },\
     \"TracingConfigResponse\":{\
       \"type\":\"structure\",\
@@ -2935,7 +4568,7 @@
           \"documentation\":\"<p>The tracing mode.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>The function's AWS X-Ray tracing configuration.</p>\"\
+      \"documentation\":\"<p>The function's X-Ray tracing configuration.</p>\"\
     },\
     \"TracingMode\":{\
       \"type\":\"string\",\
@@ -2943,6 +4576,17 @@
         \"Active\",\
         \"PassThrough\"\
       ]\
+    },\
+    \"TumblingWindowInSeconds\":{\
+      \"type\":\"integer\",\
+      \"max\":900,\
+      \"min\":0\
+    },\
+    \"URI\":{\
+      \"type\":\"string\",\
+      \"max\":200,\
+      \"min\":1,\
+      \"pattern\":\"[a-zA-Z0-9-\\\\/*:_+=.@-]*\"\
     },\
     \"UnreservedConcurrentExecutions\":{\
       \"type\":\"integer\",\
@@ -3008,11 +4652,45 @@
         },\
         \"RoutingConfig\":{\
           \"shape\":\"AliasRoutingConfiguration\",\
-          \"documentation\":\"<p>The <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html\\\">routing configuration</a> of the alias.</p>\"\
+          \"documentation\":\"<p>The <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html#configuring-alias-routing\\\">routing configuration</a> of the alias.</p>\"\
         },\
         \"RevisionId\":{\
           \"shape\":\"String\",\
           \"documentation\":\"<p>Only update the alias if the revision ID matches the ID that's specified. Use this option to avoid modifying an alias that has changed since you last read it.</p>\"\
+        }\
+      }\
+    },\
+    \"UpdateCodeSigningConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"CodeSigningConfigArn\"],\
+      \"members\":{\
+        \"CodeSigningConfigArn\":{\
+          \"shape\":\"CodeSigningConfigArn\",\
+          \"documentation\":\"<p>The The Amazon Resource Name (ARN) of the code signing configuration.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"CodeSigningConfigArn\"\
+        },\
+        \"Description\":{\
+          \"shape\":\"Description\",\
+          \"documentation\":\"<p>Descriptive name for this code signing configuration.</p>\"\
+        },\
+        \"AllowedPublishers\":{\
+          \"shape\":\"AllowedPublishers\",\
+          \"documentation\":\"<p>Signing profiles for this code signing configuration.</p>\"\
+        },\
+        \"CodeSigningPolicies\":{\
+          \"shape\":\"CodeSigningPolicies\",\
+          \"documentation\":\"<p>The code signing policy.</p>\"\
+        }\
+      }\
+    },\
+    \"UpdateCodeSigningConfigResponse\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"CodeSigningConfig\"],\
+      \"members\":{\
+        \"CodeSigningConfig\":{\
+          \"shape\":\"CodeSigningConfig\",\
+          \"documentation\":\"<p>The code signing configuration</p>\"\
         }\
       }\
     },\
@@ -3032,11 +4710,47 @@
         },\
         \"Enabled\":{\
           \"shape\":\"Enabled\",\
-          \"documentation\":\"<p>Disables the event source mapping to pause polling and invocation.</p>\"\
+          \"documentation\":\"<p>If true, the event source mapping is active. Set to false to pause polling and invocation.</p>\"\
         },\
         \"BatchSize\":{\
           \"shape\":\"BatchSize\",\
-          \"documentation\":\"<p>The maximum number of items to retrieve in a single batch.</p> <ul> <li> <p> <b>Amazon Kinesis</b> - Default 100. Max 10,000.</p> </li> <li> <p> <b>Amazon DynamoDB Streams</b> - Default 100. Max 1,000.</p> </li> <li> <p> <b>Amazon Simple Queue Service</b> - Default 10. Max 10.</p> </li> </ul>\"\
+          \"documentation\":\"<p>The maximum number of items to retrieve in a single batch.</p> <ul> <li> <p> <b>Amazon Kinesis</b> - Default 100. Max 10,000.</p> </li> <li> <p> <b>Amazon DynamoDB Streams</b> - Default 100. Max 1,000.</p> </li> <li> <p> <b>Amazon Simple Queue Service</b> - Default 10. For standard queues the max is 10,000. For FIFO queues the max is 10.</p> </li> <li> <p> <b>Amazon Managed Streaming for Apache Kafka</b> - Default 100. Max 10,000.</p> </li> <li> <p> <b>Self-Managed Apache Kafka</b> - Default 100. Max 10,000.</p> </li> </ul>\"\
+        },\
+        \"MaximumBatchingWindowInSeconds\":{\
+          \"shape\":\"MaximumBatchingWindowInSeconds\",\
+          \"documentation\":\"<p>(Streams and SQS standard queues) The maximum amount of time to gather records before invoking the function, in seconds.</p>\"\
+        },\
+        \"DestinationConfig\":{\
+          \"shape\":\"DestinationConfig\",\
+          \"documentation\":\"<p>(Streams only) An Amazon SQS queue or Amazon SNS topic destination for discarded records.</p>\"\
+        },\
+        \"MaximumRecordAgeInSeconds\":{\
+          \"shape\":\"MaximumRecordAgeInSeconds\",\
+          \"documentation\":\"<p>(Streams only) Discard records older than the specified age. The default value is infinite (-1).</p>\"\
+        },\
+        \"BisectBatchOnFunctionError\":{\
+          \"shape\":\"BisectBatchOnFunctionError\",\
+          \"documentation\":\"<p>(Streams only) If the function returns an error, split the batch in two and retry.</p>\"\
+        },\
+        \"MaximumRetryAttempts\":{\
+          \"shape\":\"MaximumRetryAttemptsEventSourceMapping\",\
+          \"documentation\":\"<p>(Streams only) Discard records after the specified number of retries. The default value is infinite (-1). When set to infinite (-1), failed records will be retried until the record expires.</p>\"\
+        },\
+        \"ParallelizationFactor\":{\
+          \"shape\":\"ParallelizationFactor\",\
+          \"documentation\":\"<p>(Streams only) The number of batches to process from each shard concurrently.</p>\"\
+        },\
+        \"SourceAccessConfigurations\":{\
+          \"shape\":\"SourceAccessConfigurations\",\
+          \"documentation\":\"<p>An array of authentication protocols or VPC components required to secure your event source.</p>\"\
+        },\
+        \"TumblingWindowInSeconds\":{\
+          \"shape\":\"TumblingWindowInSeconds\",\
+          \"documentation\":\"<p>(Streams only) The duration in seconds of a processing window. The range is between 1 second up to 900 seconds.</p>\"\
+        },\
+        \"FunctionResponseTypes\":{\
+          \"shape\":\"FunctionResponseTypeList\",\
+          \"documentation\":\"<p>(Streams only) A list of current response type enums applied to the event source mapping.</p>\"\
         }\
       }\
     },\
@@ -3052,11 +4766,11 @@
         },\
         \"ZipFile\":{\
           \"shape\":\"Blob\",\
-          \"documentation\":\"<p>The base64-encoded contents of the deployment package. AWS SDK and AWS CLI clients handle the encoding for you.</p>\"\
+          \"documentation\":\"<p>The base64-encoded contents of the deployment package. Amazon Web Services SDK and Amazon Web Services CLI clients handle the encoding for you.</p>\"\
         },\
         \"S3Bucket\":{\
           \"shape\":\"S3Bucket\",\
-          \"documentation\":\"<p>An Amazon S3 bucket in the same AWS Region as your function. The bucket can be in a different AWS account.</p>\"\
+          \"documentation\":\"<p>An Amazon S3 bucket in the same Amazon Web Services Region as your function. The bucket can be in a different Amazon Web Services account.</p>\"\
         },\
         \"S3Key\":{\
           \"shape\":\"S3Key\",\
@@ -3065,6 +4779,10 @@
         \"S3ObjectVersion\":{\
           \"shape\":\"S3ObjectVersion\",\
           \"documentation\":\"<p>For versioned objects, the version of the deployment package object to use.</p>\"\
+        },\
+        \"ImageUri\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>URI of a container image in the Amazon ECR registry.</p>\"\
         },\
         \"Publish\":{\
           \"shape\":\"Boolean\",\
@@ -3104,15 +4822,15 @@
         },\
         \"Timeout\":{\
           \"shape\":\"Timeout\",\
-          \"documentation\":\"<p>The amount of time that Lambda allows a function to run before stopping it. The default is 3 seconds. The maximum allowed value is 900 seconds.</p>\"\
+          \"documentation\":\"<p>The amount of time that Lambda allows a function to run before stopping it. The default is 3 seconds. The maximum allowed value is 900 seconds. For additional information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html\\\">Lambda execution environment</a>.</p>\"\
         },\
         \"MemorySize\":{\
           \"shape\":\"MemorySize\",\
-          \"documentation\":\"<p>The amount of memory that your function has access to. Increasing the function's memory also increases its CPU allocation. The default value is 128 MB. The value must be a multiple of 64 MB.</p>\"\
+          \"documentation\":\"<p>The amount of <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html\\\">memory available to the function</a> at runtime. Increasing the function memory also increases its CPU allocation. The default value is 128 MB. The value can be any multiple of 1 MB.</p>\"\
         },\
         \"VpcConfig\":{\
           \"shape\":\"VpcConfig\",\
-          \"documentation\":\"<p>For network connectivity to AWS resources in a VPC, specify a list of security groups and subnets in the VPC. When you connect a function to a VPC, it can only access resources and the internet through that VPC. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/vpc.html\\\">VPC Settings</a>.</p>\"\
+          \"documentation\":\"<p>For network connectivity to Amazon Web Services resources in a VPC, specify a list of security groups and subnets in the VPC. When you connect a function to a VPC, it can only access resources and the internet through that VPC. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html\\\">VPC Settings</a>.</p>\"\
         },\
         \"Environment\":{\
           \"shape\":\"Environment\",\
@@ -3124,15 +4842,15 @@
         },\
         \"DeadLetterConfig\":{\
           \"shape\":\"DeadLetterConfig\",\
-          \"documentation\":\"<p>A dead letter queue configuration that specifies the queue or topic where Lambda sends asynchronous events when they fail processing. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/dlq.html\\\">Dead Letter Queues</a>.</p>\"\
+          \"documentation\":\"<p>A dead letter queue configuration that specifies the queue or topic where Lambda sends asynchronous events when they fail processing. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq\\\">Dead Letter Queues</a>.</p>\"\
         },\
         \"KMSKeyArn\":{\
           \"shape\":\"KMSKeyArn\",\
-          \"documentation\":\"<p>The ARN of the AWS Key Management Service (AWS KMS) key that's used to encrypt your function's environment variables. If it's not provided, AWS Lambda uses a default service key.</p>\"\
+          \"documentation\":\"<p>The ARN of the Amazon Web Services Key Management Service (KMS) key that's used to encrypt your function's environment variables. If it's not provided, Lambda uses a default service key.</p>\"\
         },\
         \"TracingConfig\":{\
           \"shape\":\"TracingConfig\",\
-          \"documentation\":\"<p>Set <code>Mode</code> to <code>Active</code> to sample and trace a subset of incoming requests with AWS X-Ray.</p>\"\
+          \"documentation\":\"<p>Set <code>Mode</code> to <code>Active</code> to sample and trace a subset of incoming requests with <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html\\\">X-Ray</a>.</p>\"\
         },\
         \"RevisionId\":{\
           \"shape\":\"String\",\
@@ -3141,6 +4859,44 @@
         \"Layers\":{\
           \"shape\":\"LayerList\",\
           \"documentation\":\"<p>A list of <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html\\\">function layers</a> to add to the function's execution environment. Specify each layer by its ARN, including the version.</p>\"\
+        },\
+        \"FileSystemConfigs\":{\
+          \"shape\":\"FileSystemConfigList\",\
+          \"documentation\":\"<p>Connection settings for an Amazon EFS file system.</p>\"\
+        },\
+        \"ImageConfig\":{\
+          \"shape\":\"ImageConfig\",\
+          \"documentation\":\"<p> <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/images-parms.html\\\">Container image configuration values</a> that override the values in the container image Dockerfile.</p>\"\
+        }\
+      }\
+    },\
+    \"UpdateFunctionEventInvokeConfigRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"FunctionName\"],\
+      \"members\":{\
+        \"FunctionName\":{\
+          \"shape\":\"FunctionName\",\
+          \"documentation\":\"<p>The name of the Lambda function, version, or alias.</p> <p class=\\\"title\\\"> <b>Name formats</b> </p> <ul> <li> <p> <b>Function name</b> - <code>my-function</code> (name-only), <code>my-function:v1</code> (with alias).</p> </li> <li> <p> <b>Function ARN</b> - <code>arn:aws:lambda:us-west-2:123456789012:function:my-function</code>.</p> </li> <li> <p> <b>Partial ARN</b> - <code>123456789012:function:my-function</code>.</p> </li> </ul> <p>You can append a version number or alias to any of the formats. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"FunctionName\"\
+        },\
+        \"Qualifier\":{\
+          \"shape\":\"Qualifier\",\
+          \"documentation\":\"<p>A version number or alias name.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"Qualifier\"\
+        },\
+        \"MaximumRetryAttempts\":{\
+          \"shape\":\"MaximumRetryAttempts\",\
+          \"documentation\":\"<p>The maximum number of times to retry when the function returns an error.</p>\"\
+        },\
+        \"MaximumEventAgeInSeconds\":{\
+          \"shape\":\"MaximumEventAgeInSeconds\",\
+          \"documentation\":\"<p>The maximum age of a request that Lambda sends to a function for processing.</p>\"\
+        },\
+        \"DestinationConfig\":{\
+          \"shape\":\"DestinationConfig\",\
+          \"documentation\":\"<p>A destination for events after they have been sent to a function for processing.</p> <p class=\\\"title\\\"> <b>Destinations</b> </p> <ul> <li> <p> <b>Function</b> - The Amazon Resource Name (ARN) of a Lambda function.</p> </li> <li> <p> <b>Queue</b> - The ARN of an SQS queue.</p> </li> <li> <p> <b>Topic</b> - The ARN of an SNS topic.</p> </li> <li> <p> <b>Event Bus</b> - The ARN of an Amazon EventBridge event bus.</p> </li> </ul>\"\
         }\
       }\
     },\
@@ -3162,7 +4918,7 @@
           \"documentation\":\"<p>A list of VPC security groups IDs.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>The VPC security groups and subnets that are attached to a Lambda function.</p>\"\
+      \"documentation\":\"<p>The VPC security groups and subnets that are attached to a Lambda function. For more information, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html\\\">VPC Settings</a>.</p>\"\
     },\
     \"VpcConfigResponse\":{\
       \"type\":\"structure\",\
@@ -3187,9 +4943,13 @@
       \"type\":\"double\",\
       \"max\":1.0,\
       \"min\":0.0\
+    },\
+    \"WorkingDirectory\":{\
+      \"type\":\"string\",\
+      \"max\":1000\
     }\
   },\
-  \"documentation\":\"<fullname>AWS Lambda</fullname> <p> <b>Overview</b> </p> <p>This is the <i>AWS Lambda API Reference</i>. The AWS Lambda Developer Guide provides additional information. For the service overview, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/welcome.html\\\">What is AWS Lambda</a>, and for information about how the service works, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html\\\">AWS Lambda: How it Works</a> in the <b>AWS Lambda Developer Guide</b>.</p>\"\
+  \"documentation\":\"<fullname>Lambda</fullname> <p> <b>Overview</b> </p> <p>This is the <i>Lambda API Reference</i>. The Lambda Developer Guide provides additional information. For the service overview, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/welcome.html\\\">What is Lambda</a>, and for information about how the service works, see <a href=\\\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html\\\">Lambda: How it Works</a> in the <b>Lambda Developer Guide</b>.</p>\"\
 }\
 ";
 }

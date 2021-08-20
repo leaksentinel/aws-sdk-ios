@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -14,7 +14,6 @@
 //
 
 #import "AWSAutoScalingService.h"
-#import <AWSCore/AWSNetworking.h>
 #import <AWSCore/AWSCategory.h>
 #import <AWSCore/AWSNetworking.h>
 #import <AWSCore/AWSSignature.h>
@@ -26,7 +25,7 @@
 #import "AWSAutoScalingResources.h"
 
 static NSString *const AWSInfoAutoScaling = @"AutoScaling";
-NSString *const AWSAutoScalingSDKVersion = @"2.9.8";
+NSString *const AWSAutoScalingSDKVersion = @"2.24.5";
 
 
 @interface AWSAutoScalingResponseSerializer : AWSXMLResponseSerializer
@@ -40,7 +39,9 @@ NSString *const AWSAutoScalingSDKVersion = @"2.9.8";
 static NSDictionary *errorCodeDictionary = nil;
 + (void)initialize {
     errorCodeDictionary = @{
+                            @"ActiveInstanceRefreshNotFound" : @(AWSAutoScalingErrorActiveInstanceRefreshNotFound),
                             @"AlreadyExists" : @(AWSAutoScalingErrorAlreadyExists),
+                            @"InstanceRefreshInProgress" : @(AWSAutoScalingErrorInstanceRefreshInProgress),
                             @"InvalidNextToken" : @(AWSAutoScalingErrorInvalidNextToken),
                             @"LimitExceeded" : @(AWSAutoScalingErrorLimitExceeded),
                             @"ResourceContention" : @(AWSAutoScalingErrorResourceContention),
@@ -393,6 +394,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
+- (AWSTask<AWSAutoScalingCancelInstanceRefreshAnswer *> *)cancelInstanceRefresh:(AWSAutoScalingCancelInstanceRefreshType *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@""
+                 operationName:@"CancelInstanceRefresh"
+                   outputClass:[AWSAutoScalingCancelInstanceRefreshAnswer class]];
+}
+
+- (void)cancelInstanceRefresh:(AWSAutoScalingCancelInstanceRefreshType *)request
+     completionHandler:(void (^)(AWSAutoScalingCancelInstanceRefreshAnswer *response, NSError *error))completionHandler {
+    [[self cancelInstanceRefresh:request] continueWithBlock:^id _Nullable(AWSTask<AWSAutoScalingCancelInstanceRefreshAnswer *> * _Nonnull task) {
+        AWSAutoScalingCancelInstanceRefreshAnswer *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
 - (AWSTask<AWSAutoScalingCompleteLifecycleActionAnswer *> *)completeLifecycleAction:(AWSAutoScalingCompleteLifecycleActionType *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -637,6 +661,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
+- (AWSTask<AWSAutoScalingDeleteWarmPoolAnswer *> *)deleteWarmPool:(AWSAutoScalingDeleteWarmPoolType *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@""
+                 operationName:@"DeleteWarmPool"
+                   outputClass:[AWSAutoScalingDeleteWarmPoolAnswer class]];
+}
+
+- (void)deleteWarmPool:(AWSAutoScalingDeleteWarmPoolType *)request
+     completionHandler:(void (^)(AWSAutoScalingDeleteWarmPoolAnswer *response, NSError *error))completionHandler {
+    [[self deleteWarmPool:request] continueWithBlock:^id _Nullable(AWSTask<AWSAutoScalingDeleteWarmPoolAnswer *> * _Nonnull task) {
+        AWSAutoScalingDeleteWarmPoolAnswer *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
 - (AWSTask<AWSAutoScalingDescribeAccountLimitsAnswer *> *)describeAccountLimits:(AWSRequest *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -742,6 +789,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
      completionHandler:(void (^)(AWSAutoScalingDescribeAutoScalingNotificationTypesAnswer *response, NSError *error))completionHandler {
     [[self describeAutoScalingNotificationTypes:request] continueWithBlock:^id _Nullable(AWSTask<AWSAutoScalingDescribeAutoScalingNotificationTypesAnswer *> * _Nonnull task) {
         AWSAutoScalingDescribeAutoScalingNotificationTypesAnswer *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSAutoScalingDescribeInstanceRefreshesAnswer *> *)describeInstanceRefreshes:(AWSAutoScalingDescribeInstanceRefreshesType *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@""
+                 operationName:@"DescribeInstanceRefreshes"
+                   outputClass:[AWSAutoScalingDescribeInstanceRefreshesAnswer class]];
+}
+
+- (void)describeInstanceRefreshes:(AWSAutoScalingDescribeInstanceRefreshesType *)request
+     completionHandler:(void (^)(AWSAutoScalingDescribeInstanceRefreshesAnswer *response, NSError *error))completionHandler {
+    [[self describeInstanceRefreshes:request] continueWithBlock:^id _Nullable(AWSTask<AWSAutoScalingDescribeInstanceRefreshesAnswer *> * _Nonnull task) {
+        AWSAutoScalingDescribeInstanceRefreshesAnswer *result = task.result;
         NSError *error = task.error;
 
         if (completionHandler) {
@@ -1051,6 +1121,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
+- (AWSTask<AWSAutoScalingDescribeWarmPoolAnswer *> *)describeWarmPool:(AWSAutoScalingDescribeWarmPoolType *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@""
+                 operationName:@"DescribeWarmPool"
+                   outputClass:[AWSAutoScalingDescribeWarmPoolAnswer class]];
+}
+
+- (void)describeWarmPool:(AWSAutoScalingDescribeWarmPoolType *)request
+     completionHandler:(void (^)(AWSAutoScalingDescribeWarmPoolAnswer *response, NSError *error))completionHandler {
+    [[self describeWarmPool:request] continueWithBlock:^id _Nullable(AWSTask<AWSAutoScalingDescribeWarmPoolAnswer *> * _Nonnull task) {
+        AWSAutoScalingDescribeWarmPoolAnswer *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
 - (AWSTask<AWSAutoScalingDetachInstancesAnswer *> *)detachInstances:(AWSAutoScalingDetachInstancesQuery *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -1232,6 +1325,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
+- (AWSTask<AWSAutoScalingGetPredictiveScalingForecastAnswer *> *)getPredictiveScalingForecast:(AWSAutoScalingGetPredictiveScalingForecastType *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@""
+                 operationName:@"GetPredictiveScalingForecast"
+                   outputClass:[AWSAutoScalingGetPredictiveScalingForecastAnswer class]];
+}
+
+- (void)getPredictiveScalingForecast:(AWSAutoScalingGetPredictiveScalingForecastType *)request
+     completionHandler:(void (^)(AWSAutoScalingGetPredictiveScalingForecastAnswer *response, NSError *error))completionHandler {
+    [[self getPredictiveScalingForecast:request] continueWithBlock:^id _Nullable(AWSTask<AWSAutoScalingGetPredictiveScalingForecastAnswer *> * _Nonnull task) {
+        AWSAutoScalingGetPredictiveScalingForecastAnswer *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
 - (AWSTask<AWSAutoScalingPutLifecycleHookAnswer *> *)putLifecycleHook:(AWSAutoScalingPutLifecycleHookType *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -1316,6 +1432,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
         if (completionHandler) {
             completionHandler(error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSAutoScalingPutWarmPoolAnswer *> *)putWarmPool:(AWSAutoScalingPutWarmPoolType *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@""
+                 operationName:@"PutWarmPool"
+                   outputClass:[AWSAutoScalingPutWarmPoolAnswer class]];
+}
+
+- (void)putWarmPool:(AWSAutoScalingPutWarmPoolType *)request
+     completionHandler:(void (^)(AWSAutoScalingPutWarmPoolAnswer *response, NSError *error))completionHandler {
+    [[self putWarmPool:request] continueWithBlock:^id _Nullable(AWSTask<AWSAutoScalingPutWarmPoolAnswer *> * _Nonnull task) {
+        AWSAutoScalingPutWarmPoolAnswer *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
         }
 
         return nil;
@@ -1424,6 +1563,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
      completionHandler:(void (^)(AWSAutoScalingSetInstanceProtectionAnswer *response, NSError *error))completionHandler {
     [[self setInstanceProtection:request] continueWithBlock:^id _Nullable(AWSTask<AWSAutoScalingSetInstanceProtectionAnswer *> * _Nonnull task) {
         AWSAutoScalingSetInstanceProtectionAnswer *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSAutoScalingStartInstanceRefreshAnswer *> *)startInstanceRefresh:(AWSAutoScalingStartInstanceRefreshType *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@""
+                  targetPrefix:@""
+                 operationName:@"StartInstanceRefresh"
+                   outputClass:[AWSAutoScalingStartInstanceRefreshAnswer class]];
+}
+
+- (void)startInstanceRefresh:(AWSAutoScalingStartInstanceRefreshType *)request
+     completionHandler:(void (^)(AWSAutoScalingStartInstanceRefreshAnswer *response, NSError *error))completionHandler {
+    [[self startInstanceRefresh:request] continueWithBlock:^id _Nullable(AWSTask<AWSAutoScalingStartInstanceRefreshAnswer *> * _Nonnull task) {
+        AWSAutoScalingStartInstanceRefreshAnswer *result = task.result;
         NSError *error = task.error;
 
         if (completionHandler) {
