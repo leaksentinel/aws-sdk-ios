@@ -98,6 +98,11 @@ NS_ASSUME_NONNULL_BEGIN
  **/
 + (AWSSignInViewController *)getAWSSignInViewControllerWithconfiguration:(AWSAuthUIConfiguration *)configuration;
 
+/**
+   Processes login username and password
+ */
+- (void)processLogin;
+
 @end
 
 NS_ASSUME_NONNULL_END

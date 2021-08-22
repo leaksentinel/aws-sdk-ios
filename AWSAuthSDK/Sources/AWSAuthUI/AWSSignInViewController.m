@@ -36,8 +36,8 @@ static NSString *const SIGNIN_STORYBOARD = @"SignIn";
 static NSString *const SIGNIN_VIEW_CONTROLLER_IDENTIFIER = @"SignIn";;
 static NSString *const USERPOOLS_UI_OPERATIONS = @"AWSUserPoolsUIOperations";
 
-static NSInteger const SCALED_UP_LOGO_IMAGE_HEIGHT = 230;
-static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
+static NSInteger const SCALED_UP_LOGO_IMAGE_HEIGHT = 115;
+static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 100;
 
 @interface AWSSignInViewController ()
 
@@ -48,6 +48,8 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 @property (weak, nonatomic) IBOutlet UIButton *providerRow1;
 @property (weak, nonatomic) IBOutlet UIButton *providerRow2;
 @property (weak, nonatomic) IBOutlet UIButton *providerRow3;
+
+@property (nonatomic) CGPoint viewOrigin;
 
 @end
 
@@ -71,6 +73,8 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 
 
 -(void)pushSignUpVCFromNavigationController:(UINavigationController *)navController;
+
+-(void)slideSignUpVCFromNavigationController:(UINavigationController *)navController;
 
 -(void)pushForgotPasswordVCFromNavigationController:(UINavigationController *)navController;
 
@@ -117,18 +121,35 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     CGSize keyboardSize = ((NSValue *)[[notification userInfo]
                                        valueForKey:UIKeyboardFrameBeginUserInfoKey]).CGRectValue.size;
     
-    CGPoint buttonOrigin = self.signInButton.frame.origin;
+    CGRect buttonRect = self.signUpButton.frame;
     CGRect visibleRect = self.view.frame;
     
-    visibleRect.size.height -= keyboardSize.height;
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
     
-    if (visibleRect.size.height < buttonOrigin.y) {
-        [self.view setFrame:CGRectMake(0,visibleRect.size.height - buttonOrigin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    CGFloat buttonBottom = visibleRect.origin.y + buttonRect.origin.y + buttonRect.size.height + 10;
+    CGFloat keyboardTop = screenRect.size.height - keyboardSize.height;
+    
+    if (buttonBottom > keyboardTop) {
+        //        [self.view setFrame:CGRectMake(0,visibleRect.size.height - buttonOrigin.y, self.view.frame.size.width, self.view.frame.size.height)];
+        if (self.viewOrigin.y == 0.0) {
+            self.viewOrigin = visibleRect.origin;
+        }
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect f = self.view.frame;
+            f.origin.y += keyboardTop - buttonBottom;
+            self.view.frame = f;
+        }];
     }
 }
 
 - (void)keyboardDidHide:(NSNotification *)notification {
-    [self.view setFrame:CGRectMake(0, NAVIGATION_BAR_HEIGHT ,self.view.frame.size.width,self.view.frame.size.height)];
+    //    [self.view setFrame:CGRectMake(0, NAVIGATION_BAR_HEIGHT ,self.view.frame.size.width,self.view.frame.size.height)];
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect f = self.view.frame;
+        f.origin.y = self.viewOrigin.y;
+        self.view.frame = f;
+    }];
 }
 
 - (void)viewDidLoad {
@@ -156,10 +177,14 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     if (self.config.font) {
         [self setUpFont];
     }
+    
+    // if user hasn't created an account yet, go to SignUp screen
+    if (self.config.startWithSignUpScreen) {
+        [self doUserPoolSignUp];
+    }
 }
     
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)processLogin {
     if ([AWSSignInManager sharedInstance].pendingSignIn) {
         
         Class awsUserPoolsUIOperations = NSClassFromString(USERPOOLS_UI_OPERATIONS);
@@ -172,7 +197,11 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     [AWSSignInManager sharedInstance].pendingSignIn = NO;
     [AWSSignInManager sharedInstance].pendingUsername = @"";
     [AWSSignInManager sharedInstance].pendingPassword = @"";
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self processLogin];
 }
 
 // This is used to dismiss the keyboard, user just has to tap outside the
@@ -231,7 +260,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
         Class formTableCell = NSClassFromString(@"AWSFormTableCell");
         self.passwordRow = [[formTableCell alloc] initWithPlaceHolder:@"Password"
                                                                  type:InputTypePassword];
-        self.userNameRow = [[formTableCell alloc] initWithPlaceHolder:@"User Name"
+        self.userNameRow = [[formTableCell alloc] initWithPlaceHolder:@"Email"
                                                                  type:InputTypeText];
         Class formTableDelegate = NSClassFromString(@"AWSFormTableDelegate");
         self.tableDelegate = [formTableDelegate new];
@@ -318,7 +347,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
         self.logoView.contentMode = UIViewContentModeScaleAspectFit;
         [self.logoView setNeedsLayout];
         [self.view setNeedsLayout];
-        [self.view layoutIfNeeded];
+//        [self.view layoutIfNeeded];
     }
 }
 
@@ -496,6 +525,11 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 }
 
 - (void)handleUserPoolSignIn {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:@"userHasSignedIn"];
+    [defaults synchronize];
+
     Class awsUserPoolsUIOperations = NSClassFromString(USERPOOLS_UI_OPERATIONS);
     AWSUserPoolsUIOperations *userPoolsOperations = [[awsUserPoolsUIOperations alloc] initWithAuthUIConfiguration:self.config];
     [userPoolsOperations loginWithUserName:[self.tableDelegate getValueForCell:self.userNameRow forTableView:self.tableView]
@@ -513,6 +547,16 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     Class awsUserPoolsUIOperations = NSClassFromString(USERPOOLS_UI_OPERATIONS);
     AWSUserPoolsUIOperations *userPoolsOperations = [[awsUserPoolsUIOperations alloc] initWithAuthUIConfiguration:self.config];
     [userPoolsOperations pushSignUpVCFromNavigationController:self.navigationController];
+}
+
+- (void)doUserPoolSignUp {
+    
+    // Dismisses the keyboard if open before transitioning to the new storyboard
+    [self.view endEditing:YES];
+    
+    Class awsUserPoolsUIOperations = NSClassFromString(USERPOOLS_UI_OPERATIONS);
+    AWSUserPoolsUIOperations *userPoolsOperations = [[awsUserPoolsUIOperations alloc] initWithAuthUIConfiguration:self.config];
+    [userPoolsOperations slideSignUpVCFromNavigationController:self.navigationController];
 }
 
 - (void)handleUserPoolForgotPassword {

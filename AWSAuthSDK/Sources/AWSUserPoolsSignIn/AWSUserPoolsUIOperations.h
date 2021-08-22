@@ -50,6 +50,12 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)pushSignUpVCFromNavigationController:(UINavigationController *)navController;
 
 /**
+ Slide SignUp ViewController from NavigationController
+ @param     navController       NavigationController of the application's ViewController
+ **/
+-(void)slideSignUpVCFromNavigationController:(UINavigationController *)navController;
+
+/**
  Push ForgotPassword ViewController from NavigationController
  @param     navController       NavigationController of the application's ViewController
  **/

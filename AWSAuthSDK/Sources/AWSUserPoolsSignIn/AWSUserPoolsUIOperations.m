@@ -69,7 +69,17 @@ completionHandler:(nonnull void (^)(id _Nullable, NSError * _Nullable))completio
     viewController.config = self.config;
     [navController pushViewController:viewController
                                          animated:YES];
+}
+
+-(void)slideSignUpVCFromNavigationController:(UINavigationController *)navController {
+    AWSUserPoolSignUpViewController *viewController = (AWSUserPoolSignUpViewController *)[self getUserPoolsViewControllerWithIdentifier:USERPOOLS_SIGNUP_VIEW_CONTROLLER_IDENTIFIER];
+    viewController.config = self.config;
+
+    [navController initWithRootViewController:viewController];
     
+    // remove sign-in view controller from stack
+//    NSLog(@"%@", navController.viewControllers);
+//    [navController setViewControllers:@[navController.topViewController]];
 }
 
 -(void)pushForgotPasswordVCFromNavigationController:(UINavigationController *)navController {
@@ -97,8 +107,15 @@ completionHandler:(nonnull void (^)(id _Nullable, NSError * _Nullable))completio
      completionHandler:^(id result, NSError *error) {
          if (!error) {
              dispatch_async(dispatch_get_main_queue(), ^{
+
+//                 // do caller's completion handler first, so it can set up the viewControllers stack
+//                 if (self.completionHandler) {
+//                     self.completionHandler(signInProvider, error);
+//                 }
+
                  [[self.navigationController viewControllers].firstObject  dismissViewControllerAnimated:YES
                                           completion:nil];
+
                  if (self.completionHandler) {
                      self.completionHandler(signInProvider, error);
                  }
@@ -136,9 +153,30 @@ completionHandler:(nonnull void (^)(id _Nullable, NSError * _Nullable))completio
 -(void) didCompletePasswordAuthenticationStepWithError:(NSError*) error {
     if(error){
         dispatch_async(dispatch_get_main_queue(), ^{
+          
+            // replace poor AWS error messages with user-friendly versions
+            NSErrorUserInfoKey errorType = error.userInfo[@"__type"];
+            NSErrorUserInfoKey errorTitle = @"Sign In Error";
+            NSErrorUserInfoKey errorMessage = error.userInfo[@"message"];
             
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:error.userInfo[@"__type"]
-                                                                                     message:error.userInfo[@"message"]
+            if ([errorType  isEqual: @"InvalidParameterException"]) {
+                if ([errorMessage containsString:@"required parameter"]) {
+                    errorMessage = @"Please enter an email address and password.";
+                }
+            } else if ([errorType  isEqual: @"UserNotFoundException"]) {
+                if ([errorMessage containsString:@"User does not exist"]) {
+                    errorTitle = @"Account Not Found";
+                    errorMessage = @"We could not find an account with that email address.";
+                }
+            } else if ([errorType  isEqual: @"NotAuthorizedException"]) {
+                if ([errorMessage containsString:@"Incorrect username"]) {
+                    errorTitle = @"Could Not Sign In";
+                    errorMessage = @"Incorrect email address or password.";
+                }
+            }
+
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:errorTitle
+                                                                                     message:errorMessage
                                                                               preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:nil];
             [alertController addAction:ok];

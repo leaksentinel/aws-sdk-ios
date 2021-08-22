@@ -567,9 +567,9 @@ extension AWSMobileClient {
         if federationProvider == .userPools && options.signOutGlobally == true {
             let _ = self.userpoolOpsHelper.currentActiveUser!.globalSignOut().continueWith { (task) -> Any? in
                 if task.result != nil {
-                    completionHandler(nil)
                     // If global signout is successful, we clear tokens locally and perform signout flow.
                     self.signOut()
+                    completionHandler(nil)
                 } else if let error = task.error {
                     // If there is an error signing out globally, we notify the developer.
                     completionHandler(self.getMobileError(for: error))
@@ -579,7 +579,7 @@ extension AWSMobileClient {
             return
         }
         signOut()
-        
+        completionHandler(nil)
     }
     
     /// Signs out the current logged in user and clears the local keychain store.
@@ -785,7 +785,10 @@ extension AWSMobileClient {
     }
     
     internal func performUserPoolSignOut() {
-        self.userpoolOpsHelper.passwordAuthTaskCompletionSource?.set(error: AWSMobileClientError.unableToSignIn(message: "Could not get end user to sign in."))
+        
+        if let task = self.userpoolOpsHelper.passwordAuthTaskCompletionSource?.task, !task.isCompleted {
+            self.userpoolOpsHelper.passwordAuthTaskCompletionSource?.set(error: AWSMobileClientError.unableToSignIn(message: "Could not get end user to sign in."))
+        }
         self.userpoolOpsHelper.passwordAuthTaskCompletionSource = nil
         self.userpoolOpsHelper.currentSignInHandlerCallback?(nil, AWSMobileClientError.unableToSignIn(message: "Could not get end user to sign in."))
         self.userpoolOpsHelper.currentSignInHandlerCallback = nil

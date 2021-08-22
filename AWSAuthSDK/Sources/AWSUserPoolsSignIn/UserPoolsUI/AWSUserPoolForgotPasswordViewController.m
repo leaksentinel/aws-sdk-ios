@@ -60,7 +60,7 @@
 }
 
 - (void)setUp {
-    _userNameRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"User Name" type:InputTypeText];
+    _userNameRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"Email" type:InputTypeText];
     _tableDelegate = [AWSFormTableDelegate new];
     [self.tableDelegate addCell:self.userNameRow];
     self.tableView.delegate = self.tableDelegate;
@@ -88,6 +88,7 @@
 
     if([@"NewPasswordSegue" isEqualToString:segue.identifier]){
         AWSUserPoolNewPasswordViewController * confirmForgot = segue.destinationViewController;
+        confirmForgot.config = self.config;     // fixes bgd color bug
         confirmForgot.user = self.user;
     }
 }
@@ -95,10 +96,10 @@
 - (IBAction)onForgotPassword:(id)sender {
     NSString *userName = [self.tableDelegate getValueForCell:self.userNameRow forTableView:self.tableView];
     if ([userName isEqualToString:@""]) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Missing Username"
-                                                                                 message:@"Please enter a valid username."
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Missing Email"
+                                                                                 message:@"Please enter a valid email address."
                                                                           preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:ok];
         [self presentViewController:alertController
                            animated:YES
@@ -109,10 +110,21 @@
     [[self.user forgotPassword] continueWithBlock:^id _Nullable(AWSTask<AWSCognitoIdentityUserForgotPasswordResponse *> * _Nonnull task) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if(task.error){
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:task.error.userInfo[@"__type"]
-                                                                                         message:task.error.userInfo[@"message"]
-                                                                                  preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+                
+                // replace poor AWS error messages with user-friendly versions
+                NSErrorUserInfoKey errorType = task.error.userInfo[@"__type"];
+                NSErrorUserInfoKey errorTitle = @"Error";
+                NSErrorUserInfoKey errorMessage = task.error.userInfo[@"message"];
+                
+                if([errorType  isEqual: @"UserNotFoundException"]) {
+                    errorTitle = @"Account Not Found";
+                    errorMessage = @"We couldn't find an account associated with that email address.";
+                }
+         
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:errorTitle
+                                                      message:errorMessage
+                                               preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                 [alertController addAction:ok];
                 [self presentViewController:alertController
                                    animated:YES
@@ -148,7 +160,7 @@
 }
 
 - (void)setUp {
-    _confirmationCodeRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"Confirmation Code" type:InputTypeText];
+    _confirmationCodeRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"Verification Code" type:InputTypeText];
     _updatedPasswordRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"New Password" type:InputTypePassword];
     _tableDelegate = [AWSFormTableDelegate new];
     [self.tableDelegate addCell:self.confirmationCodeRow];
@@ -167,7 +179,7 @@
         self.view.backgroundColor = [UIColor whiteColor];
     }
     
-    self.title = @"Forgot Password";
+    self.title = @"Reset Password";
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.tableFormView.center.y)];
     backgroundImageView.backgroundColor = [AWSUserPoolsUIHelper getBackgroundColor:self.config];
     backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -180,9 +192,9 @@
     NSString *updatedPassword = [self.tableDelegate getValueForCell:self.updatedPasswordRow forTableView:self.tableView];
     if ([confirmationCode isEqualToString:@""] || [updatedPassword isEqualToString:@""]) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Missing Information"
-                                                                                 message:@"Please enter valid confirmation code and password values."
+                                                                                 message:@"Please enter valid verification code and password values."
                                                                           preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:ok];
         [self presentViewController:alertController
                            animated:YES
@@ -192,21 +204,40 @@
     [[self.user confirmForgotPassword:confirmationCode password:updatedPassword] continueWithBlock:^id _Nullable(AWSTask<AWSCognitoIdentityUserConfirmForgotPasswordResponse *> * _Nonnull task) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if(task.error){
+
+                // replace poor AWS error messages with user-friendly versions
+                NSErrorUserInfoKey errorType = task.error.userInfo[@"__type"];
+                NSErrorUserInfoKey errorTitle = @"Error";
+                NSErrorUserInfoKey errorMessage = task.error.userInfo[@"message"];
                 
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:task.error.userInfo[@"__type"]
-                                                                                         message:task.error.userInfo[@"message"]
+                if([errorType  isEqual: @"InvalidParameterException"]) {
+                    if ([errorMessage containsString:@"greater than or equal to 6"]) {
+                        errorMessage = @"Password must be at least 6 characters long.";
+                        errorTitle = @"Password Strength";
+                    }
+                }
+
+                if([errorType  isEqual: @"CodeMismatchException"]) {
+                    if ([errorMessage containsString:@"Invalid verification code"]) {
+                        errorMessage = @"Please enter a valid password reset code.";
+                        errorTitle = @"Invalid Code";
+                    }
+                }
+
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:errorTitle
+                                                                                         message:errorMessage
                                                                                   preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                 [alertController addAction:ok];
                 [self presentViewController:alertController
                                    animated:YES
                                  completion:nil];
                 
             }else {
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Password Reset Complete"
-                                                                                         message:@"Password Reset was completed successfully."
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Password Reset"
+                                                                                         message:@"Your password was successfully reset."
                                                                                   preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 }];
                 [alertController addAction:ok];

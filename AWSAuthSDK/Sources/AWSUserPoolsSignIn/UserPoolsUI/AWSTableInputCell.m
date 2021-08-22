@@ -48,6 +48,13 @@
                            self.headerLabel.hidden = NO;
                            self.inputBox.hidden = NO;
                        } completion:nil];
+//        NSLog(@"The string is %@", self.headerLabel.text);
+        if ([self.headerLabel.text isEqualToString:@"EMAIL"]) {
+            self.inputBox.keyboardType = UIKeyboardTypeEmailAddress;
+        }
+        if ([self.headerLabel.text isEqualToString:@"CODE"]) {
+            self.inputBox.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        }
         [self.inputBox becomeFirstResponder];
     });
 }

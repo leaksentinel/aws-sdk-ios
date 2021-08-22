@@ -52,8 +52,17 @@ static NSString *const AWSInfoGoogleIdentifier = @"GoogleSignIn";
         } else {
             [config setCanCancel:false];
         }
-        
     }
+
+    if(configDictionary[@"startWithSignUpScreen"]) {
+        NSString *startValue = (NSString *)configDictionary[@"startWithSignUpScreen"];
+        if ([startValue isEqual: @"YES"]) {
+            [config setStartWithSignUpScreen:true];
+        } else {
+            [config setStartWithSignUpScreen:false];
+        }
+    }
+
     if(configDictionary[@"logoImage"]) {
         [config setLogoImage:(UIImage *)configDictionary[@"logoImage"]];
     }
