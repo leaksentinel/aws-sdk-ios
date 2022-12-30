@@ -57,20 +57,20 @@ static NSString *const AWSInfoAppleIdentifier = @"AppleSignIn";
         [config setBackgroundColor:(UIColor *)configDictionary[@"backgroundColor"]];
     }
 
-    if(configDictionary[@"disableSignUpButton"]) {
-        NSString *disableSignUpButtonValue = (NSString *)configDictionary[@"disableSignUpButton"];
-        if ([disableSignUpButtonValue isEqual: @"YES"]) {
-            [config setDisableSignUpButton:true];
+    if(configDictionary[@"startWithSignUpScreen"]) {
+        NSString *startValue = (NSString *)configDictionary[@"startWithSignUpScreen"];
+        if ([startValue isEqual: @"YES"]) {
+            [config setStartWithSignUpScreen:true];
         } else {
-            [config setDisableSignUpButton:false];
+            [config setStartWithSignUpScreen:false];
         }
     }
 
-    if (configDictionary[@"secondaryBackgroundColor"]) {
-        [config setSecondaryBackgroundColor:(UIColor *)configDictionary[@"secondaryBackgroundColor"]];
+    if(configDictionary[@"logoImage"]) {
+        [config setLogoImage:(UIImage *)configDictionary[@"logoImage"]];
     }
-    if (configDictionary[@"primaryColor"]) {
-        [config setPrimaryColor:(UIColor *)configDictionary[@"primaryColor"]];
+    if(configDictionary[@"backgroundColor"]) {
+        [config setBackgroundColor:(UIColor *)configDictionary[@"backgroundColor"]];
     }
     
     [[AWSSignInManager sharedInstance] setDontFederate];
