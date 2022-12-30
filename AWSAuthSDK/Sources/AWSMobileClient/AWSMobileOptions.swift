@@ -46,7 +46,8 @@ import Foundation
                   backgroundColor: nil,
                   secondaryBackgroundColor: nil,
                   primaryColor: .systemBlue,
-                  disableSignUpButton: false)
+                  disableSignUpButton: false,
+                  startWithSignUpScreen: false)
     }
 }
 
