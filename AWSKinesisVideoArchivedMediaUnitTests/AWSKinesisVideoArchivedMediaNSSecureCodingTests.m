@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -19,14 +19,25 @@
 
 @interface AWSKinesisVideoArchivedMediaNSSecureCodingTests : AWSNSSecureCodingTest
 
+- (void) test_AWSKinesisVideoArchivedMediaClipFragmentSelector API_AVAILABLE(ios(11));
+- (void) test_AWSKinesisVideoArchivedMediaClipTimestampRange API_AVAILABLE(ios(11));
+- (void) test_AWSKinesisVideoArchivedMediaDASHFragmentSelector API_AVAILABLE(ios(11));
+- (void) test_AWSKinesisVideoArchivedMediaDASHTimestampRange API_AVAILABLE(ios(11));
 - (void) test_AWSKinesisVideoArchivedMediaFragment API_AVAILABLE(ios(11));
 - (void) test_AWSKinesisVideoArchivedMediaFragmentSelector API_AVAILABLE(ios(11));
+- (void) test_AWSKinesisVideoArchivedMediaGetClipInput API_AVAILABLE(ios(11));
+- (void) test_AWSKinesisVideoArchivedMediaGetClipOutput API_AVAILABLE(ios(11));
+- (void) test_AWSKinesisVideoArchivedMediaGetDASHStreamingSessionURLInput API_AVAILABLE(ios(11));
+- (void) test_AWSKinesisVideoArchivedMediaGetDASHStreamingSessionURLOutput API_AVAILABLE(ios(11));
 - (void) test_AWSKinesisVideoArchivedMediaGetHLSStreamingSessionURLInput API_AVAILABLE(ios(11));
 - (void) test_AWSKinesisVideoArchivedMediaGetHLSStreamingSessionURLOutput API_AVAILABLE(ios(11));
+- (void) test_AWSKinesisVideoArchivedMediaGetImagesInput API_AVAILABLE(ios(11));
+- (void) test_AWSKinesisVideoArchivedMediaGetImagesOutput API_AVAILABLE(ios(11));
 - (void) test_AWSKinesisVideoArchivedMediaGetMediaForFragmentListInput API_AVAILABLE(ios(11));
 - (void) test_AWSKinesisVideoArchivedMediaGetMediaForFragmentListOutput API_AVAILABLE(ios(11));
 - (void) test_AWSKinesisVideoArchivedMediaHLSFragmentSelector API_AVAILABLE(ios(11));
 - (void) test_AWSKinesisVideoArchivedMediaHLSTimestampRange API_AVAILABLE(ios(11));
+- (void) test_AWSKinesisVideoArchivedMediaImage API_AVAILABLE(ios(11));
 - (void) test_AWSKinesisVideoArchivedMediaListFragmentsInput API_AVAILABLE(ios(11));
 - (void) test_AWSKinesisVideoArchivedMediaListFragmentsOutput API_AVAILABLE(ios(11));
 - (void) test_AWSKinesisVideoArchivedMediaTimestampRange API_AVAILABLE(ios(11));
@@ -34,6 +45,22 @@
 @end
 
 @implementation AWSKinesisVideoArchivedMediaNSSecureCodingTests
+
+- (void) test_AWSKinesisVideoArchivedMediaClipFragmentSelector {
+    [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaClipFragmentSelector class]];
+}
+
+- (void) test_AWSKinesisVideoArchivedMediaClipTimestampRange {
+    [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaClipTimestampRange class]];
+}
+
+- (void) test_AWSKinesisVideoArchivedMediaDASHFragmentSelector {
+    [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaDASHFragmentSelector class]];
+}
+
+- (void) test_AWSKinesisVideoArchivedMediaDASHTimestampRange {
+    [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaDASHTimestampRange class]];
+}
 
 - (void) test_AWSKinesisVideoArchivedMediaFragment {
     [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaFragment class]];
@@ -43,12 +70,36 @@
     [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaFragmentSelector class]];
 }
 
+- (void) test_AWSKinesisVideoArchivedMediaGetClipInput {
+    [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaGetClipInput class]];
+}
+
+- (void) test_AWSKinesisVideoArchivedMediaGetClipOutput {
+    [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaGetClipOutput class]];
+}
+
+- (void) test_AWSKinesisVideoArchivedMediaGetDASHStreamingSessionURLInput {
+    [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaGetDASHStreamingSessionURLInput class]];
+}
+
+- (void) test_AWSKinesisVideoArchivedMediaGetDASHStreamingSessionURLOutput {
+    [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaGetDASHStreamingSessionURLOutput class]];
+}
+
 - (void) test_AWSKinesisVideoArchivedMediaGetHLSStreamingSessionURLInput {
     [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaGetHLSStreamingSessionURLInput class]];
 }
 
 - (void) test_AWSKinesisVideoArchivedMediaGetHLSStreamingSessionURLOutput {
     [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaGetHLSStreamingSessionURLOutput class]];
+}
+
+- (void) test_AWSKinesisVideoArchivedMediaGetImagesInput {
+    [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaGetImagesInput class]];
+}
+
+- (void) test_AWSKinesisVideoArchivedMediaGetImagesOutput {
+    [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaGetImagesOutput class]];
 }
 
 - (void) test_AWSKinesisVideoArchivedMediaGetMediaForFragmentListInput {
@@ -67,6 +118,10 @@
     [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaHLSTimestampRange class]];
 }
 
+- (void) test_AWSKinesisVideoArchivedMediaImage {
+    [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaImage class]];
+}
+
 - (void) test_AWSKinesisVideoArchivedMediaListFragmentsInput {
     [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaListFragmentsInput class]];
 }
@@ -78,7 +133,6 @@
 - (void) test_AWSKinesisVideoArchivedMediaTimestampRange {
     [self validateSecureCodingForClass:[AWSKinesisVideoArchivedMediaTimestampRange class]];
 }
-
 
 @end
 

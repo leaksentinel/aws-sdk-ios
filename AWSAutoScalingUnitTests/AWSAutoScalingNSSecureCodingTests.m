@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -19,6 +19,8 @@
 
 @interface AWSAutoScalingNSSecureCodingTests : AWSNSSecureCodingTest
 
+- (void) test_AWSAutoScalingAcceleratorCountRequest API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingAcceleratorTotalMemoryMiBRequest API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingActivitiesType API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingActivity API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingActivityType API_AVAILABLE(ios(11));
@@ -34,6 +36,7 @@
 - (void) test_AWSAutoScalingAutoScalingGroupsType API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingAutoScalingInstanceDetails API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingAutoScalingInstancesType API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingBaselineEbsBandwidthMbpsRequest API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingBatchDeleteScheduledActionAnswer API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingBatchDeleteScheduledActionType API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingBatchPutScheduledUpdateGroupActionAnswer API_AVAILABLE(ios(11));
@@ -107,6 +110,8 @@
 - (void) test_AWSAutoScalingInstanceRefreshLivePoolProgress API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingInstanceRefreshProgressDetails API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingInstanceRefreshWarmPoolProgress API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingInstanceRequirements API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingInstanceReusePolicy API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingInstancesDistribution API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingLaunchConfiguration API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingLaunchConfigurationNameType API_AVAILABLE(ios(11));
@@ -120,15 +125,25 @@
 - (void) test_AWSAutoScalingLoadBalancerState API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingLoadBalancerTargetGroupState API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingLoadForecast API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingMemoryGiBPerVCpuRequest API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingMemoryMiBRequest API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingMetric API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingMetricCollectionType API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingMetricDataQuery API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingMetricDimension API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingMetricGranularityType API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingMetricStat API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingMixedInstancesPolicy API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingNetworkBandwidthGbpsRequest API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingNetworkInterfaceCountRequest API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingNotificationConfiguration API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingPoliciesType API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingPolicyARNType API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingPredefinedMetricSpecification API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingPredictiveScalingConfiguration API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingPredictiveScalingCustomizedCapacityMetric API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingPredictiveScalingCustomizedLoadMetric API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingPredictiveScalingCustomizedScalingMetric API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingPredictiveScalingMetricSpecification API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingPredictiveScalingPredefinedLoadMetric API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingPredictiveScalingPredefinedMetricPair API_AVAILABLE(ios(11));
@@ -163,12 +178,22 @@
 - (void) test_AWSAutoScalingTagsType API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingTargetTrackingConfiguration API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingTerminateInstanceInAutoScalingGroupType API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingTotalLocalStorageGBRequest API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingUpdateAutoScalingGroupType API_AVAILABLE(ios(11));
+- (void) test_AWSAutoScalingVCpuCountRequest API_AVAILABLE(ios(11));
 - (void) test_AWSAutoScalingWarmPoolConfiguration API_AVAILABLE(ios(11));
 
 @end
 
 @implementation AWSAutoScalingNSSecureCodingTests
+
+- (void) test_AWSAutoScalingAcceleratorCountRequest {
+    [self validateSecureCodingForClass:[AWSAutoScalingAcceleratorCountRequest class]];
+}
+
+- (void) test_AWSAutoScalingAcceleratorTotalMemoryMiBRequest {
+    [self validateSecureCodingForClass:[AWSAutoScalingAcceleratorTotalMemoryMiBRequest class]];
+}
 
 - (void) test_AWSAutoScalingActivitiesType {
     [self validateSecureCodingForClass:[AWSAutoScalingActivitiesType class]];
@@ -228,6 +253,10 @@
 
 - (void) test_AWSAutoScalingAutoScalingInstancesType {
     [self validateSecureCodingForClass:[AWSAutoScalingAutoScalingInstancesType class]];
+}
+
+- (void) test_AWSAutoScalingBaselineEbsBandwidthMbpsRequest {
+    [self validateSecureCodingForClass:[AWSAutoScalingBaselineEbsBandwidthMbpsRequest class]];
 }
 
 - (void) test_AWSAutoScalingBatchDeleteScheduledActionAnswer {
@@ -522,6 +551,14 @@
     [self validateSecureCodingForClass:[AWSAutoScalingInstanceRefreshWarmPoolProgress class]];
 }
 
+- (void) test_AWSAutoScalingInstanceRequirements {
+    [self validateSecureCodingForClass:[AWSAutoScalingInstanceRequirements class]];
+}
+
+- (void) test_AWSAutoScalingInstanceReusePolicy {
+    [self validateSecureCodingForClass:[AWSAutoScalingInstanceReusePolicy class]];
+}
+
 - (void) test_AWSAutoScalingInstancesDistribution {
     [self validateSecureCodingForClass:[AWSAutoScalingInstancesDistribution class]];
 }
@@ -574,8 +611,24 @@
     [self validateSecureCodingForClass:[AWSAutoScalingLoadForecast class]];
 }
 
+- (void) test_AWSAutoScalingMemoryGiBPerVCpuRequest {
+    [self validateSecureCodingForClass:[AWSAutoScalingMemoryGiBPerVCpuRequest class]];
+}
+
+- (void) test_AWSAutoScalingMemoryMiBRequest {
+    [self validateSecureCodingForClass:[AWSAutoScalingMemoryMiBRequest class]];
+}
+
+- (void) test_AWSAutoScalingMetric {
+    [self validateSecureCodingForClass:[AWSAutoScalingMetric class]];
+}
+
 - (void) test_AWSAutoScalingMetricCollectionType {
     [self validateSecureCodingForClass:[AWSAutoScalingMetricCollectionType class]];
+}
+
+- (void) test_AWSAutoScalingMetricDataQuery {
+    [self validateSecureCodingForClass:[AWSAutoScalingMetricDataQuery class]];
 }
 
 - (void) test_AWSAutoScalingMetricDimension {
@@ -586,8 +639,20 @@
     [self validateSecureCodingForClass:[AWSAutoScalingMetricGranularityType class]];
 }
 
+- (void) test_AWSAutoScalingMetricStat {
+    [self validateSecureCodingForClass:[AWSAutoScalingMetricStat class]];
+}
+
 - (void) test_AWSAutoScalingMixedInstancesPolicy {
     [self validateSecureCodingForClass:[AWSAutoScalingMixedInstancesPolicy class]];
+}
+
+- (void) test_AWSAutoScalingNetworkBandwidthGbpsRequest {
+    [self validateSecureCodingForClass:[AWSAutoScalingNetworkBandwidthGbpsRequest class]];
+}
+
+- (void) test_AWSAutoScalingNetworkInterfaceCountRequest {
+    [self validateSecureCodingForClass:[AWSAutoScalingNetworkInterfaceCountRequest class]];
 }
 
 - (void) test_AWSAutoScalingNotificationConfiguration {
@@ -608,6 +673,18 @@
 
 - (void) test_AWSAutoScalingPredictiveScalingConfiguration {
     [self validateSecureCodingForClass:[AWSAutoScalingPredictiveScalingConfiguration class]];
+}
+
+- (void) test_AWSAutoScalingPredictiveScalingCustomizedCapacityMetric {
+    [self validateSecureCodingForClass:[AWSAutoScalingPredictiveScalingCustomizedCapacityMetric class]];
+}
+
+- (void) test_AWSAutoScalingPredictiveScalingCustomizedLoadMetric {
+    [self validateSecureCodingForClass:[AWSAutoScalingPredictiveScalingCustomizedLoadMetric class]];
+}
+
+- (void) test_AWSAutoScalingPredictiveScalingCustomizedScalingMetric {
+    [self validateSecureCodingForClass:[AWSAutoScalingPredictiveScalingCustomizedScalingMetric class]];
 }
 
 - (void) test_AWSAutoScalingPredictiveScalingMetricSpecification {
@@ -746,8 +823,16 @@
     [self validateSecureCodingForClass:[AWSAutoScalingTerminateInstanceInAutoScalingGroupType class]];
 }
 
+- (void) test_AWSAutoScalingTotalLocalStorageGBRequest {
+    [self validateSecureCodingForClass:[AWSAutoScalingTotalLocalStorageGBRequest class]];
+}
+
 - (void) test_AWSAutoScalingUpdateAutoScalingGroupType {
     [self validateSecureCodingForClass:[AWSAutoScalingUpdateAutoScalingGroupType class]];
+}
+
+- (void) test_AWSAutoScalingVCpuCountRequest {
+    [self validateSecureCodingForClass:[AWSAutoScalingVCpuCountRequest class]];
 }
 
 - (void) test_AWSAutoScalingWarmPoolConfiguration {

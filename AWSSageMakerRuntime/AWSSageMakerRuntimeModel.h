@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -23,14 +23,79 @@ FOUNDATION_EXPORT NSString *const AWSSageMakerRuntimeErrorDomain;
 
 typedef NS_ENUM(NSInteger, AWSSageMakerRuntimeErrorType) {
     AWSSageMakerRuntimeErrorUnknown,
+    AWSSageMakerRuntimeErrorInternalDependency,
     AWSSageMakerRuntimeErrorInternalFailure,
     AWSSageMakerRuntimeErrorModel,
+    AWSSageMakerRuntimeErrorModelNotReady,
     AWSSageMakerRuntimeErrorServiceUnavailable,
     AWSSageMakerRuntimeErrorValidation,
 };
 
+@class AWSSageMakerRuntimeInvokeEndpointAsyncInput;
+@class AWSSageMakerRuntimeInvokeEndpointAsyncOutput;
 @class AWSSageMakerRuntimeInvokeEndpointInput;
 @class AWSSageMakerRuntimeInvokeEndpointOutput;
+
+/**
+ 
+ */
+@interface AWSSageMakerRuntimeInvokeEndpointAsyncInput : AWSRequest
+
+
+/**
+ <p>The desired MIME type of the inference in the response.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable accept;
+
+/**
+ <p>The MIME type of the input data in the request body.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable contentType;
+
+/**
+ <p>Provides additional information about a request for an inference submitted to a model hosted at an Amazon SageMaker endpoint. The information is an opaque value that is forwarded verbatim. You could use this value, for example, to provide an ID that you can use to track a request or to provide other metadata that a service endpoint was programmed to process. The value must consist of no more than 1024 visible US-ASCII characters as specified in <a href="https://datatracker.ietf.org/doc/html/rfc7230#section-3.2.6">Section 3.3.6. Field Value Components</a> of the Hypertext Transfer Protocol (HTTP/1.1). </p><p>The code in your model is responsible for setting or updating any custom attributes in the response. If your code does not set this value in the response, an empty value is returned. For example, if a custom attribute represents the trace ID, your model can prepend the custom attribute with <code>Trace ID</code>: in your post-processing function. </p><p>This feature is currently supported in the Amazon Web Services SDKs but not in the Amazon SageMaker Python SDK. </p>
+ */
+@property (nonatomic, strong) NSString * _Nullable customAttributes;
+
+/**
+ <p>The name of the endpoint that you specified when you created the endpoint using the <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html"><code>CreateEndpoint</code></a> API.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable endpointName;
+
+/**
+ <p>The identifier for the inference request. Amazon SageMaker will generate an identifier for you if none is specified. </p>
+ */
+@property (nonatomic, strong) NSString * _Nullable inferenceId;
+
+/**
+ <p>The Amazon S3 URI where the inference request payload is stored.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable inputLocation;
+
+/**
+ <p>Maximum age in seconds a request can be in the queue before it is marked as expired.</p>
+ */
+@property (nonatomic, strong) NSNumber * _Nullable requestTTLSeconds;
+
+@end
+
+/**
+ 
+ */
+@interface AWSSageMakerRuntimeInvokeEndpointAsyncOutput : AWSModel
+
+
+/**
+ <p>Identifier for an inference request. This will be the same as the <code>InferenceId</code> specified in the input. Amazon SageMaker will generate an identifier for you if you do not specify one.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable inferenceId;
+
+/**
+ <p>The Amazon S3 URI where the inference response payload is stored.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable outputLocation;
+
+@end
 
 /**
  
@@ -54,9 +119,14 @@ typedef NS_ENUM(NSInteger, AWSSageMakerRuntimeErrorType) {
 @property (nonatomic, strong) NSString * _Nullable contentType;
 
 /**
- <p>Provides additional information about a request for an inference submitted to a model hosted at an Amazon SageMaker endpoint. The information is an opaque value that is forwarded verbatim. You could use this value, for example, to provide an ID that you can use to track a request or to provide other metadata that a service endpoint was programmed to process. The value must consist of no more than 1024 visible US-ASCII characters as specified in <a href="https://tools.ietf.org/html/rfc7230#section-3.2.6">Section 3.3.6. Field Value Components</a> of the Hypertext Transfer Protocol (HTTP/1.1). </p><p>The code in your model is responsible for setting or updating any custom attributes in the response. If your code does not set this value in the response, an empty value is returned. For example, if a custom attribute represents the trace ID, your model can prepend the custom attribute with <code>Trace ID:</code> in your post-processing function.</p><p>This feature is currently supported in the AWS SDKs but not in the Amazon SageMaker Python SDK.</p>
+ <p>Provides additional information about a request for an inference submitted to a model hosted at an Amazon SageMaker endpoint. The information is an opaque value that is forwarded verbatim. You could use this value, for example, to provide an ID that you can use to track a request or to provide other metadata that a service endpoint was programmed to process. The value must consist of no more than 1024 visible US-ASCII characters as specified in <a href="https://tools.ietf.org/html/rfc7230#section-3.2.6">Section 3.3.6. Field Value Components</a> of the Hypertext Transfer Protocol (HTTP/1.1). </p><p>The code in your model is responsible for setting or updating any custom attributes in the response. If your code does not set this value in the response, an empty value is returned. For example, if a custom attribute represents the trace ID, your model can prepend the custom attribute with <code>Trace ID:</code> in your post-processing function.</p><p>This feature is currently supported in the Amazon Web Services SDKs but not in the Amazon SageMaker Python SDK.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable customAttributes;
+
+/**
+ <p>An optional JMESPath expression used to override the <code>EnableExplanations</code> parameter of the <code>ClarifyExplainerConfig</code> API. See the <a href="https://docs.aws.amazon.com/clarify-online-explainability-create-endpoint.html#clarify-online-exaplainability-create-endpoint-enable">EnableExplanations</a> section in the developer guide for more information. </p>
+ */
+@property (nonatomic, strong) NSString * _Nullable enableExplanations;
 
 /**
  <p>The name of the endpoint that you specified when you created the endpoint using the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html">CreateEndpoint</a> API. </p>
@@ -92,7 +162,7 @@ typedef NS_ENUM(NSInteger, AWSSageMakerRuntimeErrorType) {
 
 
 /**
- <p>Includes the inference provided by the model.</p><p>For information about the format of the response body, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html">Common Data Formats-Inference</a>.</p>
+ <p>Includes the inference provided by the model. </p><p>For information about the format of the response body, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html">Common Data Formats-Inference</a>.</p><p>If the explainer is activated, the body includes the explanations provided by the model. For more information, see the <b>Response section</b> under <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/clarify-online-explainability-invoke-endpoint.html#clarify-online-explainability-response">Invoke the Endpoint</a> in the Developer Guide.</p>
  */
 @property (nonatomic, strong) NSData * _Nullable body;
 
@@ -102,7 +172,7 @@ typedef NS_ENUM(NSInteger, AWSSageMakerRuntimeErrorType) {
 @property (nonatomic, strong) NSString * _Nullable contentType;
 
 /**
- <p>Provides additional information in the response about the inference returned by a model hosted at an Amazon SageMaker endpoint. The information is an opaque value that is forwarded verbatim. You could use this value, for example, to return an ID received in the <code>CustomAttributes</code> header of a request or other metadata that a service endpoint was programmed to produce. The value must consist of no more than 1024 visible US-ASCII characters as specified in <a href="https://tools.ietf.org/html/rfc7230#section-3.2.6">Section 3.3.6. Field Value Components</a> of the Hypertext Transfer Protocol (HTTP/1.1). If the customer wants the custom attribute returned, the model must set the custom attribute to be included on the way back. </p><p>The code in your model is responsible for setting or updating any custom attributes in the response. If your code does not set this value in the response, an empty value is returned. For example, if a custom attribute represents the trace ID, your model can prepend the custom attribute with <code>Trace ID:</code> in your post-processing function.</p><p>This feature is currently supported in the AWS SDKs but not in the Amazon SageMaker Python SDK.</p>
+ <p>Provides additional information in the response about the inference returned by a model hosted at an Amazon SageMaker endpoint. The information is an opaque value that is forwarded verbatim. You could use this value, for example, to return an ID received in the <code>CustomAttributes</code> header of a request or other metadata that a service endpoint was programmed to produce. The value must consist of no more than 1024 visible US-ASCII characters as specified in <a href="https://tools.ietf.org/html/rfc7230#section-3.2.6">Section 3.3.6. Field Value Components</a> of the Hypertext Transfer Protocol (HTTP/1.1). If the customer wants the custom attribute returned, the model must set the custom attribute to be included on the way back. </p><p>The code in your model is responsible for setting or updating any custom attributes in the response. If your code does not set this value in the response, an empty value is returned. For example, if a custom attribute represents the trace ID, your model can prepend the custom attribute with <code>Trace ID:</code> in your post-processing function.</p><p>This feature is currently supported in the Amazon Web Services SDKs but not in the Amazon SageMaker Python SDK.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable customAttributes;
 

@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -65,6 +65,8 @@
 - (void) test_AWSTranscribeInputDataConfig API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeInterruptionFilter API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeJobExecutionSettings API_AVAILABLE(ios(11));
+- (void) test_AWSTranscribeLanguageCodeItem API_AVAILABLE(ios(11));
+- (void) test_AWSTranscribeLanguageIdSettings API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeLanguageModel API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeListCallAnalyticsCategoriesRequest API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeListCallAnalyticsCategoriesResponse API_AVAILABLE(ios(11));
@@ -76,6 +78,8 @@
 - (void) test_AWSTranscribeListMedicalTranscriptionJobsResponse API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeListMedicalVocabulariesRequest API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeListMedicalVocabulariesResponse API_AVAILABLE(ios(11));
+- (void) test_AWSTranscribeListTagsForResourceRequest API_AVAILABLE(ios(11));
+- (void) test_AWSTranscribeListTagsForResourceResponse API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeListTranscriptionJobsRequest API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeListTranscriptionJobsResponse API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeListVocabulariesRequest API_AVAILABLE(ios(11));
@@ -99,10 +103,17 @@
 - (void) test_AWSTranscribeStartMedicalTranscriptionJobResponse API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeStartTranscriptionJobRequest API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeStartTranscriptionJobResponse API_AVAILABLE(ios(11));
+- (void) test_AWSTranscribeSubtitles API_AVAILABLE(ios(11));
+- (void) test_AWSTranscribeSubtitlesOutput API_AVAILABLE(ios(11));
+- (void) test_AWSTranscribeTag API_AVAILABLE(ios(11));
+- (void) test_AWSTranscribeTagResourceRequest API_AVAILABLE(ios(11));
+- (void) test_AWSTranscribeTagResourceResponse API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeTranscript API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeTranscriptFilter API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeTranscriptionJob API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeTranscriptionJobSummary API_AVAILABLE(ios(11));
+- (void) test_AWSTranscribeUntagResourceRequest API_AVAILABLE(ios(11));
+- (void) test_AWSTranscribeUntagResourceResponse API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeUpdateCallAnalyticsCategoryRequest API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeUpdateCallAnalyticsCategoryResponse API_AVAILABLE(ios(11));
 - (void) test_AWSTranscribeUpdateMedicalVocabularyRequest API_AVAILABLE(ios(11));
@@ -302,6 +313,14 @@
     [self validateSecureCodingForClass:[AWSTranscribeJobExecutionSettings class]];
 }
 
+- (void) test_AWSTranscribeLanguageCodeItem {
+    [self validateSecureCodingForClass:[AWSTranscribeLanguageCodeItem class]];
+}
+
+- (void) test_AWSTranscribeLanguageIdSettings {
+    [self validateSecureCodingForClass:[AWSTranscribeLanguageIdSettings class]];
+}
+
 - (void) test_AWSTranscribeLanguageModel {
     [self validateSecureCodingForClass:[AWSTranscribeLanguageModel class]];
 }
@@ -344,6 +363,14 @@
 
 - (void) test_AWSTranscribeListMedicalVocabulariesResponse {
     [self validateSecureCodingForClass:[AWSTranscribeListMedicalVocabulariesResponse class]];
+}
+
+- (void) test_AWSTranscribeListTagsForResourceRequest {
+    [self validateSecureCodingForClass:[AWSTranscribeListTagsForResourceRequest class]];
+}
+
+- (void) test_AWSTranscribeListTagsForResourceResponse {
+    [self validateSecureCodingForClass:[AWSTranscribeListTagsForResourceResponse class]];
 }
 
 - (void) test_AWSTranscribeListTranscriptionJobsRequest {
@@ -438,6 +465,26 @@
     [self validateSecureCodingForClass:[AWSTranscribeStartTranscriptionJobResponse class]];
 }
 
+- (void) test_AWSTranscribeSubtitles {
+    [self validateSecureCodingForClass:[AWSTranscribeSubtitles class]];
+}
+
+- (void) test_AWSTranscribeSubtitlesOutput {
+    [self validateSecureCodingForClass:[AWSTranscribeSubtitlesOutput class]];
+}
+
+- (void) test_AWSTranscribeTag {
+    [self validateSecureCodingForClass:[AWSTranscribeTag class]];
+}
+
+- (void) test_AWSTranscribeTagResourceRequest {
+    [self validateSecureCodingForClass:[AWSTranscribeTagResourceRequest class]];
+}
+
+- (void) test_AWSTranscribeTagResourceResponse {
+    [self validateSecureCodingForClass:[AWSTranscribeTagResourceResponse class]];
+}
+
 - (void) test_AWSTranscribeTranscript {
     [self validateSecureCodingForClass:[AWSTranscribeTranscript class]];
 }
@@ -452,6 +499,14 @@
 
 - (void) test_AWSTranscribeTranscriptionJobSummary {
     [self validateSecureCodingForClass:[AWSTranscribeTranscriptionJobSummary class]];
+}
+
+- (void) test_AWSTranscribeUntagResourceRequest {
+    [self validateSecureCodingForClass:[AWSTranscribeUntagResourceRequest class]];
+}
+
+- (void) test_AWSTranscribeUntagResourceResponse {
+    [self validateSecureCodingForClass:[AWSTranscribeUntagResourceResponse class]];
 }
 
 - (void) test_AWSTranscribeUpdateCallAnalyticsCategoryRequest {

@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@
 @interface AWSSNSNSSecureCodingTests : AWSNSSecureCodingTest
 
 - (void) test_AWSSNSAddPermissionInput API_AVAILABLE(ios(11));
+- (void) test_AWSSNSBatchResultErrorEntry API_AVAILABLE(ios(11));
 - (void) test_AWSSNSCheckIfPhoneNumberIsOptedOutInput API_AVAILABLE(ios(11));
 - (void) test_AWSSNSCheckIfPhoneNumberIsOptedOutResponse API_AVAILABLE(ios(11));
 - (void) test_AWSSNSConfirmSubscriptionInput API_AVAILABLE(ios(11));
@@ -38,6 +39,8 @@
 - (void) test_AWSSNSDeleteSMSSandboxPhoneNumberResult API_AVAILABLE(ios(11));
 - (void) test_AWSSNSDeleteTopicInput API_AVAILABLE(ios(11));
 - (void) test_AWSSNSEndpoint API_AVAILABLE(ios(11));
+- (void) test_AWSSNSGetDataProtectionPolicyInput API_AVAILABLE(ios(11));
+- (void) test_AWSSNSGetDataProtectionPolicyResponse API_AVAILABLE(ios(11));
 - (void) test_AWSSNSGetEndpointAttributesInput API_AVAILABLE(ios(11));
 - (void) test_AWSSNSGetEndpointAttributesResponse API_AVAILABLE(ios(11));
 - (void) test_AWSSNSGetPlatformApplicationAttributesInput API_AVAILABLE(ios(11));
@@ -73,8 +76,13 @@
 - (void) test_AWSSNSOptInPhoneNumberResponse API_AVAILABLE(ios(11));
 - (void) test_AWSSNSPhoneNumberInformation API_AVAILABLE(ios(11));
 - (void) test_AWSSNSPlatformApplication API_AVAILABLE(ios(11));
+- (void) test_AWSSNSPublishBatchInput API_AVAILABLE(ios(11));
+- (void) test_AWSSNSPublishBatchRequestEntry API_AVAILABLE(ios(11));
+- (void) test_AWSSNSPublishBatchResponse API_AVAILABLE(ios(11));
+- (void) test_AWSSNSPublishBatchResultEntry API_AVAILABLE(ios(11));
 - (void) test_AWSSNSPublishInput API_AVAILABLE(ios(11));
 - (void) test_AWSSNSPublishResponse API_AVAILABLE(ios(11));
+- (void) test_AWSSNSPutDataProtectionPolicyInput API_AVAILABLE(ios(11));
 - (void) test_AWSSNSRemovePermissionInput API_AVAILABLE(ios(11));
 - (void) test_AWSSNSSMSSandboxPhoneNumber API_AVAILABLE(ios(11));
 - (void) test_AWSSNSSetEndpointAttributesInput API_AVAILABLE(ios(11));
@@ -102,6 +110,10 @@
 
 - (void) test_AWSSNSAddPermissionInput {
     [self validateSecureCodingForClass:[AWSSNSAddPermissionInput class]];
+}
+
+- (void) test_AWSSNSBatchResultErrorEntry {
+    [self validateSecureCodingForClass:[AWSSNSBatchResultErrorEntry class]];
 }
 
 - (void) test_AWSSNSCheckIfPhoneNumberIsOptedOutInput {
@@ -174,6 +186,14 @@
 
 - (void) test_AWSSNSEndpoint {
     [self validateSecureCodingForClass:[AWSSNSEndpoint class]];
+}
+
+- (void) test_AWSSNSGetDataProtectionPolicyInput {
+    [self validateSecureCodingForClass:[AWSSNSGetDataProtectionPolicyInput class]];
+}
+
+- (void) test_AWSSNSGetDataProtectionPolicyResponse {
+    [self validateSecureCodingForClass:[AWSSNSGetDataProtectionPolicyResponse class]];
 }
 
 - (void) test_AWSSNSGetEndpointAttributesInput {
@@ -316,12 +336,32 @@
     [self validateSecureCodingForClass:[AWSSNSPlatformApplication class]];
 }
 
+- (void) test_AWSSNSPublishBatchInput {
+    [self validateSecureCodingForClass:[AWSSNSPublishBatchInput class]];
+}
+
+- (void) test_AWSSNSPublishBatchRequestEntry {
+    [self validateSecureCodingForClass:[AWSSNSPublishBatchRequestEntry class]];
+}
+
+- (void) test_AWSSNSPublishBatchResponse {
+    [self validateSecureCodingForClass:[AWSSNSPublishBatchResponse class]];
+}
+
+- (void) test_AWSSNSPublishBatchResultEntry {
+    [self validateSecureCodingForClass:[AWSSNSPublishBatchResultEntry class]];
+}
+
 - (void) test_AWSSNSPublishInput {
     [self validateSecureCodingForClass:[AWSSNSPublishInput class]];
 }
 
 - (void) test_AWSSNSPublishResponse {
     [self validateSecureCodingForClass:[AWSSNSPublishResponse class]];
+}
+
+- (void) test_AWSSNSPutDataProtectionPolicyInput {
+    [self validateSecureCodingForClass:[AWSSNSPutDataProtectionPolicyInput class]];
 }
 
 - (void) test_AWSSNSRemovePermissionInput {

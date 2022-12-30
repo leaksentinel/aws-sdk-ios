@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -85,7 +85,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Accepts a pending certificate transfer. The default state of the certificate is INACTIVE.</p> <p>To check for pending certificate transfers, call <a>ListCertificates</a> to enumerate your certificates.</p>\"\
+      \"documentation\":\"<p>Accepts a pending certificate transfer. The default state of the certificate is INACTIVE.</p> <p>To check for pending certificate transfers, call <a>ListCertificates</a> to enumerate your certificates.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">AcceptCertificateTransfer</a> action.</p>\"\
     },\
     \"AddThingToBillingGroup\":{\
       \"name\":\"AddThingToBillingGroup\",\
@@ -101,7 +101,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Adds a thing to a billing group.</p>\"\
+      \"documentation\":\"<p>Adds a thing to a billing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">AddThingToBillingGroup</a> action.</p>\"\
     },\
     \"AddThingToThingGroup\":{\
       \"name\":\"AddThingToThingGroup\",\
@@ -117,7 +117,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Adds a thing to a thing group.</p>\"\
+      \"documentation\":\"<p>Adds a thing to a thing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">AddThingToThingGroup</a> action.</p>\"\
     },\
     \"AssociateTargetsWithJob\":{\
       \"name\":\"AssociateTargetsWithJob\",\
@@ -134,7 +134,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Associates a group with a continuous job. The following criteria must be met: </p> <ul> <li> <p>The job must have been created with the <code>targetSelection</code> field set to \\\"CONTINUOUS\\\".</p> </li> <li> <p>The job status must currently be \\\"IN_PROGRESS\\\".</p> </li> <li> <p>The total number of targets associated with a job must not exceed 100.</p> </li> </ul>\"\
+      \"documentation\":\"<p>Associates a group with a continuous job. The following criteria must be met: </p> <ul> <li> <p>The job must have been created with the <code>targetSelection</code> field set to \\\"CONTINUOUS\\\".</p> </li> <li> <p>The job status must currently be \\\"IN_PROGRESS\\\".</p> </li> <li> <p>The total number of targets associated with a job must not exceed 100.</p> </li> </ul> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">AssociateTargetsWithJob</a> action.</p>\"\
     },\
     \"AttachPolicy\":{\
       \"name\":\"AttachPolicy\",\
@@ -152,7 +152,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p>Attaches the specified policy to the specified principal (certificate or other credential).</p>\"\
+      \"documentation\":\"<p>Attaches the specified policy to the specified principal (certificate or other credential).</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">AttachPolicy</a> action.</p>\"\
     },\
     \"AttachPrincipalPolicy\":{\
       \"name\":\"AttachPrincipalPolicy\",\
@@ -170,7 +170,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p>Attaches the specified policy to the specified principal (certificate or other credential).</p> <p> <b>Note:</b> This API is deprecated. Please use <a>AttachPolicy</a> instead.</p>\",\
+      \"documentation\":\"<p>Attaches the specified policy to the specified principal (certificate or other credential).</p> <p> <b>Note:</b> This action is deprecated and works as expected for backward compatibility, but we won't add enhancements. Use <a>AttachPolicy</a> instead.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">AttachPrincipalPolicy</a> action.</p>\",\
       \"deprecated\":true\
     },\
     \"AttachSecurityProfile\":{\
@@ -189,7 +189,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Associates a Device Defender security profile with a thing group or this account. Each thing group or account can have up to five security profiles associated with it.</p>\"\
+      \"documentation\":\"<p>Associates a Device Defender security profile with a thing group or this account. Each thing group or account can have up to five security profiles associated with it.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">AttachSecurityProfile</a> action.</p>\"\
     },\
     \"AttachThingPrincipal\":{\
       \"name\":\"AttachThingPrincipal\",\
@@ -207,7 +207,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Attaches the specified principal to the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities.</p>\"\
+      \"documentation\":\"<p>Attaches the specified principal to the specified thing. A principal can be X.509 certificates, Amazon Cognito identities or federated identities.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">AttachThingPrincipal</a> action.</p>\"\
     },\
     \"CancelAuditMitigationActionsTask\":{\
       \"name\":\"CancelAuditMitigationActionsTask\",\
@@ -223,7 +223,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Cancels a mitigation action task that is in progress. If the task is not in progress, an InvalidRequestException occurs.</p>\"\
+      \"documentation\":\"<p>Cancels a mitigation action task that is in progress. If the task is not in progress, an InvalidRequestException occurs.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CancelAuditMitigationActionsTask</a> action.</p>\"\
     },\
     \"CancelAuditTask\":{\
       \"name\":\"CancelAuditTask\",\
@@ -239,7 +239,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Cancels an audit that is in progress. The audit can be either scheduled or on demand. If the audit isn't in progress, an \\\"InvalidRequestException\\\" occurs.</p>\"\
+      \"documentation\":\"<p>Cancels an audit that is in progress. The audit can be either scheduled or on demand. If the audit isn't in progress, an \\\"InvalidRequestException\\\" occurs.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CancelAuditTask</a> action.</p>\"\
     },\
     \"CancelCertificateTransfer\":{\
       \"name\":\"CancelCertificateTransfer\",\
@@ -257,7 +257,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Cancels a pending transfer for the specified certificate.</p> <p> <b>Note</b> Only the transfer source account can use this operation to cancel a transfer. (Transfer destinations can use <a>RejectCertificateTransfer</a> instead.) After transfer, AWS IoT returns the certificate to the source account in the INACTIVE state. After the destination account has accepted the transfer, the transfer cannot be cancelled.</p> <p>After a certificate transfer is cancelled, the status of the certificate changes from PENDING_TRANSFER to INACTIVE.</p>\"\
+      \"documentation\":\"<p>Cancels a pending transfer for the specified certificate.</p> <p> <b>Note</b> Only the transfer source account can use this operation to cancel a transfer. (Transfer destinations can use <a>RejectCertificateTransfer</a> instead.) After transfer, IoT returns the certificate to the source account in the INACTIVE state. After the destination account has accepted the transfer, the transfer cannot be cancelled.</p> <p>After a certificate transfer is cancelled, the status of the certificate changes from PENDING_TRANSFER to INACTIVE.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CancelCertificateTransfer</a> action.</p>\"\
     },\
     \"CancelDetectMitigationActionsTask\":{\
       \"name\":\"CancelDetectMitigationActionsTask\",\
@@ -273,7 +273,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p> Cancels a Device Defender ML Detect mitigation action. </p>\"\
+      \"documentation\":\"<p> Cancels a Device Defender ML Detect mitigation action. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CancelDetectMitigationActionsTask</a> action.</p>\"\
     },\
     \"CancelJob\":{\
       \"name\":\"CancelJob\",\
@@ -287,9 +287,10 @@
         {\"shape\":\"InvalidRequestException\"},\
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"ThrottlingException\"},\
-        {\"shape\":\"ServiceUnavailableException\"}\
+        {\"shape\":\"ServiceUnavailableException\"},\
+        {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p>Cancels a job.</p>\"\
+      \"documentation\":\"<p>Cancels a job.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CancelJob</a> action.</p>\"\
     },\
     \"CancelJobExecution\":{\
       \"name\":\"CancelJobExecution\",\
@@ -306,7 +307,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"VersionConflictException\"}\
       ],\
-      \"documentation\":\"<p>Cancels the execution of a job for a given thing.</p>\"\
+      \"documentation\":\"<p>Cancels the execution of a job for a given thing.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CancelJobExecution</a> action.</p>\"\
     },\
     \"ClearDefaultAuthorizer\":{\
       \"name\":\"ClearDefaultAuthorizer\",\
@@ -324,7 +325,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Clears the default authorizer.</p>\"\
+      \"documentation\":\"<p>Clears the default authorizer.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ClearDefaultAuthorizer</a> action.</p>\"\
     },\
     \"ConfirmTopicRuleDestination\":{\
       \"name\":\"ConfirmTopicRuleDestination\",\
@@ -341,7 +342,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"ConflictingResourceUpdateException\"}\
       ],\
-      \"documentation\":\"<p>Confirms a topic rule destination. When you create a rule requiring a destination, AWS IoT sends a confirmation message to the endpoint or base address you specify. The message includes a token which you pass back when calling <code>ConfirmTopicRuleDestination</code> to confirm that you own or have access to the endpoint.</p>\"\
+      \"documentation\":\"<p>Confirms a topic rule destination. When you create a rule requiring a destination, IoT sends a confirmation message to the endpoint or base address you specify. The message includes a token which you pass back when calling <code>ConfirmTopicRuleDestination</code> to confirm that you own or have access to the endpoint.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ConfirmTopicRuleDestination</a> action.</p>\"\
     },\
     \"CreateAuditSuppression\":{\
       \"name\":\"CreateAuditSuppression\",\
@@ -358,7 +359,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p> Creates a Device Defender audit suppression. </p>\"\
+      \"documentation\":\"<p> Creates a Device Defender audit suppression. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateAuditSuppression</a> action.</p>\"\
     },\
     \"CreateAuthorizer\":{\
       \"name\":\"CreateAuthorizer\",\
@@ -377,7 +378,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Creates an authorizer.</p>\"\
+      \"documentation\":\"<p>Creates an authorizer.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateAuthorizer</a> action.</p>\"\
     },\
     \"CreateBillingGroup\":{\
       \"name\":\"CreateBillingGroup\",\
@@ -393,7 +394,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Creates a billing group.</p>\"\
+      \"documentation\":\"<p>Creates a billing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateBillingGroup</a> action.</p>\"\
     },\
     \"CreateCertificateFromCsr\":{\
       \"name\":\"CreateCertificateFromCsr\",\
@@ -410,7 +411,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Creates an X.509 certificate using the specified certificate signing request.</p> <p> <b>Note:</b> The CSR must include a public key that is either an RSA key with a length of at least 2048 bits or an ECC key from NIST P-256 or NIST P-384 curves. </p> <p> <b>Note:</b> Reusing the same certificate signing request (CSR) results in a distinct certificate.</p> <p>You can create multiple certificates in a batch by creating a directory, copying multiple .csr files into that directory, and then specifying that directory on the command line. The following commands show how to create a batch of certificates given a batch of CSRs.</p> <p>Assuming a set of CSRs are located inside of the directory my-csr-directory:</p> <p>On Linux and OS X, the command is:</p> <p>$ ls my-csr-directory/ | xargs -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{}</p> <p>This command lists all of the CSRs in my-csr-directory and pipes each CSR file name to the aws iot create-certificate-from-csr AWS CLI command to create a certificate for the corresponding CSR.</p> <p>The aws iot create-certificate-from-csr part of the command can also be run in parallel to speed up the certificate creation process:</p> <p>$ ls my-csr-directory/ | xargs -P 10 -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{}</p> <p>On Windows PowerShell, the command to create certificates for all CSRs in my-csr-directory is:</p> <p>&gt; ls -Name my-csr-directory | %{aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/$_}</p> <p>On a Windows command prompt, the command to create certificates for all CSRs in my-csr-directory is:</p> <p>&gt; forfiles /p my-csr-directory /c \\\"cmd /c aws iot create-certificate-from-csr --certificate-signing-request file://@path\\\"</p>\"\
+      \"documentation\":\"<p>Creates an X.509 certificate using the specified certificate signing request.</p> <p> <b>Note:</b> The CSR must include a public key that is either an RSA key with a length of at least 2048 bits or an ECC key from NIST P-256, NIST P-384, or NIST P-512 curves. For supported certificates, consult <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/x509-client-certs.html#x509-cert-algorithms\\\"> Certificate signing algorithms supported by IoT</a>.</p> <p> <b>Note:</b> Reusing the same certificate signing request (CSR) results in a distinct certificate.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateCertificateFromCsr</a> action.</p> <p>You can create multiple certificates in a batch by creating a directory, copying multiple .csr files into that directory, and then specifying that directory on the command line. The following commands show how to create a batch of certificates given a batch of CSRs.</p> <p>Assuming a set of CSRs are located inside of the directory my-csr-directory:</p> <p>On Linux and OS X, the command is:</p> <p>$ ls my-csr-directory/ | xargs -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{}</p> <p>This command lists all of the CSRs in my-csr-directory and pipes each CSR file name to the aws iot create-certificate-from-csr Amazon Web Services CLI command to create a certificate for the corresponding CSR.</p> <p>The aws iot create-certificate-from-csr part of the command can also be run in parallel to speed up the certificate creation process:</p> <p>$ ls my-csr-directory/ | xargs -P 10 -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{}</p> <p>On Windows PowerShell, the command to create certificates for all CSRs in my-csr-directory is:</p> <p>&gt; ls -Name my-csr-directory | %{aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/$_}</p> <p>On a Windows command prompt, the command to create certificates for all CSRs in my-csr-directory is:</p> <p>&gt; forfiles /p my-csr-directory /c \\\"cmd /c aws iot create-certificate-from-csr --certificate-signing-request file://@path\\\"</p>\"\
     },\
     \"CreateCustomMetric\":{\
       \"name\":\"CreateCustomMetric\",\
@@ -427,7 +428,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p> Use this API to define a Custom Metric published by your devices to Device Defender. </p>\"\
+      \"documentation\":\"<p> Use this API to define a Custom Metric published by your devices to Device Defender. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateCustomMetric</a> action.</p>\"\
     },\
     \"CreateDimension\":{\
       \"name\":\"CreateDimension\",\
@@ -444,7 +445,7 @@
         {\"shape\":\"ResourceAlreadyExistsException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>Create a dimension that you can use to limit the scope of a metric used in a security profile for AWS IoT Device Defender. For example, using a <code>TOPIC_FILTER</code> dimension, you can narrow down the scope of the metric only to MQTT topics whose name match the pattern specified in the dimension.</p>\"\
+      \"documentation\":\"<p>Create a dimension that you can use to limit the scope of a metric used in a security profile for IoT Device Defender. For example, using a <code>TOPIC_FILTER</code> dimension, you can narrow down the scope of the metric only to MQTT topics whose name match the pattern specified in the dimension.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateDimension</a> action.</p>\"\
     },\
     \"CreateDomainConfiguration\":{\
       \"name\":\"CreateDomainConfiguration\",\
@@ -464,7 +465,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>Creates a domain configuration.</p>\"\
+      \"documentation\":\"<p>Creates a domain configuration.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateDomainConfiguration</a> action.</p>\"\
     },\
     \"CreateDynamicThingGroup\":{\
       \"name\":\"CreateDynamicThingGroup\",\
@@ -483,7 +484,30 @@
         {\"shape\":\"InvalidQueryException\"},\
         {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p>Creates a dynamic thing group.</p>\"\
+      \"documentation\":\"<p>Creates a dynamic thing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateDynamicThingGroup</a> action.</p>\"\
+    },\
+    \"CreateFleetMetric\":{\
+      \"name\":\"CreateFleetMetric\",\
+      \"http\":{\
+        \"method\":\"PUT\",\
+        \"requestUri\":\"/fleet-metric/{metricName}\"\
+      },\
+      \"input\":{\"shape\":\"CreateFleetMetricRequest\"},\
+      \"output\":{\"shape\":\"CreateFleetMetricResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidRequestException\"},\
+        {\"shape\":\"ThrottlingException\"},\
+        {\"shape\":\"UnauthorizedException\"},\
+        {\"shape\":\"ServiceUnavailableException\"},\
+        {\"shape\":\"InternalFailureException\"},\
+        {\"shape\":\"LimitExceededException\"},\
+        {\"shape\":\"ResourceAlreadyExistsException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"InvalidQueryException\"},\
+        {\"shape\":\"InvalidAggregationException\"},\
+        {\"shape\":\"IndexNotReadyException\"}\
+      ],\
+      \"documentation\":\"<p>Creates a fleet metric.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateFleetMetric</a> action.</p>\"\
     },\
     \"CreateJob\":{\
       \"name\":\"CreateJob\",\
@@ -501,7 +525,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Creates a job.</p>\"\
+      \"documentation\":\"<p>Creates a job.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateJob</a> action.</p>\"\
     },\
     \"CreateJobTemplate\":{\
       \"name\":\"CreateJobTemplate\",\
@@ -519,7 +543,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Creates a job template.</p>\"\
+      \"documentation\":\"<p>Creates a job template.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateJobTemplate</a> action.</p>\"\
     },\
     \"CreateKeysAndCertificate\":{\
       \"name\":\"CreateKeysAndCertificate\",\
@@ -536,7 +560,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Creates a 2048-bit RSA key pair and issues an X.509 certificate using the issued public key. You can also call <code>CreateKeysAndCertificate</code> over MQTT from a device, for more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/provision-wo-cert.html#provision-mqtt-api\\\">Provisioning MQTT API</a>.</p> <p> <b>Note</b> This is the only time AWS IoT issues the private key for this certificate, so it is important to keep it in a secure location.</p>\"\
+      \"documentation\":\"<p>Creates a 2048-bit RSA key pair and issues an X.509 certificate using the issued public key. You can also call <code>CreateKeysAndCertificate</code> over MQTT from a device, for more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/provision-wo-cert.html#provision-mqtt-api\\\">Provisioning MQTT API</a>.</p> <p> <b>Note</b> This is the only time IoT issues the private key for this certificate, so it is important to keep it in a secure location.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateKeysAndCertificate</a> action.</p>\"\
     },\
     \"CreateMitigationAction\":{\
       \"name\":\"CreateMitigationAction\",\
@@ -553,7 +577,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Defines an action that can be applied to audit findings by using StartAuditMitigationActionsTask. Only certain types of mitigation actions can be applied to specific check names. For more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/device-defender-mitigation-actions.html\\\">Mitigation actions</a>. Each mitigation action can apply only one type of change.</p>\"\
+      \"documentation\":\"<p>Defines an action that can be applied to audit findings by using StartAuditMitigationActionsTask. Only certain types of mitigation actions can be applied to specific check names. For more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/device-defender-mitigation-actions.html\\\">Mitigation actions</a>. Each mitigation action can apply only one type of change.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateMitigationAction</a> action.</p>\"\
     },\
     \"CreateOTAUpdate\":{\
       \"name\":\"CreateOTAUpdate\",\
@@ -573,7 +597,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Creates an AWS IoT OTAUpdate on a target group of things or groups.</p>\"\
+      \"documentation\":\"<p>Creates an IoT OTA update on a target group of things or groups.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateOTAUpdate</a> action.</p>\"\
     },\
     \"CreatePolicy\":{\
       \"name\":\"CreatePolicy\",\
@@ -592,7 +616,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Creates an AWS IoT policy.</p> <p>The created policy is the default version for the policy. This operation creates a policy version with a version identifier of <b>1</b> and sets <b>1</b> as the policy's default version.</p>\"\
+      \"documentation\":\"<p>Creates an IoT policy.</p> <p>The created policy is the default version for the policy. This operation creates a policy version with a version identifier of <b>1</b> and sets <b>1</b> as the policy's default version.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreatePolicy</a> action.</p>\"\
     },\
     \"CreatePolicyVersion\":{\
       \"name\":\"CreatePolicyVersion\",\
@@ -612,7 +636,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Creates a new version of the specified AWS IoT policy. To update a policy, create a new policy version. A managed policy can have up to five versions. If the policy has five versions, you must use <a>DeletePolicyVersion</a> to delete an existing version before you create a new one.</p> <p>Optionally, you can set the new version as the policy's default version. The default version is the operative version (that is, the version that is in effect for the certificates to which the policy is attached).</p>\"\
+      \"documentation\":\"<p>Creates a new version of the specified IoT policy. To update a policy, create a new policy version. A managed policy can have up to five versions. If the policy has five versions, you must use <a>DeletePolicyVersion</a> to delete an existing version before you create a new one.</p> <p>Optionally, you can set the new version as the policy's default version. The default version is the operative version (that is, the version that is in effect for the certificates to which the policy is attached).</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreatePolicyVersion</a> action.</p>\"\
     },\
     \"CreateProvisioningClaim\":{\
       \"name\":\"CreateProvisioningClaim\",\
@@ -630,7 +654,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Creates a provisioning claim.</p>\"\
+      \"documentation\":\"<p>Creates a provisioning claim.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateProvisioningClaim</a> action.</p>\"\
     },\
     \"CreateProvisioningTemplate\":{\
       \"name\":\"CreateProvisioningTemplate\",\
@@ -648,7 +672,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"ResourceAlreadyExistsException\"}\
       ],\
-      \"documentation\":\"<p>Creates a fleet provisioning template.</p>\"\
+      \"documentation\":\"<p>Creates a provisioning template.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateProvisioningTemplate</a> action.</p>\"\
     },\
     \"CreateProvisioningTemplateVersion\":{\
       \"name\":\"CreateProvisioningTemplateVersion\",\
@@ -667,7 +691,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"ConflictingResourceUpdateException\"}\
       ],\
-      \"documentation\":\"<p>Creates a new version of a fleet provisioning template.</p>\"\
+      \"documentation\":\"<p>Creates a new version of a provisioning template.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateProvisioningTemplateVersion</a> action.</p>\"\
     },\
     \"CreateRoleAlias\":{\
       \"name\":\"CreateRoleAlias\",\
@@ -686,7 +710,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Creates a role alias.</p>\"\
+      \"documentation\":\"<p>Creates a role alias.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateRoleAlias</a> action.</p>\"\
     },\
     \"CreateScheduledAudit\":{\
       \"name\":\"CreateScheduledAudit\",\
@@ -703,7 +727,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p>Creates a scheduled audit that is run at a specified time interval.</p>\"\
+      \"documentation\":\"<p>Creates a scheduled audit that is run at a specified time interval.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateScheduledAudit</a> action.</p>\"\
     },\
     \"CreateSecurityProfile\":{\
       \"name\":\"CreateSecurityProfile\",\
@@ -719,7 +743,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Creates a Device Defender security profile.</p>\"\
+      \"documentation\":\"<p>Creates a Device Defender security profile.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateSecurityProfile</a> action.</p>\"\
     },\
     \"CreateStream\":{\
       \"name\":\"CreateStream\",\
@@ -739,7 +763,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Creates a stream for delivering one or more large files in chunks over MQTT. A stream transports data bytes in chunks or blocks packaged as MQTT messages from a source like S3. You can have one or more files associated with a stream.</p>\"\
+      \"documentation\":\"<p>Creates a stream for delivering one or more large files in chunks over MQTT. A stream transports data bytes in chunks or blocks packaged as MQTT messages from a source like S3. You can have one or more files associated with a stream.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateStream</a> action.</p>\"\
     },\
     \"CreateThing\":{\
       \"name\":\"CreateThing\",\
@@ -758,7 +782,7 @@
         {\"shape\":\"ResourceAlreadyExistsException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Creates a thing record in the registry. If this call is made multiple times using the same thing name and configuration, the call will succeed. If this call is made with the same thing name but different configuration a <code>ResourceAlreadyExistsException</code> is thrown.</p> <note> <p>This is a control plane operation. See <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html\\\">Authorization</a> for information about authorizing control plane actions.</p> </note>\"\
+      \"documentation\":\"<p>Creates a thing record in the registry. If this call is made multiple times using the same thing name and configuration, the call will succeed. If this call is made with the same thing name but different configuration a <code>ResourceAlreadyExistsException</code> is thrown.</p> <note> <p>This is a control plane operation. See <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html\\\">Authorization</a> for information about authorizing control plane actions.</p> </note> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateThing</a> action.</p>\"\
     },\
     \"CreateThingGroup\":{\
       \"name\":\"CreateThingGroup\",\
@@ -774,7 +798,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Create a thing group.</p> <note> <p>This is a control plane operation. See <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html\\\">Authorization</a> for information about authorizing control plane actions.</p> </note>\"\
+      \"documentation\":\"<p>Create a thing group.</p> <note> <p>This is a control plane operation. See <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html\\\">Authorization</a> for information about authorizing control plane actions.</p> </note> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateThingGroup</a> action.</p>\"\
     },\
     \"CreateThingType\":{\
       \"name\":\"CreateThingType\",\
@@ -792,7 +816,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceAlreadyExistsException\"}\
       ],\
-      \"documentation\":\"<p>Creates a new thing type.</p>\"\
+      \"documentation\":\"<p>Creates a new thing type.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateThingType</a> action.</p>\"\
     },\
     \"CreateTopicRule\":{\
       \"name\":\"CreateTopicRule\",\
@@ -809,7 +833,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"ConflictingResourceUpdateException\"}\
       ],\
-      \"documentation\":\"<p>Creates a rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.</p>\"\
+      \"documentation\":\"<p>Creates a rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateTopicRule</a> action.</p>\"\
     },\
     \"CreateTopicRuleDestination\":{\
       \"name\":\"CreateTopicRuleDestination\",\
@@ -826,7 +850,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"ConflictingResourceUpdateException\"}\
       ],\
-      \"documentation\":\"<p>Creates a topic rule destination. The destination must be confirmed prior to use.</p>\"\
+      \"documentation\":\"<p>Creates a topic rule destination. The destination must be confirmed prior to use.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateTopicRuleDestination</a> action.</p>\"\
     },\
     \"DeleteAccountAuditConfiguration\":{\
       \"name\":\"DeleteAccountAuditConfiguration\",\
@@ -842,7 +866,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Restores the default settings for Device Defender audits for this account. Any configuration data you entered is deleted and all audit checks are reset to disabled. </p>\"\
+      \"documentation\":\"<p>Restores the default settings for Device Defender audits for this account. Any configuration data you entered is deleted and all audit checks are reset to disabled. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteAccountAuditConfiguration</a> action.</p>\"\
     },\
     \"DeleteAuditSuppression\":{\
       \"name\":\"DeleteAuditSuppression\",\
@@ -857,7 +881,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p> Deletes a Device Defender audit suppression. </p>\"\
+      \"documentation\":\"<p> Deletes a Device Defender audit suppression. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteAuditSuppression</a> action.</p>\"\
     },\
     \"DeleteAuthorizer\":{\
       \"name\":\"DeleteAuthorizer\",\
@@ -876,7 +900,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Deletes an authorizer.</p>\"\
+      \"documentation\":\"<p>Deletes an authorizer.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteAuthorizer</a> action.</p>\"\
     },\
     \"DeleteBillingGroup\":{\
       \"name\":\"DeleteBillingGroup\",\
@@ -892,7 +916,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Deletes the billing group.</p>\"\
+      \"documentation\":\"<p>Deletes the billing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteBillingGroup</a> action.</p>\"\
     },\
     \"DeleteCACertificate\":{\
       \"name\":\"DeleteCACertificate\",\
@@ -911,7 +935,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a registered CA certificate.</p>\"\
+      \"documentation\":\"<p>Deletes a registered CA certificate.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteCACertificate</a> action.</p>\"\
     },\
     \"DeleteCertificate\":{\
       \"name\":\"DeleteCertificate\",\
@@ -930,7 +954,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Deletes the specified certificate.</p> <p>A certificate cannot be deleted if it has a policy or IoT thing attached to it or if its status is set to ACTIVE. To delete a certificate, first use the <a>DetachPrincipalPolicy</a> API to detach all policies. Next, use the <a>UpdateCertificate</a> API to set the certificate to the INACTIVE status.</p>\"\
+      \"documentation\":\"<p>Deletes the specified certificate.</p> <p>A certificate cannot be deleted if it has a policy or IoT thing attached to it or if its status is set to ACTIVE. To delete a certificate, first use the <a>DetachPolicy</a> action to detach all policies. Next, use the <a>UpdateCertificate</a> action to set the certificate to the INACTIVE status.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteCertificate</a> action.</p>\"\
     },\
     \"DeleteCustomMetric\":{\
       \"name\":\"DeleteCustomMetric\",\
@@ -945,7 +969,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<note> <p>Before you can delete a custom metric, you must first remove the custom metric from all security profiles it's a part of. The security profile associated with the custom metric can be found using the <a href=\\\"https://docs.aws.amazon.com/iot/latest/apireference/API_ListSecurityProfiles.html\\\">ListSecurityProfiles</a> API with <code>metricName</code> set to your custom metric name.</p> </note> <p> Deletes a Device Defender detect custom metric. </p>\"\
+      \"documentation\":\"<p> Deletes a Device Defender detect custom metric. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteCustomMetric</a> action.</p> <note> <p>Before you can delete a custom metric, you must first remove the custom metric from all security profiles it's a part of. The security profile associated with the custom metric can be found using the <a href=\\\"https://docs.aws.amazon.com/iot/latest/apireference/API_ListSecurityProfiles.html\\\">ListSecurityProfiles</a> API with <code>metricName</code> set to your custom metric name.</p> </note>\"\
     },\
     \"DeleteDimension\":{\
       \"name\":\"DeleteDimension\",\
@@ -960,7 +984,7 @@
         {\"shape\":\"InvalidRequestException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>Removes the specified dimension from your AWS account.</p>\"\
+      \"documentation\":\"<p>Removes the specified dimension from your Amazon Web Services accounts.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteDimension</a> action.</p>\"\
     },\
     \"DeleteDomainConfiguration\":{\
       \"name\":\"DeleteDomainConfiguration\",\
@@ -978,7 +1002,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"InvalidRequestException\"}\
       ],\
-      \"documentation\":\"<p>Deletes the specified domain configuration.</p>\"\
+      \"documentation\":\"<p>Deletes the specified domain configuration.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteDomainConfiguration</a> action.</p>\"\
     },\
     \"DeleteDynamicThingGroup\":{\
       \"name\":\"DeleteDynamicThingGroup\",\
@@ -994,7 +1018,24 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a dynamic thing group.</p>\"\
+      \"documentation\":\"<p>Deletes a dynamic thing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteDynamicThingGroup</a> action.</p>\"\
+    },\
+    \"DeleteFleetMetric\":{\
+      \"name\":\"DeleteFleetMetric\",\
+      \"http\":{\
+        \"method\":\"DELETE\",\
+        \"requestUri\":\"/fleet-metric/{metricName}\"\
+      },\
+      \"input\":{\"shape\":\"DeleteFleetMetricRequest\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidRequestException\"},\
+        {\"shape\":\"ThrottlingException\"},\
+        {\"shape\":\"UnauthorizedException\"},\
+        {\"shape\":\"ServiceUnavailableException\"},\
+        {\"shape\":\"InternalFailureException\"},\
+        {\"shape\":\"VersionConflictException\"}\
+      ],\
+      \"documentation\":\"<p>Deletes the specified fleet metric. Returns successfully with no error if the deletion is successful or you specify a fleet metric that doesn't exist.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteFleetMetric</a> action.</p>\"\
     },\
     \"DeleteJob\":{\
       \"name\":\"DeleteJob\",\
@@ -1011,7 +1052,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a job and its related job executions.</p> <p>Deleting a job may take time, depending on the number of job executions created for the job and various other factors. While the job is being deleted, the status of the job will be shown as \\\"DELETION_IN_PROGRESS\\\". Attempting to delete or cancel a job whose status is already \\\"DELETION_IN_PROGRESS\\\" will result in an error.</p> <p>Only 10 jobs may have status \\\"DELETION_IN_PROGRESS\\\" at the same time, or a LimitExceededException will occur.</p>\"\
+      \"documentation\":\"<p>Deletes a job and its related job executions.</p> <p>Deleting a job may take time, depending on the number of job executions created for the job and various other factors. While the job is being deleted, the status of the job will be shown as \\\"DELETION_IN_PROGRESS\\\". Attempting to delete or cancel a job whose status is already \\\"DELETION_IN_PROGRESS\\\" will result in an error.</p> <p>Only 10 jobs may have status \\\"DELETION_IN_PROGRESS\\\" at the same time, or a LimitExceededException will occur.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteJob</a> action.</p>\"\
     },\
     \"DeleteJobExecution\":{\
       \"name\":\"DeleteJobExecution\",\
@@ -1027,7 +1068,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a job execution.</p>\"\
+      \"documentation\":\"<p>Deletes a job execution.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteJobExecution</a> action.</p>\"\
     },\
     \"DeleteJobTemplate\":{\
       \"name\":\"DeleteJobTemplate\",\
@@ -1057,7 +1098,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a defined mitigation action from your AWS account.</p>\"\
+      \"documentation\":\"<p>Deletes a defined mitigation action from your Amazon Web Services accounts.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteMitigationAction</a> action.</p>\"\
     },\
     \"DeleteOTAUpdate\":{\
       \"name\":\"DeleteOTAUpdate\",\
@@ -1076,7 +1117,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"VersionConflictException\"}\
       ],\
-      \"documentation\":\"<p>Delete an OTA update.</p>\"\
+      \"documentation\":\"<p>Delete an OTA update.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteOTAUpdate</a> action.</p>\"\
     },\
     \"DeletePolicy\":{\
       \"name\":\"DeletePolicy\",\
@@ -1094,7 +1135,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Deletes the specified policy.</p> <p>A policy cannot be deleted if it has non-default versions or it is attached to any certificate.</p> <p>To delete a policy, use the DeletePolicyVersion API to delete all non-default versions of the policy; use the DetachPrincipalPolicy API to detach the policy from any certificate; and then use the DeletePolicy API to delete the policy.</p> <p>When a policy is deleted using DeletePolicy, its default version is deleted with it.</p>\"\
+      \"documentation\":\"<p>Deletes the specified policy.</p> <p>A policy cannot be deleted if it has non-default versions or it is attached to any certificate.</p> <p>To delete a policy, use the <a>DeletePolicyVersion</a> action to delete all non-default versions of the policy; use the <a>DetachPolicy</a> action to detach the policy from any certificate; and then use the DeletePolicy action to delete the policy.</p> <p>When a policy is deleted using DeletePolicy, its default version is deleted with it.</p> <note> <p>Because of the distributed nature of Amazon Web Services, it can take up to five minutes after a policy is detached before it's ready to be deleted.</p> </note> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeletePolicy</a> action.</p>\"\
     },\
     \"DeletePolicyVersion\":{\
       \"name\":\"DeletePolicyVersion\",\
@@ -1112,7 +1153,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Deletes the specified version of the specified policy. You cannot delete the default version of a policy using this API. To delete the default version of a policy, use <a>DeletePolicy</a>. To find out which version of a policy is marked as the default version, use ListPolicyVersions.</p>\"\
+      \"documentation\":\"<p>Deletes the specified version of the specified policy. You cannot delete the default version of a policy using this action. To delete the default version of a policy, use <a>DeletePolicy</a>. To find out which version of a policy is marked as the default version, use ListPolicyVersions.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeletePolicyVersion</a> action.</p>\"\
     },\
     \"DeleteProvisioningTemplate\":{\
       \"name\":\"DeleteProvisioningTemplate\",\
@@ -1131,7 +1172,7 @@
         {\"shape\":\"ConflictingResourceUpdateException\"},\
         {\"shape\":\"UnauthorizedException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a fleet provisioning template.</p>\"\
+      \"documentation\":\"<p>Deletes a provisioning template.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteProvisioningTemplate</a> action.</p>\"\
     },\
     \"DeleteProvisioningTemplateVersion\":{\
       \"name\":\"DeleteProvisioningTemplateVersion\",\
@@ -1150,7 +1191,7 @@
         {\"shape\":\"ConflictingResourceUpdateException\"},\
         {\"shape\":\"DeleteConflictException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a fleet provisioning template version.</p>\"\
+      \"documentation\":\"<p>Deletes a provisioning template version.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteProvisioningTemplateVersion</a> action.</p>\"\
     },\
     \"DeleteRegistrationCode\":{\
       \"name\":\"DeleteRegistrationCode\",\
@@ -1167,7 +1208,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a CA certificate registration code.</p>\"\
+      \"documentation\":\"<p>Deletes a CA certificate registration code.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteRegistrationCode</a> action.</p>\"\
     },\
     \"DeleteRoleAlias\":{\
       \"name\":\"DeleteRoleAlias\",\
@@ -1186,7 +1227,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a role alias</p>\"\
+      \"documentation\":\"<p>Deletes a role alias</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteRoleAlias</a> action.</p>\"\
     },\
     \"DeleteScheduledAudit\":{\
       \"name\":\"DeleteScheduledAudit\",\
@@ -1202,7 +1243,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a scheduled audit.</p>\"\
+      \"documentation\":\"<p>Deletes a scheduled audit.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteScheduledAudit</a> action.</p>\"\
     },\
     \"DeleteSecurityProfile\":{\
       \"name\":\"DeleteSecurityProfile\",\
@@ -1218,7 +1259,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"VersionConflictException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a Device Defender security profile.</p>\"\
+      \"documentation\":\"<p>Deletes a Device Defender security profile.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteSecurityProfile</a> action.</p>\"\
     },\
     \"DeleteStream\":{\
       \"name\":\"DeleteStream\",\
@@ -1237,7 +1278,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a stream.</p>\"\
+      \"documentation\":\"<p>Deletes a stream.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteStream</a> action.</p>\"\
     },\
     \"DeleteThing\":{\
       \"name\":\"DeleteThing\",\
@@ -1256,7 +1297,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Deletes the specified thing. Returns successfully with no error if the deletion is successful or you specify a thing that doesn't exist.</p>\"\
+      \"documentation\":\"<p>Deletes the specified thing. Returns successfully with no error if the deletion is successful or you specify a thing that doesn't exist.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteThing</a> action.</p>\"\
     },\
     \"DeleteThingGroup\":{\
       \"name\":\"DeleteThingGroup\",\
@@ -1272,7 +1313,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a thing group.</p>\"\
+      \"documentation\":\"<p>Deletes a thing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteThingGroup</a> action.</p>\"\
     },\
     \"DeleteThingType\":{\
       \"name\":\"DeleteThingType\",\
@@ -1290,7 +1331,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Deletes the specified thing type. You cannot delete a thing type if it has things associated with it. To delete a thing type, first mark it as deprecated by calling <a>DeprecateThingType</a>, then remove any associated things by calling <a>UpdateThing</a> to change the thing type on any associated thing, and finally use <a>DeleteThingType</a> to delete the thing type.</p>\"\
+      \"documentation\":\"<p>Deletes the specified thing type. You cannot delete a thing type if it has things associated with it. To delete a thing type, first mark it as deprecated by calling <a>DeprecateThingType</a>, then remove any associated things by calling <a>UpdateThing</a> to change the thing type on any associated thing, and finally use <a>DeleteThingType</a> to delete the thing type.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteThingType</a> action.</p>\"\
     },\
     \"DeleteTopicRule\":{\
       \"name\":\"DeleteTopicRule\",\
@@ -1306,7 +1347,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"ConflictingResourceUpdateException\"}\
       ],\
-      \"documentation\":\"<p>Deletes the rule.</p>\"\
+      \"documentation\":\"<p>Deletes the rule.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteTopicRule</a> action.</p>\"\
     },\
     \"DeleteTopicRuleDestination\":{\
       \"name\":\"DeleteTopicRuleDestination\",\
@@ -1323,7 +1364,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"ConflictingResourceUpdateException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a topic rule destination.</p>\"\
+      \"documentation\":\"<p>Deletes a topic rule destination.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteTopicRuleDestination</a> action.</p>\"\
     },\
     \"DeleteV2LoggingLevel\":{\
       \"name\":\"DeleteV2LoggingLevel\",\
@@ -1337,7 +1378,7 @@
         {\"shape\":\"InvalidRequestException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Deletes a logging level.</p>\"\
+      \"documentation\":\"<p>Deletes a logging level.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeleteV2LoggingLevel</a> action.</p>\"\
     },\
     \"DeprecateThingType\":{\
       \"name\":\"DeprecateThingType\",\
@@ -1355,7 +1396,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Deprecates a thing type. You can not associate new things with deprecated thing type.</p>\"\
+      \"documentation\":\"<p>Deprecates a thing type. You can not associate new things with deprecated thing type.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DeprecateThingType</a> action.</p>\"\
     },\
     \"DescribeAccountAuditConfiguration\":{\
       \"name\":\"DescribeAccountAuditConfiguration\",\
@@ -1369,7 +1410,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about the Device Defender audit settings for this account. Settings include how audit notifications are sent and which audit checks are enabled or disabled.</p>\"\
+      \"documentation\":\"<p>Gets information about the Device Defender audit settings for this account. Settings include how audit notifications are sent and which audit checks are enabled or disabled.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeAccountAuditConfiguration</a> action.</p>\"\
     },\
     \"DescribeAuditFinding\":{\
       \"name\":\"DescribeAuditFinding\",\
@@ -1385,7 +1426,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about a single audit finding. Properties include the reason for noncompliance, the severity of the issue, and the start time when the audit that returned the finding.</p>\"\
+      \"documentation\":\"<p>Gets information about a single audit finding. Properties include the reason for noncompliance, the severity of the issue, and the start time when the audit that returned the finding.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeAuditFinding</a> action.</p>\"\
     },\
     \"DescribeAuditMitigationActionsTask\":{\
       \"name\":\"DescribeAuditMitigationActionsTask\",\
@@ -1433,7 +1474,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about a Device Defender audit.</p>\"\
+      \"documentation\":\"<p>Gets information about a Device Defender audit.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeAuditTask</a> action.</p>\"\
     },\
     \"DescribeAuthorizer\":{\
       \"name\":\"DescribeAuthorizer\",\
@@ -1451,7 +1492,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Describes an authorizer.</p>\"\
+      \"documentation\":\"<p>Describes an authorizer.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeAuthorizer</a> action.</p>\"\
     },\
     \"DescribeBillingGroup\":{\
       \"name\":\"DescribeBillingGroup\",\
@@ -1467,7 +1508,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Returns information about a billing group.</p>\"\
+      \"documentation\":\"<p>Returns information about a billing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeBillingGroup</a> action.</p>\"\
     },\
     \"DescribeCACertificate\":{\
       \"name\":\"DescribeCACertificate\",\
@@ -1485,7 +1526,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Describes a registered CA certificate.</p>\"\
+      \"documentation\":\"<p>Describes a registered CA certificate.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeCACertificate</a> action.</p>\"\
     },\
     \"DescribeCertificate\":{\
       \"name\":\"DescribeCertificate\",\
@@ -1503,7 +1544,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about the specified certificate.</p>\"\
+      \"documentation\":\"<p>Gets information about the specified certificate.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeCertificate</a> action.</p>\"\
     },\
     \"DescribeCustomMetric\":{\
       \"name\":\"DescribeCustomMetric\",\
@@ -1519,7 +1560,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p> Gets information about a Device Defender detect custom metric. </p>\"\
+      \"documentation\":\"<p> Gets information about a Device Defender detect custom metric. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeCustomMetric</a> action.</p>\"\
     },\
     \"DescribeDefaultAuthorizer\":{\
       \"name\":\"DescribeDefaultAuthorizer\",\
@@ -1537,7 +1578,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Describes the default authorizer.</p>\"\
+      \"documentation\":\"<p>Describes the default authorizer.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeDefaultAuthorizer</a> action.</p>\"\
     },\
     \"DescribeDetectMitigationActionsTask\":{\
       \"name\":\"DescribeDetectMitigationActionsTask\",\
@@ -1553,7 +1594,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p> Gets information about a Device Defender ML Detect mitigation action. </p>\"\
+      \"documentation\":\"<p> Gets information about a Device Defender ML Detect mitigation action. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeDetectMitigationActionsTask</a> action.</p>\"\
     },\
     \"DescribeDimension\":{\
       \"name\":\"DescribeDimension\",\
@@ -1569,7 +1610,7 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>Provides details about a dimension that is defined in your AWS account.</p>\"\
+      \"documentation\":\"<p>Provides details about a dimension that is defined in your Amazon Web Services accounts.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeDimension</a> action.</p>\"\
     },\
     \"DescribeDomainConfiguration\":{\
       \"name\":\"DescribeDomainConfiguration\",\
@@ -1587,7 +1628,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets summary information about a domain configuration.</p>\"\
+      \"documentation\":\"<p>Gets summary information about a domain configuration.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeDomainConfiguration</a> action.</p>\"\
     },\
     \"DescribeEndpoint\":{\
       \"name\":\"DescribeEndpoint\",\
@@ -1603,7 +1644,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>Returns a unique endpoint specific to the AWS account making the call.</p>\"\
+      \"documentation\":\"<p>Returns a unique endpoint specific to the Amazon Web Services account making the call.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeEndpoint</a> action.</p>\"\
     },\
     \"DescribeEventConfigurations\":{\
       \"name\":\"DescribeEventConfigurations\",\
@@ -1617,7 +1658,25 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>Describes event configurations.</p>\"\
+      \"documentation\":\"<p>Describes event configurations.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeEventConfigurations</a> action.</p>\"\
+    },\
+    \"DescribeFleetMetric\":{\
+      \"name\":\"DescribeFleetMetric\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/fleet-metric/{metricName}\"\
+      },\
+      \"input\":{\"shape\":\"DescribeFleetMetricRequest\"},\
+      \"output\":{\"shape\":\"DescribeFleetMetricResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidRequestException\"},\
+        {\"shape\":\"ThrottlingException\"},\
+        {\"shape\":\"UnauthorizedException\"},\
+        {\"shape\":\"ServiceUnavailableException\"},\
+        {\"shape\":\"InternalFailureException\"},\
+        {\"shape\":\"ResourceNotFoundException\"}\
+      ],\
+      \"documentation\":\"<p>Gets information about the specified fleet metric.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeFleetMetric</a> action.</p>\"\
     },\
     \"DescribeIndex\":{\
       \"name\":\"DescribeIndex\",\
@@ -1635,7 +1694,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Describes a search index.</p>\"\
+      \"documentation\":\"<p>Describes a search index.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeIndex</a> action.</p>\"\
     },\
     \"DescribeJob\":{\
       \"name\":\"DescribeJob\",\
@@ -1651,7 +1710,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Describes a job.</p>\"\
+      \"documentation\":\"<p>Describes a job.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeJob</a> action.</p>\"\
     },\
     \"DescribeJobExecution\":{\
       \"name\":\"DescribeJobExecution\",\
@@ -1667,7 +1726,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Describes a job execution.</p>\"\
+      \"documentation\":\"<p>Describes a job execution.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeJobExecution</a> action.</p>\"\
     },\
     \"DescribeJobTemplate\":{\
       \"name\":\"DescribeJobTemplate\",\
@@ -1685,6 +1744,22 @@
       ],\
       \"documentation\":\"<p>Returns information about a job template.</p>\"\
     },\
+    \"DescribeManagedJobTemplate\":{\
+      \"name\":\"DescribeManagedJobTemplate\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/managed-job-templates/{templateName}\"\
+      },\
+      \"input\":{\"shape\":\"DescribeManagedJobTemplateRequest\"},\
+      \"output\":{\"shape\":\"DescribeManagedJobTemplateResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidRequestException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"ThrottlingException\"},\
+        {\"shape\":\"InternalServerException\"}\
+      ],\
+      \"documentation\":\"<p>View details of a managed job template.</p>\"\
+    },\
     \"DescribeMitigationAction\":{\
       \"name\":\"DescribeMitigationAction\",\
       \"http\":{\
@@ -1699,7 +1774,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about a mitigation action.</p>\"\
+      \"documentation\":\"<p>Gets information about a mitigation action.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeMitigationAction</a> action.</p>\"\
     },\
     \"DescribeProvisioningTemplate\":{\
       \"name\":\"DescribeProvisioningTemplate\",\
@@ -1716,7 +1791,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"UnauthorizedException\"}\
       ],\
-      \"documentation\":\"<p>Returns information about a fleet provisioning template.</p>\"\
+      \"documentation\":\"<p>Returns information about a provisioning template.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeProvisioningTemplate</a> action.</p>\"\
     },\
     \"DescribeProvisioningTemplateVersion\":{\
       \"name\":\"DescribeProvisioningTemplateVersion\",\
@@ -1733,7 +1808,7 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"UnauthorizedException\"}\
       ],\
-      \"documentation\":\"<p>Returns information about a fleet provisioning template version.</p>\"\
+      \"documentation\":\"<p>Returns information about a provisioning template version.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeProvisioningTemplateVersion</a> action.</p>\"\
     },\
     \"DescribeRoleAlias\":{\
       \"name\":\"DescribeRoleAlias\",\
@@ -1751,7 +1826,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Describes a role alias.</p>\"\
+      \"documentation\":\"<p>Describes a role alias.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeRoleAlias</a> action.</p>\"\
     },\
     \"DescribeScheduledAudit\":{\
       \"name\":\"DescribeScheduledAudit\",\
@@ -1767,7 +1842,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about a scheduled audit.</p>\"\
+      \"documentation\":\"<p>Gets information about a scheduled audit.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeScheduledAudit</a> action.</p>\"\
     },\
     \"DescribeSecurityProfile\":{\
       \"name\":\"DescribeSecurityProfile\",\
@@ -1783,7 +1858,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about a Device Defender security profile.</p>\"\
+      \"documentation\":\"<p>Gets information about a Device Defender security profile.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeSecurityProfile</a> action.</p>\"\
     },\
     \"DescribeStream\":{\
       \"name\":\"DescribeStream\",\
@@ -1801,7 +1876,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about a stream.</p>\"\
+      \"documentation\":\"<p>Gets information about a stream.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeStream</a> action.</p>\"\
     },\
     \"DescribeThing\":{\
       \"name\":\"DescribeThing\",\
@@ -1819,7 +1894,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about the specified thing.</p>\"\
+      \"documentation\":\"<p>Gets information about the specified thing.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeThing</a> action.</p>\"\
     },\
     \"DescribeThingGroup\":{\
       \"name\":\"DescribeThingGroup\",\
@@ -1835,7 +1910,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Describe a thing group.</p>\"\
+      \"documentation\":\"<p>Describe a thing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeThingGroup</a> action.</p>\"\
     },\
     \"DescribeThingRegistrationTask\":{\
       \"name\":\"DescribeThingRegistrationTask\",\
@@ -1852,7 +1927,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Describes a bulk thing provisioning task.</p>\"\
+      \"documentation\":\"<p>Describes a bulk thing provisioning task.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeThingRegistrationTask</a> action.</p>\"\
     },\
     \"DescribeThingType\":{\
       \"name\":\"DescribeThingType\",\
@@ -1870,7 +1945,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about the specified thing type.</p>\"\
+      \"documentation\":\"<p>Gets information about the specified thing type.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DescribeThingType</a> action.</p>\"\
     },\
     \"DetachPolicy\":{\
       \"name\":\"DetachPolicy\",\
@@ -1887,7 +1962,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p>Detaches a policy from the specified target.</p>\"\
+      \"documentation\":\"<p>Detaches a policy from the specified target.</p> <note> <p>Because of the distributed nature of Amazon Web Services, it can take up to five minutes after a policy is detached before it's ready to be deleted.</p> </note> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DetachPolicy</a> action.</p>\"\
     },\
     \"DetachPrincipalPolicy\":{\
       \"name\":\"DetachPrincipalPolicy\",\
@@ -1904,7 +1979,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Removes the specified policy from the specified certificate.</p> <p> <b>Note:</b> This API is deprecated. Please use <a>DetachPolicy</a> instead.</p>\",\
+      \"documentation\":\"<p>Removes the specified policy from the specified certificate.</p> <p> <b>Note:</b> This action is deprecated and works as expected for backward compatibility, but we won't add enhancements. Use <a>DetachPolicy</a> instead.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DetachPrincipalPolicy</a> action.</p>\",\
       \"deprecated\":true\
     },\
     \"DetachSecurityProfile\":{\
@@ -1921,7 +1996,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Disassociates a Device Defender security profile from a thing group or from this account.</p>\"\
+      \"documentation\":\"<p>Disassociates a Device Defender security profile from a thing group or from this account.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DetachSecurityProfile</a> action.</p>\"\
     },\
     \"DetachThingPrincipal\":{\
       \"name\":\"DetachThingPrincipal\",\
@@ -1939,7 +2014,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Detaches the specified principal from the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities.</p> <note> <p>This call is asynchronous. It might take several seconds for the detachment to propagate.</p> </note>\"\
+      \"documentation\":\"<p>Detaches the specified principal from the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities.</p> <note> <p>This call is asynchronous. It might take several seconds for the detachment to propagate.</p> </note> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DetachThingPrincipal</a> action.</p>\"\
     },\
     \"DisableTopicRule\":{\
       \"name\":\"DisableTopicRule\",\
@@ -1955,7 +2030,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"ConflictingResourceUpdateException\"}\
       ],\
-      \"documentation\":\"<p>Disables the rule.</p>\"\
+      \"documentation\":\"<p>Disables the rule.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">DisableTopicRule</a> action.</p>\"\
     },\
     \"EnableTopicRule\":{\
       \"name\":\"EnableTopicRule\",\
@@ -1971,7 +2046,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"ConflictingResourceUpdateException\"}\
       ],\
-      \"documentation\":\"<p>Enables the rule.</p>\"\
+      \"documentation\":\"<p>Enables the rule.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">EnableTopicRule</a> action.</p>\"\
     },\
     \"GetBehaviorModelTrainingSummaries\":{\
       \"name\":\"GetBehaviorModelTrainingSummaries\",\
@@ -1987,7 +2062,28 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p> Returns a Device Defender's ML Detect Security Profile training model's status. </p>\"\
+      \"documentation\":\"<p> Returns a Device Defender's ML Detect Security Profile training model's status. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetBehaviorModelTrainingSummaries</a> action.</p>\"\
+    },\
+    \"GetBucketsAggregation\":{\
+      \"name\":\"GetBucketsAggregation\",\
+      \"http\":{\
+        \"method\":\"POST\",\
+        \"requestUri\":\"/indices/buckets\"\
+      },\
+      \"input\":{\"shape\":\"GetBucketsAggregationRequest\"},\
+      \"output\":{\"shape\":\"GetBucketsAggregationResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidRequestException\"},\
+        {\"shape\":\"ThrottlingException\"},\
+        {\"shape\":\"UnauthorizedException\"},\
+        {\"shape\":\"ServiceUnavailableException\"},\
+        {\"shape\":\"InternalFailureException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"InvalidQueryException\"},\
+        {\"shape\":\"InvalidAggregationException\"},\
+        {\"shape\":\"IndexNotReadyException\"}\
+      ],\
+      \"documentation\":\"<p>Aggregates on indexed data with search queries pertaining to particular fields. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetBucketsAggregation</a> action.</p>\"\
     },\
     \"GetCardinality\":{\
       \"name\":\"GetCardinality\",\
@@ -2008,7 +2104,7 @@
         {\"shape\":\"InvalidAggregationException\"},\
         {\"shape\":\"IndexNotReadyException\"}\
       ],\
-      \"documentation\":\"<p>Returns the approximate count of unique values that match the query.</p>\"\
+      \"documentation\":\"<p>Returns the approximate count of unique values that match the query.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetCardinality</a> action.</p>\"\
     },\
     \"GetEffectivePolicies\":{\
       \"name\":\"GetEffectivePolicies\",\
@@ -2027,7 +2123,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p>Gets a list of the policies that have an effect on the authorization behavior of the specified device when it connects to the AWS IoT device gateway.</p>\"\
+      \"documentation\":\"<p>Gets a list of the policies that have an effect on the authorization behavior of the specified device when it connects to the IoT device gateway.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetEffectivePolicies</a> action.</p>\"\
     },\
     \"GetIndexingConfiguration\":{\
       \"name\":\"GetIndexingConfiguration\",\
@@ -2044,7 +2140,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets the indexing configuration.</p>\"\
+      \"documentation\":\"<p>Gets the indexing configuration.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetIndexingConfiguration</a> action.</p>\"\
     },\
     \"GetJobDocument\":{\
       \"name\":\"GetJobDocument\",\
@@ -2060,7 +2156,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Gets a job document.</p>\"\
+      \"documentation\":\"<p>Gets a job document.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetJobDocument</a> action.</p>\"\
     },\
     \"GetLoggingOptions\":{\
       \"name\":\"GetLoggingOptions\",\
@@ -2075,7 +2171,7 @@
         {\"shape\":\"InvalidRequestException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Gets the logging options.</p> <p>NOTE: use of this command is not recommended. Use <code>GetV2LoggingOptions</code> instead.</p>\"\
+      \"documentation\":\"<p>Gets the logging options.</p> <p>NOTE: use of this command is not recommended. Use <code>GetV2LoggingOptions</code> instead.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetLoggingOptions</a> action.</p>\"\
     },\
     \"GetOTAUpdate\":{\
       \"name\":\"GetOTAUpdate\",\
@@ -2093,7 +2189,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Gets an OTA update.</p>\"\
+      \"documentation\":\"<p>Gets an OTA update.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetOTAUpdate</a> action.</p>\"\
     },\
     \"GetPercentiles\":{\
       \"name\":\"GetPercentiles\",\
@@ -2114,7 +2210,7 @@
         {\"shape\":\"InvalidAggregationException\"},\
         {\"shape\":\"IndexNotReadyException\"}\
       ],\
-      \"documentation\":\"<p>Groups the aggregated values that match the query into percentile groupings. The default percentile groupings are: 1,5,25,50,75,95,99, although you can specify your own when you call <code>GetPercentiles</code>. This function returns a value for each percentile group specified (or the default percentile groupings). The percentile group \\\"1\\\" contains the aggregated field value that occurs in approximately one percent of the values that match the query. The percentile group \\\"5\\\" contains the aggregated field value that occurs in approximately five percent of the values that match the query, and so on. The result is an approximation, the more values that match the query, the more accurate the percentile values.</p>\"\
+      \"documentation\":\"<p>Groups the aggregated values that match the query into percentile groupings. The default percentile groupings are: 1,5,25,50,75,95,99, although you can specify your own when you call <code>GetPercentiles</code>. This function returns a value for each percentile group specified (or the default percentile groupings). The percentile group \\\"1\\\" contains the aggregated field value that occurs in approximately one percent of the values that match the query. The percentile group \\\"5\\\" contains the aggregated field value that occurs in approximately five percent of the values that match the query, and so on. The result is an approximation, the more values that match the query, the more accurate the percentile values.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetPercentiles</a> action.</p>\"\
     },\
     \"GetPolicy\":{\
       \"name\":\"GetPolicy\",\
@@ -2132,7 +2228,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about the specified policy with the policy document of the default version.</p>\"\
+      \"documentation\":\"<p>Gets information about the specified policy with the policy document of the default version.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetPolicy</a> action.</p>\"\
     },\
     \"GetPolicyVersion\":{\
       \"name\":\"GetPolicyVersion\",\
@@ -2150,7 +2246,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about the specified policy version.</p>\"\
+      \"documentation\":\"<p>Gets information about the specified policy version.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetPolicyVersion</a> action.</p>\"\
     },\
     \"GetRegistrationCode\":{\
       \"name\":\"GetRegistrationCode\",\
@@ -2167,7 +2263,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"InvalidRequestException\"}\
       ],\
-      \"documentation\":\"<p>Gets a registration code used to register a CA certificate with AWS IoT.</p>\"\
+      \"documentation\":\"<p>Gets a registration code used to register a CA certificate with IoT.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetRegistrationCode</a> action.</p>\"\
     },\
     \"GetStatistics\":{\
       \"name\":\"GetStatistics\",\
@@ -2188,7 +2284,7 @@
         {\"shape\":\"InvalidAggregationException\"},\
         {\"shape\":\"IndexNotReadyException\"}\
       ],\
-      \"documentation\":\"<p>Returns the count, average, sum, minimum, maximum, sum of squares, variance, and standard deviation for the specified aggregated field. If the aggregation field is of type <code>String</code>, only the count statistic is returned.</p>\"\
+      \"documentation\":\"<p>Returns the count, average, sum, minimum, maximum, sum of squares, variance, and standard deviation for the specified aggregated field. If the aggregation field is of type <code>String</code>, only the count statistic is returned.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetStatistics</a> action.</p>\"\
     },\
     \"GetTopicRule\":{\
       \"name\":\"GetTopicRule\",\
@@ -2204,7 +2300,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"UnauthorizedException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about the rule.</p>\"\
+      \"documentation\":\"<p>Gets information about the rule.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetTopicRule</a> action.</p>\"\
     },\
     \"GetTopicRuleDestination\":{\
       \"name\":\"GetTopicRuleDestination\",\
@@ -2220,7 +2316,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"UnauthorizedException\"}\
       ],\
-      \"documentation\":\"<p>Gets information about a topic rule destination.</p>\"\
+      \"documentation\":\"<p>Gets information about a topic rule destination.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetTopicRuleDestination</a> action.</p>\"\
     },\
     \"GetV2LoggingOptions\":{\
       \"name\":\"GetV2LoggingOptions\",\
@@ -2235,7 +2331,7 @@
         {\"shape\":\"NotConfiguredException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Gets the fine grained logging options.</p>\"\
+      \"documentation\":\"<p>Gets the fine grained logging options.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">GetV2LoggingOptions</a> action.</p>\"\
     },\
     \"ListActiveViolations\":{\
       \"name\":\"ListActiveViolations\",\
@@ -2251,7 +2347,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the active violations for a given Device Defender security profile.</p>\"\
+      \"documentation\":\"<p>Lists the active violations for a given Device Defender security profile.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListActiveViolations</a> action.</p>\"\
     },\
     \"ListAttachedPolicies\":{\
       \"name\":\"ListAttachedPolicies\",\
@@ -2270,7 +2366,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p>Lists the policies attached to the specified thing group.</p>\"\
+      \"documentation\":\"<p>Lists the policies attached to the specified thing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListAttachedPolicies</a> action.</p>\"\
     },\
     \"ListAuditFindings\":{\
       \"name\":\"ListAuditFindings\",\
@@ -2285,7 +2381,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the findings (results) of a Device Defender audit or of the audits performed during a specified time period. (Findings are retained for 90 days.)</p>\"\
+      \"documentation\":\"<p>Lists the findings (results) of a Device Defender audit or of the audits performed during a specified time period. (Findings are retained for 90 days.)</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListAuditFindings</a> action.</p>\"\
     },\
     \"ListAuditMitigationActionsExecutions\":{\
       \"name\":\"ListAuditMitigationActionsExecutions\",\
@@ -2300,7 +2396,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets the status of audit mitigation action tasks that were executed.</p>\"\
+      \"documentation\":\"<p>Gets the status of audit mitigation action tasks that were executed.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListAuditMitigationActionsExecutions</a> action.</p>\"\
     },\
     \"ListAuditMitigationActionsTasks\":{\
       \"name\":\"ListAuditMitigationActionsTasks\",\
@@ -2315,7 +2411,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets a list of audit mitigation action tasks that match the specified filters.</p>\"\
+      \"documentation\":\"<p>Gets a list of audit mitigation action tasks that match the specified filters.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListAuditMitigationActionsTasks</a> action.</p>\"\
     },\
     \"ListAuditSuppressions\":{\
       \"name\":\"ListAuditSuppressions\",\
@@ -2330,7 +2426,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p> Lists your Device Defender audit listings. </p>\"\
+      \"documentation\":\"<p> Lists your Device Defender audit listings. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListAuditSuppressions</a> action.</p>\"\
     },\
     \"ListAuditTasks\":{\
       \"name\":\"ListAuditTasks\",\
@@ -2345,7 +2441,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the Device Defender audits that have been performed during a given time period.</p>\"\
+      \"documentation\":\"<p>Lists the Device Defender audits that have been performed during a given time period.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListAuditTasks</a> action.</p>\"\
     },\
     \"ListAuthorizers\":{\
       \"name\":\"ListAuthorizers\",\
@@ -2362,7 +2458,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the authorizers registered in your account.</p>\"\
+      \"documentation\":\"<p>Lists the authorizers registered in your account.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListAuthorizers</a> action.</p>\"\
     },\
     \"ListBillingGroups\":{\
       \"name\":\"ListBillingGroups\",\
@@ -2378,7 +2474,7 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>Lists the billing groups you have created.</p>\"\
+      \"documentation\":\"<p>Lists the billing groups you have created.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListBillingGroups</a> action.</p>\"\
     },\
     \"ListCACertificates\":{\
       \"name\":\"ListCACertificates\",\
@@ -2395,7 +2491,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the CA certificates registered for your AWS account.</p> <p>The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.</p>\"\
+      \"documentation\":\"<p>Lists the CA certificates registered for your Amazon Web Services account.</p> <p>The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListCACertificates</a> action.</p>\"\
     },\
     \"ListCertificates\":{\
       \"name\":\"ListCertificates\",\
@@ -2412,7 +2508,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the certificates registered in your AWS account.</p> <p>The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.</p>\"\
+      \"documentation\":\"<p>Lists the certificates registered in your Amazon Web Services account.</p> <p>The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListCertificates</a> action.</p>\"\
     },\
     \"ListCertificatesByCA\":{\
       \"name\":\"ListCertificatesByCA\",\
@@ -2429,7 +2525,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>List the device certificates signed by the specified CA certificate.</p>\"\
+      \"documentation\":\"<p>List the device certificates signed by the specified CA certificate.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListCertificatesByCA</a> action.</p>\"\
     },\
     \"ListCustomMetrics\":{\
       \"name\":\"ListCustomMetrics\",\
@@ -2444,7 +2540,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p> Lists your Device Defender detect custom metrics. </p>\"\
+      \"documentation\":\"<p> Lists your Device Defender detect custom metrics. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListCustomMetrics</a> action.</p>\"\
     },\
     \"ListDetectMitigationActionsExecutions\":{\
       \"name\":\"ListDetectMitigationActionsExecutions\",\
@@ -2459,7 +2555,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p> Lists mitigation actions executions for a Device Defender ML Detect Security Profile. </p>\"\
+      \"documentation\":\"<p> Lists mitigation actions executions for a Device Defender ML Detect Security Profile. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListDetectMitigationActionsExecutions</a> action.</p>\"\
     },\
     \"ListDetectMitigationActionsTasks\":{\
       \"name\":\"ListDetectMitigationActionsTasks\",\
@@ -2474,7 +2570,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p> List of Device Defender ML Detect mitigation actions tasks. </p>\"\
+      \"documentation\":\"<p> List of Device Defender ML Detect mitigation actions tasks. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListDetectMitigationActionsTasks</a> action.</p>\"\
     },\
     \"ListDimensions\":{\
       \"name\":\"ListDimensions\",\
@@ -2489,7 +2585,7 @@
         {\"shape\":\"InvalidRequestException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>List the set of dimensions that are defined for your AWS account.</p>\"\
+      \"documentation\":\"<p>List the set of dimensions that are defined for your Amazon Web Services accounts.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListDimensions</a> action.</p>\"\
     },\
     \"ListDomainConfigurations\":{\
       \"name\":\"ListDomainConfigurations\",\
@@ -2506,7 +2602,24 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets a list of domain configurations for the user. This list is sorted alphabetically by domain configuration name.</p>\"\
+      \"documentation\":\"<p>Gets a list of domain configurations for the user. This list is sorted alphabetically by domain configuration name.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListDomainConfigurations</a> action.</p>\"\
+    },\
+    \"ListFleetMetrics\":{\
+      \"name\":\"ListFleetMetrics\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/fleet-metrics\"\
+      },\
+      \"input\":{\"shape\":\"ListFleetMetricsRequest\"},\
+      \"output\":{\"shape\":\"ListFleetMetricsResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidRequestException\"},\
+        {\"shape\":\"ThrottlingException\"},\
+        {\"shape\":\"UnauthorizedException\"},\
+        {\"shape\":\"ServiceUnavailableException\"},\
+        {\"shape\":\"InternalFailureException\"}\
+      ],\
+      \"documentation\":\"<p>Lists all your fleet metrics. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListFleetMetrics</a> action.</p>\"\
     },\
     \"ListIndices\":{\
       \"name\":\"ListIndices\",\
@@ -2523,7 +2636,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the search indices.</p>\"\
+      \"documentation\":\"<p>Lists the search indices.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListIndices</a> action.</p>\"\
     },\
     \"ListJobExecutionsForJob\":{\
       \"name\":\"ListJobExecutionsForJob\",\
@@ -2539,7 +2652,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Lists the job executions for a job.</p>\"\
+      \"documentation\":\"<p>Lists the job executions for a job.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListJobExecutionsForJob</a> action.</p>\"\
     },\
     \"ListJobExecutionsForThing\":{\
       \"name\":\"ListJobExecutionsForThing\",\
@@ -2555,7 +2668,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Lists the job executions for the specified thing.</p>\"\
+      \"documentation\":\"<p>Lists the job executions for the specified thing.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListJobExecutionsForThing</a> action.</p>\"\
     },\
     \"ListJobTemplates\":{\
       \"name\":\"ListJobTemplates\",\
@@ -2570,7 +2683,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Returns a list of job templates.</p>\"\
+      \"documentation\":\"<p>Returns a list of job templates.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListJobTemplates</a> action.</p>\"\
     },\
     \"ListJobs\":{\
       \"name\":\"ListJobs\",\
@@ -2586,7 +2699,39 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Lists jobs.</p>\"\
+      \"documentation\":\"<p>Lists jobs.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListJobs</a> action.</p>\"\
+    },\
+    \"ListManagedJobTemplates\":{\
+      \"name\":\"ListManagedJobTemplates\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/managed-job-templates\"\
+      },\
+      \"input\":{\"shape\":\"ListManagedJobTemplatesRequest\"},\
+      \"output\":{\"shape\":\"ListManagedJobTemplatesResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidRequestException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"ThrottlingException\"},\
+        {\"shape\":\"InternalServerException\"}\
+      ],\
+      \"documentation\":\"<p>Returns a list of managed job templates.</p>\"\
+    },\
+    \"ListMetricValues\":{\
+      \"name\":\"ListMetricValues\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/metric-values\"\
+      },\
+      \"input\":{\"shape\":\"ListMetricValuesRequest\"},\
+      \"output\":{\"shape\":\"ListMetricValuesResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidRequestException\"},\
+        {\"shape\":\"ThrottlingException\"},\
+        {\"shape\":\"InternalFailureException\"},\
+        {\"shape\":\"ResourceNotFoundException\"}\
+      ],\
+      \"documentation\":\"<p>Lists the values reported for an IoT Device Defender metric (device-side metric, cloud-side metric, or custom metric) by the given thing during the specified time period.</p>\"\
     },\
     \"ListMitigationActions\":{\
       \"name\":\"ListMitigationActions\",\
@@ -2601,7 +2746,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Gets a list of all mitigation actions that match the specified filter criteria.</p>\"\
+      \"documentation\":\"<p>Gets a list of all mitigation actions that match the specified filter criteria.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListMitigationActions</a> action.</p>\"\
     },\
     \"ListOTAUpdates\":{\
       \"name\":\"ListOTAUpdates\",\
@@ -2618,7 +2763,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Lists OTA updates.</p>\"\
+      \"documentation\":\"<p>Lists OTA updates.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListOTAUpdates</a> action.</p>\"\
     },\
     \"ListOutgoingCertificates\":{\
       \"name\":\"ListOutgoingCertificates\",\
@@ -2635,7 +2780,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists certificates that are being transferred but not yet accepted.</p>\"\
+      \"documentation\":\"<p>Lists certificates that are being transferred but not yet accepted.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListOutgoingCertificates</a> action.</p>\"\
     },\
     \"ListPolicies\":{\
       \"name\":\"ListPolicies\",\
@@ -2652,7 +2797,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists your policies.</p>\"\
+      \"documentation\":\"<p>Lists your policies.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListPolicies</a> action.</p>\"\
     },\
     \"ListPolicyPrincipals\":{\
       \"name\":\"ListPolicyPrincipals\",\
@@ -2670,7 +2815,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the principals associated with the specified policy.</p> <p> <b>Note:</b> This API is deprecated. Please use <a>ListTargetsForPolicy</a> instead.</p>\",\
+      \"documentation\":\"<p>Lists the principals associated with the specified policy.</p> <p> <b>Note:</b> This action is deprecated and works as expected for backward compatibility, but we won't add enhancements. Use <a>ListTargetsForPolicy</a> instead.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListPolicyPrincipals</a> action.</p>\",\
       \"deprecated\":true\
     },\
     \"ListPolicyVersions\":{\
@@ -2689,7 +2834,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the versions of the specified policy and identifies the default version.</p>\"\
+      \"documentation\":\"<p>Lists the versions of the specified policy and identifies the default version.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListPolicyVersions</a> action.</p>\"\
     },\
     \"ListPrincipalPolicies\":{\
       \"name\":\"ListPrincipalPolicies\",\
@@ -2707,7 +2852,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the policies attached to the specified principal. If you use an Cognito identity, the ID must be in <a href=\\\"https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax\\\">AmazonCognito Identity format</a>.</p> <p> <b>Note:</b> This API is deprecated. Please use <a>ListAttachedPolicies</a> instead.</p>\",\
+      \"documentation\":\"<p>Lists the policies attached to the specified principal. If you use an Cognito identity, the ID must be in <a href=\\\"https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax\\\">AmazonCognito Identity format</a>.</p> <p> <b>Note:</b> This action is deprecated and works as expected for backward compatibility, but we won't add enhancements. Use <a>ListAttachedPolicies</a> instead.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListPrincipalPolicies</a> action.</p>\",\
       \"deprecated\":true\
     },\
     \"ListPrincipalThings\":{\
@@ -2726,7 +2871,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Lists the things associated with the specified principal. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities. </p>\"\
+      \"documentation\":\"<p>Lists the things associated with the specified principal. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListPrincipalThings</a> action.</p>\"\
     },\
     \"ListProvisioningTemplateVersions\":{\
       \"name\":\"ListProvisioningTemplateVersions\",\
@@ -2743,7 +2888,7 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"UnauthorizedException\"}\
       ],\
-      \"documentation\":\"<p>A list of fleet provisioning template versions.</p>\"\
+      \"documentation\":\"<p>A list of provisioning template versions.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListProvisioningTemplateVersions</a> action.</p>\"\
     },\
     \"ListProvisioningTemplates\":{\
       \"name\":\"ListProvisioningTemplates\",\
@@ -2759,7 +2904,23 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"UnauthorizedException\"}\
       ],\
-      \"documentation\":\"<p>Lists the fleet provisioning templates in your AWS account.</p>\"\
+      \"documentation\":\"<p>Lists the provisioning templates in your Amazon Web Services account.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListProvisioningTemplates</a> action.</p>\"\
+    },\
+    \"ListRelatedResourcesForAuditFinding\":{\
+      \"name\":\"ListRelatedResourcesForAuditFinding\",\
+      \"http\":{\
+        \"method\":\"GET\",\
+        \"requestUri\":\"/audit/relatedResources\"\
+      },\
+      \"input\":{\"shape\":\"ListRelatedResourcesForAuditFindingRequest\"},\
+      \"output\":{\"shape\":\"ListRelatedResourcesForAuditFindingResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"InvalidRequestException\"},\
+        {\"shape\":\"ThrottlingException\"},\
+        {\"shape\":\"InternalFailureException\"}\
+      ],\
+      \"documentation\":\"<p>The related resources of an Audit finding. The following resources can be returned from calling this API:</p> <ul> <li> <p>DEVICE_CERTIFICATE</p> </li> <li> <p>CA_CERTIFICATE</p> </li> <li> <p>IOT_POLICY</p> </li> <li> <p>COGNITO_IDENTITY_POOL</p> </li> <li> <p>CLIENT_ID</p> </li> <li> <p>ACCOUNT_SETTINGS</p> </li> <li> <p>ROLE_ALIAS</p> </li> <li> <p>IAM_ROLE</p> </li> <li> <p>ISSUER_CERTIFICATE</p> </li> </ul> <note> <p>This API is similar to DescribeAuditFinding's <a href=\\\"https://docs.aws.amazon.com/iot/latest/apireference/API_DescribeAuditFinding.html\\\">RelatedResources</a> but provides pagination and is not limited to 10 resources. When calling <a href=\\\"https://docs.aws.amazon.com/iot/latest/apireference/API_DescribeAuditFinding.html\\\">DescribeAuditFinding</a> for the intermediate CA revoked for active device certificates check, RelatedResources will not be populated. You must use this API, ListRelatedResourcesForAuditFinding, to list the certificates.</p> </note>\"\
     },\
     \"ListRoleAliases\":{\
       \"name\":\"ListRoleAliases\",\
@@ -2776,7 +2937,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the role aliases registered in your account.</p>\"\
+      \"documentation\":\"<p>Lists the role aliases registered in your account.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListRoleAliases</a> action.</p>\"\
     },\
     \"ListScheduledAudits\":{\
       \"name\":\"ListScheduledAudits\",\
@@ -2791,7 +2952,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists all of your scheduled audits.</p>\"\
+      \"documentation\":\"<p>Lists all of your scheduled audits.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListScheduledAudits</a> action.</p>\"\
     },\
     \"ListSecurityProfiles\":{\
       \"name\":\"ListSecurityProfiles\",\
@@ -2807,7 +2968,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Lists the Device Defender security profiles you've created. You can filter security profiles by dimension or custom metric.</p> <note> <p> <code>dimensionName</code> and <code>metricName</code> cannot be used in the same request.</p> </note>\"\
+      \"documentation\":\"<p>Lists the Device Defender security profiles you've created. You can filter security profiles by dimension or custom metric.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListSecurityProfiles</a> action.</p> <note> <p> <code>dimensionName</code> and <code>metricName</code> cannot be used in the same request.</p> </note>\"\
     },\
     \"ListSecurityProfilesForTarget\":{\
       \"name\":\"ListSecurityProfilesForTarget\",\
@@ -2823,7 +2984,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Lists the Device Defender security profiles attached to a target (thing group).</p>\"\
+      \"documentation\":\"<p>Lists the Device Defender security profiles attached to a target (thing group).</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListSecurityProfilesForTarget</a> action.</p>\"\
     },\
     \"ListStreams\":{\
       \"name\":\"ListStreams\",\
@@ -2840,7 +3001,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists all of the streams in your AWS account.</p>\"\
+      \"documentation\":\"<p>Lists all of the streams in your Amazon Web Services account.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListStreams</a> action.</p>\"\
     },\
     \"ListTagsForResource\":{\
       \"name\":\"ListTagsForResource\",\
@@ -2856,7 +3017,7 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>Lists the tags (metadata) you have assigned to the resource.</p>\"\
+      \"documentation\":\"<p>Lists the tags (metadata) you have assigned to the resource.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListTagsForResource</a> action.</p>\"\
     },\
     \"ListTargetsForPolicy\":{\
       \"name\":\"ListTargetsForPolicy\",\
@@ -2875,7 +3036,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p>List targets for the specified policy.</p>\"\
+      \"documentation\":\"<p>List targets for the specified policy.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListTargetsForPolicy</a> action.</p>\"\
     },\
     \"ListTargetsForSecurityProfile\":{\
       \"name\":\"ListTargetsForSecurityProfile\",\
@@ -2891,7 +3052,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the targets (thing groups) associated with a given Device Defender security profile.</p>\"\
+      \"documentation\":\"<p>Lists the targets (thing groups) associated with a given Device Defender security profile.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListTargetsForSecurityProfile</a> action.</p>\"\
     },\
     \"ListThingGroups\":{\
       \"name\":\"ListThingGroups\",\
@@ -2907,7 +3068,7 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>List the thing groups in your account.</p>\"\
+      \"documentation\":\"<p>List the thing groups in your account.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListThingGroups</a> action.</p>\"\
     },\
     \"ListThingGroupsForThing\":{\
       \"name\":\"ListThingGroupsForThing\",\
@@ -2923,7 +3084,7 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>List the thing groups to which the specified thing belongs.</p>\"\
+      \"documentation\":\"<p>List the thing groups to which the specified thing belongs.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListThingGroupsForThing</a> action.</p>\"\
     },\
     \"ListThingPrincipals\":{\
       \"name\":\"ListThingPrincipals\",\
@@ -2941,7 +3102,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Lists the principals associated with the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities.</p>\"\
+      \"documentation\":\"<p>Lists the principals associated with the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListThingPrincipals</a> action.</p>\"\
     },\
     \"ListThingRegistrationTaskReports\":{\
       \"name\":\"ListThingRegistrationTaskReports\",\
@@ -2973,7 +3134,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>List bulk thing provisioning tasks.</p>\"\
+      \"documentation\":\"<p>List bulk thing provisioning tasks.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListThingRegistrationTasks</a> action.</p>\"\
     },\
     \"ListThingTypes\":{\
       \"name\":\"ListThingTypes\",\
@@ -2990,7 +3151,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the existing thing types.</p>\"\
+      \"documentation\":\"<p>Lists the existing thing types.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListThingTypes</a> action.</p>\"\
     },\
     \"ListThings\":{\
       \"name\":\"ListThings\",\
@@ -3007,7 +3168,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists your things. Use the <b>attributeName</b> and <b>attributeValue</b> parameters to filter your things. For example, calling <code>ListThings</code> with attributeName=Color and attributeValue=Red retrieves all things in the registry that contain an attribute <b>Color</b> with the value <b>Red</b>. </p> <note> <p>You will not be charged for calling this API if an <code>Access denied</code> error is returned. You will also not be charged if no attributes or pagination token was provided in request and no pagination token and no results were returned.</p> </note>\"\
+      \"documentation\":\"<p>Lists your things. Use the <b>attributeName</b> and <b>attributeValue</b> parameters to filter your things. For example, calling <code>ListThings</code> with attributeName=Color and attributeValue=Red retrieves all things in the registry that contain an attribute <b>Color</b> with the value <b>Red</b>. For more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/thing-registry.html#list-things\\\">List Things</a> from the <i>Amazon Web Services IoT Core Developer Guide</i>.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListThings</a> action.</p> <note> <p>You will not be charged for calling this API if an <code>Access denied</code> error is returned. You will also not be charged if no attributes or pagination token was provided in request and no pagination token and no results were returned.</p> </note>\"\
     },\
     \"ListThingsInBillingGroup\":{\
       \"name\":\"ListThingsInBillingGroup\",\
@@ -3023,7 +3184,7 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>Lists the things you have added to the given billing group.</p>\"\
+      \"documentation\":\"<p>Lists the things you have added to the given billing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListThingsInBillingGroup</a> action.</p>\"\
     },\
     \"ListThingsInThingGroup\":{\
       \"name\":\"ListThingsInThingGroup\",\
@@ -3039,7 +3200,7 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>Lists the things in the specified group.</p>\"\
+      \"documentation\":\"<p>Lists the things in the specified group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListThingsInThingGroup</a> action.</p>\"\
     },\
     \"ListTopicRuleDestinations\":{\
       \"name\":\"ListTopicRuleDestinations\",\
@@ -3055,7 +3216,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"UnauthorizedException\"}\
       ],\
-      \"documentation\":\"<p>Lists all the topic rule destinations in your AWS account.</p>\"\
+      \"documentation\":\"<p>Lists all the topic rule destinations in your Amazon Web Services account.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListTopicRuleDestinations</a> action.</p>\"\
     },\
     \"ListTopicRules\":{\
       \"name\":\"ListTopicRules\",\
@@ -3070,7 +3231,7 @@
         {\"shape\":\"InvalidRequestException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Lists the rules for the specific topic.</p>\"\
+      \"documentation\":\"<p>Lists the rules for the specific topic.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListTopicRules</a> action.</p>\"\
     },\
     \"ListV2LoggingLevels\":{\
       \"name\":\"ListV2LoggingLevels\",\
@@ -3086,7 +3247,7 @@
         {\"shape\":\"InvalidRequestException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Lists logging levels.</p>\"\
+      \"documentation\":\"<p>Lists logging levels.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListV2LoggingLevels</a> action.</p>\"\
     },\
     \"ListViolationEvents\":{\
       \"name\":\"ListViolationEvents\",\
@@ -3101,7 +3262,22 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Lists the Device Defender security profile violations discovered during the given time period. You can use filters to limit the results to those alerts issued for a particular security profile, behavior, or thing (device).</p>\"\
+      \"documentation\":\"<p>Lists the Device Defender security profile violations discovered during the given time period. You can use filters to limit the results to those alerts issued for a particular security profile, behavior, or thing (device).</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ListViolationEvents</a> action.</p>\"\
+    },\
+    \"PutVerificationStateOnViolation\":{\
+      \"name\":\"PutVerificationStateOnViolation\",\
+      \"http\":{\
+        \"method\":\"POST\",\
+        \"requestUri\":\"/violations/verification-state/{violationId}\"\
+      },\
+      \"input\":{\"shape\":\"PutVerificationStateOnViolationRequest\"},\
+      \"output\":{\"shape\":\"PutVerificationStateOnViolationResponse\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidRequestException\"},\
+        {\"shape\":\"ThrottlingException\"},\
+        {\"shape\":\"InternalFailureException\"}\
+      ],\
+      \"documentation\":\"<p>Set a verification state and provide a description of that verification state on a violation (detect alarm).</p>\"\
     },\
     \"RegisterCACertificate\":{\
       \"name\":\"RegisterCACertificate\",\
@@ -3112,6 +3288,7 @@
       \"input\":{\"shape\":\"RegisterCACertificateRequest\"},\
       \"output\":{\"shape\":\"RegisterCACertificateResponse\"},\
       \"errors\":[\
+        {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"ResourceAlreadyExistsException\"},\
         {\"shape\":\"RegistrationCodeValidationException\"},\
         {\"shape\":\"InvalidRequestException\"},\
@@ -3122,7 +3299,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Registers a CA certificate with AWS IoT. This CA certificate can then be used to sign device certificates, which can be then registered with AWS IoT. You can register up to 10 CA certificates per AWS account that have the same subject field. This enables you to have up to 10 certificate authorities sign your device certificates. If you have more than one CA certificate registered, make sure you pass the CA certificate when you register your device certificates with the RegisterCertificate API.</p>\"\
+      \"documentation\":\"<p>Registers a CA certificate with Amazon Web Services IoT Core. There is no limit to the number of CA certificates you can register in your Amazon Web Services account. You can register up to 10 CA certificates with the same <code>CA subject field</code> per Amazon Web Services account.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">RegisterCACertificate</a> action.</p>\"\
     },\
     \"RegisterCertificate\":{\
       \"name\":\"RegisterCertificate\",\
@@ -3143,7 +3320,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Registers a device certificate with AWS IoT. If you have more than one CA certificate that has the same subject field, you must specify the CA certificate that was used to sign the device certificate being registered.</p>\"\
+      \"documentation\":\"<p>Registers a device certificate with IoT in the same <a href=\\\"https://docs.aws.amazon.com/iot/latest/apireference/API_CertificateDescription.html#iot-Type-CertificateDescription-certificateMode\\\">certificate mode</a> as the signing CA. If you have more than one CA certificate that has the same subject field, you must specify the CA certificate that was used to sign the device certificate being registered.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">RegisterCertificate</a> action.</p>\"\
     },\
     \"RegisterCertificateWithoutCA\":{\
       \"name\":\"RegisterCertificateWithoutCA\",\
@@ -3163,7 +3340,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Register a certificate that does not have a certificate authority (CA).</p>\"\
+      \"documentation\":\"<p>Register a certificate that does not have a certificate authority (CA). For supported certificates, consult <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/x509-client-certs.html#x509-cert-algorithms\\\"> Certificate signing algorithms supported by IoT</a>. </p>\"\
     },\
     \"RegisterThing\":{\
       \"name\":\"RegisterThing\",\
@@ -3182,7 +3359,7 @@
         {\"shape\":\"ConflictingResourceUpdateException\"},\
         {\"shape\":\"ResourceRegistrationFailureException\"}\
       ],\
-      \"documentation\":\"<p>Provisions a thing in the device registry. RegisterThing calls other AWS IoT control plane APIs. These calls might exceed your account level <a href=\\\"https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_iot\\\"> AWS IoT Throttling Limits</a> and cause throttle errors. Please contact <a href=\\\"https://console.aws.amazon.com/support/home\\\">AWS Customer Support</a> to raise your throttling limits if necessary.</p>\"\
+      \"documentation\":\"<p>Provisions a thing in the device registry. RegisterThing calls other IoT control plane APIs. These calls might exceed your account level <a href=\\\"https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_iot\\\"> IoT Throttling Limits</a> and cause throttle errors. Please contact <a href=\\\"https://console.aws.amazon.com/support/home\\\">Amazon Web Services Customer Support</a> to raise your throttling limits if necessary.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">RegisterThing</a> action.</p>\"\
     },\
     \"RejectCertificateTransfer\":{\
       \"name\":\"RejectCertificateTransfer\",\
@@ -3200,7 +3377,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Rejects a pending certificate transfer. After AWS IoT rejects a certificate transfer, the certificate status changes from <b>PENDING_TRANSFER</b> to <b>INACTIVE</b>.</p> <p>To check for pending certificate transfers, call <a>ListCertificates</a> to enumerate your certificates.</p> <p>This operation can only be called by the transfer destination. After it is called, the certificate will be returned to the source's account in the INACTIVE state.</p>\"\
+      \"documentation\":\"<p>Rejects a pending certificate transfer. After IoT rejects a certificate transfer, the certificate status changes from <b>PENDING_TRANSFER</b> to <b>INACTIVE</b>.</p> <p>To check for pending certificate transfers, call <a>ListCertificates</a> to enumerate your certificates.</p> <p>This operation can only be called by the transfer destination. After it is called, the certificate will be returned to the source's account in the INACTIVE state.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">RejectCertificateTransfer</a> action.</p>\"\
     },\
     \"RemoveThingFromBillingGroup\":{\
       \"name\":\"RemoveThingFromBillingGroup\",\
@@ -3216,7 +3393,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Removes the given thing from the billing group.</p>\"\
+      \"documentation\":\"<p>Removes the given thing from the billing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">RemoveThingFromBillingGroup</a> action.</p> <note> <p>This call is asynchronous. It might take several seconds for the detachment to propagate.</p> </note>\"\
     },\
     \"RemoveThingFromThingGroup\":{\
       \"name\":\"RemoveThingFromThingGroup\",\
@@ -3232,7 +3409,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Remove the specified thing from the specified group.</p> <p>You must specify either a <code>thingGroupArn</code> or a <code>thingGroupName</code> to identify the thing group and either a <code>thingArn</code> or a <code>thingName</code> to identify the thing to remove from the thing group. </p>\"\
+      \"documentation\":\"<p>Remove the specified thing from the specified group.</p> <p>You must specify either a <code>thingGroupArn</code> or a <code>thingGroupName</code> to identify the thing group and either a <code>thingArn</code> or a <code>thingName</code> to identify the thing to remove from the thing group. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">RemoveThingFromThingGroup</a> action.</p>\"\
     },\
     \"ReplaceTopicRule\":{\
       \"name\":\"ReplaceTopicRule\",\
@@ -3249,7 +3426,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"ConflictingResourceUpdateException\"}\
       ],\
-      \"documentation\":\"<p>Replaces the rule. You must specify all parameters for the new rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.</p>\"\
+      \"documentation\":\"<p>Replaces the rule. You must specify all parameters for the new rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ReplaceTopicRule</a> action.</p>\"\
     },\
     \"SearchIndex\":{\
       \"name\":\"SearchIndex\",\
@@ -3269,7 +3446,7 @@
         {\"shape\":\"InvalidQueryException\"},\
         {\"shape\":\"IndexNotReadyException\"}\
       ],\
-      \"documentation\":\"<p>The query search index.</p>\"\
+      \"documentation\":\"<p>The query search index.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">SearchIndex</a> action.</p>\"\
     },\
     \"SetDefaultAuthorizer\":{\
       \"name\":\"SetDefaultAuthorizer\",\
@@ -3288,7 +3465,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceAlreadyExistsException\"}\
       ],\
-      \"documentation\":\"<p>Sets the default authorizer. This will be used if a websocket connection is made without specifying an authorizer.</p>\"\
+      \"documentation\":\"<p>Sets the default authorizer. This will be used if a websocket connection is made without specifying an authorizer.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">SetDefaultAuthorizer</a> action.</p>\"\
     },\
     \"SetDefaultPolicyVersion\":{\
       \"name\":\"SetDefaultPolicyVersion\",\
@@ -3305,7 +3482,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Sets the specified version of the specified policy as the policy's default (operative) version. This action affects all certificates to which the policy is attached. To list the principals the policy is attached to, use the ListPrincipalPolicy API.</p>\"\
+      \"documentation\":\"<p>Sets the specified version of the specified policy as the policy's default (operative) version. This action affects all certificates to which the policy is attached. To list the principals the policy is attached to, use the <a>ListPrincipalPolicies</a> action.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">SetDefaultPolicyVersion</a> action.</p>\"\
     },\
     \"SetLoggingOptions\":{\
       \"name\":\"SetLoggingOptions\",\
@@ -3319,7 +3496,7 @@
         {\"shape\":\"InvalidRequestException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Sets the logging options.</p> <p>NOTE: use of this command is not recommended. Use <code>SetV2LoggingOptions</code> instead.</p>\"\
+      \"documentation\":\"<p>Sets the logging options.</p> <p>NOTE: use of this command is not recommended. Use <code>SetV2LoggingOptions</code> instead.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">SetLoggingOptions</a> action.</p>\"\
     },\
     \"SetV2LoggingLevel\":{\
       \"name\":\"SetV2LoggingLevel\",\
@@ -3335,7 +3512,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p>Sets the logging level.</p>\"\
+      \"documentation\":\"<p>Sets the logging level.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">SetV2LoggingLevel</a> action.</p>\"\
     },\
     \"SetV2LoggingOptions\":{\
       \"name\":\"SetV2LoggingOptions\",\
@@ -3349,7 +3526,7 @@
         {\"shape\":\"InvalidRequestException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Sets the logging options for the V2 logging service.</p>\"\
+      \"documentation\":\"<p>Sets the logging options for the V2 logging service.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">SetV2LoggingOptions</a> action.</p>\"\
     },\
     \"StartAuditMitigationActionsTask\":{\
       \"name\":\"StartAuditMitigationActionsTask\",\
@@ -3366,7 +3543,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Starts a task that applies a set of mitigation actions to the specified target.</p>\"\
+      \"documentation\":\"<p>Starts a task that applies a set of mitigation actions to the specified target.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">StartAuditMitigationActionsTask</a> action.</p>\"\
     },\
     \"StartDetectMitigationActionsTask\":{\
       \"name\":\"StartDetectMitigationActionsTask\",\
@@ -3383,7 +3560,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p> Starts a Device Defender ML Detect mitigation actions task. </p>\"\
+      \"documentation\":\"<p> Starts a Device Defender ML Detect mitigation actions task. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">StartDetectMitigationActionsTask</a> action.</p>\"\
     },\
     \"StartOnDemandAuditTask\":{\
       \"name\":\"StartOnDemandAuditTask\",\
@@ -3399,7 +3576,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p>Starts an on-demand Device Defender audit.</p>\"\
+      \"documentation\":\"<p>Starts an on-demand Device Defender audit.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">StartOnDemandAuditTask</a> action.</p>\"\
     },\
     \"StartThingRegistrationTask\":{\
       \"name\":\"StartThingRegistrationTask\",\
@@ -3415,7 +3592,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Creates a bulk thing provisioning task.</p>\"\
+      \"documentation\":\"<p>Creates a bulk thing provisioning task.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">StartThingRegistrationTask</a> action.</p>\"\
     },\
     \"StopThingRegistrationTask\":{\
       \"name\":\"StopThingRegistrationTask\",\
@@ -3432,7 +3609,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Cancels a bulk thing provisioning task.</p>\"\
+      \"documentation\":\"<p>Cancels a bulk thing provisioning task.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">StopThingRegistrationTask</a> action.</p>\"\
     },\
     \"TagResource\":{\
       \"name\":\"TagResource\",\
@@ -3449,7 +3626,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p>Adds to or modifies the tags of the given resource. Tags are metadata which can be used to manage a resource.</p>\"\
+      \"documentation\":\"<p>Adds to or modifies the tags of the given resource. Tags are metadata which can be used to manage a resource.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">TagResource</a> action.</p>\"\
     },\
     \"TestAuthorization\":{\
       \"name\":\"TestAuthorization\",\
@@ -3468,7 +3645,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"LimitExceededException\"}\
       ],\
-      \"documentation\":\"<p>Tests if a specified principal is authorized to perform an AWS IoT action on a specified resource. Use this to test and debug the authorization behavior of devices that connect to the AWS IoT device gateway.</p>\"\
+      \"documentation\":\"<p>Tests if a specified principal is authorized to perform an IoT action on a specified resource. Use this to test and debug the authorization behavior of devices that connect to the IoT device gateway.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">TestAuthorization</a> action.</p>\"\
     },\
     \"TestInvokeAuthorizer\":{\
       \"name\":\"TestInvokeAuthorizer\",\
@@ -3487,7 +3664,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"InvalidResponseException\"}\
       ],\
-      \"documentation\":\"<p>Tests a custom authorization behavior by invoking a specified custom authorizer. Use this to test and debug the custom authorization behavior of devices that connect to the AWS IoT device gateway.</p>\"\
+      \"documentation\":\"<p>Tests a custom authorization behavior by invoking a specified custom authorizer. Use this to test and debug the custom authorization behavior of devices that connect to the IoT device gateway.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">TestInvokeAuthorizer</a> action.</p>\"\
     },\
     \"TransferCertificate\":{\
       \"name\":\"TransferCertificate\",\
@@ -3507,7 +3684,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Transfers the specified certificate to the specified AWS account.</p> <p>You can cancel the transfer until it is acknowledged by the recipient.</p> <p>No notification is sent to the transfer destination's account. It is up to the caller to notify the transfer target.</p> <p>The certificate being transferred must not be in the ACTIVE state. You can use the UpdateCertificate API to deactivate it.</p> <p>The certificate must not have any policies attached to it. You can use the DetachPrincipalPolicy API to detach them.</p>\"\
+      \"documentation\":\"<p>Transfers the specified certificate to the specified Amazon Web Services account.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">TransferCertificate</a> action.</p> <p>You can cancel the transfer until it is acknowledged by the recipient.</p> <p>No notification is sent to the transfer destination's account. It is up to the caller to notify the transfer target.</p> <p>The certificate being transferred must not be in the ACTIVE state. You can use the <a>UpdateCertificate</a> action to deactivate it.</p> <p>The certificate must not have any policies attached to it. You can use the <a>DetachPolicy</a> action to detach them.</p>\"\
     },\
     \"UntagResource\":{\
       \"name\":\"UntagResource\",\
@@ -3523,7 +3700,7 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>Removes the given tags (metadata) from the resource.</p>\"\
+      \"documentation\":\"<p>Removes the given tags (metadata) from the resource.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UntagResource</a> action.</p>\"\
     },\
     \"UpdateAccountAuditConfiguration\":{\
       \"name\":\"UpdateAccountAuditConfiguration\",\
@@ -3538,7 +3715,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Configures or reconfigures the Device Defender audit settings for this account. Settings include how audit notifications are sent and which audit checks are enabled or disabled.</p>\"\
+      \"documentation\":\"<p>Configures or reconfigures the Device Defender audit settings for this account. Settings include how audit notifications are sent and which audit checks are enabled or disabled.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateAccountAuditConfiguration</a> action.</p>\"\
     },\
     \"UpdateAuditSuppression\":{\
       \"name\":\"UpdateAuditSuppression\",\
@@ -3573,7 +3750,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Updates an authorizer.</p>\"\
+      \"documentation\":\"<p>Updates an authorizer.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateAuthorizer</a> action.</p>\"\
     },\
     \"UpdateBillingGroup\":{\
       \"name\":\"UpdateBillingGroup\",\
@@ -3590,7 +3767,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Updates information about the billing group.</p>\"\
+      \"documentation\":\"<p>Updates information about the billing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateBillingGroup</a> action.</p>\"\
     },\
     \"UpdateCACertificate\":{\
       \"name\":\"UpdateCACertificate\",\
@@ -3607,7 +3784,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Updates a registered CA certificate.</p>\"\
+      \"documentation\":\"<p>Updates a registered CA certificate.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateCACertificate</a> action.</p>\"\
     },\
     \"UpdateCertificate\":{\
       \"name\":\"UpdateCertificate\",\
@@ -3625,7 +3802,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Updates the status of the specified certificate. This operation is idempotent.</p> <p>Certificates must be in the ACTIVE state to authenticate devices that use a certificate to connect to AWS IoT.</p> <p>Within a few minutes of updating a certificate from the ACTIVE state to any other state, AWS IoT disconnects all devices that used that certificate to connect. Devices cannot use a certificate that is not in the ACTIVE state to reconnect.</p>\"\
+      \"documentation\":\"<p>Updates the status of the specified certificate. This operation is idempotent.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateCertificate</a> action.</p> <p>Certificates must be in the ACTIVE state to authenticate devices that use a certificate to connect to IoT.</p> <p>Within a few minutes of updating a certificate from the ACTIVE state to any other state, IoT disconnects all devices that used that certificate to connect. Devices cannot use a certificate that is not in the ACTIVE state to reconnect.</p>\"\
     },\
     \"UpdateCustomMetric\":{\
       \"name\":\"UpdateCustomMetric\",\
@@ -3641,7 +3818,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Updates a Device Defender detect custom metric. </p>\"\
+      \"documentation\":\"<p>Updates a Device Defender detect custom metric. </p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateCustomMetric</a> action.</p>\"\
     },\
     \"UpdateDimension\":{\
       \"name\":\"UpdateDimension\",\
@@ -3657,7 +3834,7 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>Updates the definition for a dimension. You cannot change the type of a dimension after it is created (you can delete it and recreate it).</p>\"\
+      \"documentation\":\"<p>Updates the definition for a dimension. You cannot change the type of a dimension after it is created (you can delete it and recreate it).</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateDimension</a> action.</p>\"\
     },\
     \"UpdateDomainConfiguration\":{\
       \"name\":\"UpdateDomainConfiguration\",\
@@ -3676,7 +3853,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Updates values stored in the domain configuration. Domain configurations for default endpoints can't be updated.</p>\"\
+      \"documentation\":\"<p>Updates values stored in the domain configuration. Domain configurations for default endpoints can't be updated.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateDomainConfiguration</a> action.</p>\"\
     },\
     \"UpdateDynamicThingGroup\":{\
       \"name\":\"UpdateDynamicThingGroup\",\
@@ -3694,7 +3871,7 @@
         {\"shape\":\"ResourceNotFoundException\"},\
         {\"shape\":\"InvalidQueryException\"}\
       ],\
-      \"documentation\":\"<p>Updates a dynamic thing group.</p>\"\
+      \"documentation\":\"<p>Updates a dynamic thing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateDynamicThingGroup</a> action.</p>\"\
     },\
     \"UpdateEventConfigurations\":{\
       \"name\":\"UpdateEventConfigurations\",\
@@ -3709,7 +3886,28 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ThrottlingException\"}\
       ],\
-      \"documentation\":\"<p>Updates the event configurations.</p>\"\
+      \"documentation\":\"<p>Updates the event configurations.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateEventConfigurations</a> action.</p>\"\
+    },\
+    \"UpdateFleetMetric\":{\
+      \"name\":\"UpdateFleetMetric\",\
+      \"http\":{\
+        \"method\":\"PATCH\",\
+        \"requestUri\":\"/fleet-metric/{metricName}\"\
+      },\
+      \"input\":{\"shape\":\"UpdateFleetMetricRequest\"},\
+      \"errors\":[\
+        {\"shape\":\"InvalidRequestException\"},\
+        {\"shape\":\"ThrottlingException\"},\
+        {\"shape\":\"UnauthorizedException\"},\
+        {\"shape\":\"ServiceUnavailableException\"},\
+        {\"shape\":\"InternalFailureException\"},\
+        {\"shape\":\"ResourceNotFoundException\"},\
+        {\"shape\":\"InvalidQueryException\"},\
+        {\"shape\":\"InvalidAggregationException\"},\
+        {\"shape\":\"VersionConflictException\"},\
+        {\"shape\":\"IndexNotReadyException\"}\
+      ],\
+      \"documentation\":\"<p>Updates the data for a fleet metric.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateFleetMetric</a> action.</p>\"\
     },\
     \"UpdateIndexingConfiguration\":{\
       \"name\":\"UpdateIndexingConfiguration\",\
@@ -3726,7 +3924,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Updates the search configuration.</p>\"\
+      \"documentation\":\"<p>Updates the search configuration.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateIndexingConfiguration</a> action.</p>\"\
     },\
     \"UpdateJob\":{\
       \"name\":\"UpdateJob\",\
@@ -3741,7 +3939,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"ServiceUnavailableException\"}\
       ],\
-      \"documentation\":\"<p>Updates supported fields of the specified job.</p>\"\
+      \"documentation\":\"<p>Updates supported fields of the specified job.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateJob</a> action.</p>\"\
     },\
     \"UpdateMitigationAction\":{\
       \"name\":\"UpdateMitigationAction\",\
@@ -3757,7 +3955,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Updates the definition for the specified mitigation action.</p>\"\
+      \"documentation\":\"<p>Updates the definition for the specified mitigation action.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateMitigationAction</a> action.</p>\"\
     },\
     \"UpdateProvisioningTemplate\":{\
       \"name\":\"UpdateProvisioningTemplate\",\
@@ -3774,7 +3972,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"ConflictingResourceUpdateException\"}\
       ],\
-      \"documentation\":\"<p>Updates a fleet provisioning template.</p>\"\
+      \"documentation\":\"<p>Updates a provisioning template.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateProvisioningTemplate</a> action.</p>\"\
     },\
     \"UpdateRoleAlias\":{\
       \"name\":\"UpdateRoleAlias\",\
@@ -3792,7 +3990,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Updates a role alias.</p>\"\
+      \"documentation\":\"<p>Updates a role alias.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateRoleAlias</a> action.</p>\"\
     },\
     \"UpdateScheduledAudit\":{\
       \"name\":\"UpdateScheduledAudit\",\
@@ -3808,7 +4006,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Updates a scheduled audit, including which checks are performed and how often the audit takes place.</p>\"\
+      \"documentation\":\"<p>Updates a scheduled audit, including which checks are performed and how often the audit takes place.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateScheduledAudit</a> action.</p>\"\
     },\
     \"UpdateSecurityProfile\":{\
       \"name\":\"UpdateSecurityProfile\",\
@@ -3825,7 +4023,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Updates a Device Defender security profile.</p>\"\
+      \"documentation\":\"<p>Updates a Device Defender security profile.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateSecurityProfile</a> action.</p>\"\
     },\
     \"UpdateStream\":{\
       \"name\":\"UpdateStream\",\
@@ -3843,7 +4041,7 @@
         {\"shape\":\"ServiceUnavailableException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Updates an existing stream. The stream version will be incremented by one.</p>\"\
+      \"documentation\":\"<p>Updates an existing stream. The stream version will be incremented by one.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateStream</a> action.</p>\"\
     },\
     \"UpdateThing\":{\
       \"name\":\"UpdateThing\",\
@@ -3862,7 +4060,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Updates the data for a thing.</p>\"\
+      \"documentation\":\"<p>Updates the data for a thing.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateThing</a> action.</p>\"\
     },\
     \"UpdateThingGroup\":{\
       \"name\":\"UpdateThingGroup\",\
@@ -3879,7 +4077,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Update a thing group.</p>\"\
+      \"documentation\":\"<p>Update a thing group.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateThingGroup</a> action.</p>\"\
     },\
     \"UpdateThingGroupsForThing\":{\
       \"name\":\"UpdateThingGroupsForThing\",\
@@ -3895,7 +4093,7 @@
         {\"shape\":\"InternalFailureException\"},\
         {\"shape\":\"ResourceNotFoundException\"}\
       ],\
-      \"documentation\":\"<p>Updates the groups to which the thing belongs.</p>\"\
+      \"documentation\":\"<p>Updates the groups to which the thing belongs.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateThingGroupsForThing</a> action.</p>\"\
     },\
     \"UpdateTopicRuleDestination\":{\
       \"name\":\"UpdateTopicRuleDestination\",\
@@ -3912,7 +4110,7 @@
         {\"shape\":\"UnauthorizedException\"},\
         {\"shape\":\"ConflictingResourceUpdateException\"}\
       ],\
-      \"documentation\":\"<p>Updates a topic rule destination. You use this to change the status, endpoint URL, or confirmation URL of the destination.</p>\"\
+      \"documentation\":\"<p>Updates a topic rule destination. You use this to change the status, endpoint URL, or confirmation URL of the destination.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">UpdateTopicRuleDestination</a> action.</p>\"\
     },\
     \"ValidateSecurityProfileBehaviors\":{\
       \"name\":\"ValidateSecurityProfileBehaviors\",\
@@ -3927,7 +4125,7 @@
         {\"shape\":\"ThrottlingException\"},\
         {\"shape\":\"InternalFailureException\"}\
       ],\
-      \"documentation\":\"<p>Validates a Device Defender security profile behaviors specification.</p>\"\
+      \"documentation\":\"<p>Validates a Device Defender security profile behaviors specification.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">ValidateSecurityProfileBehaviors</a> action.</p>\"\
     }\
   },\
   \"shapes\":{\
@@ -3965,7 +4163,7 @@
         },\
         \"thresholdPercentage\":{\
           \"shape\":\"AbortThresholdPercentage\",\
-          \"documentation\":\"<p>The minimum percentage of job execution failures that must occur to initiate the job abort.</p> <p>AWS IoT supports up to two digits after the decimal (for example, 10.9 and 10.99, but not 10.999).</p>\"\
+          \"documentation\":\"<p>The minimum percentage of job execution failures that must occur to initiate the job abort.</p> <p>Amazon Web Services IoT Core supports up to two digits after the decimal (for example, 10.9 and 10.99, but not 10.999).</p>\"\
         },\
         \"minNumberOfExecutedThings\":{\
           \"shape\":\"MinimumNumberOfExecutedThings\",\
@@ -4061,7 +4259,7 @@
         },\
         \"elasticsearch\":{\
           \"shape\":\"ElasticsearchAction\",\
-          \"documentation\":\"<p>Write data to an Amazon Elasticsearch Service domain.</p>\"\
+          \"documentation\":\"<p>Write data to an Amazon OpenSearch Service domain.</p> <note> <p>The <code>Elasticsearch</code> action can only be used by existing rule actions. To create a new rule action or to update an existing rule action, use the <code>OpenSearch</code> rule action instead. For more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/apireference/API_OpenSearchAction.html\\\">OpenSearchAction</a>.</p> </note>\"\
         },\
         \"salesforce\":{\
           \"shape\":\"SalesforceAction\",\
@@ -4069,15 +4267,15 @@
         },\
         \"iotAnalytics\":{\
           \"shape\":\"IotAnalyticsAction\",\
-          \"documentation\":\"<p>Sends message data to an AWS IoT Analytics channel.</p>\"\
+          \"documentation\":\"<p>Sends message data to an IoT Analytics channel.</p>\"\
         },\
         \"iotEvents\":{\
           \"shape\":\"IotEventsAction\",\
-          \"documentation\":\"<p>Sends an input to an AWS IoT Events detector.</p>\"\
+          \"documentation\":\"<p>Sends an input to an IoT Events detector.</p>\"\
         },\
         \"iotSiteWise\":{\
           \"shape\":\"IotSiteWiseAction\",\
-          \"documentation\":\"<p>Sends data from the MQTT message that triggered the rule to AWS IoT SiteWise asset properties.</p>\"\
+          \"documentation\":\"<p>Sends data from the MQTT message that triggered the rule to IoT SiteWise asset properties.</p>\"\
         },\
         \"stepFunctions\":{\
           \"shape\":\"StepFunctionsAction\",\
@@ -4094,6 +4292,14 @@
         \"kafka\":{\
           \"shape\":\"KafkaAction\",\
           \"documentation\":\"<p>Send messages to an Amazon Managed Streaming for Apache Kafka (Amazon MSK) or self-managed Apache Kafka cluster.</p>\"\
+        },\
+        \"openSearch\":{\
+          \"shape\":\"OpenSearchAction\",\
+          \"documentation\":\"<p>Write data to an Amazon OpenSearch Service domain.</p>\"\
+        },\
+        \"location\":{\
+          \"shape\":\"LocationAction\",\
+          \"documentation\":\"<p>The Amazon Location Service rule action sends device location updates from an MQTT message to an Amazon Location tracker resource.</p>\"\
         }\
       },\
       \"documentation\":\"<p>Describes the actions associated with a rule.</p>\"\
@@ -4140,6 +4346,14 @@
           \"shape\":\"ViolationEventAdditionalInfo\",\
           \"documentation\":\"<p> The details of a violation event. </p>\"\
         },\
+        \"verificationState\":{\
+          \"shape\":\"VerificationState\",\
+          \"documentation\":\"<p>The verification state of the violation (detect alarm).</p>\"\
+        },\
+        \"verificationStateDescription\":{\
+          \"shape\":\"VerificationStateDescription\",\
+          \"documentation\":\"<p>The description of the verification state of the violation.</p>\"\
+        },\
         \"lastViolationTime\":{\
           \"shape\":\"Timestamp\",\
           \"documentation\":\"<p>The time the most recent violation occurred.</p>\"\
@@ -4160,7 +4374,7 @@
       \"members\":{\
         \"billingGroupName\":{\
           \"shape\":\"BillingGroupName\",\
-          \"documentation\":\"<p>The name of the billing group.</p>\"\
+          \"documentation\":\"<p>The name of the billing group.</p> <note> <p>This call is asynchronous. It might take several seconds for the detachment to propagate.</p> </note>\"\
         },\
         \"billingGroupArn\":{\
           \"shape\":\"BillingGroupArn\",\
@@ -4220,7 +4434,7 @@
           \"documentation\":\"<p>The list of groups to which you want to add the things that triggered the mitigation action. You can add a thing to a maximum of 10 groups, but you can't add a thing to more than one group in the same hierarchy.</p>\"\
         },\
         \"overrideDynamicGroups\":{\
-          \"shape\":\"OverrideDynamicGroups\",\
+          \"shape\":\"NullableBoolean\",\
           \"documentation\":\"<p>Specifies if this mitigation action can move the things that triggered the mitigation action even if they are part of one or more dynamic thing groups.</p>\"\
         }\
       },\
@@ -4242,6 +4456,39 @@
     \"AggregationField\":{\
       \"type\":\"string\",\
       \"min\":1\
+    },\
+    \"AggregationType\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"name\"],\
+      \"members\":{\
+        \"name\":{\
+          \"shape\":\"AggregationTypeName\",\
+          \"documentation\":\"<p>The name of the aggregation type.</p>\"\
+        },\
+        \"values\":{\
+          \"shape\":\"AggregationTypeValues\",\
+          \"documentation\":\"<p>A list of the values of aggregation types.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>The type of aggregation queries.</p>\"\
+    },\
+    \"AggregationTypeName\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"Statistics\",\
+        \"Percentiles\",\
+        \"Cardinality\"\
+      ]\
+    },\
+    \"AggregationTypeValue\":{\
+      \"type\":\"string\",\
+      \"max\":12,\
+      \"min\":1,\
+      \"pattern\":\"[a-zA-Z0-9]+\"\
+    },\
+    \"AggregationTypeValues\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"AggregationTypeValue\"}\
     },\
     \"AlarmName\":{\"type\":\"string\"},\
     \"AlertTarget\":{\
@@ -4392,7 +4639,7 @@
         },\
         \"namespaceId\":{\
           \"shape\":\"NamespaceId\",\
-          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, AWS IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\",\
+          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"namespaceId\"\
         }\
@@ -5026,14 +5273,19 @@
         },\
         \"signingDisabled\":{\
           \"shape\":\"BooleanKey\",\
-          \"documentation\":\"<p>Specifies whether AWS IoT validates the token signature in an authorization request.</p>\"\
+          \"documentation\":\"<p>Specifies whether IoT validates the token signature in an authorization request.</p>\"\
+        },\
+        \"enableCachingForHttp\":{\
+          \"shape\":\"EnableCachingForHttp\",\
+          \"documentation\":\"<p>When <code>true</code>, the result from the authorizerâs Lambda function is cached for the time specified in <code>refreshAfterInSeconds</code>. The cached result is used while the device reuses the same HTTP connection.</p>\"\
         }\
       },\
       \"documentation\":\"<p>The authorizer description.</p>\"\
     },\
     \"AuthorizerFunctionArn\":{\
       \"type\":\"string\",\
-      \"max\":2048\
+      \"max\":2048,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
     },\
     \"AuthorizerName\":{\
       \"type\":\"string\",\
@@ -5114,7 +5366,7 @@
         },\
         \"thresholdPercentage\":{\
           \"shape\":\"AwsJobAbortCriteriaAbortThresholdPercentage\",\
-          \"documentation\":\"<p>The minimum percentage of job execution failures that must occur to initiate the job abort.</p> <p>AWS IoT supports up to two digits after the decimal (for example, 10.9 and 10.99, but not 10.999).</p>\"\
+          \"documentation\":\"<p>The minimum percentage of job execution failures that must occur to initiate the job abort.</p> <p>Amazon Web Services IoT Core supports up to two digits after the decimal (for example, 10.9 and 10.99, but not 10.999).</p>\"\
         },\
         \"minNumberOfExecutedThings\":{\
           \"shape\":\"AwsJobAbortCriteriaMinimumNumberOfExecutedThings\",\
@@ -5181,7 +5433,7 @@
         },\
         \"rateIncreaseCriteria\":{\
           \"shape\":\"AwsJobRateIncreaseCriteria\",\
-          \"documentation\":\"<p>The criteria to initiate the increase in rate of rollout for a job.</p> <p>AWS IoT supports up to one digit after the decimal (for example, 1.5, but not 1.55).</p>\"\
+          \"documentation\":\"<p>The criteria to initiate the increase in rate of rollout for a job.</p> <p>Amazon Web Services IoT Core supports up to one digit after the decimal (for example, 1.5, but not 1.55).</p>\"\
         }\
       },\
       \"documentation\":\"<p>The rate of increase for a job rollout. This parameter allows you to define an exponential rate increase for a job rollout.</p>\"\
@@ -5391,7 +5643,37 @@
     },\
     \"Boolean\":{\"type\":\"boolean\"},\
     \"BooleanKey\":{\"type\":\"boolean\"},\
+    \"BooleanWrapperObject\":{\"type\":\"boolean\"},\
+    \"Bucket\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"keyValue\":{\
+          \"shape\":\"BucketKeyValue\",\
+          \"documentation\":\"<p>The value counted for the particular bucket.</p>\"\
+        },\
+        \"count\":{\
+          \"shape\":\"Count\",\
+          \"documentation\":\"<p>The number of documents that have the value counted for the particular bucket.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>A count of documents that meets a specific aggregation criteria.</p>\"\
+    },\
+    \"BucketKeyValue\":{\"type\":\"string\"},\
     \"BucketName\":{\"type\":\"string\"},\
+    \"Buckets\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"Bucket\"}\
+    },\
+    \"BucketsAggregationType\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"termsAggregation\":{\
+          \"shape\":\"TermsAggregation\",\
+          \"documentation\":\"<p>Performs an aggregation that will return a list of buckets. The list of buckets is a ranked list of the number of occurrences of an aggregation field value.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>The type of bucketed aggregation performed.</p>\"\
+    },\
     \"CACertificate\":{\
       \"type\":\"structure\",\
       \"members\":{\
@@ -5460,6 +5742,10 @@
         \"validity\":{\
           \"shape\":\"CertificateValidity\",\
           \"documentation\":\"<p>When the CA certificate is valid.</p>\"\
+        },\
+        \"certificateMode\":{\
+          \"shape\":\"CertificateMode\",\
+          \"documentation\":\"<p>The mode of the CA. </p> <p>All the device certificates that are registered using this CA will be registered in the same mode as the CA. For more information about certificate mode for device certificates, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/apireference/API_CertificateDescription.html#iot-Type-CertificateDescription-certificateMode\\\">certificate mode</a>.</p>\"\
         }\
       },\
       \"documentation\":\"<p>Describes a CA certificate.</p>\"\
@@ -5654,7 +5940,7 @@
         },\
         \"certificateMode\":{\
           \"shape\":\"CertificateMode\",\
-          \"documentation\":\"<p>The mode of the certificate.</p>\"\
+          \"documentation\":\"<p>The mode of the certificate.</p> <p> <code>DEFAULT</code>: A certificate in <code>DEFAULT</code> mode is either generated by Amazon Web Services IoT Core or registered with an issuer certificate authority (CA) in <code>DEFAULT</code> mode. Devices with certificates in <code>DEFAULT</code> mode aren't required to send the Server Name Indication (SNI) extension when connecting to Amazon Web Services IoT Core. However, to use features such as custom domains and VPC endpoints, we recommend that you use the SNI extension when connecting to Amazon Web Services IoT Core.</p> <p> <code>SNI_ONLY</code>: A certificate in <code>SNI_ONLY</code> mode is registered without an issuer CA. Devices with certificates in <code>SNI_ONLY</code> mode must send the SNI extension when connecting to Amazon Web Services IoT Core. </p>\"\
         },\
         \"creationDate\":{\
           \"shape\":\"DateType\",\
@@ -5701,11 +5987,11 @@
         },\
         \"ownedBy\":{\
           \"shape\":\"AwsAccountId\",\
-          \"documentation\":\"<p>The ID of the AWS account that owns the certificate.</p>\"\
+          \"documentation\":\"<p>The ID of the Amazon Web Services account that owns the certificate.</p>\"\
         },\
         \"previousOwnedBy\":{\
           \"shape\":\"AwsAccountId\",\
-          \"documentation\":\"<p>The ID of the AWS account of the previous owner of the certificate.</p>\"\
+          \"documentation\":\"<p>The ID of the Amazon Web Services account of the previous owner of the certificate.</p>\"\
         },\
         \"creationDate\":{\
           \"shape\":\"DateType\",\
@@ -5733,7 +6019,7 @@
         },\
         \"certificateMode\":{\
           \"shape\":\"CertificateMode\",\
-          \"documentation\":\"<p>The mode of the certificate.</p>\"\
+          \"documentation\":\"<p>The mode of the certificate.</p> <p> <code>DEFAULT</code>: A certificate in <code>DEFAULT</code> mode is either generated by Amazon Web Services IoT Core or registered with an issuer certificate authority (CA) in <code>DEFAULT</code> mode. Devices with certificates in <code>DEFAULT</code> mode aren't required to send the Server Name Indication (SNI) extension when connecting to Amazon Web Services IoT Core. However, to use features such as custom domains and VPC endpoints, we recommend that you use the SNI extension when connecting to Amazon Web Services IoT Core.</p> <p> <code>SNI_ONLY</code>: A certificate in <code>SNI_ONLY</code> mode is registered without an issuer CA. Devices with certificates in <code>SNI_ONLY</code> mode must send the SNI extension when connecting to Amazon Web Services IoT Core. </p> <p>For more information about the value for SNI extension, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/transport-security.html\\\">Transport security in IoT</a>.</p>\"\
         }\
       },\
       \"documentation\":\"<p>Describes a certificate.</p>\"\
@@ -5757,11 +6043,14 @@
       \"type\":\"string\",\
       \"documentation\":\"<p>The PEM of a certificate.</p>\",\
       \"max\":65536,\
-      \"min\":1\
+      \"min\":1,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
     },\
     \"CertificateSigningRequest\":{\
       \"type\":\"string\",\
-      \"min\":1\
+      \"max\":4096,\
+      \"min\":1,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
     },\
     \"CertificateStateException\":{\
       \"type\":\"structure\",\
@@ -5939,7 +6228,7 @@
       \"members\":{\
         \"awsSignerJobId\":{\
           \"shape\":\"SigningJobId\",\
-          \"documentation\":\"<p>The ID of the AWSSignerJob which was created to sign the file.</p>\"\
+          \"documentation\":\"<p>The ID of the <code>AWSSignerJob</code> which was created to sign the file.</p>\"\
         },\
         \"startSigningJobParameter\":{\
           \"shape\":\"StartSigningJobParameter\",\
@@ -6070,6 +6359,16 @@
       \"max\":10,\
       \"min\":1\
     },\
+    \"ContentType\":{\
+      \"type\":\"string\",\
+      \"max\":1024,\
+      \"min\":0\
+    },\
+    \"CorrelationData\":{\
+      \"type\":\"string\",\
+      \"max\":1024,\
+      \"min\":0\
+    },\
     \"Count\":{\"type\":\"integer\"},\
     \"CreateAuditSuppressionRequest\":{\
       \"type\":\"structure\",\
@@ -6095,7 +6394,7 @@
         },\
         \"clientRequestToken\":{\
           \"shape\":\"ClientRequestToken\",\
-          \"documentation\":\"<p> The epoch timestamp in seconds at which this suppression expires. </p>\",\
+          \"documentation\":\"<p> Each audit supression must have a unique client request token. If you try to create a new audit suppression with the same token as one that already exists, an exception occurs. If you omit this value, Amazon Web Services SDKs will automatically generate a unique client request.</p>\",\
           \"idempotencyToken\":true\
         }\
       }\
@@ -6140,7 +6439,11 @@
         },\
         \"signingDisabled\":{\
           \"shape\":\"BooleanKey\",\
-          \"documentation\":\"<p>Specifies whether AWS IoT validates the token signature in an authorization request.</p>\"\
+          \"documentation\":\"<p>Specifies whether IoT validates the token signature in an authorization request.</p>\"\
+        },\
+        \"enableCachingForHttp\":{\
+          \"shape\":\"EnableCachingForHttp\",\
+          \"documentation\":\"<p>When <code>true</code>, the result from the authorizerâs Lambda function is cached for clients that use persistent HTTP connections. The results are cached for the time specified by the Lambda function in <code>refreshAfterInSeconds</code>. This value does not affect authorization of clients that use MQTT connections.</p> <p>The default value is <code>false</code>.</p>\"\
         }\
       }\
     },\
@@ -6239,17 +6542,17 @@
       \"members\":{\
         \"metricName\":{\
           \"shape\":\"MetricName\",\
-          \"documentation\":\"<p> The name of the custom metric. This will be used in the metric report submitted from the device/thing. Shouldn't begin with <code>aws:</code>. Cannot be updated once defined.</p>\",\
+          \"documentation\":\"<p> The name of the custom metric. This will be used in the metric report submitted from the device/thing. The name can't begin with <code>aws:</code>. You can't change the name after you define it.</p>\",\
           \"location\":\"uri\",\
           \"locationName\":\"metricName\"\
         },\
         \"displayName\":{\
           \"shape\":\"CustomMetricDisplayName\",\
-          \"documentation\":\"<p> Field represents a friendly name in the console for the custom metric; it doesn't have to be unique. Don't use this name as the metric identifier in the device metric report. Can be updated once defined.</p>\"\
+          \"documentation\":\"<p> The friendly name in the console for the custom metric. This name doesn't have to be unique. Don't use this name as the metric identifier in the device metric report. You can update the friendly name after you define it.</p>\"\
         },\
         \"metricType\":{\
           \"shape\":\"CustomMetricType\",\
-          \"documentation\":\"<p> The type of the custom metric. Types include <code>string-list</code>, <code>ip-address-list</code>, <code>number-list</code>, and <code>number</code>. </p>\"\
+          \"documentation\":\"<p> The type of the custom metric. </p> <important> <p>The type <code>number</code> only takes a single metric value as an input, but when you submit the metrics value in the DeviceMetrics report, you must pass it as an array with a single value.</p> </important>\"\
         },\
         \"tags\":{\
           \"shape\":\"TagList\",\
@@ -6257,7 +6560,7 @@
         },\
         \"clientRequestToken\":{\
           \"shape\":\"ClientRequestToken\",\
-          \"documentation\":\"<p>Each custom metric must have a unique client request token. If you try to create a new custom metric that already exists with a different token, an exception occurs. If you omit this value, AWS SDKs will automatically generate a unique client request. </p>\",\
+          \"documentation\":\"<p>Each custom metric must have a unique client request token. If you try to create a new custom metric that already exists with a different token, an exception occurs. If you omit this value, Amazon Web Services SDKs will automatically generate a unique client request. </p>\",\
           \"idempotencyToken\":true\
         }\
       }\
@@ -6271,7 +6574,7 @@
         },\
         \"metricArn\":{\
           \"shape\":\"CustomMetricArn\",\
-          \"documentation\":\"<p> The Amazon Resource Number (ARN) of the custom metric, e.g. <code>arn:<i>aws-partition</i>:iot:<i>region</i>:<i>accountId</i>:custommetric/<i>metricName</i> </code> </p>\"\
+          \"documentation\":\"<p> The Amazon Resource Number (ARN) of the custom metric. For example, <code>arn:<i>aws-partition</i>:iot:<i>region</i>:<i>accountId</i>:custommetric/<i>metricName</i> </code> </p>\"\
         }\
       }\
     },\
@@ -6304,7 +6607,7 @@
         },\
         \"clientRequestToken\":{\
           \"shape\":\"ClientRequestToken\",\
-          \"documentation\":\"<p>Each dimension must have a unique client request token. If you try to create a new dimension with the same token as a dimension that already exists, an exception occurs. If you omit this value, AWS SDKs will automatically generate a unique client request.</p>\",\
+          \"documentation\":\"<p>Each dimension must have a unique client request token. If you try to create a new dimension with the same token as a dimension that already exists, an exception occurs. If you omit this value, Amazon Web Services SDKs will automatically generate a unique client request.</p>\",\
           \"idempotencyToken\":true\
         }\
       }\
@@ -6338,11 +6641,11 @@
         },\
         \"serverCertificateArns\":{\
           \"shape\":\"ServerCertificateArns\",\
-          \"documentation\":\"<p>The ARNs of the certificates that AWS IoT passes to the device during the TLS handshake. Currently you can specify only one certificate ARN. This value is not required for AWS-managed domains.</p>\"\
+          \"documentation\":\"<p>The ARNs of the certificates that IoT passes to the device during the TLS handshake. Currently you can specify only one certificate ARN. This value is not required for Amazon Web Services-managed domains.</p>\"\
         },\
         \"validationCertificateArn\":{\
           \"shape\":\"AcmCertificateArn\",\
-          \"documentation\":\"<p>The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority. This value is not required for AWS-managed domains.</p>\"\
+          \"documentation\":\"<p>The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority. This value is not required for Amazon Web Services-managed domains.</p>\"\
         },\
         \"authorizerConfig\":{\
           \"shape\":\"AuthorizerConfig\",\
@@ -6350,7 +6653,7 @@
         },\
         \"serviceType\":{\
           \"shape\":\"ServiceType\",\
-          \"documentation\":\"<p>The type of service delivered by the endpoint.</p> <note> <p>AWS IoT Core currently supports only the <code>DATA</code> service type.</p> </note>\"\
+          \"documentation\":\"<p>The type of service delivered by the endpoint.</p> <note> <p>Amazon Web Services IoT Core currently supports only the <code>DATA</code> service type.</p> </note>\"\
         },\
         \"tags\":{\
           \"shape\":\"TagList\",\
@@ -6390,7 +6693,7 @@
         },\
         \"indexName\":{\
           \"shape\":\"IndexName\",\
-          \"documentation\":\"<p>The dynamic thing group index name.</p> <note> <p>Currently one index is supported: \\\"AWS_Things\\\".</p> </note>\"\
+          \"documentation\":\"<p>The dynamic thing group index name.</p> <note> <p>Currently one index is supported: <code>AWS_Things</code>.</p> </note>\"\
         },\
         \"queryString\":{\
           \"shape\":\"QueryString\",\
@@ -6435,6 +6738,73 @@
         }\
       }\
     },\
+    \"CreateFleetMetricRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"metricName\",\
+        \"queryString\",\
+        \"aggregationType\",\
+        \"period\",\
+        \"aggregationField\"\
+      ],\
+      \"members\":{\
+        \"metricName\":{\
+          \"shape\":\"FleetMetricName\",\
+          \"documentation\":\"<p>The name of the fleet metric to create.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"metricName\"\
+        },\
+        \"queryString\":{\
+          \"shape\":\"QueryString\",\
+          \"documentation\":\"<p>The search query string.</p>\"\
+        },\
+        \"aggregationType\":{\
+          \"shape\":\"AggregationType\",\
+          \"documentation\":\"<p>The type of the aggregation query.</p>\"\
+        },\
+        \"period\":{\
+          \"shape\":\"FleetMetricPeriod\",\
+          \"documentation\":\"<p>The time in seconds between fleet metric emissions. Range [60(1 min), 86400(1 day)] and must be multiple of 60.</p>\"\
+        },\
+        \"aggregationField\":{\
+          \"shape\":\"AggregationField\",\
+          \"documentation\":\"<p>The field to aggregate.</p>\"\
+        },\
+        \"description\":{\
+          \"shape\":\"FleetMetricDescription\",\
+          \"documentation\":\"<p>The fleet metric description.</p>\"\
+        },\
+        \"queryVersion\":{\
+          \"shape\":\"QueryVersion\",\
+          \"documentation\":\"<p>The query version.</p>\"\
+        },\
+        \"indexName\":{\
+          \"shape\":\"IndexName\",\
+          \"documentation\":\"<p>The name of the index to search.</p>\"\
+        },\
+        \"unit\":{\
+          \"shape\":\"FleetMetricUnit\",\
+          \"documentation\":\"<p>Used to support unit transformation such as milliseconds to seconds. The unit must be supported by <a href=\\\"https://docs.aws.amazon.com/https:/docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricDatum.html\\\">CW metric</a>. Default to null.</p>\"\
+        },\
+        \"tags\":{\
+          \"shape\":\"TagList\",\
+          \"documentation\":\"<p>Metadata, which can be used to manage the fleet metric.</p>\"\
+        }\
+      }\
+    },\
+    \"CreateFleetMetricResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"metricName\":{\
+          \"shape\":\"FleetMetricName\",\
+          \"documentation\":\"<p>The name of the fleet metric to create.</p>\"\
+        },\
+        \"metricArn\":{\
+          \"shape\":\"FleetMetricArn\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) of the new fleet metric.</p>\"\
+        }\
+      }\
+    },\
     \"CreateJobRequest\":{\
       \"type\":\"structure\",\
       \"required\":[\
@@ -6444,7 +6814,7 @@
       \"members\":{\
         \"jobId\":{\
           \"shape\":\"JobId\",\
-          \"documentation\":\"<p>A job identifier which must be unique for your AWS account. We recommend using a UUID. Alpha-numeric characters, \\\"-\\\" and \\\"_\\\" are valid for use here.</p>\",\
+          \"documentation\":\"<p>A job identifier which must be unique for your Amazon Web Services account. We recommend using a UUID. Alpha-numeric characters, \\\"-\\\" and \\\"_\\\" are valid for use here.</p>\",\
           \"location\":\"uri\",\
           \"locationName\":\"jobId\"\
         },\
@@ -6470,7 +6840,7 @@
         },\
         \"targetSelection\":{\
           \"shape\":\"TargetSelection\",\
-          \"documentation\":\"<p>Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group.</p>\"\
+          \"documentation\":\"<p>Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group.</p> <note> <p>We recommend that you use continuous jobs instead of snapshot jobs for dynamic thing group targets. By using continuous jobs, devices that join the group receive the job execution even after the job has been created.</p> </note>\"\
         },\
         \"jobExecutionsRolloutConfig\":{\
           \"shape\":\"JobExecutionsRolloutConfig\",\
@@ -6478,7 +6848,7 @@
         },\
         \"abortConfig\":{\
           \"shape\":\"AbortConfig\",\
-          \"documentation\":\"<p>Allows you to create criteria to abort a job.</p>\"\
+          \"documentation\":\"<p>Allows you to create the criteria to abort a job.</p>\"\
         },\
         \"timeoutConfig\":{\
           \"shape\":\"TimeoutConfig\",\
@@ -6490,11 +6860,23 @@
         },\
         \"namespaceId\":{\
           \"shape\":\"NamespaceId\",\
-          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, AWS IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\"\
+          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\"\
         },\
         \"jobTemplateArn\":{\
           \"shape\":\"JobTemplateArn\",\
           \"documentation\":\"<p>The ARN of the job template used to create the job.</p>\"\
+        },\
+        \"jobExecutionsRetryConfig\":{\
+          \"shape\":\"JobExecutionsRetryConfig\",\
+          \"documentation\":\"<p>Allows you to create the criteria to retry a job.</p>\"\
+        },\
+        \"documentParameters\":{\
+          \"shape\":\"ParameterMap\",\
+          \"documentation\":\"<p>Parameters of an Amazon Web Services managed template that you can specify to create the job document.</p> <note> <p> <code>documentParameters</code> can only be used when creating jobs from Amazon Web Services managed templates. This parameter can't be used with custom job templates or to create jobs from them.</p> </note>\"\
+        },\
+        \"schedulingConfig\":{\
+          \"shape\":\"SchedulingConfig\",\
+          \"documentation\":\"<p>The configuration that allows you to schedule a job for a future date and time in addition to specifying the end behavior for each job execution.</p>\"\
         }\
       }\
     },\
@@ -6551,6 +6933,10 @@
         \"tags\":{\
           \"shape\":\"TagList\",\
           \"documentation\":\"<p>Metadata that can be used to manage the job template.</p>\"\
+        },\
+        \"jobExecutionsRetryConfig\":{\
+          \"shape\":\"JobExecutionsRetryConfig\",\
+          \"documentation\":\"<p>Allows you to create the criteria to retry a job.</p>\"\
         }\
       }\
     },\
@@ -6577,7 +6963,7 @@
           \"locationName\":\"setAsActive\"\
         }\
       },\
-      \"documentation\":\"<p>The input for the CreateKeysAndCertificate operation.</p>\"\
+      \"documentation\":\"<p>The input for the CreateKeysAndCertificate operation.</p> <p>Requires permission to access the <a href=\\\"https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions\\\">CreateKeysAndCertificateRequest</a> action.</p>\"\
     },\
     \"CreateKeysAndCertificateResponse\":{\
       \"type\":\"structure\",\
@@ -6588,7 +6974,7 @@
         },\
         \"certificateId\":{\
           \"shape\":\"CertificateId\",\
-          \"documentation\":\"<p>The ID of the certificate. AWS IoT issues a default subject name for the certificate (for example, AWS IoT Certificate).</p>\"\
+          \"documentation\":\"<p>The ID of the certificate. IoT issues a default subject name for the certificate (for example, IoT Certificate).</p>\"\
         },\
         \"certificatePem\":{\
           \"shape\":\"CertificatePem\",\
@@ -6695,7 +7081,7 @@
         },\
         \"roleArn\":{\
           \"shape\":\"RoleArn\",\
-          \"documentation\":\"<p>The IAM role that grants AWS IoT access to the Amazon S3, AWS IoT jobs and AWS Code Signing resources to create an OTA update job.</p>\"\
+          \"documentation\":\"<p>The IAM role that grants Amazon Web Services IoT Core access to the Amazon S3, IoT jobs and Amazon Web Services Code Signing resources to create an OTA update job.</p>\"\
         },\
         \"additionalParameters\":{\
           \"shape\":\"AdditionalParameterMap\",\
@@ -6716,7 +7102,7 @@
         },\
         \"awsIotJobId\":{\
           \"shape\":\"AwsIotJobId\",\
-          \"documentation\":\"<p>The AWS IoT job ID associated with the OTA update.</p>\"\
+          \"documentation\":\"<p>The IoT job ID associated with the OTA update.</p>\"\
         },\
         \"otaUpdateArn\":{\
           \"shape\":\"OTAUpdateArn\",\
@@ -6724,7 +7110,7 @@
         },\
         \"awsIotJobArn\":{\
           \"shape\":\"AwsIotJobArn\",\
-          \"documentation\":\"<p>The AWS IoT job ARN associated with the OTA update.</p>\"\
+          \"documentation\":\"<p>The IoT job ARN associated with the OTA update.</p>\"\
         },\
         \"otaUpdateStatus\":{\
           \"shape\":\"OTAUpdateStatus\",\
@@ -6869,31 +7255,35 @@
       \"members\":{\
         \"templateName\":{\
           \"shape\":\"TemplateName\",\
-          \"documentation\":\"<p>The name of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The name of the provisioning template.</p>\"\
         },\
         \"description\":{\
           \"shape\":\"TemplateDescription\",\
-          \"documentation\":\"<p>The description of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The description of the provisioning template.</p>\"\
         },\
         \"templateBody\":{\
           \"shape\":\"TemplateBody\",\
-          \"documentation\":\"<p>The JSON formatted contents of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The JSON formatted contents of the provisioning template.</p>\"\
         },\
         \"enabled\":{\
           \"shape\":\"Enabled\",\
-          \"documentation\":\"<p>True to enable the fleet provisioning template, otherwise false.</p>\"\
+          \"documentation\":\"<p>True to enable the provisioning template, otherwise false.</p>\"\
         },\
         \"provisioningRoleArn\":{\
           \"shape\":\"RoleArn\",\
-          \"documentation\":\"<p>The role ARN for the role associated with the fleet provisioning template. This IoT role grants permission to provision a device.</p>\"\
+          \"documentation\":\"<p>The role ARN for the role associated with the provisioning template. This IoT role grants permission to provision a device.</p>\"\
         },\
         \"preProvisioningHook\":{\
           \"shape\":\"ProvisioningHook\",\
-          \"documentation\":\"<p>Creates a pre-provisioning hook template.</p>\"\
+          \"documentation\":\"<p>Creates a pre-provisioning hook template. Only supports template of type <code>FLEET_PROVISIONING</code>. For more information about provisioning template types, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/apireference/API_CreateProvisioningTemplate.html#iot-CreateProvisioningTemplate-request-type\\\">type</a>.</p>\"\
         },\
         \"tags\":{\
           \"shape\":\"TagList\",\
-          \"documentation\":\"<p>Metadata which can be used to manage the fleet provisioning template.</p> <note> <p>For URI Request parameters use format: ...key1=value1&amp;key2=value2...</p> <p>For the CLI command-line parameter use format: &amp;&amp;tags \\\"key1=value1&amp;key2=value2...\\\"</p> <p>For the cli-input-json file use format: \\\"tags\\\": \\\"key1=value1&amp;key2=value2...\\\"</p> </note>\"\
+          \"documentation\":\"<p>Metadata which can be used to manage the provisioning template.</p> <note> <p>For URI Request parameters use format: ...key1=value1&amp;key2=value2...</p> <p>For the CLI command-line parameter use format: &amp;&amp;tags \\\"key1=value1&amp;key2=value2...\\\"</p> <p>For the cli-input-json file use format: \\\"tags\\\": \\\"key1=value1&amp;key2=value2...\\\"</p> </note>\"\
+        },\
+        \"type\":{\
+          \"shape\":\"TemplateType\",\
+          \"documentation\":\"<p>The type you define in a provisioning template. You can create a template with only one type. You can't change the template type after its creation. The default value is <code>FLEET_PROVISIONING</code>. For more information about provisioning template, see: <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html\\\">Provisioning template</a>. </p>\"\
         }\
       }\
     },\
@@ -6906,11 +7296,11 @@
         },\
         \"templateName\":{\
           \"shape\":\"TemplateName\",\
-          \"documentation\":\"<p>The name of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The name of the provisioning template.</p>\"\
         },\
         \"defaultVersionId\":{\
           \"shape\":\"TemplateVersionId\",\
-          \"documentation\":\"<p>The default version of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The default version of the provisioning template.</p>\"\
         }\
       }\
     },\
@@ -6923,13 +7313,13 @@
       \"members\":{\
         \"templateName\":{\
           \"shape\":\"TemplateName\",\
-          \"documentation\":\"<p>The name of the fleet provisioning template.</p>\",\
+          \"documentation\":\"<p>The name of the provisioning template.</p>\",\
           \"location\":\"uri\",\
           \"locationName\":\"templateName\"\
         },\
         \"templateBody\":{\
           \"shape\":\"TemplateBody\",\
-          \"documentation\":\"<p>The JSON formatted contents of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The JSON formatted contents of the provisioning template.</p>\"\
         },\
         \"setAsDefault\":{\
           \"shape\":\"SetAsDefault\",\
@@ -6948,15 +7338,15 @@
         },\
         \"templateName\":{\
           \"shape\":\"TemplateName\",\
-          \"documentation\":\"<p>The name of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The name of the provisioning template.</p>\"\
         },\
         \"versionId\":{\
           \"shape\":\"TemplateVersionId\",\
-          \"documentation\":\"<p>The version of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The version of the provisioning template.</p>\"\
         },\
         \"isDefaultVersion\":{\
           \"shape\":\"IsDefaultVersion\",\
-          \"documentation\":\"<p>True if the fleet provisioning template version is the default version, otherwise false.</p>\"\
+          \"documentation\":\"<p>True if the provisioning template version is the default version, otherwise false.</p>\"\
         }\
       }\
     },\
@@ -6979,7 +7369,7 @@
         },\
         \"credentialDurationSeconds\":{\
           \"shape\":\"CredentialDurationSeconds\",\
-          \"documentation\":\"<p>How long (in seconds) the credentials will be valid.</p>\"\
+          \"documentation\":\"<p>How long (in seconds) the credentials will be valid. The default value is 3,600 seconds.</p> <p>This value must be less than or equal to the maximum session duration of the IAM role that the role alias references.</p>\"\
         },\
         \"tags\":{\
           \"shape\":\"TagList\",\
@@ -7120,7 +7510,7 @@
         },\
         \"roleArn\":{\
           \"shape\":\"RoleArn\",\
-          \"documentation\":\"<p>An IAM role that allows the IoT service principal assumes to access your S3 files.</p>\"\
+          \"documentation\":\"<p>An IAM role that allows the IoT service principal to access your S3 files.</p>\"\
         },\
         \"tags\":{\
           \"shape\":\"TagList\",\
@@ -7338,11 +7728,11 @@
         },\
         \"hashAlgorithm\":{\
           \"shape\":\"HashAlgorithm\",\
-          \"documentation\":\"<p>The hash algorithm used to code sign the file.</p>\"\
+          \"documentation\":\"<p>The hash algorithm used to code sign the file. You can use a string as the algorithm name if the target over-the-air (OTA) update devices are able to verify the signature that was generated using the same signature algorithm. For example, FreeRTOS uses <code>SHA256</code> or <code>SHA1</code>, so you can pass either of them based on which was used for generating the signature.</p>\"\
         },\
         \"signatureAlgorithm\":{\
           \"shape\":\"SignatureAlgorithm\",\
-          \"documentation\":\"<p>The signature algorithm used to code sign the file.</p>\"\
+          \"documentation\":\"<p>The signature algorithm used to code sign the file. You can use a string as the algorithm name if the target over-the-air (OTA) update devices are able to verify the signature that was generated using the same signature algorithm. For example, FreeRTOS uses <code>ECDSA</code> or <code>RSA</code>, so you can pass either of them based on which was used for generating the signature.</p>\"\
         }\
       },\
       \"documentation\":\"<p>Describes a custom method used to code sign a file.</p>\"\
@@ -7587,6 +7977,24 @@
       \"members\":{\
       }\
     },\
+    \"DeleteFleetMetricRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"metricName\"],\
+      \"members\":{\
+        \"metricName\":{\
+          \"shape\":\"FleetMetricName\",\
+          \"documentation\":\"<p>The name of the fleet metric to delete.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"metricName\"\
+        },\
+        \"expectedVersion\":{\
+          \"shape\":\"OptionalVersion\",\
+          \"documentation\":\"<p>The expected version of the fleet metric to delete.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"expectedVersion\"\
+        }\
+      }\
+    },\
     \"DeleteJobExecutionRequest\":{\
       \"type\":\"structure\",\
       \"required\":[\
@@ -7621,7 +8029,7 @@
         },\
         \"namespaceId\":{\
           \"shape\":\"NamespaceId\",\
-          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, AWS IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\",\
+          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"namespaceId\"\
         }\
@@ -7645,7 +8053,7 @@
         },\
         \"namespaceId\":{\
           \"shape\":\"NamespaceId\",\
-          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, AWS IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\",\
+          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"namespaceId\"\
         }\
@@ -7698,7 +8106,7 @@
         },\
         \"forceDeleteAWSJob\":{\
           \"shape\":\"ForceDeleteAWSJob\",\
-          \"documentation\":\"<p>When true, deletes the AWS job created by the OTAUpdate process even if it is \\\"IN_PROGRESS\\\". Otherwise, if the job is not in a terminal state (\\\"COMPLETED\\\" or \\\"CANCELED\\\") an exception will occur. The default is false.</p>\",\
+          \"documentation\":\"<p>When true, deletes the IoT job created by the OTAUpdate process even if it is \\\"IN_PROGRESS\\\". Otherwise, if the job is not in a terminal state (\\\"COMPLETED\\\" or \\\"CANCELED\\\") an exception will occur. The default is false.</p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"forceDeleteAWSJob\"\
         }\
@@ -7770,13 +8178,13 @@
       \"members\":{\
         \"templateName\":{\
           \"shape\":\"TemplateName\",\
-          \"documentation\":\"<p>The name of the fleet provisioning template version to delete.</p>\",\
+          \"documentation\":\"<p>The name of the provisioning template version to delete.</p>\",\
           \"location\":\"uri\",\
           \"locationName\":\"templateName\"\
         },\
         \"versionId\":{\
           \"shape\":\"TemplateVersionId\",\
-          \"documentation\":\"<p>The fleet provisioning template version ID to delete.</p>\",\
+          \"documentation\":\"<p>The provisioning template version ID to delete.</p>\",\
           \"location\":\"uri\",\
           \"locationName\":\"versionId\"\
         }\
@@ -8042,7 +8450,7 @@
       \"members\":{\
         \"roleArn\":{\
           \"shape\":\"RoleArn\",\
-          \"documentation\":\"<p>The ARN of the role that grants permission to AWS IoT to access information about your devices, policies, certificates, and other items as required when performing an audit.</p> <p>On the first call to <code>UpdateAccountAuditConfiguration</code>, this parameter is required.</p>\"\
+          \"documentation\":\"<p>The ARN of the role that grants permission to IoT to access information about your devices, policies, certificates, and other items as required when performing an audit.</p> <p>On the first call to <code>UpdateAccountAuditConfiguration</code>, this parameter is required.</p>\"\
         },\
         \"auditNotificationTargetConfigurations\":{\
           \"shape\":\"AuditNotificationTargetConfigurations\",\
@@ -8325,7 +8733,7 @@
         },\
         \"metricType\":{\
           \"shape\":\"CustomMetricType\",\
-          \"documentation\":\"<p> The type of the custom metric. Types include <code>string-list</code>, <code>ip-address-list</code>, <code>number-list</code>, and <code>number</code>. </p>\"\
+          \"documentation\":\"<p> The type of the custom metric. </p> <important> <p>The type <code>number</code> only takes a single metric value as an input, but while submitting the metrics value in the DeviceMetrics report, it must be passed as an array with a single value.</p> </important>\"\
         },\
         \"displayName\":{\
           \"shape\":\"CustomMetricDisplayName\",\
@@ -8475,7 +8883,7 @@
       \"members\":{\
         \"endpointType\":{\
           \"shape\":\"EndpointType\",\
-          \"documentation\":\"<p>The endpoint type. Valid endpoint types include:</p> <ul> <li> <p> <code>iot:Data</code> - Returns a VeriSign signed data endpoint.</p> </li> </ul> <ul> <li> <p> <code>iot:Data-ATS</code> - Returns an ATS signed data endpoint.</p> </li> </ul> <ul> <li> <p> <code>iot:CredentialProvider</code> - Returns an AWS IoT credentials provider API endpoint.</p> </li> </ul> <ul> <li> <p> <code>iot:Jobs</code> - Returns an AWS IoT device management Jobs API endpoint.</p> </li> </ul> <p>We strongly recommend that customers use the newer <code>iot:Data-ATS</code> endpoint type to avoid issues related to the widespread distrust of Symantec certificate authorities.</p>\",\
+          \"documentation\":\"<p>The endpoint type. Valid endpoint types include:</p> <ul> <li> <p> <code>iot:Data</code> - Returns a VeriSign signed data endpoint.</p> </li> </ul> <ul> <li> <p> <code>iot:Data-ATS</code> - Returns an ATS signed data endpoint.</p> </li> </ul> <ul> <li> <p> <code>iot:CredentialProvider</code> - Returns an IoT credentials provider API endpoint.</p> </li> </ul> <ul> <li> <p> <code>iot:Jobs</code> - Returns an IoT device management Jobs API endpoint.</p> </li> </ul> <p>We strongly recommend that customers use the newer <code>iot:Data-ATS</code> endpoint type to avoid issues related to the widespread distrust of Symantec certificate authorities.</p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"endpointType\"\
         }\
@@ -8514,6 +8922,75 @@
         }\
       }\
     },\
+    \"DescribeFleetMetricRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"metricName\"],\
+      \"members\":{\
+        \"metricName\":{\
+          \"shape\":\"FleetMetricName\",\
+          \"documentation\":\"<p>The name of the fleet metric to describe.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"metricName\"\
+        }\
+      }\
+    },\
+    \"DescribeFleetMetricResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"metricName\":{\
+          \"shape\":\"FleetMetricName\",\
+          \"documentation\":\"<p>The name of the fleet metric to describe.</p>\"\
+        },\
+        \"queryString\":{\
+          \"shape\":\"QueryString\",\
+          \"documentation\":\"<p>The search query string.</p>\"\
+        },\
+        \"aggregationType\":{\
+          \"shape\":\"AggregationType\",\
+          \"documentation\":\"<p>The type of the aggregation query.</p>\"\
+        },\
+        \"period\":{\
+          \"shape\":\"FleetMetricPeriod\",\
+          \"documentation\":\"<p>The time in seconds between fleet metric emissions. Range [60(1 min), 86400(1 day)] and must be multiple of 60.</p>\"\
+        },\
+        \"aggregationField\":{\
+          \"shape\":\"AggregationField\",\
+          \"documentation\":\"<p>The field to aggregate.</p>\"\
+        },\
+        \"description\":{\
+          \"shape\":\"FleetMetricDescription\",\
+          \"documentation\":\"<p>The fleet metric description.</p>\"\
+        },\
+        \"queryVersion\":{\
+          \"shape\":\"QueryVersion\",\
+          \"documentation\":\"<p>The query version.</p>\"\
+        },\
+        \"indexName\":{\
+          \"shape\":\"IndexName\",\
+          \"documentation\":\"<p>The name of the index to search.</p>\"\
+        },\
+        \"creationDate\":{\
+          \"shape\":\"CreationDate\",\
+          \"documentation\":\"<p>The date when the fleet metric is created.</p>\"\
+        },\
+        \"lastModifiedDate\":{\
+          \"shape\":\"LastModifiedDate\",\
+          \"documentation\":\"<p>The date when the fleet metric is last modified.</p>\"\
+        },\
+        \"unit\":{\
+          \"shape\":\"FleetMetricUnit\",\
+          \"documentation\":\"<p>Used to support unit transformation such as milliseconds to seconds. The unit must be supported by <a href=\\\"https://docs.aws.amazon.com/https:/docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricDatum.html\\\">CW metric</a>.</p>\"\
+        },\
+        \"version\":{\
+          \"shape\":\"Version\",\
+          \"documentation\":\"<p>The version of the fleet metric.</p>\"\
+        },\
+        \"metricArn\":{\
+          \"shape\":\"FleetMetricArn\",\
+          \"documentation\":\"<p>The ARN of the fleet metric to describe.</p>\"\
+        }\
+      }\
+    },\
     \"DescribeIndexRequest\":{\
       \"type\":\"structure\",\
       \"required\":[\"indexName\"],\
@@ -8539,7 +9016,7 @@
         },\
         \"schema\":{\
           \"shape\":\"IndexSchema\",\
-          \"documentation\":\"<p>Contains a value that specifies the type of indexing performed. Valid values are:</p> <ul> <li> <p>REGISTRY â Your thing index contains only registry data.</p> </li> <li> <p>REGISTRY_AND_SHADOW - Your thing index contains registry data and shadow data.</p> </li> <li> <p>REGISTRY_AND_CONNECTIVITY_STATUS - Your thing index contains registry data and thing connectivity status data.</p> </li> <li> <p>REGISTRY_AND_SHADOW_AND_CONNECTIVITY_STATUS - Your thing index contains registry data, shadow data, and thing connectivity status data.</p> </li> </ul>\"\
+          \"documentation\":\"<p>Contains a value that specifies the type of indexing performed. Valid values are:</p> <ul> <li> <p>REGISTRY â Your thing index contains only registry data.</p> </li> <li> <p>REGISTRY_AND_SHADOW - Your thing index contains registry data and shadow data.</p> </li> <li> <p>REGISTRY_AND_CONNECTIVITY_STATUS - Your thing index contains registry data and thing connectivity status data.</p> </li> <li> <p>REGISTRY_AND_SHADOW_AND_CONNECTIVITY_STATUS - Your thing index contains registry data, shadow data, and thing connectivity status data.</p> </li> <li> <p>MULTI_INDEXING_MODE - Your thing index contains multiple data sources. For more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/apireference/API_GetIndexingConfiguration.html\\\">GetIndexingConfiguration</a>.</p> </li> </ul>\"\
         }\
       }\
     },\
@@ -8646,7 +9123,62 @@
         \"presignedUrlConfig\":{\"shape\":\"PresignedUrlConfig\"},\
         \"jobExecutionsRolloutConfig\":{\"shape\":\"JobExecutionsRolloutConfig\"},\
         \"abortConfig\":{\"shape\":\"AbortConfig\"},\
-        \"timeoutConfig\":{\"shape\":\"TimeoutConfig\"}\
+        \"timeoutConfig\":{\"shape\":\"TimeoutConfig\"},\
+        \"jobExecutionsRetryConfig\":{\
+          \"shape\":\"JobExecutionsRetryConfig\",\
+          \"documentation\":\"<p>The configuration that determines how many retries are allowed for each failure type for a job.</p>\"\
+        }\
+      }\
+    },\
+    \"DescribeManagedJobTemplateRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"templateName\"],\
+      \"members\":{\
+        \"templateName\":{\
+          \"shape\":\"ManagedJobTemplateName\",\
+          \"documentation\":\"<p>The unique name of a managed job template, which is required.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"templateName\"\
+        },\
+        \"templateVersion\":{\
+          \"shape\":\"ManagedTemplateVersion\",\
+          \"documentation\":\"<p>An optional parameter to specify version of a managed template. If not specified, the pre-defined default version is returned.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"templateVersion\"\
+        }\
+      }\
+    },\
+    \"DescribeManagedJobTemplateResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"templateName\":{\
+          \"shape\":\"ManagedJobTemplateName\",\
+          \"documentation\":\"<p>The unique name of a managed template, such as <code>AWS-Reboot</code>.</p>\"\
+        },\
+        \"templateArn\":{\
+          \"shape\":\"JobTemplateArn\",\
+          \"documentation\":\"<p>The unique Amazon Resource Name (ARN) of the managed template.</p>\"\
+        },\
+        \"description\":{\
+          \"shape\":\"JobDescription\",\
+          \"documentation\":\"<p>The unique description of a managed template.</p>\"\
+        },\
+        \"templateVersion\":{\
+          \"shape\":\"ManagedTemplateVersion\",\
+          \"documentation\":\"<p>The version for a managed template.</p>\"\
+        },\
+        \"environments\":{\
+          \"shape\":\"Environments\",\
+          \"documentation\":\"<p>A list of environments that are supported with the managed job template.</p>\"\
+        },\
+        \"documentParameters\":{\
+          \"shape\":\"DocumentParameters\",\
+          \"documentation\":\"<p>A map of key-value pairs that you can use as guidance to specify the inputs for creating a job from a managed template.</p> <note> <p> <code>documentParameters</code> can only be used when creating jobs from Amazon Web Services managed templates. This parameter can't be used with custom job templates or to create jobs from them.</p> </note>\"\
+        },\
+        \"document\":{\
+          \"shape\":\"JobDocument\",\
+          \"documentation\":\"<p>The document schema for a managed job template.</p>\"\
+        }\
       }\
     },\
     \"DescribeMitigationActionRequest\":{\
@@ -8690,7 +9222,7 @@
         },\
         \"creationDate\":{\
           \"shape\":\"Timestamp\",\
-          \"documentation\":\"<p>The date and time when the mitigation action was added to your AWS account.</p>\"\
+          \"documentation\":\"<p>The date and time when the mitigation action was added to your Amazon Web Services accounts.</p>\"\
         },\
         \"lastModifiedDate\":{\
           \"shape\":\"Timestamp\",\
@@ -8704,7 +9236,7 @@
       \"members\":{\
         \"templateName\":{\
           \"shape\":\"TemplateName\",\
-          \"documentation\":\"<p>The name of the fleet provisioning template.</p>\",\
+          \"documentation\":\"<p>The name of the provisioning template.</p>\",\
           \"location\":\"uri\",\
           \"locationName\":\"templateName\"\
         }\
@@ -8715,23 +9247,23 @@
       \"members\":{\
         \"templateArn\":{\
           \"shape\":\"TemplateArn\",\
-          \"documentation\":\"<p>The ARN of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The ARN of the provisioning template.</p>\"\
         },\
         \"templateName\":{\
           \"shape\":\"TemplateName\",\
-          \"documentation\":\"<p>The name of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The name of the provisioning template.</p>\"\
         },\
         \"description\":{\
           \"shape\":\"TemplateDescription\",\
-          \"documentation\":\"<p>The description of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The description of the provisioning template.</p>\"\
         },\
         \"creationDate\":{\
           \"shape\":\"DateType\",\
-          \"documentation\":\"<p>The date when the fleet provisioning template was created.</p>\"\
+          \"documentation\":\"<p>The date when the provisioning template was created.</p>\"\
         },\
         \"lastModifiedDate\":{\
           \"shape\":\"DateType\",\
-          \"documentation\":\"<p>The date when the fleet provisioning template was last modified.</p>\"\
+          \"documentation\":\"<p>The date when the provisioning template was last modified.</p>\"\
         },\
         \"defaultVersionId\":{\
           \"shape\":\"TemplateVersionId\",\
@@ -8739,11 +9271,11 @@
         },\
         \"templateBody\":{\
           \"shape\":\"TemplateBody\",\
-          \"documentation\":\"<p>The JSON formatted contents of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The JSON formatted contents of the provisioning template.</p>\"\
         },\
         \"enabled\":{\
           \"shape\":\"Enabled\",\
-          \"documentation\":\"<p>True if the fleet provisioning template is enabled, otherwise false.</p>\"\
+          \"documentation\":\"<p>True if the provisioning template is enabled, otherwise false.</p>\"\
         },\
         \"provisioningRoleArn\":{\
           \"shape\":\"RoleArn\",\
@@ -8752,6 +9284,10 @@
         \"preProvisioningHook\":{\
           \"shape\":\"ProvisioningHook\",\
           \"documentation\":\"<p>Gets information about a pre-provisioned hook.</p>\"\
+        },\
+        \"type\":{\
+          \"shape\":\"TemplateType\",\
+          \"documentation\":\"<p>The type you define in a provisioning template. You can create a template with only one type. You can't change the template type after its creation. The default value is <code>FLEET_PROVISIONING</code>. For more information about provisioning template, see: <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html\\\">Provisioning template</a>. </p>\"\
         }\
       }\
     },\
@@ -8770,7 +9306,7 @@
         },\
         \"versionId\":{\
           \"shape\":\"TemplateVersionId\",\
-          \"documentation\":\"<p>The fleet provisioning template version ID.</p>\",\
+          \"documentation\":\"<p>The provisioning template version ID.</p>\",\
           \"location\":\"uri\",\
           \"locationName\":\"versionId\"\
         }\
@@ -8781,19 +9317,19 @@
       \"members\":{\
         \"versionId\":{\
           \"shape\":\"TemplateVersionId\",\
-          \"documentation\":\"<p>The fleet provisioning template version ID.</p>\"\
+          \"documentation\":\"<p>The provisioning template version ID.</p>\"\
         },\
         \"creationDate\":{\
           \"shape\":\"DateType\",\
-          \"documentation\":\"<p>The date when the fleet provisioning template version was created.</p>\"\
+          \"documentation\":\"<p>The date when the provisioning template version was created.</p>\"\
         },\
         \"templateBody\":{\
           \"shape\":\"TemplateBody\",\
-          \"documentation\":\"<p>The JSON formatted contents of the fleet provisioning template version.</p>\"\
+          \"documentation\":\"<p>The JSON formatted contents of the provisioning template version.</p>\"\
         },\
         \"isDefaultVersion\":{\
           \"shape\":\"IsDefaultVersion\",\
-          \"documentation\":\"<p>True if the fleet provisioning template version is the default version.</p>\"\
+          \"documentation\":\"<p>True if the provisioning template version is the default version.</p>\"\
         }\
       }\
     },\
@@ -9079,7 +9615,7 @@
       \"members\":{\
         \"defaultClientId\":{\
           \"shape\":\"ClientId\",\
-          \"documentation\":\"<p>The default MQTT client ID. For a typical device, the thing name is also used as the default MQTT client ID. Although we donât require a mapping between a thing's registry name and its use of MQTT client IDs, certificates, or shadow state, we recommend that you choose a thing name and use it as the MQTT client ID for the registry and the Device Shadow service.</p> <p>This lets you better organize your AWS IoT fleet without removing the flexibility of the underlying device certificate model or shadows.</p>\"\
+          \"documentation\":\"<p>The default MQTT client ID. For a typical device, the thing name is also used as the default MQTT client ID. Although we donât require a mapping between a thing's registry name and its use of MQTT client IDs, certificates, or shadow state, we recommend that you choose a thing name and use it as the MQTT client ID for the registry and the Device Shadow service.</p> <p>This lets you better organize your IoT fleet without removing the flexibility of the underlying device certificate model or shadows.</p>\"\
         },\
         \"thingName\":{\
           \"shape\":\"ThingName\",\
@@ -9434,6 +9970,13 @@
       \"type\":\"string\",\
       \"enum\":[\"DEACTIVATE\"]\
     },\
+    \"DeviceDefenderIndexingMode\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"OFF\",\
+        \"VIOLATIONS\"\
+      ]\
+    },\
     \"DeviceDefenderThingName\":{\
       \"type\":\"string\",\
       \"max\":128,\
@@ -9486,6 +10029,37 @@
       },\
       \"documentation\":\"<p>The input for the DisableTopicRuleRequest operation.</p>\"\
     },\
+    \"DisconnectReason\":{\"type\":\"string\"},\
+    \"DocumentParameter\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"key\":{\
+          \"shape\":\"ParameterKey\",\
+          \"documentation\":\"<p>Key of the map field containing the patterns that need to be replaced in a managed template job document schema.</p>\"\
+        },\
+        \"description\":{\
+          \"shape\":\"JobDescription\",\
+          \"documentation\":\"<p>Description of the map field containing the patterns that need to be replaced in a managed template job document schema.</p>\"\
+        },\
+        \"regex\":{\
+          \"shape\":\"Regex\",\
+          \"documentation\":\"<p>A regular expression of the patterns that need to be replaced in a managed template job document schema.</p>\"\
+        },\
+        \"example\":{\
+          \"shape\":\"Example\",\
+          \"documentation\":\"<p>An example illustrating a pattern that need to be replaced in a managed template job document schema.</p>\"\
+        },\
+        \"optional\":{\
+          \"shape\":\"Optional\",\
+          \"documentation\":\"<p>Specifies whether a pattern that needs to be replaced in a managed template job document schema is optional or required.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>A map of key-value pairs containing the patterns that need to be replaced in a managed template job document schema. You can use the description of each key as a guidance to specify the inputs during runtime when creating a job.</p> <note> <p> <code>documentParameters</code> can only be used when creating jobs from Amazon Web Services managed templates. This parameter can't be used with custom job templates or to create jobs from them.</p> </note>\"\
+    },\
+    \"DocumentParameters\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"DocumentParameter\"}\
+    },\
     \"DomainConfigurationArn\":{\"type\":\"string\"},\
     \"DomainConfigurationName\":{\
       \"type\":\"string\",\
@@ -9516,7 +10090,7 @@
           \"documentation\":\"<p>The type of service delivered by the endpoint.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>The summary of a domain configuration. A domain configuration specifies custom IoT-specific information about a domain. A domain configuration can be associated with an AWS-managed domain (for example, dbc123defghijk.iot.us-west-2.amazonaws.com), a customer managed domain, or a default endpoint.</p> <ul> <li> <p>Data</p> </li> <li> <p>Jobs</p> </li> <li> <p>CredentialProvider</p> </li> </ul>\"\
+      \"documentation\":\"<p>The summary of a domain configuration. A domain configuration specifies custom IoT-specific information about a domain. A domain configuration can be associated with an Amazon Web Services-managed domain (for example, dbc123defghijk.iot.us-west-2.amazonaws.com), a customer managed domain, or a default endpoint.</p> <ul> <li> <p>Data</p> </li> <li> <p>Jobs</p> </li> <li> <p>CredentialProvider</p> </li> </ul>\"\
     },\
     \"DomainConfigurations\":{\
       \"type\":\"list\",\
@@ -9525,7 +10099,8 @@
     \"DomainName\":{\
       \"type\":\"string\",\
       \"max\":253,\
-      \"min\":1\
+      \"min\":1,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
     },\
     \"DomainType\":{\
       \"type\":\"string\",\
@@ -9656,15 +10231,15 @@
       \"members\":{\
         \"roleArn\":{\
           \"shape\":\"AwsArn\",\
-          \"documentation\":\"<p>The IAM role ARN that has access to Elasticsearch.</p>\"\
+          \"documentation\":\"<p>The IAM role ARN that has access to OpenSearch.</p>\"\
         },\
         \"endpoint\":{\
           \"shape\":\"ElasticsearchEndpoint\",\
-          \"documentation\":\"<p>The endpoint of your Elasticsearch domain.</p>\"\
+          \"documentation\":\"<p>The endpoint of your OpenSearch domain.</p>\"\
         },\
         \"index\":{\
           \"shape\":\"ElasticsearchIndex\",\
-          \"documentation\":\"<p>The Elasticsearch index where you want to store your data.</p>\"\
+          \"documentation\":\"<p>The index where you want to store your data.</p>\"\
         },\
         \"type\":{\
           \"shape\":\"ElasticsearchType\",\
@@ -9675,7 +10250,7 @@
           \"documentation\":\"<p>The unique identifier for the document you are storing.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>Describes an action that writes data to an Amazon Elasticsearch Service domain.</p>\"\
+      \"documentation\":\"<p>Describes an action that writes data to an Amazon OpenSearch Service domain.</p> <note> <p>The <code>Elasticsearch</code> action can only be used by existing rule actions. To create a new rule action or to update an existing rule action, use the <code>OpenSearch</code> rule action instead. For more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/apireference/API_OpenSearchAction.html\\\">OpenSearchAction</a>.</p> </note>\"\
     },\
     \"ElasticsearchEndpoint\":{\
       \"type\":\"string\",\
@@ -9684,6 +10259,7 @@
     \"ElasticsearchId\":{\"type\":\"string\"},\
     \"ElasticsearchIndex\":{\"type\":\"string\"},\
     \"ElasticsearchType\":{\"type\":\"string\"},\
+    \"EnableCachingForHttp\":{\"type\":\"boolean\"},\
     \"EnableIoTLoggingParams\":{\
       \"type\":\"structure\",\
       \"required\":[\
@@ -9700,7 +10276,7 @@
           \"documentation\":\"<p>Specifies the type of information to be logged.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>Parameters used when defining a mitigation action that enable AWS IoT logging.</p>\"\
+      \"documentation\":\"<p>Parameters used when defining a mitigation action that enable Amazon Web Services IoT Core logging.</p>\"\
     },\
     \"EnableTopicRuleRequest\":{\
       \"type\":\"structure\",\
@@ -9719,7 +10295,16 @@
     \"EndpointAddress\":{\"type\":\"string\"},\
     \"EndpointType\":{\
       \"type\":\"string\",\
-      \"max\":128\
+      \"max\":128,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
+    },\
+    \"Environment\":{\
+      \"type\":\"string\",\
+      \"pattern\":\"[^\\\\p{C}]+\"\
+    },\
+    \"Environments\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"Environment\"}\
     },\
     \"ErrorCode\":{\"type\":\"string\"},\
     \"ErrorInfo\":{\
@@ -9765,6 +10350,10 @@
         \"CA_CERTIFICATE\"\
       ]\
     },\
+    \"Example\":{\
+      \"type\":\"string\",\
+      \"pattern\":\"[^\\\\p{C}]+\"\
+    },\
     \"ExecutionNamePrefix\":{\"type\":\"string\"},\
     \"ExecutionNumber\":{\"type\":\"long\"},\
     \"ExpectedVersion\":{\"type\":\"long\"},\
@@ -9798,7 +10387,7 @@
         },\
         \"incrementFactor\":{\
           \"shape\":\"IncrementFactor\",\
-          \"documentation\":\"<p>The exponential factor to increase the rate of rollout for a job.</p> <p>AWS IoT supports up to one digit after the decimal (for example, 1.5, but not 1.55).</p>\"\
+          \"documentation\":\"<p>The exponential factor to increase the rate of rollout for a job.</p> <p>Amazon Web Services IoT Core supports up to one digit after the decimal (for example, 1.5, but not 1.55).</p>\"\
         },\
         \"rateIncreaseCriteria\":{\
           \"shape\":\"RateIncreaseCriteria\",\
@@ -9819,7 +10408,7 @@
         },\
         \"type\":{\
           \"shape\":\"FieldType\",\
-          \"documentation\":\"<p>The datatype of the field.</p>\"\
+          \"documentation\":\"<p>The data type of the field.</p>\"\
         }\
       },\
       \"documentation\":\"<p>Describes the name and data type at a field.</p>\"\
@@ -9905,6 +10494,73 @@
       \"pattern\":\"([\\\\n\\\\t])|(\\\\r\\\\n)|(,)\"\
     },\
     \"Flag\":{\"type\":\"boolean\"},\
+    \"FleetMetricArn\":{\"type\":\"string\"},\
+    \"FleetMetricDescription\":{\
+      \"type\":\"string\",\
+      \"max\":1024,\
+      \"pattern\":\"[\\\\p{Graph}\\\\x20]*\"\
+    },\
+    \"FleetMetricName\":{\
+      \"type\":\"string\",\
+      \"max\":128,\
+      \"min\":1,\
+      \"pattern\":\"[a-zA-Z0-9_\\\\-\\\\.]+\"\
+    },\
+    \"FleetMetricNameAndArn\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"metricName\":{\
+          \"shape\":\"FleetMetricName\",\
+          \"documentation\":\"<p>The fleet metric name.</p>\"\
+        },\
+        \"metricArn\":{\
+          \"shape\":\"FleetMetricArn\",\
+          \"documentation\":\"<p>The fleet metric ARN.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>The name and ARN of a fleet metric.</p>\"\
+    },\
+    \"FleetMetricNameAndArnList\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"FleetMetricNameAndArn\"}\
+    },\
+    \"FleetMetricPeriod\":{\
+      \"type\":\"integer\",\
+      \"max\":86400,\
+      \"min\":60\
+    },\
+    \"FleetMetricUnit\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"Seconds\",\
+        \"Microseconds\",\
+        \"Milliseconds\",\
+        \"Bytes\",\
+        \"Kilobytes\",\
+        \"Megabytes\",\
+        \"Gigabytes\",\
+        \"Terabytes\",\
+        \"Bits\",\
+        \"Kilobits\",\
+        \"Megabits\",\
+        \"Gigabits\",\
+        \"Terabits\",\
+        \"Percent\",\
+        \"Count\",\
+        \"Bytes/Second\",\
+        \"Kilobytes/Second\",\
+        \"Megabytes/Second\",\
+        \"Gigabytes/Second\",\
+        \"Terabytes/Second\",\
+        \"Bits/Second\",\
+        \"Kilobits/Second\",\
+        \"Megabits/Second\",\
+        \"Gigabits/Second\",\
+        \"Terabits/Second\",\
+        \"Count/Second\",\
+        \"None\"\
+      ]\
+    },\
     \"ForceDelete\":{\"type\":\"boolean\"},\
     \"ForceDeleteAWSJob\":{\"type\":\"boolean\"},\
     \"ForceFlag\":{\"type\":\"boolean\"},\
@@ -9923,7 +10579,7 @@
         },\
         \"maxResults\":{\
           \"shape\":\"TinyMaxResults\",\
-          \"documentation\":\"<p> The maximum number of results to return at one time. The default is 25. </p>\",\
+          \"documentation\":\"<p> The maximum number of results to return at one time. The default is 10. </p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"maxResults\"\
         },\
@@ -9948,6 +10604,49 @@
         }\
       }\
     },\
+    \"GetBucketsAggregationRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"queryString\",\
+        \"aggregationField\",\
+        \"bucketsAggregationType\"\
+      ],\
+      \"members\":{\
+        \"indexName\":{\
+          \"shape\":\"IndexName\",\
+          \"documentation\":\"<p>The name of the index to search.</p>\"\
+        },\
+        \"queryString\":{\
+          \"shape\":\"QueryString\",\
+          \"documentation\":\"<p>The search query string.</p>\"\
+        },\
+        \"aggregationField\":{\
+          \"shape\":\"AggregationField\",\
+          \"documentation\":\"<p>The aggregation field.</p>\"\
+        },\
+        \"queryVersion\":{\
+          \"shape\":\"QueryVersion\",\
+          \"documentation\":\"<p>The version of the query.</p>\"\
+        },\
+        \"bucketsAggregationType\":{\
+          \"shape\":\"BucketsAggregationType\",\
+          \"documentation\":\"<p>The basic control of the response shape and the bucket aggregation type to perform. </p>\"\
+        }\
+      }\
+    },\
+    \"GetBucketsAggregationResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"totalCount\":{\
+          \"shape\":\"Count\",\
+          \"documentation\":\"<p>The total number of things that fit the query string criteria.</p>\"\
+        },\
+        \"buckets\":{\
+          \"shape\":\"Buckets\",\
+          \"documentation\":\"<p>The main part of the response with a list of buckets. Each bucket contains a <code>keyValue</code> and a <code>count</code>.</p> <p> <code>keyValue</code>: The aggregation field value counted for the particular bucket.</p> <p> <code>count</code>: The number of documents that have that value.</p>\"\
+        }\
+      }\
+    },\
     \"GetCardinalityRequest\":{\
       \"type\":\"structure\",\
       \"required\":[\"queryString\"],\
@@ -9958,7 +10657,7 @@
         },\
         \"queryString\":{\
           \"shape\":\"QueryString\",\
-          \"documentation\":\"<p>The search query.</p>\"\
+          \"documentation\":\"<p>The search query string.</p>\"\
         },\
         \"aggregationField\":{\
           \"shape\":\"AggregationField\",\
@@ -10097,7 +10796,7 @@
         },\
         \"queryString\":{\
           \"shape\":\"QueryString\",\
-          \"documentation\":\"<p>The query string.</p>\"\
+          \"documentation\":\"<p>The search query string.</p>\"\
         },\
         \"aggregationField\":{\
           \"shape\":\"AggregationField\",\
@@ -10255,7 +10954,7 @@
         },\
         \"queryString\":{\
           \"shape\":\"QueryString\",\
-          \"documentation\":\"<p>The query used to search. You can specify \\\"*\\\" for the query string to get the count of all indexed things in your AWS account.</p>\"\
+          \"documentation\":\"<p>The query used to search. You can specify \\\"*\\\" for the query string to get the count of all indexed things in your Amazon Web Services account.</p>\"\
         },\
         \"aggregationField\":{\
           \"shape\":\"AggregationField\",\
@@ -10334,7 +11033,7 @@
       \"members\":{\
         \"roleArn\":{\
           \"shape\":\"AwsArn\",\
-          \"documentation\":\"<p>The IAM role ARN AWS IoT uses to write to your CloudWatch logs.</p>\"\
+          \"documentation\":\"<p>The IAM role ARN IoT uses to write to your CloudWatch logs.</p>\"\
         },\
         \"defaultLogLevel\":{\
           \"shape\":\"LogLevel\",\
@@ -10385,7 +11084,7 @@
         },\
         \"confirmationUrl\":{\
           \"shape\":\"Url\",\
-          \"documentation\":\"<p>The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT uses the endpoint URL as the confirmation URL. If you use substitution templates in the confirmationUrl, you must create and enable topic rule destinations that match each possible value of the substitution template before traffic is allowed to your endpoint URL.</p>\"\
+          \"documentation\":\"<p>The URL to which IoT sends a confirmation message. The value of the confirmation URL must be a prefix of the endpoint URL. If you do not specify a confirmation URL IoT uses the endpoint URL as the confirmation URL. If you use substitution templates in the confirmationUrl, you must create and enable topic rule destinations that match each possible value of the substitution template before traffic is allowed to your endpoint URL.</p>\"\
         },\
         \"headers\":{\
           \"shape\":\"HeaderList\",\
@@ -10443,12 +11142,14 @@
     \"HttpHeaderName\":{\
       \"type\":\"string\",\
       \"max\":8192,\
-      \"min\":1\
+      \"min\":1,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
     },\
     \"HttpHeaderValue\":{\
       \"type\":\"string\",\
       \"max\":8192,\
-      \"min\":1\
+      \"min\":1,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
     },\
     \"HttpHeaders\":{\
       \"type\":\"map\",\
@@ -10458,7 +11159,8 @@
     \"HttpQueryString\":{\
       \"type\":\"string\",\
       \"max\":4096,\
-      \"min\":1\
+      \"min\":1,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
     },\
     \"HttpUrlDestinationConfiguration\":{\
       \"type\":\"structure\",\
@@ -10466,7 +11168,7 @@
       \"members\":{\
         \"confirmationUrl\":{\
           \"shape\":\"Url\",\
-          \"documentation\":\"<p>The URL AWS IoT uses to confirm ownership of or access to the topic rule destination URL.</p>\"\
+          \"documentation\":\"<p>The URL IoT uses to confirm ownership of or access to the topic rule destination URL.</p>\"\
         }\
       },\
       \"documentation\":\"<p>HTTP URL destination configuration used by the topic rule's HTTP action.</p>\"\
@@ -10507,7 +11209,7 @@
     \"IncrementFactor\":{\
       \"type\":\"double\",\
       \"max\":5,\
-      \"min\":1\
+      \"min\":1.1\
     },\
     \"IndexName\":{\
       \"type\":\"string\",\
@@ -10540,6 +11242,16 @@
         \"REBUILDING\"\
       ]\
     },\
+    \"IndexingFilter\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"namedShadowNames\":{\
+          \"shape\":\"NamedShadowNamesFilter\",\
+          \"documentation\":\"<p>The shadow names that you select to index. The default maximum number of shadow names for indexing is 10. To increase the limit, see <a href=\\\"https://docs.aws.amazon.com/general/latest/gr/iot_device_management.html#fleet-indexing-limits\\\">Amazon Web Services IoT Device Management Quotas</a> in the <i>Amazon Web Services General Reference</i>. </p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>Provides additional filters for specific data sources. Named shadow is the only data source that currently supports and requires a filter. To add named shadows to your fleet indexing configuration, set <code>namedShadowIndexingMode</code> to be <code>ON</code> and specify your shadow names in <code>filter</code>.</p>\"\
+    },\
     \"InlineDocument\":{\"type\":\"string\"},\
     \"InputName\":{\
       \"type\":\"string\",\
@@ -10568,6 +11280,16 @@
         }\
       },\
       \"documentation\":\"<p>An unexpected error has occurred.</p>\",\
+      \"error\":{\"httpStatusCode\":500},\
+      \"exception\":true,\
+      \"fault\":true\
+    },\
+    \"InternalServerException\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"message\":{\"shape\":\"errorMessage\"}\
+      },\
+      \"documentation\":\"<p>Internal error from the service that indicates an unexpected error or that the service is unavailable.</p>\",\
       \"error\":{\"httpStatusCode\":500},\
       \"exception\":true,\
       \"fault\":true\
@@ -10642,14 +11364,14 @@
         },\
         \"batchMode\":{\
           \"shape\":\"BatchMode\",\
-          \"documentation\":\"<p>Whether to process the action as a batch. The default value is <code>false</code>.</p> <p>When <code>batchMode</code> is <code>true</code> and the rule SQL statement evaluates to an Array, each Array element is delivered as a separate message when passed by <a href=\\\"https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_BatchPutMessage.html\\\"> <code>BatchPutMessage</code> </a> to the AWS IoT Analytics channel. The resulting array can't have more than 100 messages.</p>\"\
+          \"documentation\":\"<p>Whether to process the action as a batch. The default value is <code>false</code>.</p> <p>When <code>batchMode</code> is <code>true</code> and the rule SQL statement evaluates to an Array, each Array element is delivered as a separate message when passed by <a href=\\\"https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_BatchPutMessage.html\\\"> <code>BatchPutMessage</code> </a> to the IoT Analytics channel. The resulting array can't have more than 100 messages.</p>\"\
         },\
         \"roleArn\":{\
           \"shape\":\"AwsArn\",\
           \"documentation\":\"<p>The ARN of the role which has a policy that grants IoT Analytics permission to send message data via IoT Analytics (iotanalytics:BatchPutMessage).</p>\"\
         }\
       },\
-      \"documentation\":\"<p>Sends message data to an AWS IoT Analytics channel.</p>\"\
+      \"documentation\":\"<p>Sends message data to an IoT Analytics channel.</p>\"\
     },\
     \"IotEventsAction\":{\
       \"type\":\"structure\",\
@@ -10660,22 +11382,22 @@
       \"members\":{\
         \"inputName\":{\
           \"shape\":\"InputName\",\
-          \"documentation\":\"<p>The name of the AWS IoT Events input.</p>\"\
+          \"documentation\":\"<p>The name of the IoT Events input.</p>\"\
         },\
         \"messageId\":{\
           \"shape\":\"MessageId\",\
-          \"documentation\":\"<p>The ID of the message. The default <code>messageId</code> is a new UUID value.</p> <p>When <code>batchMode</code> is <code>true</code>, you can't specify a <code>messageId</code>--a new UUID value will be assigned.</p> <p>Assign a value to this property to ensure that only one input (message) with a given <code>messageId</code> will be processed by an AWS IoT Events detector.</p>\"\
+          \"documentation\":\"<p>The ID of the message. The default <code>messageId</code> is a new UUID value.</p> <p>When <code>batchMode</code> is <code>true</code>, you can't specify a <code>messageId</code>--a new UUID value will be assigned.</p> <p>Assign a value to this property to ensure that only one input (message) with a given <code>messageId</code> will be processed by an IoT Events detector.</p>\"\
         },\
         \"batchMode\":{\
           \"shape\":\"BatchMode\",\
-          \"documentation\":\"<p>Whether to process the event actions as a batch. The default value is <code>false</code>.</p> <p>When <code>batchMode</code> is <code>true</code>, you can't specify a <code>messageId</code>. </p> <p>When <code>batchMode</code> is <code>true</code> and the rule SQL statement evaluates to an Array, each Array element is treated as a separate message when it's sent to AWS IoT Events by calling <a href=\\\"https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_BatchPutMessage.html\\\"> <code>BatchPutMessage</code> </a>. The resulting array can't have more than 10 messages.</p>\"\
+          \"documentation\":\"<p>Whether to process the event actions as a batch. The default value is <code>false</code>.</p> <p>When <code>batchMode</code> is <code>true</code>, you can't specify a <code>messageId</code>. </p> <p>When <code>batchMode</code> is <code>true</code> and the rule SQL statement evaluates to an Array, each Array element is treated as a separate message when it's sent to IoT Events by calling <a href=\\\"https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_BatchPutMessage.html\\\"> <code>BatchPutMessage</code> </a>. The resulting array can't have more than 10 messages.</p>\"\
         },\
         \"roleArn\":{\
           \"shape\":\"AwsArn\",\
-          \"documentation\":\"<p>The ARN of the role that grants AWS IoT permission to send an input to an AWS IoT Events detector. (\\\"Action\\\":\\\"iotevents:BatchPutMessage\\\").</p>\"\
+          \"documentation\":\"<p>The ARN of the role that grants IoT permission to send an input to an IoT Events detector. (\\\"Action\\\":\\\"iotevents:BatchPutMessage\\\").</p>\"\
         }\
       },\
-      \"documentation\":\"<p>Sends an input to an AWS IoT Events detector.</p>\"\
+      \"documentation\":\"<p>Sends an input to an IoT Events detector.</p>\"\
     },\
     \"IotSiteWiseAction\":{\
       \"type\":\"structure\",\
@@ -10690,15 +11412,48 @@
         },\
         \"roleArn\":{\
           \"shape\":\"AwsArn\",\
-          \"documentation\":\"<p>The ARN of the role that grants AWS IoT permission to send an asset property value to AWS IoTSiteWise. (<code>\\\"Action\\\": \\\"iotsitewise:BatchPutAssetPropertyValue\\\"</code>). The trust policy can restrict access to specific asset hierarchy paths.</p>\"\
+          \"documentation\":\"<p>The ARN of the role that grants IoT permission to send an asset property value to IoT SiteWise. (<code>\\\"Action\\\": \\\"iotsitewise:BatchPutAssetPropertyValue\\\"</code>). The trust policy can restrict access to specific asset hierarchy paths.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>Describes an action to send data from an MQTT message that triggered the rule to AWS IoT SiteWise asset properties.</p>\"\
+      \"documentation\":\"<p>Describes an action to send data from an MQTT message that triggered the rule to IoT SiteWise asset properties.</p>\"\
     },\
     \"IsAuthenticated\":{\"type\":\"boolean\"},\
     \"IsDefaultVersion\":{\"type\":\"boolean\"},\
     \"IsDisabled\":{\"type\":\"boolean\"},\
     \"IsSuppressed\":{\"type\":\"boolean\"},\
+    \"IssuerCertificateIdentifier\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"issuerCertificateSubject\":{\
+          \"shape\":\"IssuerCertificateSubject\",\
+          \"documentation\":\"<p>The subject of the issuer certificate.</p>\"\
+        },\
+        \"issuerId\":{\
+          \"shape\":\"IssuerId\",\
+          \"documentation\":\"<p>The issuer ID.</p>\"\
+        },\
+        \"issuerCertificateSerialNumber\":{\
+          \"shape\":\"IssuerCertificateSerialNumber\",\
+          \"documentation\":\"<p>The issuer certificate serial number.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>The certificate issuer indentifier.</p>\"\
+    },\
+    \"IssuerCertificateSerialNumber\":{\
+      \"type\":\"string\",\
+      \"max\":20,\
+      \"pattern\":\"[a-fA-F0-9:]+\"\
+    },\
+    \"IssuerCertificateSubject\":{\
+      \"type\":\"string\",\
+      \"max\":1000,\
+      \"pattern\":\"[\\\\p{Graph}\\\\x20]*\"\
+    },\
+    \"IssuerId\":{\
+      \"type\":\"string\",\
+      \"max\":64,\
+      \"pattern\":\"(0x)?[a-fA-F0-9]+\"\
+    },\
     \"Job\":{\
       \"type\":\"structure\",\
       \"members\":{\
@@ -10712,7 +11467,7 @@
         },\
         \"targetSelection\":{\
           \"shape\":\"TargetSelection\",\
-          \"documentation\":\"<p>Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a device when the thing representing the device is added to a target group, even after the job was completed by all things originally in the group. </p>\"\
+          \"documentation\":\"<p>Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a device when the thing representing the device is added to a target group, even after the job was completed by all things originally in the group. </p> <note> <p>We recommend that you use continuous jobs instead of snapshot jobs for dynamic thing group targets. By using continuous jobs, devices that join the group receive the job execution even after the job has been created.</p> </note>\"\
         },\
         \"status\":{\
           \"shape\":\"JobStatus\",\
@@ -10772,11 +11527,27 @@
         },\
         \"namespaceId\":{\
           \"shape\":\"NamespaceId\",\
-          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, AWS IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\"\
+          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\"\
         },\
         \"jobTemplateArn\":{\
           \"shape\":\"JobTemplateArn\",\
           \"documentation\":\"<p>The ARN of the job template used to create the job.</p>\"\
+        },\
+        \"jobExecutionsRetryConfig\":{\
+          \"shape\":\"JobExecutionsRetryConfig\",\
+          \"documentation\":\"<p>The configuration for the criteria to retry the job.</p>\"\
+        },\
+        \"documentParameters\":{\
+          \"shape\":\"ParameterMap\",\
+          \"documentation\":\"<p>A key-value map that pairs the patterns that need to be replaced in a managed template job document schema. You can use the description of each key as a guidance to specify the inputs during runtime when creating a job.</p> <note> <p> <code>documentParameters</code> can only be used when creating jobs from Amazon Web Services managed templates. This parameter can't be used with custom job templates or to create jobs from them.</p> </note>\"\
+        },\
+        \"isConcurrent\":{\
+          \"shape\":\"BooleanWrapperObject\",\
+          \"documentation\":\"<p>Indicates whether a job is concurrent. Will be true when a job is rolling out new job executions or canceling previously created executions, otherwise false.</p>\"\
+        },\
+        \"schedulingConfig\":{\
+          \"shape\":\"SchedulingConfig\",\
+          \"documentation\":\"<p>The configuration that allows you to schedule a job for a future date and time in addition to specifying the end behavior for each job execution.</p>\"\
         }\
       },\
       \"documentation\":\"<p>The <code>Job</code> object contains details about a job.</p>\"\
@@ -10795,6 +11566,14 @@
       \"type\":\"string\",\
       \"max\":1350,\
       \"min\":1\
+    },\
+    \"JobEndBehavior\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"STOP_ROLLOUT\",\
+        \"CANCEL\",\
+        \"FORCE_CANCEL\"\
+      ]\
     },\
     \"JobExecution\":{\
       \"type\":\"structure\",\
@@ -10900,6 +11679,10 @@
         \"executionNumber\":{\
           \"shape\":\"ExecutionNumber\",\
           \"documentation\":\"<p>A string (consisting of the digits \\\"0\\\" through \\\"9\\\") which identifies this particular job execution on this particular device. It can be used later in commands which return or update job execution information.</p>\"\
+        },\
+        \"retryAttempt\":{\
+          \"shape\":\"RetryAttempt\",\
+          \"documentation\":\"<p>The number that indicates how many retry attempts have been completed for this job on this device.</p>\"\
         }\
       },\
       \"documentation\":\"<p>The job execution summary.</p>\"\
@@ -10939,6 +11722,17 @@
     \"JobExecutionSummaryForThingList\":{\
       \"type\":\"list\",\
       \"member\":{\"shape\":\"JobExecutionSummaryForThing\"}\
+    },\
+    \"JobExecutionsRetryConfig\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"criteriaList\"],\
+      \"members\":{\
+        \"criteriaList\":{\
+          \"shape\":\"RetryCriteriaList\",\
+          \"documentation\":\"<p>The list of criteria that determines how many retries are allowed for each failure type for a job.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>The configuration that determines how many retries are allowed for each failure type for a job.</p>\"\
     },\
     \"JobExecutionsRolloutConfig\":{\
       \"type\":\"structure\",\
@@ -11008,7 +11802,8 @@
         \"IN_PROGRESS\",\
         \"CANCELED\",\
         \"COMPLETED\",\
-        \"DELETION_IN_PROGRESS\"\
+        \"DELETION_IN_PROGRESS\",\
+        \"SCHEDULED\"\
       ]\
     },\
     \"JobSummary\":{\
@@ -11028,7 +11823,7 @@
         },\
         \"targetSelection\":{\
           \"shape\":\"TargetSelection\",\
-          \"documentation\":\"<p>Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group.</p>\"\
+          \"documentation\":\"<p>Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group.</p> <note> <p>We recommend that you use continuous jobs instead of snapshot jobs for dynamic thing group targets. By using continuous jobs, devices that join the group receive the job execution even after the job has been created.</p> </note>\"\
         },\
         \"status\":{\
           \"shape\":\"JobStatus\",\
@@ -11045,6 +11840,10 @@
         \"completedAt\":{\
           \"shape\":\"DateType\",\
           \"documentation\":\"<p>The time, in seconds since the epoch, when the job completed.</p>\"\
+        },\
+        \"isConcurrent\":{\
+          \"shape\":\"BooleanWrapperObject\",\
+          \"documentation\":\"<p>Indicates whether a job is concurrent. Will be true when a job is rolling out new job executions or canceling previously created executions, otherwise false.</p>\"\
         }\
       },\
       \"documentation\":\"<p>The job summary.</p>\"\
@@ -11151,7 +11950,8 @@
     },\
     \"KeyValue\":{\
       \"type\":\"string\",\
-      \"max\":5120\
+      \"max\":5120,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
     },\
     \"KinesisAction\":{\
       \"type\":\"structure\",\
@@ -11231,6 +12031,12 @@
           \"documentation\":\"<p> A list of all suppressed alerts. </p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"listSuppressedAlerts\"\
+        },\
+        \"verificationState\":{\
+          \"shape\":\"VerificationState\",\
+          \"documentation\":\"<p>The verification state of the violation (detect alarm).</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"verificationState\"\
         },\
         \"nextToken\":{\
           \"shape\":\"NextToken\",\
@@ -11656,6 +12462,12 @@
           \"documentation\":\"<p>Determines the order of the results.</p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"isAscendingOrder\"\
+        },\
+        \"templateName\":{\
+          \"shape\":\"TemplateName\",\
+          \"documentation\":\"<p>The name of the provisioning template.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"templateName\"\
         }\
       },\
       \"documentation\":\"<p>Input for the ListCACertificates operation.</p>\"\
@@ -11665,7 +12477,7 @@
       \"members\":{\
         \"certificates\":{\
           \"shape\":\"CACertificates\",\
-          \"documentation\":\"<p>The CA certificates registered in your AWS account.</p>\"\
+          \"documentation\":\"<p>The CA certificates registered in your Amazon Web Services account.</p>\"\
         },\
         \"nextMarker\":{\
           \"shape\":\"Marker\",\
@@ -11959,6 +12771,36 @@
         }\
       }\
     },\
+    \"ListFleetMetricsRequest\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"nextToken\":{\
+          \"shape\":\"NextToken\",\
+          \"documentation\":\"<p>To retrieve the next set of results, the <code>nextToken</code> value from a previous response; otherwise <code>null</code> to receive the first set of results.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"nextToken\"\
+        },\
+        \"maxResults\":{\
+          \"shape\":\"MaxResults\",\
+          \"documentation\":\"<p>The maximum number of results to return in this operation.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"maxResults\"\
+        }\
+      }\
+    },\
+    \"ListFleetMetricsResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"fleetMetrics\":{\
+          \"shape\":\"FleetMetricNameAndArnList\",\
+          \"documentation\":\"<p>The list of fleet metrics objects.</p>\"\
+        },\
+        \"nextToken\":{\
+          \"shape\":\"NextToken\",\
+          \"documentation\":\"<p>The token for the next set of results. Will not be returned if the operation has returned all results.</p>\"\
+        }\
+      }\
+    },\
     \"ListIndicesRequest\":{\
       \"type\":\"structure\",\
       \"members\":{\
@@ -12050,7 +12892,7 @@
         },\
         \"namespaceId\":{\
           \"shape\":\"NamespaceId\",\
-          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, AWS IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\",\
+          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"namespaceId\"\
         },\
@@ -12065,6 +12907,12 @@
           \"documentation\":\"<p>The token to retrieve the next set of results.</p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"nextToken\"\
+        },\
+        \"jobId\":{\
+          \"shape\":\"JobId\",\
+          \"documentation\":\"<p>The unique identifier you assigned to this job when it was created.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"jobId\"\
         }\
       }\
     },\
@@ -12122,7 +12970,7 @@
         },\
         \"targetSelection\":{\
           \"shape\":\"TargetSelection\",\
-          \"documentation\":\"<p>Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group. </p>\",\
+          \"documentation\":\"<p>Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group. </p> <note> <p>We recommend that you use continuous jobs instead of snapshot jobs for dynamic thing group targets. By using continuous jobs, devices that join the group receive the job execution even after the job has been created.</p> </note>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"targetSelection\"\
         },\
@@ -12152,7 +13000,7 @@
         },\
         \"namespaceId\":{\
           \"shape\":\"NamespaceId\",\
-          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, AWS IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\",\
+          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"namespaceId\"\
         }\
@@ -12168,6 +13016,114 @@
         \"nextToken\":{\
           \"shape\":\"NextToken\",\
           \"documentation\":\"<p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>\"\
+        }\
+      }\
+    },\
+    \"ListManagedJobTemplatesRequest\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"templateName\":{\
+          \"shape\":\"ManagedJobTemplateName\",\
+          \"documentation\":\"<p>An optional parameter for template name. If specified, only the versions of the managed job templates that have the specified template name will be returned.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"templateName\"\
+        },\
+        \"maxResults\":{\
+          \"shape\":\"LaserMaxResults\",\
+          \"documentation\":\"<p>Maximum number of entries that can be returned.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"maxResults\"\
+        },\
+        \"nextToken\":{\
+          \"shape\":\"NextToken\",\
+          \"documentation\":\"<p>The token to retrieve the next set of results.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"nextToken\"\
+        }\
+      }\
+    },\
+    \"ListManagedJobTemplatesResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"managedJobTemplates\":{\
+          \"shape\":\"ManagedJobTemplatesSummaryList\",\
+          \"documentation\":\"<p>A list of managed job templates that are returned.</p>\"\
+        },\
+        \"nextToken\":{\
+          \"shape\":\"NextToken\",\
+          \"documentation\":\"<p>The token to retrieve the next set of results.</p>\"\
+        }\
+      }\
+    },\
+    \"ListMetricValuesRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"thingName\",\
+        \"metricName\",\
+        \"startTime\",\
+        \"endTime\"\
+      ],\
+      \"members\":{\
+        \"thingName\":{\
+          \"shape\":\"DeviceDefenderThingName\",\
+          \"documentation\":\"<p>The name of the thing for which security profile metric values are returned.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"thingName\"\
+        },\
+        \"metricName\":{\
+          \"shape\":\"BehaviorMetric\",\
+          \"documentation\":\"<p>The name of the security profile metric for which values are returned.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"metricName\"\
+        },\
+        \"dimensionName\":{\
+          \"shape\":\"DimensionName\",\
+          \"documentation\":\"<p>The dimension name.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"dimensionName\"\
+        },\
+        \"dimensionValueOperator\":{\
+          \"shape\":\"DimensionValueOperator\",\
+          \"documentation\":\"<p>The dimension value operator.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"dimensionValueOperator\"\
+        },\
+        \"startTime\":{\
+          \"shape\":\"Timestamp\",\
+          \"documentation\":\"<p>The start of the time period for which metric values are returned.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"startTime\"\
+        },\
+        \"endTime\":{\
+          \"shape\":\"Timestamp\",\
+          \"documentation\":\"<p>The end of the time period for which metric values are returned.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"endTime\"\
+        },\
+        \"maxResults\":{\
+          \"shape\":\"MaxResults\",\
+          \"documentation\":\"<p>The maximum number of results to return at one time.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"maxResults\"\
+        },\
+        \"nextToken\":{\
+          \"shape\":\"NextToken\",\
+          \"documentation\":\"<p>The token for the next set of results.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"nextToken\"\
+        }\
+      }\
+    },\
+    \"ListMetricValuesResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"metricDatumList\":{\
+          \"shape\":\"MetricDatumList\",\
+          \"documentation\":\"<p>The data the thing reports for the metric during the specified time period.</p>\"\
+        },\
+        \"nextToken\":{\
+          \"shape\":\"NextToken\",\
+          \"documentation\":\"<p>A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results.</p>\"\
         }\
       }\
     },\
@@ -12477,7 +13433,7 @@
       \"members\":{\
         \"templateName\":{\
           \"shape\":\"TemplateName\",\
-          \"documentation\":\"<p>The name of the fleet provisioning template.</p>\",\
+          \"documentation\":\"<p>The name of the provisioning template.</p>\",\
           \"location\":\"uri\",\
           \"locationName\":\"templateName\"\
         },\
@@ -12500,7 +13456,7 @@
       \"members\":{\
         \"versions\":{\
           \"shape\":\"ProvisioningTemplateVersionListing\",\
-          \"documentation\":\"<p>The list of fleet provisioning template versions.</p>\"\
+          \"documentation\":\"<p>The list of provisioning template versions.</p>\"\
         },\
         \"nextToken\":{\
           \"shape\":\"NextToken\",\
@@ -12530,11 +13486,48 @@
       \"members\":{\
         \"templates\":{\
           \"shape\":\"ProvisioningTemplateListing\",\
-          \"documentation\":\"<p>A list of fleet provisioning templates</p>\"\
+          \"documentation\":\"<p>A list of provisioning templates</p>\"\
         },\
         \"nextToken\":{\
           \"shape\":\"NextToken\",\
           \"documentation\":\"<p>A token to retrieve the next set of results.</p>\"\
+        }\
+      }\
+    },\
+    \"ListRelatedResourcesForAuditFindingRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"findingId\"],\
+      \"members\":{\
+        \"findingId\":{\
+          \"shape\":\"FindingId\",\
+          \"documentation\":\"<p>The finding Id.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"findingId\"\
+        },\
+        \"nextToken\":{\
+          \"shape\":\"NextToken\",\
+          \"documentation\":\"<p>A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"nextToken\"\
+        },\
+        \"maxResults\":{\
+          \"shape\":\"MaxResults\",\
+          \"documentation\":\"<p>The maximum number of results to return at one time.</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"maxResults\"\
+        }\
+      }\
+    },\
+    \"ListRelatedResourcesForAuditFindingResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"relatedResources\":{\
+          \"shape\":\"RelatedResources\",\
+          \"documentation\":\"<p>The related resources.</p>\"\
+        },\
+        \"nextToken\":{\
+          \"shape\":\"NextToken\",\
+          \"documentation\":\"<p>A token that can be used to retrieve the next set of results, or <code>null</code> for the first API call.</p>\"\
         }\
       }\
     },\
@@ -13369,6 +14362,12 @@
           \"location\":\"querystring\",\
           \"locationName\":\"listSuppressedAlerts\"\
         },\
+        \"verificationState\":{\
+          \"shape\":\"VerificationState\",\
+          \"documentation\":\"<p>The verification state of the violation (detect alarm).</p>\",\
+          \"location\":\"querystring\",\
+          \"locationName\":\"verificationState\"\
+        },\
         \"nextToken\":{\
           \"shape\":\"NextToken\",\
           \"documentation\":\"<p>The token for the next set of results.</p>\",\
@@ -13395,6 +14394,58 @@
           \"documentation\":\"<p>A token that can be used to retrieve the next set of results, or <code>null</code> if there are no additional results.</p>\"\
         }\
       }\
+    },\
+    \"LocationAction\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"roleArn\",\
+        \"trackerName\",\
+        \"deviceId\",\
+        \"latitude\",\
+        \"longitude\"\
+      ],\
+      \"members\":{\
+        \"roleArn\":{\
+          \"shape\":\"AwsArn\",\
+          \"documentation\":\"<p>The IAM role that grants permission to write to the Amazon Location resource.</p>\"\
+        },\
+        \"trackerName\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>The name of the tracker resource in Amazon Location in which the location is updated.</p>\"\
+        },\
+        \"deviceId\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>The unique ID of the device providing the location data.</p>\"\
+        },\
+        \"timestamp\":{\
+          \"shape\":\"LocationTimestamp\",\
+          \"documentation\":\"<p>The time that the location data was sampled. The default value is the time the MQTT message was processed.</p>\"\
+        },\
+        \"latitude\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>A string that evaluates to a double value that represents the latitude of the device's location.</p>\"\
+        },\
+        \"longitude\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>A string that evaluates to a double value that represents the longitude of the device's location.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>The Amazon Location rule action sends device location updates from an MQTT message to an Amazon Location tracker resource.</p>\"\
+    },\
+    \"LocationTimestamp\":{\
+      \"type\":\"structure\",\
+      \"required\":[\"value\"],\
+      \"members\":{\
+        \"value\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>An expression that returns a long epoch time value.</p>\"\
+        },\
+        \"unit\":{\
+          \"shape\":\"String\",\
+          \"documentation\":\"<p>The precision of the timestamp value that results from the expression described in <code>value</code>.</p> <p>Valid values: <code>SECONDS</code> | <code>MILLISECONDS</code> | <code>MICROSECONDS</code> | <code>NANOSECONDS</code>. The default is <code>MILLISECONDS</code>.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>Describes how to interpret an application-defined timestamp value from an MQTT message payload and the precision of that value.</p>\"\
     },\
     \"LogGroupName\":{\"type\":\"string\"},\
     \"LogLevel\":{\
@@ -13445,7 +14496,10 @@
       \"type\":\"string\",\
       \"enum\":[\
         \"DEFAULT\",\
-        \"THING_GROUP\"\
+        \"THING_GROUP\",\
+        \"CLIENT_ID\",\
+        \"SOURCE_IP\",\
+        \"PRINCIPAL_ID\"\
       ]\
     },\
     \"LoggingOptionsPayload\":{\
@@ -13486,10 +14540,54 @@
       \"error\":{\"httpStatusCode\":400},\
       \"exception\":true\
     },\
+    \"ManagedJobTemplateName\":{\
+      \"type\":\"string\",\
+      \"max\":64,\
+      \"min\":1\
+    },\
+    \"ManagedJobTemplateSummary\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"templateArn\":{\
+          \"shape\":\"JobTemplateArn\",\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) for a managed template.</p>\"\
+        },\
+        \"templateName\":{\
+          \"shape\":\"ManagedJobTemplateName\",\
+          \"documentation\":\"<p>The unique Name for a managed template.</p>\"\
+        },\
+        \"description\":{\
+          \"shape\":\"JobDescription\",\
+          \"documentation\":\"<p>The description for a managed template.</p>\"\
+        },\
+        \"environments\":{\
+          \"shape\":\"Environments\",\
+          \"documentation\":\"<p>A list of environments that are supported with the managed job template.</p>\"\
+        },\
+        \"templateVersion\":{\
+          \"shape\":\"ManagedTemplateVersion\",\
+          \"documentation\":\"<p>The version for a managed template.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>An object that contains information about the managed template.</p>\"\
+    },\
+    \"ManagedJobTemplatesSummaryList\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"ManagedJobTemplateSummary\"}\
+    },\
+    \"ManagedTemplateVersion\":{\
+      \"type\":\"string\",\
+      \"pattern\":\"^[1-9]+.[0-9]+\"\
+    },\
     \"Marker\":{\
       \"type\":\"string\",\
       \"max\":1024,\
       \"pattern\":\"[A-Za-z0-9+/]+={0,2}\"\
+    },\
+    \"MaxBuckets\":{\
+      \"type\":\"integer\",\
+      \"max\":10000,\
+      \"min\":1\
     },\
     \"MaxJobExecutionsPerMin\":{\
       \"type\":\"integer\",\
@@ -13508,7 +14606,13 @@
     },\
     \"Message\":{\
       \"type\":\"string\",\
-      \"max\":128\
+      \"max\":128,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
+    },\
+    \"MessageExpiry\":{\
+      \"type\":\"string\",\
+      \"max\":1024,\
+      \"min\":0\
     },\
     \"MessageFormat\":{\
       \"type\":\"string\",\
@@ -13520,6 +14624,24 @@
     \"MessageId\":{\
       \"type\":\"string\",\
       \"max\":128\
+    },\
+    \"MetricDatum\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"timestamp\":{\
+          \"shape\":\"Timestamp\",\
+          \"documentation\":\"<p>The time the metric value was reported.</p>\"\
+        },\
+        \"value\":{\
+          \"shape\":\"MetricValue\",\
+          \"documentation\":\"<p>The value reported for the metric.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>A metric.</p>\"\
+    },\
+    \"MetricDatumList\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"MetricDatum\"}\
     },\
     \"MetricDimension\":{\
       \"type\":\"structure\",\
@@ -13683,7 +14805,7 @@
         },\
         \"enableIoTLoggingParams\":{\
           \"shape\":\"EnableIoTLoggingParams\",\
-          \"documentation\":\"<p>Parameters to define a mitigation action that enables AWS IoT logging at a specified level of detail.</p>\"\
+          \"documentation\":\"<p>Parameters to define a mitigation action that enables Amazon Web Services IoT Core logging at a specified level of detail.</p>\"\
         },\
         \"publishFindingToSnsParams\":{\
           \"shape\":\"PublishFindingToSnsParams\",\
@@ -13720,7 +14842,8 @@
     \"MqttClientId\":{\
       \"type\":\"string\",\
       \"max\":65535,\
-      \"min\":1\
+      \"min\":1,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
     },\
     \"MqttContext\":{\
       \"type\":\"structure\",\
@@ -13740,6 +14863,36 @@
       },\
       \"documentation\":\"<p>Specifies the MQTT context to use for the test authorizer request</p>\"\
     },\
+    \"MqttHeaders\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"payloadFormatIndicator\":{\
+          \"shape\":\"PayloadFormatIndicator\",\
+          \"documentation\":\"<p>An <code>Enum</code> string value that indicates whether the payload is formatted as UTF-8.</p> <p>Valid values are <code>UNSPECIFIED_BYTES</code> and <code>UTF8_DATA</code>.</p> <p>For more information, see <a href=\\\"https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901111\\\"> Payload Format Indicator</a> from the MQTT Version 5.0 specification.</p> <p>Supports <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-substitution-templates.html\\\">substitution templates</a>.</p>\"\
+        },\
+        \"contentType\":{\
+          \"shape\":\"ContentType\",\
+          \"documentation\":\"<p>A UTF-8 encoded string that describes the content of the publishing message.</p> <p>For more information, see <a href=\\\"https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901118\\\"> Content Type</a> from the MQTT Version 5.0 specification.</p> <p>Supports <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-substitution-templates.html\\\">substitution templates</a>.</p>\"\
+        },\
+        \"responseTopic\":{\
+          \"shape\":\"ResponseTopic\",\
+          \"documentation\":\"<p>A UTF-8 encoded string that's used as the topic name for a response message. The response topic is used to describe the topic which the receiver should publish to as part of the request-response flow. The topic must not contain wildcard characters.</p> <p>For more information, see <a href=\\\"https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901114\\\"> Response Topic</a> from the MQTT Version 5.0 specification.</p> <p>Supports <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-substitution-templates.html\\\">substitution templates</a>.</p>\"\
+        },\
+        \"correlationData\":{\
+          \"shape\":\"CorrelationData\",\
+          \"documentation\":\"<p>The base64-encoded binary data used by the sender of the request message to identify which request the response message is for when it's received.</p> <p>For more information, see <a href=\\\"https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_Toc3901115\\\"> Correlation Data</a> from the MQTT Version 5.0 specification.</p> <note> <p> This binary data must be based64-encoded. </p> </note> <p>Supports <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-substitution-templates.html\\\">substitution templates</a>.</p>\"\
+        },\
+        \"messageExpiry\":{\
+          \"shape\":\"MessageExpiry\",\
+          \"documentation\":\"<p>A user-defined integer value that will persist a message at the message broker for a specified amount of time to ensure that the message will expire if it's no longer relevant to the subscriber. The value of <code>messageExpiry</code> represents the number of seconds before it expires. For more information about the limits of <code>messageExpiry</code>, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/mqtt.html\\\">Amazon Web Services IoT Core message broker and protocol limits and quotas </a> from the Amazon Web Services Reference Guide.</p> <p>Supports <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-substitution-templates.html\\\">substitution templates</a>.</p>\"\
+        },\
+        \"userProperties\":{\
+          \"shape\":\"UserProperties\",\
+          \"documentation\":\"<p>An array of key-value pairs that you define in the MQTT5 header.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>Specifies MQTT Version 5.0 headers information. For more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/mqtt.html\\\"> MQTT</a> from Amazon Web Services IoT Core Developer Guide.</p>\"\
+    },\
     \"MqttPassword\":{\
       \"type\":\"blob\",\
       \"max\":65535,\
@@ -13748,12 +14901,22 @@
     \"MqttUsername\":{\
       \"type\":\"string\",\
       \"max\":65535,\
-      \"min\":1\
+      \"min\":1,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
+    },\
+    \"NamedShadowIndexingMode\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"OFF\",\
+        \"ON\"\
+      ]\
+    },\
+    \"NamedShadowNamesFilter\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"ShadowName\"}\
     },\
     \"NamespaceId\":{\
       \"type\":\"string\",\
-      \"max\":64,\
-      \"min\":1,\
       \"pattern\":\"[a-zA-Z0-9_-]+\"\
     },\
     \"NextToken\":{\"type\":\"string\"},\
@@ -13794,6 +14957,11 @@
     \"NumberList\":{\
       \"type\":\"list\",\
       \"member\":{\"shape\":\"Number\"}\
+    },\
+    \"NumberOfRetries\":{\
+      \"type\":\"integer\",\
+      \"max\":10,\
+      \"min\":0\
     },\
     \"NumberOfThings\":{\
       \"type\":\"integer\",\
@@ -13902,11 +15070,11 @@
         },\
         \"awsIotJobId\":{\
           \"shape\":\"AwsIotJobId\",\
-          \"documentation\":\"<p>The AWS IoT job ID associated with the OTA update.</p>\"\
+          \"documentation\":\"<p>The IoT job ID associated with the OTA update.</p>\"\
         },\
         \"awsIotJobArn\":{\
           \"shape\":\"AwsIotJobArn\",\
-          \"documentation\":\"<p>The AWS IoT job ARN associated with the OTA update.</p>\"\
+          \"documentation\":\"<p>The IoT job ARN associated with the OTA update.</p>\"\
         },\
         \"errorInfo\":{\
           \"shape\":\"ErrorInfo\",\
@@ -13950,6 +15118,40 @@
       \"type\":\"list\",\
       \"member\":{\"shape\":\"OTAUpdateSummary\"}\
     },\
+    \"OpenSearchAction\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"roleArn\",\
+        \"endpoint\",\
+        \"index\",\
+        \"type\",\
+        \"id\"\
+      ],\
+      \"members\":{\
+        \"roleArn\":{\
+          \"shape\":\"AwsArn\",\
+          \"documentation\":\"<p>The IAM role ARN that has access to OpenSearch.</p>\"\
+        },\
+        \"endpoint\":{\
+          \"shape\":\"ElasticsearchEndpoint\",\
+          \"documentation\":\"<p>The endpoint of your OpenSearch domain.</p>\"\
+        },\
+        \"index\":{\
+          \"shape\":\"ElasticsearchIndex\",\
+          \"documentation\":\"<p>The OpenSearch index where you want to store your data.</p>\"\
+        },\
+        \"type\":{\
+          \"shape\":\"ElasticsearchType\",\
+          \"documentation\":\"<p>The type of document you are storing.</p>\"\
+        },\
+        \"id\":{\
+          \"shape\":\"ElasticsearchId\",\
+          \"documentation\":\"<p>The unique identifier for the document you are storing.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>Describes an action that writes data to an Amazon OpenSearch Service domain.</p>\"\
+    },\
+    \"Optional\":{\"type\":\"boolean\"},\
     \"OptionalVersion\":{\"type\":\"long\"},\
     \"OutgoingCertificate\":{\
       \"type\":\"structure\",\
@@ -13964,7 +15166,7 @@
         },\
         \"transferredTo\":{\
           \"shape\":\"AwsAccountId\",\
-          \"documentation\":\"<p>The AWS account to which the transfer was made.</p>\"\
+          \"documentation\":\"<p>The Amazon Web Services account to which the transfer was made.</p>\"\
         },\
         \"transferDate\":{\
           \"shape\":\"DateType\",\
@@ -13991,7 +15193,29 @@
       \"max\":250,\
       \"min\":1\
     },\
-    \"Parameter\":{\"type\":\"string\"},\
+    \"Parameter\":{\
+      \"type\":\"string\",\
+      \"max\":2048,\
+      \"min\":0,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
+    },\
+    \"ParameterKey\":{\
+      \"type\":\"string\",\
+      \"max\":128,\
+      \"min\":1,\
+      \"pattern\":\"[a-zA-Z0-9_-]+\"\
+    },\
+    \"ParameterMap\":{\
+      \"type\":\"map\",\
+      \"key\":{\"shape\":\"ParameterKey\"},\
+      \"value\":{\"shape\":\"ParameterValue\"}\
+    },\
+    \"ParameterValue\":{\
+      \"type\":\"string\",\
+      \"max\":512,\
+      \"min\":1,\
+      \"pattern\":\"[^\\\\p{C}]+\"\
+    },\
     \"Parameters\":{\
       \"type\":\"map\",\
       \"key\":{\"shape\":\"Parameter\"},\
@@ -13999,6 +15223,11 @@
     },\
     \"PartitionKey\":{\"type\":\"string\"},\
     \"PayloadField\":{\"type\":\"string\"},\
+    \"PayloadFormatIndicator\":{\
+      \"type\":\"string\",\
+      \"max\":1024,\
+      \"min\":0\
+    },\
     \"PayloadVersion\":{\
       \"type\":\"string\",\
       \"max\":32,\
@@ -14055,10 +15284,15 @@
           \"documentation\":\"<p>The policy ARN.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>Describes an AWS IoT policy.</p>\"\
+      \"documentation\":\"<p>Describes an IoT policy.</p>\"\
     },\
     \"PolicyArn\":{\"type\":\"string\"},\
-    \"PolicyDocument\":{\"type\":\"string\"},\
+    \"PolicyDocument\":{\
+      \"type\":\"string\",\
+      \"max\":404600,\
+      \"min\":0,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
+    },\
     \"PolicyDocuments\":{\
       \"type\":\"list\",\
       \"member\":{\"shape\":\"PolicyDocument\"}\
@@ -14137,7 +15371,7 @@
       \"members\":{\
         \"roleArn\":{\
           \"shape\":\"RoleArn\",\
-          \"documentation\":\"<p>The ARN of an IAM role that grants grants permission to download files from the S3 bucket where the job data/updates are stored. The role must also grant permission for IoT to download the files.</p>\"\
+          \"documentation\":\"<p>The ARN of an IAM role that grants grants permission to download files from the S3 bucket where the job data/updates are stored. The role must also grant permission for IoT to download the files.</p> <important> <p>For information about addressing the confused deputy problem, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/cross-service-confused-deputy-prevention.html\\\">cross-service confused deputy prevention</a> in the <i>Amazon Web Services IoT Core developer guide</i>.</p> </important>\"\
         },\
         \"expiresInSec\":{\
           \"shape\":\"ExpiresInSec\",\
@@ -14206,30 +15440,34 @@
       \"members\":{\
         \"templateArn\":{\
           \"shape\":\"TemplateArn\",\
-          \"documentation\":\"<p>The ARN of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The ARN of the provisioning template.</p>\"\
         },\
         \"templateName\":{\
           \"shape\":\"TemplateName\",\
-          \"documentation\":\"<p>The name of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The name of the provisioning template.</p>\"\
         },\
         \"description\":{\
           \"shape\":\"TemplateDescription\",\
-          \"documentation\":\"<p>The description of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The description of the provisioning template.</p>\"\
         },\
         \"creationDate\":{\
           \"shape\":\"DateType\",\
-          \"documentation\":\"<p>The date when the fleet provisioning template summary was created.</p>\"\
+          \"documentation\":\"<p>The date when the provisioning template summary was created.</p>\"\
         },\
         \"lastModifiedDate\":{\
           \"shape\":\"DateType\",\
-          \"documentation\":\"<p>The date when the fleet provisioning template summary was last modified.</p>\"\
+          \"documentation\":\"<p>The date when the provisioning template summary was last modified.</p>\"\
         },\
         \"enabled\":{\
           \"shape\":\"Enabled\",\
           \"documentation\":\"<p>True if the fleet provision template is enabled, otherwise false.</p>\"\
+        },\
+        \"type\":{\
+          \"shape\":\"TemplateType\",\
+          \"documentation\":\"<p>The type you define in a provisioning template. You can create a template with only one type. You can't change the template type after its creation. The default value is <code>FLEET_PROVISIONING</code>. For more information about provisioning template, see: <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html\\\">Provisioning template</a>. </p>\"\
         }\
       },\
-      \"documentation\":\"<p>A summary of information about a fleet provisioning template.</p>\"\
+      \"documentation\":\"<p>A summary of information about a provisioning template.</p>\"\
     },\
     \"ProvisioningTemplateVersionListing\":{\
       \"type\":\"list\",\
@@ -14240,15 +15478,15 @@
       \"members\":{\
         \"versionId\":{\
           \"shape\":\"TemplateVersionId\",\
-          \"documentation\":\"<p>The ID of the fleet privisioning template version.</p>\"\
+          \"documentation\":\"<p>The ID of the fleet provisioning template version.</p>\"\
         },\
         \"creationDate\":{\
           \"shape\":\"DateType\",\
-          \"documentation\":\"<p>The date when the fleet provisioning template version was created</p>\"\
+          \"documentation\":\"<p>The date when the provisioning template version was created</p>\"\
         },\
         \"isDefaultVersion\":{\
           \"shape\":\"IsDefaultVersion\",\
-          \"documentation\":\"<p>True if the fleet provisioning template version is the default version, otherwise false.</p>\"\
+          \"documentation\":\"<p>True if the provisioning template version is the default version, otherwise false.</p>\"\
         }\
       },\
       \"documentation\":\"<p>A summary of information about a fleet provision template version.</p>\"\
@@ -14283,7 +15521,7 @@
         },\
         \"assetId\":{\
           \"shape\":\"AssetId\",\
-          \"documentation\":\"<p>The ID of the AWS IoT SiteWise asset. You must specify either a <code>propertyAlias</code> or both an <code>aliasId</code> and a <code>propertyId</code>. Accepts substitution templates.</p>\"\
+          \"documentation\":\"<p>The ID of the IoT SiteWise asset. You must specify either a <code>propertyAlias</code> or both an <code>aliasId</code> and a <code>propertyId</code>. Accepts substitution templates.</p>\"\
         },\
         \"propertyId\":{\
           \"shape\":\"AssetPropertyId\",\
@@ -14315,6 +15553,34 @@
         }\
       },\
       \"documentation\":\"<p>The input for the DynamoActionVS action that specifies the DynamoDB table to which the message data will be written.</p>\"\
+    },\
+    \"PutVerificationStateOnViolationRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"violationId\",\
+        \"verificationState\"\
+      ],\
+      \"members\":{\
+        \"violationId\":{\
+          \"shape\":\"ViolationId\",\
+          \"documentation\":\"<p>The violation ID.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"violationId\"\
+        },\
+        \"verificationState\":{\
+          \"shape\":\"VerificationState\",\
+          \"documentation\":\"<p>The verification state of the violation.</p>\"\
+        },\
+        \"verificationStateDescription\":{\
+          \"shape\":\"VerificationStateDescription\",\
+          \"documentation\":\"<p>The description of the verification state of the violation (detect alarm).</p>\"\
+        }\
+      }\
+    },\
+    \"PutVerificationStateOnViolationResponse\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+      }\
     },\
     \"Qos\":{\
       \"type\":\"integer\",\
@@ -14364,12 +15630,10 @@
     },\
     \"Recursive\":{\"type\":\"boolean\"},\
     \"RecursiveWithoutDefault\":{\"type\":\"boolean\"},\
+    \"Regex\":{\"type\":\"string\"},\
     \"RegisterCACertificateRequest\":{\
       \"type\":\"structure\",\
-      \"required\":[\
-        \"caCertificate\",\
-        \"verificationCertificate\"\
-      ],\
+      \"required\":[\"caCertificate\"],\
       \"members\":{\
         \"caCertificate\":{\
           \"shape\":\"CertificatePem\",\
@@ -14377,11 +15641,11 @@
         },\
         \"verificationCertificate\":{\
           \"shape\":\"CertificatePem\",\
-          \"documentation\":\"<p>The private key verification certificate.</p>\"\
+          \"documentation\":\"<p>The private key verification certificate. If <code>certificateMode</code> is <code>SNI_ONLY</code>, the <code>verificationCertificate</code> field must be empty. If <code>certificateMode</code> is <code>DEFAULT</code> or not provided, the <code>verificationCertificate</code> field must not be empty. </p>\"\
         },\
         \"setAsActive\":{\
           \"shape\":\"SetAsActive\",\
-          \"documentation\":\"<p>A boolean value that specifies if the CA certificate is set to active.</p>\",\
+          \"documentation\":\"<p>A boolean value that specifies if the CA certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"setAsActive\"\
         },\
@@ -14398,6 +15662,10 @@
         \"tags\":{\
           \"shape\":\"TagList\",\
           \"documentation\":\"<p>Metadata which can be used to manage the CA certificate.</p> <note> <p>For URI Request parameters use format: ...key1=value1&amp;key2=value2...</p> <p>For the CLI command-line parameter use format: &amp;&amp;tags \\\"key1=value1&amp;key2=value2...\\\"</p> <p>For the cli-input-json file use format: \\\"tags\\\": \\\"key1=value1&amp;key2=value2...\\\"</p> </note>\"\
+        },\
+        \"certificateMode\":{\
+          \"shape\":\"CertificateMode\",\
+          \"documentation\":\"<p>Describes the certificate mode in which the Certificate Authority (CA) will be registered. If the <code>verificationCertificate</code> field is not provided, set <code>certificateMode</code> to be <code>SNI_ONLY</code>. If the <code>verificationCertificate</code> field is provided, set <code>certificateMode</code> to be <code>DEFAULT</code>. When <code>certificateMode</code> is not provided, it defaults to <code>DEFAULT</code>. All the device certificates that are registered using this CA will be registered in the same certificate mode as the CA. For more information about certificate mode for device certificates, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/apireference/API_CertificateDescription.html#iot-Type-CertificateDescription-certificateMode\\\"> certificate mode</a>. </p>\"\
         }\
       },\
       \"documentation\":\"<p>The input to the RegisterCACertificate operation.</p>\"\
@@ -14430,14 +15698,14 @@
         },\
         \"setAsActive\":{\
           \"shape\":\"SetAsActiveFlag\",\
-          \"documentation\":\"<p>A boolean value that specifies if the certificate is set to active.</p>\",\
+          \"documentation\":\"<p>A boolean value that specifies if the certificate is set to active.</p> <p>Valid values: <code>ACTIVE | INACTIVE</code> </p>\",\
           \"deprecated\":true,\
           \"location\":\"querystring\",\
           \"locationName\":\"setAsActive\"\
         },\
         \"status\":{\
           \"shape\":\"CertificateStatus\",\
-          \"documentation\":\"<p>The status of the register certificate request.</p>\"\
+          \"documentation\":\"<p>The status of the register certificate request. Valid values that you can use include <code>ACTIVE</code>, <code>INACTIVE</code>, and <code>REVOKED</code>.</p>\"\
         }\
       },\
       \"documentation\":\"<p>The input to the RegisterCertificate operation.</p>\"\
@@ -14538,6 +15806,10 @@
         \"roleArn\":{\
           \"shape\":\"RoleArn\",\
           \"documentation\":\"<p>The ARN of the role.</p>\"\
+        },\
+        \"templateName\":{\
+          \"shape\":\"TemplateName\",\
+          \"documentation\":\"<p>The name of the provisioning template.</p>\"\
         }\
       },\
       \"documentation\":\"<p>The registration configuration.</p>\"\
@@ -14713,6 +15985,10 @@
         \"qos\":{\
           \"shape\":\"Qos\",\
           \"documentation\":\"<p>The Quality of Service (QoS) level to use when republishing messages. The default value is 0.</p>\"\
+        },\
+        \"headers\":{\
+          \"shape\":\"MqttHeaders\",\
+          \"documentation\":\"<p>MQTT Version 5.0 headers information. For more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/mqtt.html\\\"> MQTT</a> from the Amazon Web Services IoT Core Developer Guide.</p>\"\
         }\
       },\
       \"documentation\":\"<p>Describes an action to republish to another topic.</p>\"\
@@ -14725,7 +16001,8 @@
     },\
     \"Resource\":{\
       \"type\":\"string\",\
-      \"max\":2048\
+      \"max\":2048,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
     },\
     \"ResourceAlreadyExistsException\":{\
       \"type\":\"structure\",\
@@ -14787,6 +16064,14 @@
         \"roleAliasArn\":{\
           \"shape\":\"RoleAliasArn\",\
           \"documentation\":\"<p>The ARN of the role alias that has overly permissive actions.</p>\"\
+        },\
+        \"issuerCertificateIdentifier\":{\
+          \"shape\":\"IssuerCertificateIdentifier\",\
+          \"documentation\":\"<p>The issuer certificate identifier.</p>\"\
+        },\
+        \"deviceCertificateArn\":{\
+          \"shape\":\"CertificateArn\",\
+          \"documentation\":\"<p>The ARN of the identified device certificate.</p>\"\
         }\
       },\
       \"documentation\":\"<p>Information that identifies the noncompliant resource.</p>\"\
@@ -14826,12 +16111,51 @@
         \"CLIENT_ID\",\
         \"ACCOUNT_SETTINGS\",\
         \"ROLE_ALIAS\",\
-        \"IAM_ROLE\"\
+        \"IAM_ROLE\",\
+        \"ISSUER_CERTIFICATE\"\
       ]\
     },\
     \"Resources\":{\
       \"type\":\"list\",\
       \"member\":{\"shape\":\"Resource\"}\
+    },\
+    \"ResponseTopic\":{\
+      \"type\":\"string\",\
+      \"max\":1024,\
+      \"min\":0\
+    },\
+    \"RetryAttempt\":{\"type\":\"integer\"},\
+    \"RetryCriteria\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"failureType\",\
+        \"numberOfRetries\"\
+      ],\
+      \"members\":{\
+        \"failureType\":{\
+          \"shape\":\"RetryableFailureType\",\
+          \"documentation\":\"<p>The type of job execution failures that can initiate a job retry.</p>\"\
+        },\
+        \"numberOfRetries\":{\
+          \"shape\":\"NumberOfRetries\",\
+          \"documentation\":\"<p>The number of retries allowed for a failure type for the job.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>The criteria that determines how many retries are allowed for each failure type for a job.</p>\"\
+    },\
+    \"RetryCriteriaList\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"RetryCriteria\"},\
+      \"max\":2,\
+      \"min\":1\
+    },\
+    \"RetryableFailureType\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"FAILED\",\
+        \"TIMED_OUT\",\
+        \"ALL\"\
+      ]\
     },\
     \"RoleAlias\":{\
       \"type\":\"string\",\
@@ -15040,6 +16364,24 @@
       \"min\":1,\
       \"pattern\":\"[a-zA-Z0-9_-]+\"\
     },\
+    \"SchedulingConfig\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"startTime\":{\
+          \"shape\":\"StringDateTime\",\
+          \"documentation\":\"<p>The time a job will begin rollout of the job document to all devices in the target group for a job. The <code>startTime</code> can be scheduled up to a year in advance and must be scheduled a minimum of thirty minutes from the current time.</p>\"\
+        },\
+        \"endTime\":{\
+          \"shape\":\"StringDateTime\",\
+          \"documentation\":\"<p>The time a job will stop rollout of the job document to all devices in the target group for a job. The <code>endTime</code> must take place no later than two years from the current time and be scheduled a minimum of thirty minutes from the current time. The minimum duration between <code>startTime</code> and <code>endTime</code> is thirty minutes. The maximum duration between <code>startTime</code> and <code>endTime</code> is two years. </p>\"\
+        },\
+        \"endBehavior\":{\
+          \"shape\":\"JobEndBehavior\",\
+          \"documentation\":\"<p>Specifies the end behavior for all job executions after a job reaches the selected <code>endTime</code>. If <code>endTime</code> is not selected when creating the job, then <code>endBehavior</code> does not apply.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>Specifies the date and time that a job will begin the rollout of the job document to all devices in the target group. Additionally, you can specify the end behavior for each job execution when it reaches the scheduled end time.</p>\"\
+    },\
     \"SearchIndexRequest\":{\
       \"type\":\"structure\",\
       \"required\":[\"queryString\"],\
@@ -15050,7 +16392,7 @@
         },\
         \"queryString\":{\
           \"shape\":\"QueryString\",\
-          \"documentation\":\"<p>The search query string.</p>\"\
+          \"documentation\":\"<p>The search query string. For more information about the search query syntax, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/query-syntax.html\\\">Query syntax</a>.</p>\"\
         },\
         \"nextToken\":{\
           \"shape\":\"NextToken\",\
@@ -15200,7 +16542,8 @@
     \"ServerName\":{\
       \"type\":\"string\",\
       \"max\":253,\
-      \"min\":1\
+      \"min\":1,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
     },\
     \"ServiceName\":{\"type\":\"string\"},\
     \"ServiceType\":{\
@@ -15317,6 +16660,12 @@
           \"documentation\":\"<p>If true all logs are disabled. The default is false.</p>\"\
         }\
       }\
+    },\
+    \"ShadowName\":{\
+      \"type\":\"string\",\
+      \"max\":64,\
+      \"min\":1,\
+      \"pattern\":\"[a-zA-Z0-9:_-]+\"\
     },\
     \"SigV4Authorization\":{\
       \"type\":\"structure\",\
@@ -15451,7 +16800,7 @@
         },\
         \"auditCheckToActionsMapping\":{\
           \"shape\":\"AuditCheckToActionsMapping\",\
-          \"documentation\":\"<p>For an audit check, specifies which mitigation actions to apply. Those actions must be defined in your AWS account.</p>\"\
+          \"documentation\":\"<p>For an audit check, specifies which mitigation actions to apply. Those actions must be defined in your Amazon Web Services accounts.</p>\"\
         },\
         \"clientRequestToken\":{\
           \"shape\":\"ClientRequestToken\",\
@@ -15506,7 +16855,7 @@
         },\
         \"clientRequestToken\":{\
           \"shape\":\"ClientRequestToken\",\
-          \"documentation\":\"<p> Each mitigation action task must have a unique client request token. If you try to create a new task with the same token as a task that already exists, an exception occurs. If you omit this value, AWS SDKs will automatically generate a unique client request. </p>\",\
+          \"documentation\":\"<p> Each mitigation action task must have a unique client request token. If you try to create a new task with the same token as a task that already exists, an exception occurs. If you omit this value, Amazon Web Services SDKs will automatically generate a unique client request. </p>\",\
           \"idempotencyToken\":true\
         }\
       }\
@@ -15611,7 +16960,7 @@
       \"members\":{\
         \"count\":{\
           \"shape\":\"Count\",\
-          \"documentation\":\"<p>The count of things that match the query.</p>\"\
+          \"documentation\":\"<p>The count of things that match the query string criteria and contain a valid aggregation field value.</p>\"\
         },\
         \"average\":{\
           \"shape\":\"Average\",\
@@ -15649,7 +16998,7 @@
           \"box\":true\
         }\
       },\
-      \"documentation\":\"<p>A map of key-value pairs for all supported statistics. Currently, only count is supported.</p>\"\
+      \"documentation\":\"<p>A map of key-value pairs for all supported statistics. For issues with missing or unexpected values for this API, consult <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/fleet-indexing-troubleshooting.html\\\"> Fleet indexing troubleshooting guide</a>.</p>\"\
     },\
     \"Status\":{\
       \"type\":\"string\",\
@@ -15780,7 +17129,7 @@
         },\
         \"roleArn\":{\
           \"shape\":\"RoleArn\",\
-          \"documentation\":\"<p>An IAM role AWS IoT assumes to access your S3 files.</p>\"\
+          \"documentation\":\"<p>An IAM role IoT assumes to access your S3 files.</p>\"\
         }\
       },\
       \"documentation\":\"<p>Information about a stream.</p>\"\
@@ -15818,6 +17167,11 @@
       \"member\":{\"shape\":\"StreamSummary\"}\
     },\
     \"String\":{\"type\":\"string\"},\
+    \"StringDateTime\":{\
+      \"type\":\"string\",\
+      \"max\":64,\
+      \"min\":1\
+    },\
     \"StringList\":{\
       \"type\":\"list\",\
       \"member\":{\"shape\":\"stringValue\"}\
@@ -15894,7 +17248,7 @@
     \"TagValue\":{\
       \"type\":\"string\",\
       \"max\":256,\
-      \"min\":1\
+      \"min\":0\
     },\
     \"Target\":{\"type\":\"string\"},\
     \"TargetArn\":{\
@@ -16001,7 +17355,12 @@
       \"documentation\":\"<p>Provides summary counts of how many tasks for findings are in a particular state. This information is included in the response from DescribeAuditMitigationActionsTask.</p>\"\
     },\
     \"TemplateArn\":{\"type\":\"string\"},\
-    \"TemplateBody\":{\"type\":\"string\"},\
+    \"TemplateBody\":{\
+      \"type\":\"string\",\
+      \"max\":10240,\
+      \"min\":0,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
+    },\
     \"TemplateDescription\":{\
       \"type\":\"string\",\
       \"max\":500,\
@@ -16014,7 +17373,24 @@
       \"min\":1,\
       \"pattern\":\"^[0-9A-Za-z_-]+$\"\
     },\
+    \"TemplateType\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"FLEET_PROVISIONING\",\
+        \"JITP\"\
+      ]\
+    },\
     \"TemplateVersionId\":{\"type\":\"integer\"},\
+    \"TermsAggregation\":{\
+      \"type\":\"structure\",\
+      \"members\":{\
+        \"maxBuckets\":{\
+          \"shape\":\"MaxBuckets\",\
+          \"documentation\":\"<p>The number of buckets to return in the response. Default to 10.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>Performs an aggregation that will return a list of buckets. The list of buckets is a ranked list of the number of occurrences of an aggregation field value.</p>\"\
+    },\
     \"TestAuthorizationRequest\":{\
       \"type\":\"structure\",\
       \"required\":[\"authInfos\"],\
@@ -16149,11 +17525,15 @@
       \"members\":{\
         \"connected\":{\
           \"shape\":\"Boolean\",\
-          \"documentation\":\"<p>True if the thing is connected to the AWS IoT service; false if it is not connected.</p>\"\
+          \"documentation\":\"<p>True if the thing is connected to the Amazon Web Services IoT Core service; false if it is not connected.</p>\"\
         },\
         \"timestamp\":{\
           \"shape\":\"ConnectivityTimestamp\",\
-          \"documentation\":\"<p>The epoch time (in milliseconds) when the thing last connected or disconnected. If the thing has been disconnected for more than a few weeks, the time value might be missing.</p>\"\
+          \"documentation\":\"<p>The epoch time (in milliseconds) when the thing last connected or disconnected. If the thing has been disconnected for approximately an hour, the time value might be missing.</p>\"\
+        },\
+        \"disconnectReason\":{\
+          \"shape\":\"DisconnectReason\",\
+          \"documentation\":\"<p>The reason why the client is disconnected. If the thing has been disconnected for approximately an hour, the <code>disconnectReason</code> value might be missing.</p>\"\
         }\
       },\
       \"documentation\":\"<p>The connectivity status of the thing.</p>\"\
@@ -16190,11 +17570,15 @@
         },\
         \"shadow\":{\
           \"shape\":\"JsonDocument\",\
-          \"documentation\":\"<p>The shadow.</p>\"\
+          \"documentation\":\"<p>The unnamed shadow and named shadow.</p> <p>For more information about shadows, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-device-shadows.html\\\">IoT Device Shadow service.</a> </p>\"\
+        },\
+        \"deviceDefender\":{\
+          \"shape\":\"JsonDocument\",\
+          \"documentation\":\"<p>Contains Device Defender data.</p> <p>For more information about Device Defender, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/device-defender.html\\\">Device Defender</a>. </p>\"\
         },\
         \"connectivity\":{\
           \"shape\":\"ThingConnectivity\",\
-          \"documentation\":\"<p>Indicates whether the thing is connected to the AWS IoT service.</p>\"\
+          \"documentation\":\"<p>Indicates whether the thing is connected to the Amazon Web Services IoT Core service.</p>\"\
         }\
       },\
       \"documentation\":\"<p>The thing search index document.</p>\"\
@@ -16255,7 +17639,7 @@
         },\
         \"managedFields\":{\
           \"shape\":\"Fields\",\
-          \"documentation\":\"<p>Contains fields that are indexed and whose types are already known by the Fleet Indexing service.</p>\"\
+          \"documentation\":\"<p>Contains fields that are indexed and whose types are already known by the Fleet Indexing service. This is an optional field. For more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/managing-fleet-index.html#managed-field\\\">Managed fields</a> in the <i>Amazon Web Services IoT Core Developer Guide</i>.</p>\"\
         },\
         \"customFields\":{\
           \"shape\":\"Fields\",\
@@ -16338,7 +17722,15 @@
         },\
         \"thingConnectivityIndexingMode\":{\
           \"shape\":\"ThingConnectivityIndexingMode\",\
-          \"documentation\":\"<p>Thing connectivity indexing mode. Valid values are: </p> <ul> <li> <p>STATUS â Your thing index contains connectivity status. To enable thing connectivity indexing, thingIndexMode must not be set to OFF.</p> </li> <li> <p>OFF - Thing connectivity status indexing is disabled.</p> </li> </ul>\"\
+          \"documentation\":\"<p>Thing connectivity indexing mode. Valid values are: </p> <ul> <li> <p>STATUS â Your thing index contains connectivity status. To enable thing connectivity indexing, <i>thingIndexMode</i> must not be set to OFF.</p> </li> <li> <p>OFF - Thing connectivity status indexing is disabled.</p> </li> </ul>\"\
+        },\
+        \"deviceDefenderIndexingMode\":{\
+          \"shape\":\"DeviceDefenderIndexingMode\",\
+          \"documentation\":\"<p>Device Defender indexing mode. Valid values are:</p> <ul> <li> <p>VIOLATIONS â Your thing index contains Device Defender violations. To enable Device Defender indexing, <i>deviceDefenderIndexingMode</i> must not be set to OFF.</p> </li> <li> <p>OFF - Device Defender indexing is disabled.</p> </li> </ul> <p>For more information about Device Defender violations, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/device-defender-detect.html\\\">Device Defender Detect.</a> </p>\"\
+        },\
+        \"namedShadowIndexingMode\":{\
+          \"shape\":\"NamedShadowIndexingMode\",\
+          \"documentation\":\"<p>Named shadow indexing mode. Valid values are:</p> <ul> <li> <p>ON â Your thing index contains named shadow. To enable thing named shadow indexing, <i>namedShadowIndexingMode</i> must not be set to OFF.</p> </li> <li> <p>OFF - Named shadow indexing is disabled.</p> </li> </ul> <p>For more information about Shadows, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-device-shadows.html\\\">IoT Device Shadow service.</a> </p>\"\
         },\
         \"managedFields\":{\
           \"shape\":\"Fields\",\
@@ -16347,6 +17739,10 @@
         \"customFields\":{\
           \"shape\":\"Fields\",\
           \"documentation\":\"<p>Contains custom field names and their data type.</p>\"\
+        },\
+        \"filter\":{\
+          \"shape\":\"IndexingFilter\",\
+          \"documentation\":\"<p>Provides additional filters for specific data sources. Named shadow is the only data source that currently supports and requires a filter. To add named shadows to your fleet indexing configuration, set <code>namedShadowIndexingMode</code> to be <code>ON</code> and specify your shadow names in <code>filter</code>.</p>\"\
         }\
       },\
       \"documentation\":\"<p>The thing indexing configuration. For more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/managing-index.html\\\">Managing Thing Indexing</a>.</p>\"\
@@ -16562,7 +17958,8 @@
     \"Token\":{\
       \"type\":\"string\",\
       \"max\":6144,\
-      \"min\":1\
+      \"min\":1,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
     },\
     \"TokenKeyName\":{\
       \"type\":\"string\",\
@@ -16761,7 +18158,7 @@
       \"members\":{\
         \"sql\":{\
           \"shape\":\"SQL\",\
-          \"documentation\":\"<p>The SQL statement used to query the topic. For more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-sql-reference.html\\\">AWS IoT SQL Reference</a> in the <i>AWS IoT Developer Guide</i>.</p>\"\
+          \"documentation\":\"<p>The SQL statement used to query the topic. For more information, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-sql-reference.html\\\">IoT SQL Reference</a> in the <i>IoT Developer Guide</i>.</p>\"\
         },\
         \"description\":{\
           \"shape\":\"Description\",\
@@ -16816,7 +18213,7 @@
         },\
         \"targetAwsAccount\":{\
           \"shape\":\"AwsAccountId\",\
-          \"documentation\":\"<p>The AWS account.</p>\",\
+          \"documentation\":\"<p>The Amazon Web Services account.</p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"targetAwsAccount\"\
         },\
@@ -16873,7 +18270,7 @@
           \"documentation\":\"<p>The date the transfer was rejected.</p>\"\
         }\
       },\
-      \"documentation\":\"<p>Data used to transfer a certificate to an AWS account.</p>\"\
+      \"documentation\":\"<p>Data used to transfer a certificate to an Amazon Web Services account.</p>\"\
     },\
     \"UnauthorizedException\":{\
       \"type\":\"structure\",\
@@ -16919,7 +18316,7 @@
       \"members\":{\
         \"roleArn\":{\
           \"shape\":\"RoleArn\",\
-          \"documentation\":\"<p>The Amazon Resource Name (ARN) of the role that grants permission to AWS IoT to access information about your devices, policies, certificates, and other items as required when performing an audit.</p>\"\
+          \"documentation\":\"<p>The Amazon Resource Name (ARN) of the role that grants permission to IoT to access information about your devices, policies, certificates, and other items as required when performing an audit.</p>\"\
         },\
         \"auditNotificationTargetConfigurations\":{\
           \"shape\":\"AuditNotificationTargetConfigurations\",\
@@ -16989,6 +18386,10 @@
         \"status\":{\
           \"shape\":\"AuthorizerStatus\",\
           \"documentation\":\"<p>The status of the update authorizer request.</p>\"\
+        },\
+        \"enableCachingForHttp\":{\
+          \"shape\":\"EnableCachingForHttp\",\
+          \"documentation\":\"<p>When <code>true</code>, the result from the authorizerâs Lambda function is cached for the time specified in <code>refreshAfterInSeconds</code>. The cached result is used while the device reuses the same HTTP connection.</p>\"\
         }\
       }\
     },\
@@ -17096,7 +18497,7 @@
         },\
         \"newStatus\":{\
           \"shape\":\"CertificateStatus\",\
-          \"documentation\":\"<p>The new status.</p> <p> <b>Note:</b> Setting the status to PENDING_TRANSFER or PENDING_ACTIVATION will result in an exception being thrown. PENDING_TRANSFER and PENDING_ACTIVATION are statuses used internally by AWS IoT. They are not intended for developer use.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>\",\
+          \"documentation\":\"<p>The new status.</p> <p> <b>Note:</b> Setting the status to PENDING_TRANSFER or PENDING_ACTIVATION will result in an exception being thrown. PENDING_TRANSFER and PENDING_ACTIVATION are statuses used internally by IoT. They are not intended for developer use.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"newStatus\"\
         }\
@@ -17135,7 +18536,7 @@
         },\
         \"metricType\":{\
           \"shape\":\"CustomMetricType\",\
-          \"documentation\":\"<p> The type of the custom metric. Types include <code>string-list</code>, <code>ip-address-list</code>, <code>number-list</code>, and <code>number</code>. </p>\"\
+          \"documentation\":\"<p> The type of the custom metric. </p> <important> <p>The type <code>number</code> only takes a single metric value as an input, but while submitting the metrics value in the DeviceMetrics report, it must be passed as an array with a single value.</p> </important>\"\
         },\
         \"displayName\":{\
           \"shape\":\"CustomMetricDisplayName\",\
@@ -17270,7 +18671,7 @@
         },\
         \"indexName\":{\
           \"shape\":\"IndexName\",\
-          \"documentation\":\"<p>The dynamic thing group index to update.</p> <note> <p>Currently one index is supported: 'AWS_Things'.</p> </note>\"\
+          \"documentation\":\"<p>The dynamic thing group index to update.</p> <note> <p>Currently one index is supported: <code>AWS_Things</code>.</p> </note>\"\
         },\
         \"queryString\":{\
           \"shape\":\"QueryString\",\
@@ -17303,6 +18704,57 @@
     \"UpdateEventConfigurationsResponse\":{\
       \"type\":\"structure\",\
       \"members\":{\
+      }\
+    },\
+    \"UpdateFleetMetricRequest\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"metricName\",\
+        \"indexName\"\
+      ],\
+      \"members\":{\
+        \"metricName\":{\
+          \"shape\":\"FleetMetricName\",\
+          \"documentation\":\"<p>The name of the fleet metric to update.</p>\",\
+          \"location\":\"uri\",\
+          \"locationName\":\"metricName\"\
+        },\
+        \"queryString\":{\
+          \"shape\":\"QueryString\",\
+          \"documentation\":\"<p>The search query string.</p>\"\
+        },\
+        \"aggregationType\":{\
+          \"shape\":\"AggregationType\",\
+          \"documentation\":\"<p>The type of the aggregation query.</p>\"\
+        },\
+        \"period\":{\
+          \"shape\":\"FleetMetricPeriod\",\
+          \"documentation\":\"<p>The time in seconds between fleet metric emissions. Range [60(1 min), 86400(1 day)] and must be multiple of 60.</p>\"\
+        },\
+        \"aggregationField\":{\
+          \"shape\":\"AggregationField\",\
+          \"documentation\":\"<p>The field to aggregate.</p>\"\
+        },\
+        \"description\":{\
+          \"shape\":\"FleetMetricDescription\",\
+          \"documentation\":\"<p>The description of the fleet metric.</p>\"\
+        },\
+        \"queryVersion\":{\
+          \"shape\":\"QueryVersion\",\
+          \"documentation\":\"<p>The version of the query.</p>\"\
+        },\
+        \"indexName\":{\
+          \"shape\":\"IndexName\",\
+          \"documentation\":\"<p>The name of the index to search.</p>\"\
+        },\
+        \"unit\":{\
+          \"shape\":\"FleetMetricUnit\",\
+          \"documentation\":\"<p>Used to support unit transformation such as milliseconds to seconds. The unit must be supported by <a href=\\\"https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricDatum.html\\\">CW metric</a>.</p>\"\
+        },\
+        \"expectedVersion\":{\
+          \"shape\":\"OptionalVersion\",\
+          \"documentation\":\"<p>The expected version of the fleet metric record in the registry.</p>\"\
+        }\
       }\
     },\
     \"UpdateIndexingConfigurationRequest\":{\
@@ -17355,9 +18807,13 @@
         },\
         \"namespaceId\":{\
           \"shape\":\"NamespaceId\",\
-          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, AWS IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\",\
+          \"documentation\":\"<p>The namespace used to indicate that a job is a customer-managed job.</p> <p>When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.</p> <p> <code>$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/</code> </p> <note> <p>The <code>namespaceId</code> feature is in public preview.</p> </note>\",\
           \"location\":\"querystring\",\
           \"locationName\":\"namespaceId\"\
+        },\
+        \"jobExecutionsRetryConfig\":{\
+          \"shape\":\"JobExecutionsRetryConfig\",\
+          \"documentation\":\"<p>Allows you to create the criteria to retry a job.</p>\"\
         }\
       }\
     },\
@@ -17400,17 +18856,17 @@
       \"members\":{\
         \"templateName\":{\
           \"shape\":\"TemplateName\",\
-          \"documentation\":\"<p>The name of the fleet provisioning template.</p>\",\
+          \"documentation\":\"<p>The name of the provisioning template.</p>\",\
           \"location\":\"uri\",\
           \"locationName\":\"templateName\"\
         },\
         \"description\":{\
           \"shape\":\"TemplateDescription\",\
-          \"documentation\":\"<p>The description of the fleet provisioning template.</p>\"\
+          \"documentation\":\"<p>The description of the provisioning template.</p>\"\
         },\
         \"enabled\":{\
           \"shape\":\"Enabled\",\
-          \"documentation\":\"<p>True to enable the fleet provisioning template, otherwise false.</p>\"\
+          \"documentation\":\"<p>True to enable the provisioning template, otherwise false.</p>\"\
         },\
         \"defaultVersionId\":{\
           \"shape\":\"TemplateVersionId\",\
@@ -17422,7 +18878,7 @@
         },\
         \"preProvisioningHook\":{\
           \"shape\":\"ProvisioningHook\",\
-          \"documentation\":\"<p>Updates the pre-provisioning hook template.</p>\"\
+          \"documentation\":\"<p>Updates the pre-provisioning hook template. Only supports template of type <code>FLEET_PROVISIONING</code>. For more information about provisioning template types, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/apireference/API_CreateProvisioningTemplate.html#iot-CreateProvisioningTemplate-request-type\\\">type</a>.</p>\"\
         },\
         \"removePreProvisioningHook\":{\
           \"shape\":\"RemoveHook\",\
@@ -17451,7 +18907,7 @@
         },\
         \"credentialDurationSeconds\":{\
           \"shape\":\"CredentialDurationSeconds\",\
-          \"documentation\":\"<p>The number of seconds the credential will be valid.</p>\"\
+          \"documentation\":\"<p>The number of seconds the credential will be valid.</p> <p>This value must be less than or equal to the maximum session duration of the IAM role that the role alias references.</p>\"\
         }\
       }\
     },\
@@ -17769,6 +19225,40 @@
       \"max\":2000\
     },\
     \"UseBase64\":{\"type\":\"boolean\"},\
+    \"UserProperties\":{\
+      \"type\":\"list\",\
+      \"member\":{\"shape\":\"UserProperty\"},\
+      \"max\":100,\
+      \"min\":1\
+    },\
+    \"UserProperty\":{\
+      \"type\":\"structure\",\
+      \"required\":[\
+        \"key\",\
+        \"value\"\
+      ],\
+      \"members\":{\
+        \"key\":{\
+          \"shape\":\"UserPropertyKey\",\
+          \"documentation\":\"<p>A key to be specified in <code>UserProperty</code>.</p>\"\
+        },\
+        \"value\":{\
+          \"shape\":\"UserPropertyValue\",\
+          \"documentation\":\"<p>A value to be specified in <code>UserProperty</code>.</p>\"\
+        }\
+      },\
+      \"documentation\":\"<p>A key-value pair that you define in the header. Both the key and the value are either literal strings or valid <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/iot-substitution-templates.html\\\">substitution templates</a>.</p>\"\
+    },\
+    \"UserPropertyKey\":{\
+      \"type\":\"string\",\
+      \"max\":1024,\
+      \"min\":0\
+    },\
+    \"UserPropertyValue\":{\
+      \"type\":\"string\",\
+      \"max\":1024,\
+      \"min\":0\
+    },\
     \"Valid\":{\"type\":\"boolean\"},\
     \"ValidateSecurityProfileBehaviorsRequest\":{\
       \"type\":\"structure\",\
@@ -17807,8 +19297,27 @@
       \"type\":\"list\",\
       \"member\":{\"shape\":\"ValidationError\"}\
     },\
-    \"Value\":{\"type\":\"string\"},\
+    \"Value\":{\
+      \"type\":\"string\",\
+      \"max\":4096,\
+      \"min\":0,\
+      \"pattern\":\"[\\\\s\\\\S]*\"\
+    },\
     \"Variance\":{\"type\":\"double\"},\
+    \"VerificationState\":{\
+      \"type\":\"string\",\
+      \"enum\":[\
+        \"FALSE_POSITIVE\",\
+        \"BENIGN_POSITIVE\",\
+        \"TRUE_POSITIVE\",\
+        \"UNKNOWN\"\
+      ]\
+    },\
+    \"VerificationStateDescription\":{\
+      \"type\":\"string\",\
+      \"max\":1000,\
+      \"pattern\":\"[^\\\\p{Cntrl}]*\"\
+    },\
     \"Version\":{\"type\":\"long\"},\
     \"VersionConflictException\":{\
       \"type\":\"structure\",\
@@ -17865,6 +19374,14 @@
         \"violationEventType\":{\
           \"shape\":\"ViolationEventType\",\
           \"documentation\":\"<p>The type of violation event.</p>\"\
+        },\
+        \"verificationState\":{\
+          \"shape\":\"VerificationState\",\
+          \"documentation\":\"<p>The verification state of the violation (detect alarm).</p>\"\
+        },\
+        \"verificationStateDescription\":{\
+          \"shape\":\"VerificationStateDescription\",\
+          \"documentation\":\"<p>The description of the verification state of the violation.</p>\"\
         },\
         \"violationEventTime\":{\
           \"shape\":\"Timestamp\",\
@@ -17998,7 +19515,7 @@
     \"stringValue\":{\"type\":\"string\"},\
     \"usePrefixAttributeValue\":{\"type\":\"boolean\"}\
   },\
-  \"documentation\":\"<fullname>AWS IoT</fullname> <p>AWS IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the AWS cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>The service endpoints that expose this API are listed in <a href=\\\"https://docs.aws.amazon.com/general/latest/gr/iot-core.html\\\">AWS IoT Core Endpoints and Quotas</a>. You must use the endpoint for the region that has the resources you want to access.</p> <p>The service name used by <a href=\\\"https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html\\\">AWS Signature Version 4</a> to sign the request is: <i>execute-api</i>.</p> <p>For more information about how AWS IoT works, see the <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html\\\">Developer Guide</a>.</p> <p>For information about how to use the credentials provider for AWS IoT, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html\\\">Authorizing Direct Calls to AWS Services</a>.</p>\"\
+  \"documentation\":\"<fullname>IoT</fullname> <p>IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the Amazon Web Services cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.</p> <p>The service endpoints that expose this API are listed in <a href=\\\"https://docs.aws.amazon.com/general/latest/gr/iot-core.html\\\">Amazon Web Services IoT Core Endpoints and Quotas</a>. You must use the endpoint for the region that has the resources you want to access.</p> <p>The service name used by <a href=\\\"https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html\\\">Amazon Web Services Signature Version 4</a> to sign the request is: <i>execute-api</i>.</p> <p>For more information about how IoT works, see the <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html\\\">Developer Guide</a>.</p> <p>For information about how to use the credentials provider for IoT, see <a href=\\\"https://docs.aws.amazon.com/iot/latest/developerguide/authorizing-direct-aws.html\\\">Authorizing Direct Calls to Amazon Web Services Services</a>.</p>\"\
 }\
 ";
 }

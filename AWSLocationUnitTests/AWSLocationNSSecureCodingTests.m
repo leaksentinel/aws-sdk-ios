@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -43,10 +43,14 @@
 - (void) test_AWSLocationBatchUpdateDevicePositionRequest API_AVAILABLE(ios(11));
 - (void) test_AWSLocationBatchUpdateDevicePositionResponse API_AVAILABLE(ios(11));
 - (void) test_AWSLocationCalculateRouteCarModeOptions API_AVAILABLE(ios(11));
+- (void) test_AWSLocationCalculateRouteMatrixRequest API_AVAILABLE(ios(11));
+- (void) test_AWSLocationCalculateRouteMatrixResponse API_AVAILABLE(ios(11));
+- (void) test_AWSLocationCalculateRouteMatrixSummary API_AVAILABLE(ios(11));
 - (void) test_AWSLocationCalculateRouteRequest API_AVAILABLE(ios(11));
 - (void) test_AWSLocationCalculateRouteResponse API_AVAILABLE(ios(11));
 - (void) test_AWSLocationCalculateRouteSummary API_AVAILABLE(ios(11));
 - (void) test_AWSLocationCalculateRouteTruckModeOptions API_AVAILABLE(ios(11));
+- (void) test_AWSLocationCircle API_AVAILABLE(ios(11));
 - (void) test_AWSLocationCreateGeofenceCollectionRequest API_AVAILABLE(ios(11));
 - (void) test_AWSLocationCreateGeofenceCollectionResponse API_AVAILABLE(ios(11));
 - (void) test_AWSLocationCreateMapRequest API_AVAILABLE(ios(11));
@@ -97,6 +101,8 @@
 - (void) test_AWSLocationGetMapStyleDescriptorResponse API_AVAILABLE(ios(11));
 - (void) test_AWSLocationGetMapTileRequest API_AVAILABLE(ios(11));
 - (void) test_AWSLocationGetMapTileResponse API_AVAILABLE(ios(11));
+- (void) test_AWSLocationGetPlaceRequest API_AVAILABLE(ios(11));
+- (void) test_AWSLocationGetPlaceResponse API_AVAILABLE(ios(11));
 - (void) test_AWSLocationLeg API_AVAILABLE(ios(11));
 - (void) test_AWSLocationLegGeometry API_AVAILABLE(ios(11));
 - (void) test_AWSLocationListDevicePositionsRequest API_AVAILABLE(ios(11));
@@ -127,19 +133,27 @@
 - (void) test_AWSLocationMapConfiguration API_AVAILABLE(ios(11));
 - (void) test_AWSLocationPlace API_AVAILABLE(ios(11));
 - (void) test_AWSLocationPlaceGeometry API_AVAILABLE(ios(11));
+- (void) test_AWSLocationPositionalAccuracy API_AVAILABLE(ios(11));
 - (void) test_AWSLocationPutGeofenceRequest API_AVAILABLE(ios(11));
 - (void) test_AWSLocationPutGeofenceResponse API_AVAILABLE(ios(11));
+- (void) test_AWSLocationRouteMatrixEntry API_AVAILABLE(ios(11));
+- (void) test_AWSLocationRouteMatrixEntryError API_AVAILABLE(ios(11));
 - (void) test_AWSLocationSearchForPositionResult API_AVAILABLE(ios(11));
+- (void) test_AWSLocationSearchForSuggestionsResult API_AVAILABLE(ios(11));
 - (void) test_AWSLocationSearchForTextResult API_AVAILABLE(ios(11));
 - (void) test_AWSLocationSearchPlaceIndexForPositionRequest API_AVAILABLE(ios(11));
 - (void) test_AWSLocationSearchPlaceIndexForPositionResponse API_AVAILABLE(ios(11));
 - (void) test_AWSLocationSearchPlaceIndexForPositionSummary API_AVAILABLE(ios(11));
+- (void) test_AWSLocationSearchPlaceIndexForSuggestionsRequest API_AVAILABLE(ios(11));
+- (void) test_AWSLocationSearchPlaceIndexForSuggestionsResponse API_AVAILABLE(ios(11));
+- (void) test_AWSLocationSearchPlaceIndexForSuggestionsSummary API_AVAILABLE(ios(11));
 - (void) test_AWSLocationSearchPlaceIndexForTextRequest API_AVAILABLE(ios(11));
 - (void) test_AWSLocationSearchPlaceIndexForTextResponse API_AVAILABLE(ios(11));
 - (void) test_AWSLocationSearchPlaceIndexForTextSummary API_AVAILABLE(ios(11));
 - (void) test_AWSLocationStep API_AVAILABLE(ios(11));
 - (void) test_AWSLocationTagResourceRequest API_AVAILABLE(ios(11));
 - (void) test_AWSLocationTagResourceResponse API_AVAILABLE(ios(11));
+- (void) test_AWSLocationTimeZone API_AVAILABLE(ios(11));
 - (void) test_AWSLocationTruckDimensions API_AVAILABLE(ios(11));
 - (void) test_AWSLocationTruckWeight API_AVAILABLE(ios(11));
 - (void) test_AWSLocationUntagResourceRequest API_AVAILABLE(ios(11));
@@ -256,6 +270,18 @@
     [self validateSecureCodingForClass:[AWSLocationCalculateRouteCarModeOptions class]];
 }
 
+- (void) test_AWSLocationCalculateRouteMatrixRequest {
+    [self validateSecureCodingForClass:[AWSLocationCalculateRouteMatrixRequest class]];
+}
+
+- (void) test_AWSLocationCalculateRouteMatrixResponse {
+    [self validateSecureCodingForClass:[AWSLocationCalculateRouteMatrixResponse class]];
+}
+
+- (void) test_AWSLocationCalculateRouteMatrixSummary {
+    [self validateSecureCodingForClass:[AWSLocationCalculateRouteMatrixSummary class]];
+}
+
 - (void) test_AWSLocationCalculateRouteRequest {
     [self validateSecureCodingForClass:[AWSLocationCalculateRouteRequest class]];
 }
@@ -270,6 +296,10 @@
 
 - (void) test_AWSLocationCalculateRouteTruckModeOptions {
     [self validateSecureCodingForClass:[AWSLocationCalculateRouteTruckModeOptions class]];
+}
+
+- (void) test_AWSLocationCircle {
+    [self validateSecureCodingForClass:[AWSLocationCircle class]];
 }
 
 - (void) test_AWSLocationCreateGeofenceCollectionRequest {
@@ -472,6 +502,14 @@
     [self validateSecureCodingForClass:[AWSLocationGetMapTileResponse class]];
 }
 
+- (void) test_AWSLocationGetPlaceRequest {
+    [self validateSecureCodingForClass:[AWSLocationGetPlaceRequest class]];
+}
+
+- (void) test_AWSLocationGetPlaceResponse {
+    [self validateSecureCodingForClass:[AWSLocationGetPlaceResponse class]];
+}
+
 - (void) test_AWSLocationLeg {
     [self validateSecureCodingForClass:[AWSLocationLeg class]];
 }
@@ -592,6 +630,10 @@
     [self validateSecureCodingForClass:[AWSLocationPlaceGeometry class]];
 }
 
+- (void) test_AWSLocationPositionalAccuracy {
+    [self validateSecureCodingForClass:[AWSLocationPositionalAccuracy class]];
+}
+
 - (void) test_AWSLocationPutGeofenceRequest {
     [self validateSecureCodingForClass:[AWSLocationPutGeofenceRequest class]];
 }
@@ -600,8 +642,20 @@
     [self validateSecureCodingForClass:[AWSLocationPutGeofenceResponse class]];
 }
 
+- (void) test_AWSLocationRouteMatrixEntry {
+    [self validateSecureCodingForClass:[AWSLocationRouteMatrixEntry class]];
+}
+
+- (void) test_AWSLocationRouteMatrixEntryError {
+    [self validateSecureCodingForClass:[AWSLocationRouteMatrixEntryError class]];
+}
+
 - (void) test_AWSLocationSearchForPositionResult {
     [self validateSecureCodingForClass:[AWSLocationSearchForPositionResult class]];
+}
+
+- (void) test_AWSLocationSearchForSuggestionsResult {
+    [self validateSecureCodingForClass:[AWSLocationSearchForSuggestionsResult class]];
 }
 
 - (void) test_AWSLocationSearchForTextResult {
@@ -618,6 +672,18 @@
 
 - (void) test_AWSLocationSearchPlaceIndexForPositionSummary {
     [self validateSecureCodingForClass:[AWSLocationSearchPlaceIndexForPositionSummary class]];
+}
+
+- (void) test_AWSLocationSearchPlaceIndexForSuggestionsRequest {
+    [self validateSecureCodingForClass:[AWSLocationSearchPlaceIndexForSuggestionsRequest class]];
+}
+
+- (void) test_AWSLocationSearchPlaceIndexForSuggestionsResponse {
+    [self validateSecureCodingForClass:[AWSLocationSearchPlaceIndexForSuggestionsResponse class]];
+}
+
+- (void) test_AWSLocationSearchPlaceIndexForSuggestionsSummary {
+    [self validateSecureCodingForClass:[AWSLocationSearchPlaceIndexForSuggestionsSummary class]];
 }
 
 - (void) test_AWSLocationSearchPlaceIndexForTextRequest {
@@ -642,6 +708,10 @@
 
 - (void) test_AWSLocationTagResourceResponse {
     [self validateSecureCodingForClass:[AWSLocationTagResourceResponse class]];
+}
+
+- (void) test_AWSLocationTimeZone {
+    [self validateSecureCodingForClass:[AWSLocationTimeZone class]];
 }
 
 - (void) test_AWSLocationTruckDimensions {

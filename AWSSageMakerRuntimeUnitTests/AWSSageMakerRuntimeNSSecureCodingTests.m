@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -19,12 +19,22 @@
 
 @interface AWSSageMakerRuntimeNSSecureCodingTests : AWSNSSecureCodingTest
 
+- (void) test_AWSSageMakerRuntimeInvokeEndpointAsyncInput API_AVAILABLE(ios(11));
+- (void) test_AWSSageMakerRuntimeInvokeEndpointAsyncOutput API_AVAILABLE(ios(11));
 - (void) test_AWSSageMakerRuntimeInvokeEndpointInput API_AVAILABLE(ios(11));
 - (void) test_AWSSageMakerRuntimeInvokeEndpointOutput API_AVAILABLE(ios(11));
 
 @end
 
 @implementation AWSSageMakerRuntimeNSSecureCodingTests
+
+- (void) test_AWSSageMakerRuntimeInvokeEndpointAsyncInput {
+    [self validateSecureCodingForClass:[AWSSageMakerRuntimeInvokeEndpointAsyncInput class]];
+}
+
+- (void) test_AWSSageMakerRuntimeInvokeEndpointAsyncOutput {
+    [self validateSecureCodingForClass:[AWSSageMakerRuntimeInvokeEndpointAsyncOutput class]];
+}
 
 - (void) test_AWSSageMakerRuntimeInvokeEndpointInput {
     [self validateSecureCodingForClass:[AWSSageMakerRuntimeInvokeEndpointInput class]];

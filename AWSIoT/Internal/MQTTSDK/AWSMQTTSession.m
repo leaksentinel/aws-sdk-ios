@@ -18,6 +18,8 @@
 #import "AWSMQTTDecoder.h"
 #import "AWSMQTTEncoder.h"
 #import "AWSMQttTxFlow.h"
+#import "AWSIoTMessage.h"
+#import "AWSIoTMessage+AWSMQTTMessage.h"
 
 @interface AWSMQTTSession () <AWSMQTTDecoderDelegate,AWSMQTTEncoderDelegate>  {
     AWSMQTTSessionStatus    status;  //Current status of the session. Can be one of the values specified in the MQTTSessionStatus enum
@@ -29,7 +31,7 @@
     BOOL                 cleanSessionFlag; //used to clear the queue
     AWSMQTTMessage*         connectMessage; //Connect message that is passed in by MQTTClient. Used to send connect message.
     
-
+    dispatch_queue_t serialQueue; // Serial queue to keep ticks increments in sync
     NSTimer*             timer; //Timer that fires every second. Used to orchestrate pings and retries.
     unsigned int         ticks;  //Number of seconds ( or clock ticks )
     
@@ -37,7 +39,7 @@
     AWSMQTTDecoder*         decoder; //Low level protocol handler that converts in bound network data into a Message
     
     NSMutableDictionary* txFlows; //Required for QOS1. Outbound publishes will be stored in txFlows until a PubAck is received
-    NSMutableDictionary* rxFlows; //Required for handling QOS 2. Not in use currently
+    NSMutableDictionary* rxFlows; //Required for handling QOS 2.
     unsigned int         retryThreshold; //used to throtttle retries. Overloading the publishes beyond service limit will result in message loss.
 }
 
@@ -61,7 +63,7 @@
 
 @property (strong,atomic) NSMutableArray* queue; //Queue to temporarily hold messages if encoder is busy sending another message
 @property (strong,atomic) NSMutableArray* timerRing; // circular array of 60. Each element is a set that contains the messages that need to be retried.
-@property (strong,nonatomic) dispatch_semaphore_t drainSenderQueueSemaphore;
+@property (nonatomic, strong) dispatch_queue_t drainSenderSerialQueue;
 
 @end
 
@@ -94,7 +96,7 @@
     
     if (self = [super init]) {
         clientId = theClientId;
-        _drainSenderQueueSemaphore = dispatch_semaphore_create(1);
+        _drainSenderSerialQueue = dispatch_queue_create("com.amazon.aws.iot.drain-sender-queue", DISPATCH_QUEUE_SERIAL);
         keepAliveInterval = theKeepAliveInterval;
         connectMessage = msg;
         _publishRetryThrottle = publishRetryThrottle;
@@ -107,6 +109,7 @@
         for (i = 0; i < 60; i++) {
             [self.timerRing addObject:[NSMutableSet new]];
         }
+        serialQueue = dispatch_queue_create("com.amazon.aws.iot.test-queue", DISPATCH_QUEUE_SERIAL);
         ticks = 0;
         status = AWSMQTTSessionStatusCreated;
     }
@@ -200,17 +203,31 @@
 }
 
 - (UInt16)publishDataAtLeastOnce:(NSData*)data
-                       onTopic:(NSString*)topic
-                        retain:(BOOL)retainFlag {
+                         onTopic:(NSString*)topic
+                          retain:(BOOL)retainFlag {
+    return [self publishDataAtLeastOnce:data onTopic:topic retain:retainFlag onMessageIdResolved:nil];
+}
+
+- (UInt16)publishDataAtLeastOnce:(NSData*)data
+                         onTopic:(NSString*)topic
+                          retain:(BOOL)retainFlag
+             onMessageIdResolved:(void (^)(UInt16))onMessageIdResolved {
     UInt16 msgId = [self nextMsgId];
+    if (onMessageIdResolved) {
+        onMessageIdResolved(msgId);
+    }
     AWSMQTTMessage *msg = [AWSMQTTMessage publishMessageWithData:data
-                                                   onTopic:topic
-                                                       qos:1
-                                                     msgId:msgId
-                                                retainFlag:retainFlag
-                                                   dupFlag:false];
+                                                         onTopic:topic
+                                                             qos:1
+                                                           msgId:msgId
+                                                      retainFlag:retainFlag
+                                                         dupFlag:false];
+    __block unsigned int deadline;
+    dispatch_sync(serialQueue, ^{
+        deadline = ticks + 60;
+    });
     AWSMQttTxFlow *flow = [AWSMQttTxFlow flowWithMsg:msg
-                                      deadline:(ticks + 60)];
+                                            deadline:deadline];
     [txFlows setObject:flow forKey:[NSNumber numberWithUnsignedInt:msgId]];
     [[self.timerRing objectAtIndex:([flow deadline] % 60)] addObject:[NSNumber numberWithUnsignedInt:msgId]];
     AWSDDLogDebug(@"Published message %hu for QOS 1", msgId);
@@ -219,22 +236,32 @@
 }
 
 - (UInt16)publishDataExactlyOnce:(NSData*)data
-                       onTopic:(NSString*)topic {
+                         onTopic:(NSString*)topic {
     return [self publishDataExactlyOnce:data onTopic:topic retain:false];
 }
 
 - (UInt16)publishDataExactlyOnce:(NSData*)data
-                       onTopic:(NSString*)topic
-                        retain:(BOOL)retainFlag {
+                         onTopic:(NSString*)topic
+                          retain:(BOOL)retainFlag {
+    return [self publishDataExactlyOnce:data onTopic:topic retain:retainFlag onMessageIdResolved:nil];
+}
+
+- (UInt16)publishDataExactlyOnce:(NSData*)data
+                         onTopic:(NSString*)topic
+                          retain:(BOOL)retainFlag
+             onMessageIdResolved:(void (^)(UInt16))onMessageIdResolved {
     UInt16 msgId = [self nextMsgId];
+    if (onMessageIdResolved) {
+        onMessageIdResolved(msgId);
+    }
     AWSMQTTMessage *msg = [AWSMQTTMessage publishMessageWithData:data
-                                                   onTopic:topic
-                                                       qos:2
-                                                     msgId:msgId
-                                                retainFlag:retainFlag
-                                                   dupFlag:false];
+                                                         onTopic:topic
+                                                             qos:2
+                                                           msgId:msgId
+                                                      retainFlag:retainFlag
+                                                         dupFlag:false];
     AWSMQttTxFlow *flow = [AWSMQttTxFlow flowWithMsg:msg
-                                      deadline:(ticks + 60)];
+                                            deadline:(ticks + 60)];
     [txFlows setObject:flow forKey:[NSNumber numberWithUnsignedInt:msgId]];
     [[self.timerRing objectAtIndex:([flow deadline] % 60)] addObject:[NSNumber numberWithUnsignedInt:msgId]];
     [self send:msg];
@@ -264,8 +291,10 @@
             idleTimer = 0;
         }
     }
-    
-    ticks++;
+
+    dispatch_sync(serialQueue, ^{
+        ticks++;
+    });
     NSEnumerator *e = [[[self.timerRing objectAtIndex:(ticks % 60)] allObjects] objectEnumerator];
     id msgId;
     
@@ -316,22 +345,13 @@
                         break;
                     case AWSMQTTSessionStatusConnecting:
                         break;
-                    case AWSMQTTSessionStatusConnected:
-                        AWSDDLogVerbose(@"%s [Line %d], Thread:%@ waiting on drainSenderQueueSemaphore", __PRETTY_FUNCTION__, __LINE__, [NSThread currentThread]);
-                        dispatch_semaphore_wait(self.drainSenderQueueSemaphore, DISPATCH_TIME_FOREVER);
-                        AWSDDLogVerbose(@"%s [Line %d], Thread:%@ passed  drainSenderQueueSemaphore", __PRETTY_FUNCTION__, __LINE__, [NSThread currentThread]);
-                        
-                        if ([self.queue count] > 0) {
-                            AWSDDLogDebug(@"Sending message from session queue" );
-                            AWSMQTTMessage *msg = [self.queue objectAtIndex:0];
-                            [self.queue removeObjectAtIndex:0];
-                            [encoder encodeMessage:msg];
-                        }
-                        
-                        AWSDDLogVerbose(@"%s [Line %d], Thread:%@ signaling on drainSenderQueueSemaphore", __PRETTY_FUNCTION__, __LINE__, [NSThread currentThread]);
-                        dispatch_semaphore_signal(self.drainSenderQueueSemaphore);
-                        AWSDDLogVerbose(@"%s [Line %d], Thread:%@ finshed draining messages", __PRETTY_FUNCTION__, __LINE__, [NSThread currentThread]);
+                    case AWSMQTTSessionStatusConnected: {
+                        dispatch_assert_queue_not(self.drainSenderSerialQueue);
+                        dispatch_sync(self.drainSenderSerialQueue, ^{
+                            [self queueNextMessage];
+                        });
                         break;
+                    }
                     case AWSMQTTSessionStatusError:
                         break;
                 }
@@ -494,7 +514,7 @@
     NSRange range = NSMakeRange(2 + topicLength, [data length] - topicLength - 2);
     data = [data subdataWithRange:range];
     if ([msg qos] == 0) {
-        [_delegate session:self newMessage:data onTopic:topic];
+        [_delegate session:self newMessage:msg onTopic:topic];
         if(_messageHandler){
             _messageHandler(data, topic);
         }
@@ -510,8 +530,7 @@
         }
         data = [data subdataWithRange:NSMakeRange(2, [data length] - 2)];
         if ([msg qos] == 1) {
-            [_delegate session:self newMessage:data onTopic:topic];
-            
+            [_delegate session:self newMessage:msg onTopic:topic];
             if(_messageHandler){
                 _messageHandler(data, topic);
             }
@@ -547,11 +566,11 @@
     
     [[self.timerRing objectAtIndex:([flow deadline] % 60)] removeObject:msgId];
     [txFlows removeObjectForKey:msgId];
-    AWSDDLogDebug(@"Removing msgID %@ from internal store for QOS1 gaurantee", msgId);
-    [_delegate session:self newAckForMessageId:msgId.unsignedShortValue];
+    AWSDDLogDebug(@"Removing msgID %@ from internal store for QOS1 guarantee", msgId);
+    [self.delegate session:self newAckForMessageId:msgId.unsignedShortValue];
 }
 
-#pragma mark Acknowlegement Handlers for QOS 2 - not used currently as AWSIoT doesn't support QOS 2
+#pragma mark Acknowlegement Handlers for QOS 2
 - (void)handlePubrec:(AWSMQTTMessage*)msg {
     if ([[msg data] length] != 2) {
         return;
@@ -618,6 +637,9 @@
     
     [[self.timerRing objectAtIndex:([flow deadline] % 60)] removeObject:msgId];
     [txFlows removeObjectForKey:msgId];
+
+    AWSDDLogDebug(@"Removing msgID %@ from internal store for QOS2 guarantee", msgId);
+    [self.delegate session:self newAckForMessageId:msgId.unsignedShortValue];
 }
 
 # pragma mark error handler
@@ -653,17 +675,10 @@
         [encoder encodeMessage:msg];
     }
     else {
-        AWSDDLogVerbose(@"%s [Line %d], Thread:%@ waiting on drainSenderQueueSemaphore", __PRETTY_FUNCTION__, __LINE__, [NSThread currentThread]);
-        dispatch_semaphore_wait(self.drainSenderQueueSemaphore, DISPATCH_TIME_FOREVER);
-        AWSDDLogVerbose(@"%s [Line %d], Thread:%@ passed  drainSenderQueueSemaphore", __PRETTY_FUNCTION__, __LINE__, [NSThread currentThread]);
-        
-        AWSDDLogDebug(@"<<%@>>: MQTTSession.send added msg to queue to send later", [NSThread currentThread]);
-        [self.queue addObject:msg];
-        
-        
-        AWSDDLogVerbose(@"%s [Line %d], Thread:%@ signaling drainSenderQueueSemaphore", __PRETTY_FUNCTION__, __LINE__, [NSThread currentThread]);
-        dispatch_semaphore_signal(self.drainSenderQueueSemaphore);
-        AWSDDLogVerbose(@"%s [Line %d], Thread:%@ finished draining messages", __PRETTY_FUNCTION__, __LINE__, [NSThread currentThread]);
+        dispatch_assert_queue_not(self.drainSenderSerialQueue);
+        dispatch_sync(self.drainSenderSerialQueue, ^{
+            [self queueMessage:msg];
+        });
     }
 }
 
@@ -680,23 +695,45 @@
     return encoder && [encoder status] == AWSMQTTEncoderStatusReady;
 }
 
--(void) drainSenderQueue {
-    AWSDDLogVerbose(@"%s [Line %d], Thread:%@ waiting on drainSenderQueueSemaphore", __PRETTY_FUNCTION__, __LINE__, [NSThread currentThread]);
-    dispatch_semaphore_wait(self.drainSenderQueueSemaphore, DISPATCH_TIME_FOREVER);
-    AWSDDLogVerbose(@"%s [Line %d], Thread:%@ passed drainSenderQueueSemaphore", __PRETTY_FUNCTION__, __LINE__, [NSThread currentThread]);
+- (void)drainSenderQueue {
+    dispatch_assert_queue_not(self.drainSenderSerialQueue);
+    dispatch_sync(self.drainSenderSerialQueue, ^{
+        [self drainAllMessages];
+    });
+}
+
+# pragma mark - private/serial functions -
+
+- (void)queueNextMessage {
+    dispatch_assert_queue(self.drainSenderSerialQueue);
+
+    if ([self.queue count] > 0) {
+        AWSDDLogDebug(@"Sending message from session queue");
+        AWSMQTTMessage *msg = [self.queue objectAtIndex:0];
+        [self.queue removeObjectAtIndex:0];
+        [encoder encodeMessage:msg];
+    }
+}
+
+- (void)queueMessage:(AWSMQTTMessage*)msg {
+    dispatch_assert_queue(self.drainSenderSerialQueue);
+
+    [self.queue addObject:msg];
+}
+
+- (void)drainAllMessages {
+    dispatch_assert_queue(self.drainSenderSerialQueue);
 
     int count = 0;
-    while ([self.queue count] > 0 && count < _publishRetryThrottle && [self isReadyToPublish]) {
+    while (self.queue.count > 0 && count < _publishRetryThrottle && self.isReadyToPublish) {
         AWSDDLogDebug(@"Sending message from session queue" );
         AWSMQTTMessage *msg = [self.queue objectAtIndex:0];
         [self.queue removeObjectAtIndex:0];
         [encoder encodeMessage:msg];
         count = count + 1;
     }
-    
-    AWSDDLogVerbose(@"%s [Line %d], Thread:%@ signaling on drainSenderQueueSemaphore", __PRETTY_FUNCTION__, __LINE__, [NSThread currentThread]);
-    dispatch_semaphore_signal(self.drainSenderQueueSemaphore);
-    AWSDDLogVerbose(@"%s [Line %d], Thread:%@ finished draining messages", __PRETTY_FUNCTION__, __LINE__, [NSThread currentThread]);
 }
+
+
 @end
 

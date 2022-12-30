@@ -1168,6 +1168,65 @@ class AWSS3TransferUtilityTests: XCTestCase {
             XCTAssertNil(error)
         }
     }
+
+    func testGoodFilePathWithSpacesMultipartUpload() {
+        let expectation = self.expectation(description: "The file was uploaded.")
+        let transferUtility = AWSS3TransferUtility.s3TransferUtility(forKey: "with-retry")
+        XCTAssertNotNil(transferUtility)
+
+        let filePath = NSTemporaryDirectory() + "test Good File Path Upload.tmp"
+        let fileURL = URL(fileURLWithPath: filePath)
+        FileManager.default.createFile(atPath: filePath, contents: "Test".data(using: .utf8), attributes: nil)
+
+        let expression = AWSS3TransferUtilityMultiPartUploadExpression()
+        let uuid:(String) = UUID().uuidString
+        let author:(String) = "integration test"
+        expression.setValue(author, forRequestHeader: "x-amz-meta-author");
+        expression.setValue(uuid, forRequestHeader: "x-amz-meta-id");
+        expression.progressBlock = { _, _ in }
+
+        //Create Completion Handler
+        let uploadCompletionHandler = { (task: AWSS3TransferUtilityMultiPartUploadTask, error: Error?) -> Void in
+            XCTAssertNil(error)
+
+            //Get Meta Data and verify that it has been updated. This will indicate that the upload has succeeded.
+            let s3 = AWSS3.default()
+            let headObjectRequest = AWSS3HeadObjectRequest()
+            headObjectRequest?.bucket = generalTestBucket
+            headObjectRequest?.key = "test-spaces-Good-spaces-File-spaces-Path-spaces-Upload.txt"
+
+            s3.headObject(headObjectRequest!).continueWith(block: { (task:AWSTask<AWSS3HeadObjectOutput> ) -> Any? in
+                XCTAssertNil(task.error)
+                XCTAssertNotNil(task.result)
+                if (task.result != nil) {
+                    let output:(AWSS3HeadObjectOutput) = task.result!
+                    XCTAssertNotNil(output)
+                    XCTAssertNotNil(output.metadata)
+                    XCTAssertEqual(author, output.metadata?["author"])
+                    XCTAssertEqual(uuid, output.metadata?["id"])
+                }
+                expectation.fulfill()
+                return nil
+            })
+        }
+
+        transferUtility?.uploadUsingMultiPart(
+                                   fileURL: fileURL,
+                                   bucket: generalTestBucket,
+                                   key: "test-spaces-Good-spaces-File-spaces-Path-spaces-Upload.txt",
+                                   contentType: "text/plain",
+                                   expression: expression,
+                                   completionHandler: uploadCompletionHandler)
+            .continueWith { (task: AWSTask<AWSS3TransferUtilityMultiPartUploadTask>) -> Any? in
+                XCTAssertNil(task.error)
+                XCTAssertNotNil(task.result)
+                return nil
+            }.waitUntilFinished()
+
+        waitForExpectations(timeout: 90) { (error) in
+            XCTAssertNil(error)
+        }
+    }
     
     func testMultiPartUploadSmallFile() {
         let expectation = self.expectation(description: "The completion handler called.")
@@ -2557,9 +2616,8 @@ class AWSS3TransferUtilityTests: XCTestCase {
                 uploadsCompleted.fulfill()
             }
             return
-        
         }
-        
+
         let multiPartUploadExpression = AWSS3TransferUtilityMultiPartUploadExpression()
         multiPartUploadExpression.progressBlock = { _, _ in }
       
@@ -2602,15 +2660,15 @@ class AWSS3TransferUtilityTests: XCTestCase {
                     XCTAssertNil(task.error)
                     return nil
                 })
-            sleep(1)
         }
+
+        wait(for:[uploadsCompleted],  timeout: 60)
+
         XCTAssertEqual(transferUtility?.getUploadTasks().result!.count, 3)
         XCTAssertEqual(transferUtility?.getDownloadTasks().result!.count, 0)
         XCTAssertEqual(transferUtility?.getMultiPartUploadTasks().result!.count, 0)
         XCTAssertEqual(transferUtility?.getAllTasks().result!.count, 3)
-        
-        wait(for:[uploadsCompleted],  timeout: 60)
-        
+
         //upload 3 more files using multipart
         for i in 4...6 {
             transferUtility?.uploadUsingMultiPart(
@@ -2624,13 +2682,14 @@ class AWSS3TransferUtilityTests: XCTestCase {
                 XCTAssertNil(task.error)
                 return nil
                 })
-            sleep(1)
         }
+
+        wait(for:[multiPartUploadsCompleted],  timeout: 60)
+
         XCTAssertEqual(transferUtility?.getUploadTasks().result!.count, 3)
         XCTAssertEqual(transferUtility?.getDownloadTasks().result!.count, 0)
         XCTAssertEqual(transferUtility?.getMultiPartUploadTasks().result!.count, 3)
         XCTAssertEqual(transferUtility?.getAllTasks().result!.count, 3)
-        wait(for:[multiPartUploadsCompleted],  timeout: 60)
         
         //Download 6 files
         for i in 1...6 {
@@ -2643,16 +2702,156 @@ class AWSS3TransferUtilityTests: XCTestCase {
                     XCTAssertNil(task.error)
                     return nil
                 })
-            sleep(1)
         }
+
+        wait(for:[downloadsCompleted],  timeout: 120)
+
         XCTAssertEqual(transferUtility?.getUploadTasks().result!.count, 3)
         XCTAssertEqual(transferUtility?.getDownloadTasks().result!.count, 6)
         XCTAssertEqual(transferUtility?.getMultiPartUploadTasks().result!.count, 3)
         XCTAssertEqual(transferUtility?.getAllTasks().result!.count, 9)
-        wait(for:[downloadsCompleted],  timeout: 120)
         
         AWSS3TransferUtility.remove(forKey: key)
-        
+    }
+
+    func testGetTasksWithRemovingCompletedTasksEnabled() {
+        var uploadCount = 0;
+        var mpUploadCount = 0;
+        var downloadCount = 0;
+        let key = UUID().uuidString
+        let uploadsCompleted = self.expectation(description: "Uploads completed")
+        let multiPartUploadsCompleted = self.expectation(description: "Multipart uploads completed")
+        let downloadsCompleted = self.expectation(description: "Downloads completed")
+
+        let serviceConfiguration = AWSServiceConfiguration(
+            region: AWSS3TransferUtilityTests.region,
+            credentialsProvider: AWSServiceManager.default().defaultServiceConfiguration.credentialsProvider
+        )
+
+        let transferUtilityConfiguration = AWSS3TransferUtilityConfiguration()
+
+        AWSS3TransferUtility.register(
+            with: serviceConfiguration!,
+            transferUtilityConfiguration: transferUtilityConfiguration,
+            forKey: key
+        )
+
+        let transferUtility = AWSS3TransferUtility.s3TransferUtility(forKey: key)
+        XCTAssertNotNil(transferUtility)
+        transferUtility?.shouldRemoveCompletedTasks = true
+        let uploadExpression = AWSS3TransferUtilityUploadExpression()
+
+        uploadExpression.progressBlock = { _, _ in }
+
+        let uploadCompletionHandler = { (task: AWSS3TransferUtilityUploadTask, error: Error?) -> Void in
+            XCTAssertNil(error)
+            uploadCount = uploadCount + 1
+            if ( uploadCount >= 3 ) {
+                DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
+                    uploadsCompleted.fulfill()
+                }
+            }
+            return
+        }
+
+        let multiPartUploadExpression = AWSS3TransferUtilityMultiPartUploadExpression()
+        multiPartUploadExpression.progressBlock = { _, _ in }
+
+        let multiPartUploadCompletionHandler = { (task: AWSS3TransferUtilityMultiPartUploadTask, error: Error?) -> Void in
+            XCTAssertNil(error)
+            mpUploadCount = mpUploadCount + 1
+            if ( mpUploadCount >= 3 ) {
+                DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
+                    multiPartUploadsCompleted.fulfill()
+                }
+            }
+            return
+        }
+
+        let downloadExpression = AWSS3TransferUtilityDownloadExpression()
+        downloadExpression.progressBlock = { _, _ in }
+
+        let downloadCompletionHandler = { (task: AWSS3TransferUtilityDownloadTask, URL: Foundation.URL?, data: Data?, error: Error?) in
+            XCTAssertNil(error)
+            downloadCount = downloadCount + 1
+            if ( downloadCount >= 6 ) {
+                DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
+                    downloadsCompleted.fulfill()
+                }
+            }
+            return
+        }
+
+        var testData = "Test123456789"
+        for _ in 1...15 {
+            testData = testData + testData;
+        }
+
+        //Upload 3 files
+        for i in 1...3 {
+            transferUtility?.uploadData(
+                testData.data(using: String.Encoding.utf8)!,
+                bucket: generalTestBucket,
+                key: "testFileForGetTasks\(i).txt",
+                contentType: "text/plain",
+                expression: uploadExpression,
+                completionHandler: uploadCompletionHandler
+                ).continueWith (block: { (task) -> AnyObject? in
+                    XCTAssertNil(task.error)
+                    return nil
+                })
+        }
+
+        wait(for:[uploadsCompleted],  timeout: 60)
+
+        XCTAssertEqual(transferUtility?.getUploadTasks().result!.count, 0)
+        XCTAssertEqual(transferUtility?.getDownloadTasks().result!.count, 0)
+        XCTAssertEqual(transferUtility?.getMultiPartUploadTasks().result!.count, 0)
+        XCTAssertEqual(transferUtility?.getAllTasks().result!.count, 0)
+
+        //upload 3 more files using multipart
+        for i in 4...6 {
+            transferUtility?.uploadUsingMultiPart(
+                data: testData.data(using: String.Encoding.utf8)!,
+                bucket: generalTestBucket,
+                key: "testFileForGetTasks\(i).txt",
+                contentType: "text/plain",
+                expression: multiPartUploadExpression,
+                completionHandler: multiPartUploadCompletionHandler
+                ).continueWith (block: { (task) -> AnyObject? in
+                XCTAssertNil(task.error)
+                return nil
+                })
+        }
+
+        wait(for:[multiPartUploadsCompleted],  timeout: 60)
+
+        XCTAssertEqual(transferUtility?.getUploadTasks().result!.count, 0)
+        XCTAssertEqual(transferUtility?.getDownloadTasks().result!.count, 0)
+        XCTAssertEqual(transferUtility?.getMultiPartUploadTasks().result!.count, 0)
+        XCTAssertEqual(transferUtility?.getAllTasks().result!.count, 0)
+
+        //Download 6 files
+        for i in 1...6 {
+            let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("file\(i)")
+            transferUtility?.download(to: url!,
+                                 bucket: generalTestBucket,
+                                    key: "testFileForGetTasks\(i).txt",
+                expression: downloadExpression,
+                completionHandler: downloadCompletionHandler).continueWith(block: { (task) -> Any? in
+                    XCTAssertNil(task.error)
+                    return nil
+                })
+        }
+
+        wait(for:[downloadsCompleted],  timeout: 120)
+
+        XCTAssertEqual(transferUtility?.getUploadTasks().result!.count, 0)
+        XCTAssertEqual(transferUtility?.getDownloadTasks().result!.count, 0)
+        XCTAssertEqual(transferUtility?.getMultiPartUploadTasks().result!.count, 0)
+        XCTAssertEqual(transferUtility?.getAllTasks().result!.count, 0)
+
+        AWSS3TransferUtility.remove(forKey: key)
     }
     
     func testReRegisterTransferUtility() {
@@ -2693,7 +2892,6 @@ class AWSS3TransferUtilityTests: XCTestCase {
                 uploadsCompleted.fulfill()
             }
             return
-            
         }
         
         let multiPartUploadExpression = AWSS3TransferUtilityMultiPartUploadExpression()
@@ -2738,13 +2936,14 @@ class AWSS3TransferUtilityTests: XCTestCase {
                     XCTAssertNil(task.error)
                     return nil
                 })
-            sleep(1)
         }
+
+        wait(for:[uploadsCompleted],  timeout: 60)
+
         XCTAssertEqual(transferUtility?.getUploadTasks().result!.count, 3)
         XCTAssertEqual(transferUtility?.getDownloadTasks().result!.count, 0)
         XCTAssertEqual(transferUtility?.getMultiPartUploadTasks().result!.count, 0)
-        
-        wait(for:[uploadsCompleted],  timeout: 60)
+
         
         //upload 3 more files using multipart
         for i in 4...6 {
@@ -2759,12 +2958,13 @@ class AWSS3TransferUtilityTests: XCTestCase {
                     XCTAssertNil(task.error)
                     return nil
                 })
-            sleep(1)
         }
+
+        wait(for:[multiPartUploadsCompleted],  timeout: 60)
+
         XCTAssertEqual(transferUtility?.getUploadTasks().result!.count, 3)
         XCTAssertEqual(transferUtility?.getDownloadTasks().result!.count, 0)
         XCTAssertEqual(transferUtility?.getMultiPartUploadTasks().result!.count, 3)
-        wait(for:[multiPartUploadsCompleted],  timeout: 60)
         
         //Download 6 files
         for i in 1...6 {
@@ -2777,14 +2977,14 @@ class AWSS3TransferUtilityTests: XCTestCase {
                     XCTAssertNil(task.error)
                     return nil
                 })
-            sleep(1)
         }
+
+        wait(for:[downloadsCompleted],  timeout: 120)
+
         XCTAssertEqual(transferUtility?.getUploadTasks().result!.count, 3)
         XCTAssertEqual(transferUtility?.getDownloadTasks().result!.count, 6)
         XCTAssertEqual(transferUtility?.getMultiPartUploadTasks().result!.count, 3)
-        wait(for:[downloadsCompleted],  timeout: 120)
-        
-    
+
         //Remove the TU
         AWSS3TransferUtility.remove(forKey: key)
         

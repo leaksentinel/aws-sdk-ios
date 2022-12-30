@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -34,6 +34,13 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingErrorType) {
     AWSChimeSDKMessagingErrorUnauthorizedClient,
 };
 
+typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingAllowNotifications) {
+    AWSChimeSDKMessagingAllowNotificationsUnknown,
+    AWSChimeSDKMessagingAllowNotificationsAll,
+    AWSChimeSDKMessagingAllowNotificationsNone,
+    AWSChimeSDKMessagingAllowNotificationsFiltered,
+};
+
 typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingChannelMembershipType) {
     AWSChimeSDKMessagingChannelMembershipTypeUnknown,
     AWSChimeSDKMessagingChannelMembershipTypeDefault,
@@ -44,6 +51,14 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingChannelMessagePersistenceType) {
     AWSChimeSDKMessagingChannelMessagePersistenceTypeUnknown,
     AWSChimeSDKMessagingChannelMessagePersistenceTypePersistent,
     AWSChimeSDKMessagingChannelMessagePersistenceTypeNonPersistent,
+};
+
+typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingChannelMessageStatus) {
+    AWSChimeSDKMessagingChannelMessageStatusUnknown,
+    AWSChimeSDKMessagingChannelMessageStatusSent,
+    AWSChimeSDKMessagingChannelMessageStatusPending,
+    AWSChimeSDKMessagingChannelMessageStatusFailed,
+    AWSChimeSDKMessagingChannelMessageStatusDenied,
 };
 
 typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingChannelMessageType) {
@@ -83,6 +98,34 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingErrorCode) {
     AWSChimeSDKMessagingErrorCodePhoneNumberAssociationsExist,
 };
 
+typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingFallbackAction) {
+    AWSChimeSDKMessagingFallbackActionUnknown,
+    AWSChimeSDKMessagingFallbackActionContinue,
+    AWSChimeSDKMessagingFallbackActionAbort,
+};
+
+typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingInvocationType) {
+    AWSChimeSDKMessagingInvocationTypeUnknown,
+    AWSChimeSDKMessagingInvocationTypeAsync,
+};
+
+typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingPushNotificationType) {
+    AWSChimeSDKMessagingPushNotificationTypeUnknown,
+    AWSChimeSDKMessagingPushNotificationTypeDefault,
+    AWSChimeSDKMessagingPushNotificationTypeVoip,
+};
+
+typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSearchFieldKey) {
+    AWSChimeSDKMessagingSearchFieldKeyUnknown,
+    AWSChimeSDKMessagingSearchFieldKeyMembers,
+};
+
+typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSearchFieldOperator) {
+    AWSChimeSDKMessagingSearchFieldOperatorUnknown,
+    AWSChimeSDKMessagingSearchFieldOperatorEquals,
+    AWSChimeSDKMessagingSearchFieldOperatorIncludes,
+};
+
 typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
     AWSChimeSDKMessagingSortOrderUnknown,
     AWSChimeSDKMessagingSortOrderAscending,
@@ -90,17 +133,26 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 };
 
 @class AWSChimeSDKMessagingAppInstanceUserMembershipSummary;
+@class AWSChimeSDKMessagingAssociateChannelFlowRequest;
 @class AWSChimeSDKMessagingBatchChannelMemberships;
 @class AWSChimeSDKMessagingBatchCreateChannelMembershipError;
 @class AWSChimeSDKMessagingBatchCreateChannelMembershipRequest;
 @class AWSChimeSDKMessagingBatchCreateChannelMembershipResponse;
 @class AWSChimeSDKMessagingChannel;
+@class AWSChimeSDKMessagingChannelAssociatedWithFlowSummary;
 @class AWSChimeSDKMessagingChannelBan;
 @class AWSChimeSDKMessagingChannelBanSummary;
+@class AWSChimeSDKMessagingChannelFlow;
+@class AWSChimeSDKMessagingChannelFlowCallbackRequest;
+@class AWSChimeSDKMessagingChannelFlowCallbackResponse;
+@class AWSChimeSDKMessagingChannelFlowSummary;
 @class AWSChimeSDKMessagingChannelMembership;
 @class AWSChimeSDKMessagingChannelMembershipForAppInstanceUserSummary;
+@class AWSChimeSDKMessagingChannelMembershipPreferences;
 @class AWSChimeSDKMessagingChannelMembershipSummary;
 @class AWSChimeSDKMessagingChannelMessage;
+@class AWSChimeSDKMessagingChannelMessageCallback;
+@class AWSChimeSDKMessagingChannelMessageStatusStructure;
 @class AWSChimeSDKMessagingChannelMessageSummary;
 @class AWSChimeSDKMessagingChannelModeratedByAppInstanceUserSummary;
 @class AWSChimeSDKMessagingChannelModerator;
@@ -108,6 +160,8 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @class AWSChimeSDKMessagingChannelSummary;
 @class AWSChimeSDKMessagingCreateChannelBanRequest;
 @class AWSChimeSDKMessagingCreateChannelBanResponse;
+@class AWSChimeSDKMessagingCreateChannelFlowRequest;
+@class AWSChimeSDKMessagingCreateChannelFlowResponse;
 @class AWSChimeSDKMessagingCreateChannelMembershipRequest;
 @class AWSChimeSDKMessagingCreateChannelMembershipResponse;
 @class AWSChimeSDKMessagingCreateChannelModeratorRequest;
@@ -115,12 +169,15 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @class AWSChimeSDKMessagingCreateChannelRequest;
 @class AWSChimeSDKMessagingCreateChannelResponse;
 @class AWSChimeSDKMessagingDeleteChannelBanRequest;
+@class AWSChimeSDKMessagingDeleteChannelFlowRequest;
 @class AWSChimeSDKMessagingDeleteChannelMembershipRequest;
 @class AWSChimeSDKMessagingDeleteChannelMessageRequest;
 @class AWSChimeSDKMessagingDeleteChannelModeratorRequest;
 @class AWSChimeSDKMessagingDeleteChannelRequest;
 @class AWSChimeSDKMessagingDescribeChannelBanRequest;
 @class AWSChimeSDKMessagingDescribeChannelBanResponse;
+@class AWSChimeSDKMessagingDescribeChannelFlowRequest;
+@class AWSChimeSDKMessagingDescribeChannelFlowResponse;
 @class AWSChimeSDKMessagingDescribeChannelMembershipForAppInstanceUserRequest;
 @class AWSChimeSDKMessagingDescribeChannelMembershipForAppInstanceUserResponse;
 @class AWSChimeSDKMessagingDescribeChannelMembershipRequest;
@@ -131,13 +188,22 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @class AWSChimeSDKMessagingDescribeChannelModeratorResponse;
 @class AWSChimeSDKMessagingDescribeChannelRequest;
 @class AWSChimeSDKMessagingDescribeChannelResponse;
+@class AWSChimeSDKMessagingDisassociateChannelFlowRequest;
+@class AWSChimeSDKMessagingElasticChannelConfiguration;
+@class AWSChimeSDKMessagingGetChannelMembershipPreferencesRequest;
+@class AWSChimeSDKMessagingGetChannelMembershipPreferencesResponse;
 @class AWSChimeSDKMessagingGetChannelMessageRequest;
 @class AWSChimeSDKMessagingGetChannelMessageResponse;
+@class AWSChimeSDKMessagingGetChannelMessageStatusRequest;
+@class AWSChimeSDKMessagingGetChannelMessageStatusResponse;
 @class AWSChimeSDKMessagingGetMessagingSessionEndpointRequest;
 @class AWSChimeSDKMessagingGetMessagingSessionEndpointResponse;
 @class AWSChimeSDKMessagingIdentity;
+@class AWSChimeSDKMessagingLambdaConfiguration;
 @class AWSChimeSDKMessagingListChannelBansRequest;
 @class AWSChimeSDKMessagingListChannelBansResponse;
+@class AWSChimeSDKMessagingListChannelFlowsRequest;
+@class AWSChimeSDKMessagingListChannelFlowsResponse;
 @class AWSChimeSDKMessagingListChannelMembershipsForAppInstanceUserRequest;
 @class AWSChimeSDKMessagingListChannelMembershipsForAppInstanceUserResponse;
 @class AWSChimeSDKMessagingListChannelMembershipsRequest;
@@ -146,16 +212,37 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @class AWSChimeSDKMessagingListChannelMessagesResponse;
 @class AWSChimeSDKMessagingListChannelModeratorsRequest;
 @class AWSChimeSDKMessagingListChannelModeratorsResponse;
+@class AWSChimeSDKMessagingListChannelsAssociatedWithChannelFlowRequest;
+@class AWSChimeSDKMessagingListChannelsAssociatedWithChannelFlowResponse;
 @class AWSChimeSDKMessagingListChannelsModeratedByAppInstanceUserRequest;
 @class AWSChimeSDKMessagingListChannelsModeratedByAppInstanceUserResponse;
 @class AWSChimeSDKMessagingListChannelsRequest;
 @class AWSChimeSDKMessagingListChannelsResponse;
+@class AWSChimeSDKMessagingListSubChannelsRequest;
+@class AWSChimeSDKMessagingListSubChannelsResponse;
+@class AWSChimeSDKMessagingListTagsForResourceRequest;
+@class AWSChimeSDKMessagingListTagsForResourceResponse;
+@class AWSChimeSDKMessagingMessageAttributeValue;
 @class AWSChimeSDKMessagingMessagingSessionEndpoint;
+@class AWSChimeSDKMessagingProcessor;
+@class AWSChimeSDKMessagingProcessorConfiguration;
+@class AWSChimeSDKMessagingPushNotificationConfiguration;
+@class AWSChimeSDKMessagingPushNotificationPreferences;
+@class AWSChimeSDKMessagingPutChannelMembershipPreferencesRequest;
+@class AWSChimeSDKMessagingPutChannelMembershipPreferencesResponse;
 @class AWSChimeSDKMessagingRedactChannelMessageRequest;
 @class AWSChimeSDKMessagingRedactChannelMessageResponse;
+@class AWSChimeSDKMessagingSearchChannelsRequest;
+@class AWSChimeSDKMessagingSearchChannelsResponse;
+@class AWSChimeSDKMessagingSearchField;
 @class AWSChimeSDKMessagingSendChannelMessageRequest;
 @class AWSChimeSDKMessagingSendChannelMessageResponse;
+@class AWSChimeSDKMessagingSubChannelSummary;
 @class AWSChimeSDKMessagingTag;
+@class AWSChimeSDKMessagingTagResourceRequest;
+@class AWSChimeSDKMessagingUntagResourceRequest;
+@class AWSChimeSDKMessagingUpdateChannelFlowRequest;
+@class AWSChimeSDKMessagingUpdateChannelFlowResponse;
 @class AWSChimeSDKMessagingUpdateChannelMessageRequest;
 @class AWSChimeSDKMessagingUpdateChannelMessageResponse;
 @class AWSChimeSDKMessagingUpdateChannelReadMarkerRequest;
@@ -170,14 +257,42 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 
 
 /**
- <p>The time at which a message was last read.</p>
+ <p>The time at which an <code>AppInstanceUser</code> last marked a channel as read.</p>
  */
 @property (nonatomic, strong) NSDate * _Nullable readMarkerTimestamp;
+
+/**
+ <p>The ID of the SubChannel that the <code>AppInstanceUser</code> is a member of.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
 
 /**
  <p>The type of <code>ChannelMembership</code>.</p>
  */
 @property (nonatomic, assign) AWSChimeSDKMessagingChannelMembershipType types;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingAssociateChannelFlowRequest : AWSRequest
+
+
+/**
+ <p>The ARN of the channel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelArn;
+
+/**
+ <p>The ARN of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelFlowArn;
+
+/**
+ <p>The <code>AppInstanceUserArn</code> of the user making the API call.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable chimeBearer;
 
 @end
 
@@ -203,6 +318,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSArray<AWSChimeSDKMessagingIdentity *> * _Nullable members;
 
 /**
+ <p>The ID of the SubChannel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
+/**
  <p>The membership types set for the channel users.</p>
  */
 @property (nonatomic, assign) AWSChimeSDKMessagingChannelMembershipType types;
@@ -226,7 +346,7 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable errorMessage;
 
 /**
- <p>The ARN of the member that the service couldn't add.</p>
+ <p>The <code>AppInstanceUserArn</code> of the member that the service couldn't add.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable memberArn;
 
@@ -249,9 +369,14 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable chimeBearer;
 
 /**
- <p>The ARNs of the members you want to add to the channel.</p>
+ <p>The <code>AppInstanceUserArn</code>s of the members you want to add to the channel.</p>
  */
 @property (nonatomic, strong) NSArray<NSString *> * _Nullable memberArns;
+
+/**
+ <p>The ID of the SubChannel in the request. </p><note><p>Only required when creating membership in a SubChannel for a moderator in an elastic channel.</p></note>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
 
 /**
  <p>The membership type of a user, <code>DEFAULT</code> or <code>HIDDEN</code>. Default members are always returned as part of <code>ListChannelMemberships</code>. Hidden members are only returned if the type filter in <code>ListChannelMemberships</code> equals <code>HIDDEN</code>. Otherwise hidden members are not returned. This is only supported by moderators.</p>
@@ -290,6 +415,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable channelArn;
 
 /**
+ <p>The ARN of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelFlowArn;
+
+/**
  <p>The <code>AppInstanceUser</code> who created the channel.</p>
  */
 @property (nonatomic, strong) AWSChimeSDKMessagingIdentity * _Nullable createdBy;
@@ -298,6 +428,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  <p>The time at which the <code>AppInstanceUser</code> created the channel.</p>
  */
 @property (nonatomic, strong) NSDate * _Nullable createdTimestamp;
+
+/**
+ <p>The attributes required to configure and create an elastic channel. An elastic channel can support a maximum of 1-million members.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingElasticChannelConfiguration * _Nullable elasticChannelConfiguration;
 
 /**
  <p>The time at which a member sent the last message in the channel.</p>
@@ -321,6 +456,39 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 
 /**
  <p>The name of a channel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable name;
+
+/**
+ <p>The channel's privacy setting.</p>
+ */
+@property (nonatomic, assign) AWSChimeSDKMessagingChannelPrivacy privacy;
+
+@end
+
+/**
+ <p>Summary of details of a channel associated with channel flow.</p>
+ */
+@interface AWSChimeSDKMessagingChannelAssociatedWithFlowSummary : AWSModel
+
+
+/**
+ <p>The ARN of the channel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelArn;
+
+/**
+ <p>The channel's metadata.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable metadata;
+
+/**
+ <p>The mode of the channel.</p>
+ */
+@property (nonatomic, assign) AWSChimeSDKMessagingChannelMode mode;
+
+/**
+ <p>The name of the channel flow.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable name;
 
@@ -373,6 +541,108 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @end
 
 /**
+ <p>The details of a channel flow.</p>
+ */
+@interface AWSChimeSDKMessagingChannelFlow : AWSModel
+
+
+/**
+ <p>The ARN of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelFlowArn;
+
+/**
+ <p>The time at which the channel flow was created.</p>
+ */
+@property (nonatomic, strong) NSDate * _Nullable createdTimestamp;
+
+/**
+ <p>The time at which a channel flow was updated.</p>
+ */
+@property (nonatomic, strong) NSDate * _Nullable lastUpdatedTimestamp;
+
+/**
+ <p>The name of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable name;
+
+/**
+ <p>Information about the processor Lambda functions.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSChimeSDKMessagingProcessor *> * _Nullable processors;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingChannelFlowCallbackRequest : AWSRequest
+
+
+/**
+ <p>The identifier passed to the processor by the service when invoked. Use the identifier to call back the service.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable callbackId;
+
+/**
+ <p>The ARN of the channel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelArn;
+
+/**
+ <p>Stores information about the processed message.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingChannelMessageCallback * _Nullable channelMessage;
+
+/**
+ <p>When a processor determines that a message needs to be <code>DENIED</code>, pass this parameter with a value of true.</p>
+ */
+@property (nonatomic, strong) NSNumber * _Nullable deleteResource;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingChannelFlowCallbackResponse : AWSModel
+
+
+/**
+ <p>The call back ID passed in the request.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable callbackId;
+
+/**
+ <p>The ARN of the channel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelArn;
+
+@end
+
+/**
+ <p>Summary of details of a channel flow.</p>
+ */
+@interface AWSChimeSDKMessagingChannelFlowSummary : AWSModel
+
+
+/**
+ <p>The ARN of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelFlowArn;
+
+/**
+ <p>The name of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable name;
+
+/**
+ <p>Information about the processor Lambda functions.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSChimeSDKMessagingProcessor *> * _Nullable processors;
+
+@end
+
+/**
  <p>The details of a channel member.</p>
  */
 @interface AWSChimeSDKMessagingChannelMembership : AWSModel
@@ -404,6 +674,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) AWSChimeSDKMessagingIdentity * _Nullable member;
 
 /**
+ <p>The ID of the SubChannel that a user belongs to.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
+/**
  <p>The membership type set for the channel member.</p>
  */
 @property (nonatomic, assign) AWSChimeSDKMessagingChannelMembershipType types;
@@ -425,6 +700,19 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  <p>Returns the channel data for an <code>AppInstance</code>.</p>
  */
 @property (nonatomic, strong) AWSChimeSDKMessagingChannelSummary * _Nullable channelSummary;
+
+@end
+
+/**
+ <p>The channel membership preferences for an <code>AppInstanceUser</code>.</p>
+ */
+@interface AWSChimeSDKMessagingChannelMembershipPreferences : AWSModel
+
+
+/**
+ <p>The push notification configuration of a message.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingPushNotificationPreferences * _Nullable pushNotifications;
 
 @end
 
@@ -473,6 +761,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSDate * _Nullable lastUpdatedTimestamp;
 
 /**
+ <p>The attributes for the message, used for message filtering along with a <code>FilterRule</code> defined in the <code>PushNotificationPreferences</code>.</p>
+ */
+@property (nonatomic, strong) NSDictionary<NSString *, AWSChimeSDKMessagingMessageAttributeValue *> * _Nullable messageAttributes;
+
+/**
  <p>The ID of a message.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable messageId;
@@ -498,9 +791,76 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) AWSChimeSDKMessagingIdentity * _Nullable sender;
 
 /**
+ <p>The status of the channel message.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingChannelMessageStatusStructure * _Nullable status;
+
+/**
+ <p>The ID of the SubChannel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
+/**
  <p>The message type.</p>
  */
 @property (nonatomic, assign) AWSChimeSDKMessagingChannelMessageType types;
+
+@end
+
+/**
+ <p>Stores information about a callback.</p>
+ Required parameters: [MessageId]
+ */
+@interface AWSChimeSDKMessagingChannelMessageCallback : AWSModel
+
+
+/**
+ <p>The message content.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable content;
+
+/**
+ <p>The attributes for the message, used for message filtering along with a <code>FilterRule</code> defined in the <code>PushNotificationPreferences</code>. </p>
+ */
+@property (nonatomic, strong) NSDictionary<NSString *, AWSChimeSDKMessagingMessageAttributeValue *> * _Nullable messageAttributes;
+
+/**
+ <p>The message ID.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable messageId;
+
+/**
+ <p>The message metadata.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable metadata;
+
+/**
+ <p>The push notification configuration of the message.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingPushNotificationConfiguration * _Nullable pushNotification;
+
+/**
+ <p>The ID of the SubChannel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
+@end
+
+/**
+ <p>Stores information about a message status.</p>
+ */
+@interface AWSChimeSDKMessagingChannelMessageStatusStructure : AWSModel
+
+
+/**
+ <p>Contains more details about the messasge status.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable detail;
+
+/**
+ <p>The message status value.</p>
+ */
+@property (nonatomic, assign) AWSChimeSDKMessagingChannelMessageStatus value;
 
 @end
 
@@ -531,6 +891,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSDate * _Nullable lastUpdatedTimestamp;
 
 /**
+ <p>The message attribues listed in a the summary of a channel message.</p>
+ */
+@property (nonatomic, strong) NSDictionary<NSString *, AWSChimeSDKMessagingMessageAttributeValue *> * _Nullable messageAttributes;
+
+/**
  <p>The ID of the message.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable messageId;
@@ -549,6 +914,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  <p>The message sender.</p>
  */
 @property (nonatomic, strong) AWSChimeSDKMessagingIdentity * _Nullable sender;
+
+/**
+ <p>The message status. The status value is <code>SENT</code> for messages sent to a channel without a channel flow. For channels associated with channel flow, the value determines the processing stage.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingChannelMessageStatusStructure * _Nullable status;
 
 /**
  <p>The type of message.</p>
@@ -623,7 +993,7 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable channelArn;
 
 /**
- <p>The time at which the last message in a channel was sent.</p>
+ <p>The time at which the last persistent message in a channel was sent.</p>
  */
 @property (nonatomic, strong) NSDate * _Nullable lastMessageTimestamp;
 
@@ -666,7 +1036,7 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable chimeBearer;
 
 /**
- <p>The ARN of the member being banned.</p>
+ <p>The <code>AppInstanceUserArn</code> of the member being banned.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable memberArn;
 
@@ -693,6 +1063,52 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 /**
  
  */
+@interface AWSChimeSDKMessagingCreateChannelFlowRequest : AWSRequest
+
+
+/**
+ <p>The ARN of the channel flow request.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable appInstanceArn;
+
+/**
+ <p>The client token for the request. An Idempotency token.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable clientRequestToken;
+
+/**
+ <p>The name of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable name;
+
+/**
+ <p>Information about the processor Lambda functions.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSChimeSDKMessagingProcessor *> * _Nullable processors;
+
+/**
+ <p>The tags for the creation request.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSChimeSDKMessagingTag *> * _Nullable tags;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingCreateChannelFlowResponse : AWSModel
+
+
+/**
+ <p>The ARN of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelFlowArn;
+
+@end
+
+/**
+ 
+ */
 @interface AWSChimeSDKMessagingCreateChannelMembershipRequest : AWSRequest
 
 
@@ -707,9 +1123,14 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable chimeBearer;
 
 /**
- <p>The ARN of the member you want to add to the channel.</p>
+ <p>The <code>AppInstanceUserArn</code> of the member you want to add to the channel.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable memberArn;
+
+/**
+ <p>The ID of the SubChannel in the request.</p><note><p>Only required when creating membership in a SubChannel for a moderator in an elastic channel.</p></note>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
 
 /**
  <p>The membership type of a user, <code>DEFAULT</code> or <code>HIDDEN</code>. Default members are always returned as part of <code>ListChannelMemberships</code>. Hidden members are only returned if the type filter in <code>ListChannelMemberships</code> equals <code>HIDDEN</code>. Otherwise hidden members are not returned. This is only supported by moderators.</p>
@@ -734,6 +1155,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  */
 @property (nonatomic, strong) AWSChimeSDKMessagingIdentity * _Nullable member;
 
+/**
+ <p>The ID of the SubChannel in the response.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
 @end
 
 /**
@@ -748,7 +1174,7 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable channelArn;
 
 /**
- <p>The ARN of the moderator.</p>
+ <p>The <code>AppInstanceUserArn</code> of the moderator.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable channelModeratorArn;
 
@@ -789,6 +1215,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable appInstanceArn;
 
 /**
+ <p>The ID of the channel in the request.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelId;
+
+/**
  <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable chimeBearer;
@@ -799,6 +1230,16 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable clientRequestToken;
 
 /**
+ <p>The attributes required to configure and create an elastic channel. An elastic channel can support a maximum of 1-million users, excluding moderators.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingElasticChannelConfiguration * _Nullable elasticChannelConfiguration;
+
+/**
+ <p>The ARNs of the channel members in the request.</p>
+ */
+@property (nonatomic, strong) NSArray<NSString *> * _Nullable memberArns;
+
+/**
  <p>The metadata of the creation request. Limited to 1KB and UTF-8.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable metadata;
@@ -807,6 +1248,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  <p>The channel mode: <code>UNRESTRICTED</code> or <code>RESTRICTED</code>. Administrators, moderators, and channel members can add themselves and other members to unrestricted channels. Only administrators and moderators can add members to restricted channels.</p>
  */
 @property (nonatomic, assign) AWSChimeSDKMessagingChannelMode mode;
+
+/**
+ <p>The ARNs of the channel moderators in the request.</p>
+ */
+@property (nonatomic, strong) NSArray<NSString *> * _Nullable moderatorArns;
 
 /**
  <p>The name of the channel.</p>
@@ -864,6 +1310,19 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 /**
  
  */
+@interface AWSChimeSDKMessagingDeleteChannelFlowRequest : AWSRequest
+
+
+/**
+ <p>The ARN of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelFlowArn;
+
+@end
+
+/**
+ 
+ */
 @interface AWSChimeSDKMessagingDeleteChannelMembershipRequest : AWSRequest
 
 
@@ -878,9 +1337,14 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable chimeBearer;
 
 /**
- <p>The ARN of the member that you're removing from the channel.</p>
+ <p>The <code>AppInstanceUserArn</code> of the member that you're removing from the channel.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable memberArn;
+
+/**
+ <p>The ID of the SubChannel in the request.</p><note><p>Only for use by moderators.</p></note>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
 
 @end
 
@@ -905,6 +1369,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  */
 @property (nonatomic, strong) NSString * _Nullable messageId;
 
+/**
+ <p>The ID of the SubChannel in the request.</p><note><p>Only required when deleting messages in a SubChannel that the user belongs to.</p></note>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
 @end
 
 /**
@@ -919,7 +1388,7 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable channelArn;
 
 /**
- <p>The ARN of the moderator being deleted.</p>
+ <p>The <code>AppInstanceUserArn</code> of the moderator being deleted.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable channelModeratorArn;
 
@@ -946,6 +1415,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  */
 @property (nonatomic, strong) NSString * _Nullable chimeBearer;
 
+/**
+ <p>The ID of the SubChannel in the request.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
 @end
 
 /**
@@ -965,7 +1439,7 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable chimeBearer;
 
 /**
- <p>The ARN of the member being banned.</p>
+ <p>The <code>AppInstanceUserArn</code> of the member being banned.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable memberArn;
 
@@ -981,6 +1455,32 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  <p>The details of the ban.</p>
  */
 @property (nonatomic, strong) AWSChimeSDKMessagingChannelBan * _Nullable channelBan;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingDescribeChannelFlowRequest : AWSRequest
+
+
+/**
+ <p>The ARN of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelFlowArn;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingDescribeChannelFlowResponse : AWSModel
+
+
+/**
+ <p>The channel flow details.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingChannelFlow * _Nullable channelFlow;
 
 @end
 
@@ -1037,9 +1537,14 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable chimeBearer;
 
 /**
- <p>The ARN of the member.</p>
+ <p>The <code>AppInstanceUserArn</code> of the member.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable memberArn;
+
+/**
+ <p>The ID of the SubChannel in the request. The response contains an <code>ElasticChannelConfiguration</code> object.</p><note><p>Only required to get a user’s SubChannel membership details.</p></note>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
 
 @end
 
@@ -1104,7 +1609,7 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable channelArn;
 
 /**
- <p>The ARN of the channel moderator.</p>
+ <p>The <code>AppInstanceUserArn</code> of the channel moderator.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable channelModeratorArn;
 
@@ -1162,6 +1667,99 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 /**
  
  */
+@interface AWSChimeSDKMessagingDisassociateChannelFlowRequest : AWSRequest
+
+
+/**
+ <p>The ARN of the channel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelArn;
+
+/**
+ <p>The ARN of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelFlowArn;
+
+/**
+ <p>The <code>AppInstanceUserArn</code> of the user making the API call.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable chimeBearer;
+
+@end
+
+/**
+ <p>The attributes required to configure and create an elastic channel. An elastic channel can support a maximum of 1-million members.</p>
+ Required parameters: [MaximumSubChannels, TargetMembershipsPerSubChannel, MinimumMembershipPercentage]
+ */
+@interface AWSChimeSDKMessagingElasticChannelConfiguration : AWSModel
+
+
+/**
+ <p>The maximum number of SubChannels that you want to allow in the elastic channel.</p>
+ */
+@property (nonatomic, strong) NSNumber * _Nullable maximumSubChannels;
+
+/**
+ <p>The minimum allowed percentage of TargetMembershipsPerSubChannel users. Ceil of the calculated value is used in balancing members among SubChannels of the elastic channel.</p>
+ */
+@property (nonatomic, strong) NSNumber * _Nullable minimumMembershipPercentage;
+
+/**
+ <p>The maximum number of members allowed in a SubChannel.</p>
+ */
+@property (nonatomic, strong) NSNumber * _Nullable targetMembershipsPerSubChannel;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingGetChannelMembershipPreferencesRequest : AWSRequest
+
+
+/**
+ <p>The ARN of the channel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelArn;
+
+/**
+ <p>The <code>AppInstanceUserARN</code> of the user making the API call.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable chimeBearer;
+
+/**
+ <p>The <code>AppInstanceUserArn</code> of the member retrieving the preferences.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable memberArn;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingGetChannelMembershipPreferencesResponse : AWSModel
+
+
+/**
+ <p>The ARN of the channel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelArn;
+
+/**
+ <p>The details of a user.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingIdentity * _Nullable member;
+
+/**
+ <p>The channel membership preferences for an <code>AppInstanceUser</code> .</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingChannelMembershipPreferences * _Nullable preferences;
+
+@end
+
+/**
+ 
+ */
 @interface AWSChimeSDKMessagingGetChannelMessageRequest : AWSRequest
 
 
@@ -1180,6 +1778,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  */
 @property (nonatomic, strong) NSString * _Nullable messageId;
 
+/**
+ <p>The ID of the SubChannel in the request.</p><note><p>Only required when getting messages in a SubChannel that the user belongs to.</p></note>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
 @end
 
 /**
@@ -1192,6 +1795,47 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  <p>The details of and content in the message.</p>
  */
 @property (nonatomic, strong) AWSChimeSDKMessagingChannelMessage * _Nullable channelMessage;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingGetChannelMessageStatusRequest : AWSRequest
+
+
+/**
+ <p>The ARN of the channel</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelArn;
+
+/**
+ <p>The <code>AppInstanceUserArn</code> of the user making the API call.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable chimeBearer;
+
+/**
+ <p>The ID of the message.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable messageId;
+
+/**
+ <p>The ID of the SubChannel in the request.</p><note><p>Only required when getting message status in a SubChannel that the user belongs to.</p></note>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingGetChannelMessageStatusResponse : AWSModel
+
+
+/**
+ <p>The message status and details.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingChannelMessageStatusStructure * _Nullable status;
 
 @end
 
@@ -1231,6 +1875,25 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  <p>The name in an Identity.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable name;
+
+@end
+
+/**
+ <p>Stores metadata about a Lambda processor.</p>
+ Required parameters: [ResourceArn, InvocationType]
+ */
+@interface AWSChimeSDKMessagingLambdaConfiguration : AWSModel
+
+
+/**
+ <p>Controls how the Lambda function is invoked.</p>
+ */
+@property (nonatomic, assign) AWSChimeSDKMessagingInvocationType invocationType;
+
+/**
+ <p>The ARN of the Lambda message processing function.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable resourceArn;
 
 @end
 
@@ -1288,6 +1951,47 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 /**
  
  */
+@interface AWSChimeSDKMessagingListChannelFlowsRequest : AWSRequest
+
+
+/**
+ <p>The ARN of the app instance.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable appInstanceArn;
+
+/**
+ <p>The maximum number of channel flows that you want to return.</p>
+ */
+@property (nonatomic, strong) NSNumber * _Nullable maxResults;
+
+/**
+ <p>The token passed by previous API calls until all requested channel flows are returned.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable nextToken;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingListChannelFlowsResponse : AWSModel
+
+
+/**
+ <p>The information about each channel flow.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSChimeSDKMessagingChannelFlowSummary *> * _Nullable channelFlows;
+
+/**
+ <p>The token passed by previous API calls until all requested channels are returned.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable nextToken;
+
+@end
+
+/**
+ 
+ */
 @interface AWSChimeSDKMessagingListChannelMembershipsForAppInstanceUserRequest : AWSRequest
 
 
@@ -1320,7 +2024,7 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 
 
 /**
- <p>The token passed by previous API calls until all requested users are returned.</p>
+ <p>The information for the requested channel memberships.</p>
  */
 @property (nonatomic, strong) NSArray<AWSChimeSDKMessagingChannelMembershipForAppInstanceUserSummary *> * _Nullable channelMemberships;
 
@@ -1358,7 +2062,12 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable nextToken;
 
 /**
- <p>The membership type of a user, <code>DEFAULT</code> or <code>HIDDEN</code>. Default members are always returned as part of <code>ListChannelMemberships</code>. Hidden members are only returned if the type filter in <code>ListChannelMemberships</code> equals <code>HIDDEN</code>. Otherwise hidden members are not returned.</p>
+ <p>The ID of the SubChannel in the request.</p><note><p>Only required when listing a user's memberships in a particular sub-channel of an elastic channel.</p></note>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
+/**
+ <p>The membership type of a user, <code>DEFAULT</code> or <code>HIDDEN</code>. Default members are returned as part of <code>ListChannelMemberships</code> if no type is specified. Hidden members are only returned if the type filter in <code>ListChannelMemberships</code> equals <code>HIDDEN</code>.</p>
  */
 @property (nonatomic, assign) AWSChimeSDKMessagingChannelMembershipType types;
 
@@ -1428,6 +2137,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  */
 @property (nonatomic, assign) AWSChimeSDKMessagingSortOrder sortOrder;
 
+/**
+ <p>The ID of the SubChannel in the request.</p><note><p>Only required when listing the messages in a SubChannel that the user belongs to.</p></note>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
 @end
 
 /**
@@ -1450,6 +2164,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  <p>The token passed by previous API calls until all requested messages are returned.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable nextToken;
+
+/**
+ <p>The ID of the SubChannel in the response.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
 
 @end
 
@@ -1499,6 +2218,47 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 
 /**
  <p>The token passed by previous API calls until all requested moderators are returned.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable nextToken;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingListChannelsAssociatedWithChannelFlowRequest : AWSRequest
+
+
+/**
+ <p>The ARN of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelFlowArn;
+
+/**
+ <p>The maximum number of channels that you want to return.</p>
+ */
+@property (nonatomic, strong) NSNumber * _Nullable maxResults;
+
+/**
+ <p>The token passed by previous API calls until all requested channels are returned.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable nextToken;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingListChannelsAssociatedWithChannelFlowResponse : AWSModel
+
+
+/**
+ <p>The information about each channel.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSChimeSDKMessagingChannelAssociatedWithFlowSummary *> * _Nullable channels;
+
+/**
+ <p>The token passed by previous API calls until all requested channels are returned.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable nextToken;
 
@@ -1602,6 +2362,96 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @end
 
 /**
+ 
+ */
+@interface AWSChimeSDKMessagingListSubChannelsRequest : AWSRequest
+
+
+/**
+ <p>The ARN of elastic channel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelArn;
+
+/**
+ <p>The <code>AppInstanceUserArn</code> of the user making the API call.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable chimeBearer;
+
+/**
+ <p>The maximum number of sub-channels that you want to return.</p>
+ */
+@property (nonatomic, strong) NSNumber * _Nullable maxResults;
+
+/**
+ <p>The token passed by previous API calls until all requested sub-channels are returned.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable nextToken;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingListSubChannelsResponse : AWSModel
+
+
+/**
+ <p>The ARN of elastic channel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelArn;
+
+/**
+ <p>The token passed by previous API calls until all requested sub-channels are returned.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable nextToken;
+
+/**
+ <p>The information about each sub-channel.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSChimeSDKMessagingSubChannelSummary *> * _Nullable subChannels;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingListTagsForResourceRequest : AWSRequest
+
+
+/**
+ <p>The ARN of the resource.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable resourceARN;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingListTagsForResourceResponse : AWSModel
+
+
+/**
+ <p>The tag key-value pairs.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSChimeSDKMessagingTag *> * _Nullable tags;
+
+@end
+
+/**
+ <p>A list of message attribute values.</p>
+ */
+@interface AWSChimeSDKMessagingMessageAttributeValue : AWSModel
+
+
+/**
+ <p>The strings in a message attribute value.</p>
+ */
+@property (nonatomic, strong) NSArray<NSString *> * _Nullable stringValues;
+
+@end
+
+/**
  <p>The websocket endpoint used to connect to Amazon Chime SDK messaging.</p>
  */
 @interface AWSChimeSDKMessagingMessagingSessionEndpoint : AWSModel
@@ -1611,6 +2461,142 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  <p>The endpoint to which you establish a websocket connection.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable url;
+
+@end
+
+/**
+ <p>The information about a processor in a channel flow.</p>
+ Required parameters: [Name, Configuration, ExecutionOrder, FallbackAction]
+ */
+@interface AWSChimeSDKMessagingProcessor : AWSModel
+
+
+/**
+ <p>The information about the type of processor and its identifier.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingProcessorConfiguration * _Nullable configuration;
+
+/**
+ <p>The sequence in which processors run. If you have multiple processors in a channel flow, message processing goes through each processor in the sequence. The value determines the sequence. At this point, we support only 1 processor within a flow.</p>
+ */
+@property (nonatomic, strong) NSNumber * _Nullable executionOrder;
+
+/**
+ <p>Determines whether to continue with message processing or stop it in cases where communication with a processor fails. If a processor has a fallback action of <code>ABORT</code> and communication with it fails, the processor sets the message status to <code>FAILED</code> and does not send the message to any recipients. Note that if the last processor in the channel flow sequence has a fallback action of <code>CONTINUE</code> and communication with the processor fails, then the message is considered processed and sent to recipients of the channel.</p>
+ */
+@property (nonatomic, assign) AWSChimeSDKMessagingFallbackAction fallbackAction;
+
+/**
+ <p>The name of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable name;
+
+@end
+
+/**
+ <p>A processor's metadata.</p>
+ Required parameters: [Lambda]
+ */
+@interface AWSChimeSDKMessagingProcessorConfiguration : AWSModel
+
+
+/**
+ <p>Indicates that the processor is of type Lambda.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingLambdaConfiguration * _Nullable lambda;
+
+@end
+
+/**
+ <p>The push notification configuration of the message.</p>
+ */
+@interface AWSChimeSDKMessagingPushNotificationConfiguration : AWSModel
+
+
+/**
+ <p>The body of the push notification.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable body;
+
+/**
+ <p>The title of the push notification.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable title;
+
+/**
+ <p>Enum value that indicates the type of the push notification for a message. <code>DEFAULT</code>: Normal mobile push notification. <code>VOIP</code>: VOIP mobile push notification.</p>
+ */
+@property (nonatomic, assign) AWSChimeSDKMessagingPushNotificationType types;
+
+@end
+
+/**
+ <p>The channel membership preferences for push notification.</p>
+ Required parameters: [AllowNotifications]
+ */
+@interface AWSChimeSDKMessagingPushNotificationPreferences : AWSModel
+
+
+/**
+ <p>Enum value that indicates which push notifications to send to the requested member of a channel. <code>ALL</code> sends all push notifications, <code>NONE</code> sends no push notifications, <code>FILTERED</code> sends only filtered push notifications. </p>
+ */
+@property (nonatomic, assign) AWSChimeSDKMessagingAllowNotifications allowNotifications;
+
+/**
+ <p>The simple JSON object used to send a subset of a push notification to the requested member.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable filterRule;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingPutChannelMembershipPreferencesRequest : AWSRequest
+
+
+/**
+ <p>The ARN of the channel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelArn;
+
+/**
+ <p>The <code>AppInstanceUserARN</code> of the user making the API call.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable chimeBearer;
+
+/**
+ <p>The <code>AppInstanceUserArn</code> of the member setting the preferences.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable memberArn;
+
+/**
+ <p>The channel membership preferences of an <code>AppInstanceUser</code> .</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingChannelMembershipPreferences * _Nullable preferences;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingPutChannelMembershipPreferencesResponse : AWSModel
+
+
+/**
+ <p>The ARN of the channel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelArn;
+
+/**
+ <p>The details of a user.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingIdentity * _Nullable member;
+
+/**
+ <p>The ARN and metadata of the member being added.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingChannelMembershipPreferences * _Nullable preferences;
 
 @end
 
@@ -1635,6 +2621,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  */
 @property (nonatomic, strong) NSString * _Nullable messageId;
 
+/**
+ <p>The ID of the SubChannel in the request.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
 @end
 
 /**
@@ -1652,6 +2643,81 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  <p>The ID of the message being redacted.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable messageId;
+
+/**
+ <p>The ID of the SubChannel in the response.</p><note><p>Only required when redacting messages in a SubChannel that the user belongs to.</p></note>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingSearchChannelsRequest : AWSRequest
+
+
+/**
+ <p>The <code>AppInstanceUserArn</code> of the user making the API call.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable chimeBearer;
+
+/**
+ <p>A list of the <code>Field</code> objects in the channel being searched.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSChimeSDKMessagingSearchField *> * _Nullable fields;
+
+/**
+ <p>The maximum number of channels that you want returned.</p>
+ */
+@property (nonatomic, strong) NSNumber * _Nullable maxResults;
+
+/**
+ <p>The token returned from previous API requests until the number of channels is reached.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable nextToken;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingSearchChannelsResponse : AWSModel
+
+
+/**
+ <p>A list of the channels in the request.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSChimeSDKMessagingChannelSummary *> * _Nullable channels;
+
+/**
+ <p>The token returned from previous API responses until the number of channels is reached.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable nextToken;
+
+@end
+
+/**
+ <p>A <code>Field</code> of the channel that you want to search.</p>
+ Required parameters: [Key, Values, Operator]
+ */
+@interface AWSChimeSDKMessagingSearchField : AWSModel
+
+
+/**
+ <p>An <code>enum</code> value that indicates the key to search the channel on. <code>MEMBERS</code> allows you to search channels based on memberships. You can use it with the <code>EQUALS</code> operator to get channels whose memberships are equal to the specified values, and with the <code>INCLUDES</code> operator to get channels whose memberships include the specified values.</p>
+ */
+@property (nonatomic, assign) AWSChimeSDKMessagingSearchFieldKey key;
+
+/**
+ <p>The operator used to compare field values, currently <code>EQUALS</code> or <code>INCLUDES</code>. Use the <code>EQUALS</code> operator to find channels whose memberships equal the specified values. Use the <code>INCLUDES</code> operator to find channels whose memberships include the specified values.</p>
+ */
+@property (nonatomic, assign) AWSChimeSDKMessagingSearchFieldOperator operator;
+
+/**
+ <p>The values that you want to search for, a list of strings. The values must be <code>AppInstanceUserArns</code> specified as a list of strings.</p><note><p>This operation isn't supported for <code>AppInstanceUsers</code> with large number of memberships.</p></note>
+ */
+@property (nonatomic, strong) NSArray<NSString *> * _Nullable values;
 
 @end
 
@@ -1682,6 +2748,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
 @property (nonatomic, strong) NSString * _Nullable content;
 
 /**
+ <p>The attributes for the message, used for message filtering along with a <code>FilterRule</code> defined in the <code>PushNotificationPreferences</code>.</p>
+ */
+@property (nonatomic, strong) NSDictionary<NSString *, AWSChimeSDKMessagingMessageAttributeValue *> * _Nullable messageAttributes;
+
+/**
  <p>The optional metadata for each message.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable metadata;
@@ -1690,6 +2761,16 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  <p>Boolean that controls whether the message is persisted on the back end. Required.</p>
  */
 @property (nonatomic, assign) AWSChimeSDKMessagingChannelMessagePersistenceType persistence;
+
+/**
+ <p>The push notification configuration of the message.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingPushNotificationConfiguration * _Nullable pushNotification;
+
+/**
+ <p>The ID of the SubChannel in the request.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
 
 /**
  <p>The type of message, <code>STANDARD</code> or <code>CONTROL</code>.</p>
@@ -1714,24 +2795,124 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  */
 @property (nonatomic, strong) NSString * _Nullable messageId;
 
+/**
+ <p>The status of the channel message.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingChannelMessageStatusStructure * _Nullable status;
+
+/**
+ <p>The ID of the SubChannel in the response.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
 @end
 
 /**
- <p>Describes a tag applied to a resource.</p>
+ <p>Summary of the sub-channels associated with the elastic channel.</p>
+ */
+@interface AWSChimeSDKMessagingSubChannelSummary : AWSModel
+
+
+/**
+ <p>The number of members in a SubChannel.</p>
+ */
+@property (nonatomic, strong) NSNumber * _Nullable membershipCount;
+
+/**
+ <p>The unique ID of a SubChannel.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
+@end
+
+/**
+ <p>A tag object containing a key-value pair.</p>
  Required parameters: [Key, Value]
  */
 @interface AWSChimeSDKMessagingTag : AWSModel
 
 
 /**
- <p>The key of the tag.</p>
+ <p>The key in a tag.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable key;
 
 /**
- <p>The value of the tag.</p>
+ <p>The value in a tag.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable value;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingTagResourceRequest : AWSRequest
+
+
+/**
+ <p>The resource ARN.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable resourceARN;
+
+/**
+ <p>The tag key-value pairs.</p>
+ */
+@property (nonatomic, strong) NSArray<AWSChimeSDKMessagingTag *> * _Nullable tags;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingUntagResourceRequest : AWSRequest
+
+
+/**
+ <p>The resource ARN.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable resourceARN;
+
+/**
+ <p>The tag keys.</p>
+ */
+@property (nonatomic, strong) NSArray<NSString *> * _Nullable tagKeys;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingUpdateChannelFlowRequest : AWSRequest
+
+
+/**
+ <p>The ARN of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelFlowArn;
+
+/**
+ <p>The name of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable name;
+
+/**
+ <p>Information about the processor Lambda functions </p>
+ */
+@property (nonatomic, strong) NSArray<AWSChimeSDKMessagingProcessor *> * _Nullable processors;
+
+@end
+
+/**
+ 
+ */
+@interface AWSChimeSDKMessagingUpdateChannelFlowResponse : AWSModel
+
+
+/**
+ <p>The ARN of the channel flow.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable channelFlowArn;
 
 @end
 
@@ -1766,6 +2947,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  */
 @property (nonatomic, strong) NSString * _Nullable metadata;
 
+/**
+ <p>The ID of the SubChannel in the request.</p><note><p>Only required when updating messages in a SubChannel that the user belongs to.</p></note>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
 @end
 
 /**
@@ -1783,6 +2969,16 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  <p>The ID string of the message being updated.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable messageId;
+
+/**
+ <p>The status of the message update.</p>
+ */
+@property (nonatomic, strong) AWSChimeSDKMessagingChannelMessageStatusStructure * _Nullable status;
+
+/**
+ <p>The ID of the SubChannel in the response.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
 
 @end
 
@@ -1802,6 +2998,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  */
 @property (nonatomic, strong) NSString * _Nullable chimeBearer;
 
+/**
+ <p>The ID of the SubChannel in the request.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
+
 @end
 
 /**
@@ -1814,6 +3015,11 @@ typedef NS_ENUM(NSInteger, AWSChimeSDKMessagingSortOrder) {
  <p>The ARN of the channel.</p>
  */
 @property (nonatomic, strong) NSString * _Nullable channelArn;
+
+/**
+ <p>The ID of the SubChannel in the response.</p>
+ */
+@property (nonatomic, strong) NSString * _Nullable subChannelId;
 
 @end
 

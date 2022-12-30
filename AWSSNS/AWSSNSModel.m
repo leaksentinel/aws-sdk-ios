@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -30,6 +30,23 @@ NSString *const AWSSNSErrorDomain = @"com.amazonaws.AWSSNSErrorDomain";
              @"actionName" : @"ActionName",
              @"label" : @"Label",
              @"topicArn" : @"TopicArn",
+             };
+}
+
+@end
+
+@implementation AWSSNSBatchResultErrorEntry
+
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+	return @{
+             @"code" : @"Code",
+             @"identifier" : @"Id",
+             @"message" : @"Message",
+             @"senderFault" : @"SenderFault",
              };
 }
 
@@ -262,6 +279,7 @@ NSString *const AWSSNSErrorDomain = @"com.amazonaws.AWSSNSErrorDomain";
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
 	return @{
              @"attributes" : @"Attributes",
+             @"dataProtectionPolicy" : @"DataProtectionPolicy",
              @"name" : @"Name",
              @"tags" : @"Tags",
              };
@@ -361,6 +379,34 @@ NSString *const AWSSNSErrorDomain = @"com.amazonaws.AWSSNSErrorDomain";
 	return @{
              @"attributes" : @"Attributes",
              @"endpointArn" : @"EndpointArn",
+             };
+}
+
+@end
+
+@implementation AWSSNSGetDataProtectionPolicyInput
+
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+	return @{
+             @"resourceArn" : @"ResourceArn",
+             };
+}
+
+@end
+
+@implementation AWSSNSGetDataProtectionPolicyResponse
+
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+	return @{
+             @"dataProtectionPolicy" : @"DataProtectionPolicy",
              };
 }
 
@@ -930,6 +976,92 @@ return [date aws_stringValue:AWSDateISO8601DateFormat1];
 
 @end
 
+@implementation AWSSNSPublishBatchInput
+
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+	return @{
+             @"publishBatchRequestEntries" : @"PublishBatchRequestEntries",
+             @"topicArn" : @"TopicArn",
+             };
+}
+
++ (NSValueTransformer *)publishBatchRequestEntriesJSONTransformer {
+    return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSSNSPublishBatchRequestEntry class]];
+}
+
+@end
+
+@implementation AWSSNSPublishBatchRequestEntry
+
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+	return @{
+             @"identifier" : @"Id",
+             @"message" : @"Message",
+             @"messageAttributes" : @"MessageAttributes",
+             @"messageDeduplicationId" : @"MessageDeduplicationId",
+             @"messageGroupId" : @"MessageGroupId",
+             @"messageStructure" : @"MessageStructure",
+             @"subject" : @"Subject",
+             };
+}
+
++ (NSValueTransformer *)messageAttributesJSONTransformer {
+    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(id JSONDictionary) {
+        return [AWSModelUtility mapMTLDictionaryFromJSONDictionary:JSONDictionary withModelClass:[AWSSNSMessageAttributeValue class]];
+    } reverseBlock:^id(id mapMTLDictionary) {
+        return [AWSModelUtility JSONDictionaryFromMapMTLDictionary:mapMTLDictionary];
+    }];
+}
+
+@end
+
+@implementation AWSSNSPublishBatchResponse
+
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+	return @{
+             @"failed" : @"Failed",
+             @"successful" : @"Successful",
+             };
+}
+
++ (NSValueTransformer *)failedJSONTransformer {
+    return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSSNSBatchResultErrorEntry class]];
+}
+
++ (NSValueTransformer *)successfulJSONTransformer {
+    return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSSNSPublishBatchResultEntry class]];
+}
+
+@end
+
+@implementation AWSSNSPublishBatchResultEntry
+
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+	return @{
+             @"identifier" : @"Id",
+             @"messageId" : @"MessageId",
+             @"sequenceNumber" : @"SequenceNumber",
+             };
+}
+
+@end
+
 @implementation AWSSNSPublishInput
 
 + (BOOL)supportsSecureCoding {
@@ -970,6 +1102,21 @@ return [date aws_stringValue:AWSDateISO8601DateFormat1];
 	return @{
              @"messageId" : @"MessageId",
              @"sequenceNumber" : @"SequenceNumber",
+             };
+}
+
+@end
+
+@implementation AWSSNSPutDataProtectionPolicyInput
+
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+	return @{
+             @"dataProtectionPolicy" : @"DataProtectionPolicy",
+             @"resourceArn" : @"ResourceArn",
              };
 }
 

@@ -1,5 +1,5 @@
 //
-// Copyright 2010-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2010-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License").
 // You may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@
 #import "AWSLocationResources.h"
 
 static NSString *const AWSInfoLocation = @"Location";
-NSString *const AWSLocationSDKVersion = @"2.24.5";
+NSString *const AWSLocationSDKVersion = @"2.28.5";
 
 
 @interface AWSLocationResponseSerializer : AWSJSONResponseSerializer
@@ -456,6 +456,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
      completionHandler:(void (^)(AWSLocationCalculateRouteResponse *response, NSError *error))completionHandler {
     [[self calculateRoute:request] continueWithBlock:^id _Nullable(AWSTask<AWSLocationCalculateRouteResponse *> * _Nonnull task) {
         AWSLocationCalculateRouteResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSLocationCalculateRouteMatrixResponse *> *)calculateRouteMatrix:(AWSLocationCalculateRouteMatrixRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@"/routes/v0/calculators/{CalculatorName}/calculate/route-matrix"
+                  targetPrefix:@""
+                 operationName:@"CalculateRouteMatrix"
+                   outputClass:[AWSLocationCalculateRouteMatrixResponse class]];
+}
+
+- (void)calculateRouteMatrix:(AWSLocationCalculateRouteMatrixRequest *)request
+     completionHandler:(void (^)(AWSLocationCalculateRouteMatrixResponse *response, NSError *error))completionHandler {
+    [[self calculateRouteMatrix:request] continueWithBlock:^id _Nullable(AWSTask<AWSLocationCalculateRouteMatrixResponse *> * _Nonnull task) {
+        AWSLocationCalculateRouteMatrixResponse *result = task.result;
         NSError *error = task.error;
 
         if (completionHandler) {
@@ -995,6 +1018,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
+- (AWSTask<AWSLocationGetPlaceResponse *> *)getPlace:(AWSLocationGetPlaceRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodGET
+                     URLString:@"/places/v0/indexes/{IndexName}/places/{PlaceId}"
+                  targetPrefix:@""
+                 operationName:@"GetPlace"
+                   outputClass:[AWSLocationGetPlaceResponse class]];
+}
+
+- (void)getPlace:(AWSLocationGetPlaceRequest *)request
+     completionHandler:(void (^)(AWSLocationGetPlaceResponse *response, NSError *error))completionHandler {
+    [[self getPlace:request] continueWithBlock:^id _Nullable(AWSTask<AWSLocationGetPlaceResponse *> * _Nonnull task) {
+        AWSLocationGetPlaceResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
 - (AWSTask<AWSLocationListDevicePositionsResponse *> *)listDevicePositions:(AWSLocationListDevicePositionsRequest *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -1238,6 +1284,29 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
      completionHandler:(void (^)(AWSLocationSearchPlaceIndexForPositionResponse *response, NSError *error))completionHandler {
     [[self searchPlaceIndexForPosition:request] continueWithBlock:^id _Nullable(AWSTask<AWSLocationSearchPlaceIndexForPositionResponse *> * _Nonnull task) {
         AWSLocationSearchPlaceIndexForPositionResponse *result = task.result;
+        NSError *error = task.error;
+
+        if (completionHandler) {
+            completionHandler(result, error);
+        }
+
+        return nil;
+    }];
+}
+
+- (AWSTask<AWSLocationSearchPlaceIndexForSuggestionsResponse *> *)searchPlaceIndexForSuggestions:(AWSLocationSearchPlaceIndexForSuggestionsRequest *)request {
+    return [self invokeRequest:request
+                    HTTPMethod:AWSHTTPMethodPOST
+                     URLString:@"/places/v0/indexes/{IndexName}/search/suggestions"
+                  targetPrefix:@""
+                 operationName:@"SearchPlaceIndexForSuggestions"
+                   outputClass:[AWSLocationSearchPlaceIndexForSuggestionsResponse class]];
+}
+
+- (void)searchPlaceIndexForSuggestions:(AWSLocationSearchPlaceIndexForSuggestionsRequest *)request
+     completionHandler:(void (^)(AWSLocationSearchPlaceIndexForSuggestionsResponse *response, NSError *error))completionHandler {
+    [[self searchPlaceIndexForSuggestions:request] continueWithBlock:^id _Nullable(AWSTask<AWSLocationSearchPlaceIndexForSuggestionsResponse *> * _Nonnull task) {
+        AWSLocationSearchPlaceIndexForSuggestionsResponse *result = task.result;
         NSError *error = task.error;
 
         if (completionHandler) {
