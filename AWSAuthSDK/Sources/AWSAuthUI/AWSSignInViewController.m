@@ -33,8 +33,8 @@ static NSString *const SIGNIN_STORYBOARD = @"SignIn";
 static NSString *const SIGNIN_VIEW_CONTROLLER_IDENTIFIER = @"SignIn";;
 static NSString *const USERPOOLS_UI_OPERATIONS = @"AWSUserPoolsUIOperations";
 
-static NSInteger const SCALED_UP_LOGO_IMAGE_HEIGHT = 230;
-static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
+static NSInteger const SCALED_UP_LOGO_IMAGE_HEIGHT = 115;
+static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 100;
 
 @interface AWSSignInViewController ()
 
@@ -228,7 +228,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
         Class formTableCell = NSClassFromString(@"AWSFormTableCell");
         self.passwordRow = [[formTableCell alloc] initWithPlaceHolder:@"Password"
                                                                  type:InputTypePassword];
-        self.userNameRow = [[formTableCell alloc] initWithPlaceHolder:@"User Name"
+        self.userNameRow = [[formTableCell alloc] initWithPlaceHolder:@"Email"
                                                                  type:InputTypeText];
         Class formTableDelegate = NSClassFromString(@"AWSFormTableDelegate");
         self.tableDelegate = [formTableDelegate new];
