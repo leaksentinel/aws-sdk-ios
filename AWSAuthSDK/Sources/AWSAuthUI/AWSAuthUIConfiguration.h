@@ -35,20 +35,27 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AWSAuthUIConfiguration: NSObject<AWSUIConfiguration>
 
 /**
+ @property startWithSignUpScreen
+ @brief If set to `YES` the first screen shown is the "sign up" screen, not "sign in"
+ **/
+@property (atomic) BOOL startWithSignUpScreen;
+
+/**
  @property canCancel
- @brief If set to `YES` user can hit cancel button to dismiss sign in UI.
+ @brief If set to `YES` user can hit cancel button to dismiss sign in UI
  **/
 @property (atomic) BOOL canCancel;
 
 /**
  @property logoImage
- @brief The logo to be used on the Auth UI Screen.
+ @brief The logo to be used on the Auth UI Screen
  **/
 @property (nonatomic, nullable) UIImage *logoImage;
 
+
 /**
  @property backgroundColor
- @brief The background color of the auth screens.
+ @brief Gets the backgorund color of the sign in screen configured by the user
  **/
 @property (nonatomic, nullable) UIColor *backgroundColor;
 

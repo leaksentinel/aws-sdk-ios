@@ -22,6 +22,8 @@
 #import "AWSFormTableDelegate.h"
 #import "AWSSignInViewController.h"
 
+#define DEFAULT_BACKGROUND_COLOR_TOP [UIColor darkGrayColor]
+#define DEFAULT_BACKGROUND_COLOR_BOTTOM [UIColor whiteColor]
 #define NAVIGATION_BAR_HEIGHT 64
 
 static NSString *const RESOURCES_BUNDLE = @"AWSAuthUI.bundle";
@@ -68,6 +70,8 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 100;
 
 
 -(void)pushSignUpVCFromNavigationController:(UINavigationController *)navController;
+
+-(void)slideSignUpVCFromNavigationController:(UINavigationController *)navController;
 
 -(void)pushForgotPasswordVCFromNavigationController:(UINavigationController *)navController;
 
@@ -141,10 +145,14 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 100;
     if (self.config.font) {
         [self setUpFont];
     }
+    
+    // if user hasn't created an account yet, go to SignUp screen
+    if (self.config.startWithSignUpScreen) {
+        [self doUserPoolSignUp];
+    }
 }
     
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)processLogin {
     if ([AWSSignInManager sharedInstance].pendingSignIn) {
         
         Class awsUserPoolsUIOperations = NSClassFromString(USERPOOLS_UI_OPERATIONS);
@@ -157,7 +165,11 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 100;
     [AWSSignInManager sharedInstance].pendingSignIn = NO;
     [AWSSignInManager sharedInstance].pendingUsername = @"";
     [AWSSignInManager sharedInstance].pendingPassword = @"";
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self processLogin];
 }
 
 // This is used to dismiss the keyboard, user just has to tap outside the
@@ -254,7 +266,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 100;
                                   action:@selector(handleUserPoolSignUp)
                         forControlEvents:UIControlEventTouchUpInside];
         } else {
-            [self.signUpButton setAlpha:0.0f];
+            [self.signUpButton removeFromSuperview];
         }
         
         // style buttons (primary color)
@@ -311,15 +323,15 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 100;
         self.logoView.contentMode = UIViewContentModeScaleAspectFit;
         [self.logoView setNeedsLayout];
         [self.view setNeedsLayout];
-        [self.view layoutIfNeeded];
+//        [self.view layoutIfNeeded];
     }
 }
 
 - (void)setUpBackground:(UIColor *)color {
     if (self.config.isBackgroundColorFullScreen) {
-        self.view.backgroundColor = [AWSAuthUIHelper getBackgroundColor:self.config];
+        self.view.backgroundColor = color ?: DEFAULT_BACKGROUND_COLOR_TOP;
     } else {
-        self.view.backgroundColor = [AWSAuthUIHelper getSecondaryBackgroundColor];
+        self.view.backgroundColor = DEFAULT_BACKGROUND_COLOR_BOTTOM;
     }
     
     if (self.config.enableUserPoolsUI) {
@@ -327,7 +339,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 100;
         if (color != nil) {
             backgroundImageView.backgroundColor = color;
         } else {
-            backgroundImageView.backgroundColor = [AWSAuthUIHelper getBackgroundColor:self.config];
+            backgroundImageView.backgroundColor = DEFAULT_BACKGROUND_COLOR_TOP;
         }
         backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [self.view insertSubview:backgroundImageView atIndex:0];
@@ -356,16 +368,16 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 100;
                                                                          style:UIBarButtonItemStylePlain
                                                                         target:self
                                                                         action:@selector(barButtonClosePressed)];
-        cancelButton.tintColor = textColor;
+        cancelButton.tintColor = [UIColor whiteColor];
         self.navigationController.navigationBar.topItem.leftBarButtonItem = cancelButton;
     }
     
     self.navigationController.navigationBar.titleTextAttributes = @{
-                                                                    NSForegroundColorAttributeName: textColor,
+                                                                    NSForegroundColorAttributeName: [UIColor whiteColor],
                                                                     };
     self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.barTintColor = [AWSAuthUIHelper getBackgroundColor:config];
-    self.navigationController.navigationBar.tintColor = textColor;
+    self.navigationController.navigationBar.barTintColor = self.config.backgroundColor ?: DEFAULT_BACKGROUND_COLOR_TOP;
+    self.navigationController.navigationBar.tintColor = DEFAULT_BACKGROUND_COLOR_BOTTOM;
     
 }
 
@@ -493,6 +505,11 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 100;
 }
 
 - (void)handleUserPoolSignIn {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:@"userHasSignedIn"];
+    [defaults synchronize];
+
     Class awsUserPoolsUIOperations = NSClassFromString(USERPOOLS_UI_OPERATIONS);
     AWSUserPoolsUIOperations *userPoolsOperations = [[awsUserPoolsUIOperations alloc] initWithAuthUIConfiguration:self.config];
     [userPoolsOperations loginWithUserName:[self.tableDelegate getValueForCell:self.userNameRow forTableView:self.tableView]
@@ -510,6 +527,16 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 100;
     Class awsUserPoolsUIOperations = NSClassFromString(USERPOOLS_UI_OPERATIONS);
     AWSUserPoolsUIOperations *userPoolsOperations = [[awsUserPoolsUIOperations alloc] initWithAuthUIConfiguration:self.config];
     [userPoolsOperations pushSignUpVCFromNavigationController:self.navigationController];
+}
+
+- (void)doUserPoolSignUp {
+    
+    // Dismisses the keyboard if open before transitioning to the new storyboard
+    [self.view endEditing:YES];
+    
+    Class awsUserPoolsUIOperations = NSClassFromString(USERPOOLS_UI_OPERATIONS);
+    AWSUserPoolsUIOperations *userPoolsOperations = [[awsUserPoolsUIOperations alloc] initWithAuthUIConfiguration:self.config];
+    [userPoolsOperations slideSignUpVCFromNavigationController:self.navigationController];
 }
 
 - (void)handleUserPoolForgotPassword {

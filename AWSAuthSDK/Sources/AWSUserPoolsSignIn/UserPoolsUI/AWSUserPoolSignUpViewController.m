@@ -41,9 +41,14 @@
 @property (nonatomic, strong) NSString* sentTo;
 @property (nonatomic, strong) AWSFormTableCell *userNameRow;
 @property (nonatomic, strong) AWSFormTableCell *passwordRow;
+@property (nonatomic, strong) AWSFormTableCell *passwordConfirmRow;
 @property (nonatomic, strong) AWSFormTableCell *phoneNumberRow;
 @property (nonatomic, strong) AWSFormTableCell *emailRow;
 @property (nonatomic, strong) AWSFormTableDelegate *tableDelegate;
+@property (nonatomic) BOOL hidePhoneAndEmailRows;
+@property (weak, nonatomic) IBOutlet UIButton *signupButton;
+@property (weak, nonatomic) IBOutlet UIButton *signinButton;
+@property (nonatomic) CGPoint viewOrigin;
 
 @end
 
@@ -66,7 +71,18 @@ id<AWSUIConfiguration> config = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pool = [AWSCognitoIdentityUserPool defaultCognitoIdentityUserPool];
+    self.hidePhoneAndEmailRows = true;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+
     [self setUp];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.navigationItem.leftBarButtonItem=nil;
+    self.navigationItem.hidesBackButton=YES;
 }
 
 // This is used to dismiss the keyboard, user just has to tap outside the
@@ -83,13 +99,18 @@ id<AWSUIConfiguration> config = nil;
 - (void)setUp {
     _userNameRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"Email" type:InputTypeText];
     _passwordRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"Password" type:InputTypePassword];
+    _passwordConfirmRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"Confirm Password" type:InputTypePassword];
     _emailRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"Email" type:InputTypeText];
     _phoneNumberRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"Phone Number" type:InputTypeText];
     _tableDelegate = [AWSFormTableDelegate new];
     [self.tableDelegate addCell:self.userNameRow];
     [self.tableDelegate addCell:self.passwordRow];
-    [self.tableDelegate addCell:self.emailRow];
-    [self.tableDelegate addCell:self.phoneNumberRow];
+    if (self.hidePhoneAndEmailRows) {
+        [self.tableDelegate addCell:self.passwordConfirmRow];
+    } else {
+        [self.tableDelegate addCell:self.emailRow];
+        [self.tableDelegate addCell:self.phoneNumberRow];
+    }
     self.tableView.delegate = self.tableDelegate;
     self.tableView.dataSource = self.tableDelegate;
     [self.tableView reloadData];
