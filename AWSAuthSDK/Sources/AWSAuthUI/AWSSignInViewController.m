@@ -162,8 +162,8 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_WIDTH = 200;
         [self setUpFont];
     }
 
-    BOOL hasSignedIn = [[NSUserDefaults standardUserDefaults] boolForKey:@"hasSignedIn"];
-    if (!hasSignedIn) {
+    BOOL forceSignUp = [[NSUserDefaults standardUserDefaults] boolForKey:@"forceSignUp"];
+    if (forceSignUp) {
         [self doUserPoolSignUp];
     }
     
@@ -376,7 +376,8 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_WIDTH = 200;
 }
 
 - (void)setUpNavigationController {
-    UIColor *textColor = [AWSAuthUIHelper getTextColor:config];
+//    UIColor *textColor = [AWSAuthUIHelper getTextColor:config];
+    UIColor *textColor = UIColor.whiteColor;
 
     self.navigationController.navigationBar.topItem.title = @"Sign In";
     self.canCancel = self.config.canCancel;
@@ -531,7 +532,6 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_WIDTH = 200;
                       navigationController:self.navigationController
                          completionHandler:self.completionHandler];
 }
-
 
 - (void)handleUserPoolSignUp {
     
