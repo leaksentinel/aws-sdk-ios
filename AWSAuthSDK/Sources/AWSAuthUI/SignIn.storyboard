@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,7 +37,7 @@
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DZ0-AR-hXg">
                                                 <rect key="frame" x="4" y="2" width="271" height="142"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                                <color key="backgroundColor" name="ls_signup_bgd_color"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AWSFormTableCell" rowHeight="75" id="ezi-li-cK0" customClass="AWSTableInputCell">
                                                         <rect key="frame" x="0.0" y="50" width="271" height="75"/>
@@ -51,7 +52,7 @@
                                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXt-nL-K2w">
                                                                             <rect key="frame" x="8" y="14" width="255" height="17"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                            <color key="textColor" name="ls_signup_placeholder_color"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
@@ -66,6 +67,7 @@
                                                                     <subviews>
                                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ptW-ku-sXn">
                                                                             <rect key="frame" x="8" y="3" width="255" height="21"/>
+                                                                            <color key="textColor" name="ls_signup_text_color"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                             <textInputTraits key="textInputTraits"/>
                                                                             <connections>
@@ -87,7 +89,7 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbH-Zd-FrG">
                                                                             <rect key="frame" x="13" y="8" width="250" height="59"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                                            <color key="textColor" systemColor="placeholderTextColor"/>
+                                                                            <color key="textColor" name="ls_signup_placeholder_color"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
@@ -99,7 +101,7 @@
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                                            <color key="backgroundColor" name="ls_signup_bgd_color"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="bottomMargin" secondItem="h72-SA-vCh" secondAttribute="bottom" constant="27" id="1Gh-1f-wZG"/>
                                                                 <constraint firstAttribute="trailing" secondItem="h72-SA-vCh" secondAttribute="trailing" id="92V-d8-gnt"/>
@@ -128,7 +130,7 @@
                                                 </prototypes>
                                             </tableView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" name="ls_signup_bgd_color"/>
                                         <color key="tintColor" systemColor="linkColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="u65-Hx-cGR"/>
@@ -319,20 +321,20 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="ls_signup_bgd_color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ls_signup_placeholder_color">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.60000027179718018" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ls_signup_text_color">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="placeholderTextColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

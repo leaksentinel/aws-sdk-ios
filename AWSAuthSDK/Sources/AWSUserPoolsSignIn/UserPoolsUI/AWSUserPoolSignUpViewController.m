@@ -83,7 +83,7 @@ id<AWSUIConfiguration> config = nil;
     [self setUp];
     
     if (self.resendCode) {
-        self.userName = @"oo@sjws.org";
+//        self.userName = @"keith@sjws.org";
         [self performSegueWithIdentifier:@"SignUpConfirmSegue" sender:self];
     }
 }
@@ -129,6 +129,7 @@ id<AWSUIConfiguration> config = nil;
     // setup button background
     [AWSAuthUIHelper applyPrimaryColorFromConfig:self.config
                                           toView:self.signUpButton];
+
 }
 
 - (void)setUpBackground {
