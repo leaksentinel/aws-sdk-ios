@@ -106,6 +106,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)doUserPoolSignUp;
 
+- (void)doUserPoolSignUp;
+
 @end
 
 

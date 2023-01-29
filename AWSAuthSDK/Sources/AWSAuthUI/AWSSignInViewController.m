@@ -378,6 +378,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_WIDTH = 200;
 - (void)setUpNavigationController {
 //    UIColor *textColor = [AWSAuthUIHelper getTextColor:config];
     UIColor *textColor = UIColor.whiteColor;
+    UIColor *backgroundColor = [AWSAuthUIHelper getBackgroundColor:config];
 
     self.navigationController.navigationBar.topItem.title = @"Sign In";
     self.canCancel = self.config.canCancel;
@@ -394,9 +395,28 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_WIDTH = 200;
                                                                     NSForegroundColorAttributeName: textColor,
                                                                     };
     self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.barTintColor = [AWSAuthUIHelper getBackgroundColor:config];
+    self.navigationController.navigationBar.barTintColor =
     self.navigationController.navigationBar.tintColor = textColor;
     
+    // ios 15 changed the rules for the navigation bar, so set it back to the old way
+    
+    if (@available(iOS 13, *)) {
+        UINavigationBarAppearance *appearance = [UINavigationBarAppearance new];
+        appearance.backgroundColor = backgroundColor;
+        
+        appearance.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+
+        self.navigationController.navigationBar.scrollEdgeAppearance = appearance;
+        self.navigationController.navigationBar.compactAppearance = appearance;
+        self.navigationController.navigationBar.standardAppearance = appearance;
+  
+        if (@available(iOS 15.0, *)) {
+            self.navigationController.navigationBar.compactScrollEdgeAppearance = appearance;
+        } else {
+            self.navigationController.navigationBar.barTintColor = backgroundColor;
+            self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+        }
+    }
 }
 
 - (void)setUpFont {
