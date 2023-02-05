@@ -161,6 +161,19 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_WIDTH = 200;
     if (self.config.font) {
         [self setUpFont];
     }
+    
+    // for background of nav bar
+    if (@available(iOS 13.0, *)) {
+        UIColor *backgroundColor = [AWSAuthUIHelper getBackgroundColor:config];
+        UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] init];
+        [navBarAppearance configureWithOpaqueBackground];
+        navBarAppearance.backgroundColor = backgroundColor;
+        [navBarAppearance setTitleTextAttributes:
+                @{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+
+        self.navigationController.navigationBar.standardAppearance = navBarAppearance;
+        self.navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance;
+    }
 
     BOOL forceSignUp = [[NSUserDefaults standardUserDefaults] boolForKey:@"forceSignUp"];
     if (forceSignUp) {
@@ -183,7 +196,6 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_WIDTH = 200;
     [AWSSignInManager sharedInstance].pendingSignIn = NO;
     [AWSSignInManager sharedInstance].pendingUsername = @"";
     [AWSSignInManager sharedInstance].pendingPassword = @"";
-    
 }
 
 // This is used to dismiss the keyboard, user just has to tap outside the
