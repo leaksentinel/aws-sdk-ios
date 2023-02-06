@@ -140,7 +140,7 @@ id<AWSUIConfiguration> config = nil;
     }
     
     self.title = @"Sign Up";
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.tableFormView.center.y)];
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.tableFormView.center.y + 150)];
     backgroundImageView.backgroundColor = [AWSAuthUIHelper getBackgroundColor:self.config];
     backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view insertSubview:backgroundImageView atIndex:0];
@@ -357,7 +357,7 @@ id<AWSUIConfiguration> config = nil;
 - (void)setUpBackground {
     self.view.backgroundColor = [AWSAuthUIHelper getSecondaryBackgroundColor];
     self.title = @"Confirm";
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.tableFormView.center.y)];
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.tableFormView.center.y + 150)];
     backgroundImageView.backgroundColor = [AWSAuthUIHelper getBackgroundColor:self.config];
     backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view insertSubview:backgroundImageView atIndex:0];
