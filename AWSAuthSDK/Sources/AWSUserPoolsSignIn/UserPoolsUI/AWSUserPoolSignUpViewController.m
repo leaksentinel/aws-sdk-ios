@@ -76,6 +76,8 @@ id<AWSUIConfiguration> config = nil;
 
 #pragma mark - UIViewController
 
+UIGestureRecognizer *tapper;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pool = [AWSCognitoIdentityUserPool defaultCognitoIdentityUserPool];
@@ -86,18 +88,18 @@ id<AWSUIConfiguration> config = nil;
 //        self.userName = @"keith@sjws.org";
         [self performSegueWithIdentifier:@"SignUpConfirmSegue" sender:self];
     }
+
+    tapper = [[UITapGestureRecognizer alloc]
+                initWithTarget:self action:@selector(handleSingleTap:)];
+    tapper.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapper];
 }
 
-// This is used to dismiss the keyboard, user just has to tap outside the
-// user name and password views and it will dismiss
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    if (touch.phase == UITouchPhaseBegan) {
-        [self.view endEditing:YES];
-    }
-    
-    [super touchesBegan:touches withEvent:event];
+- (void)handleSingleTap:(UITapGestureRecognizer *) sender
+{
+    [self.view endEditing:YES];
 }
+
 
 #pragma mark - Utility Methods
 

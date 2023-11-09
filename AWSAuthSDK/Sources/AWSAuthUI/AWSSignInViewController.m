@@ -134,6 +134,8 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_WIDTH = 200;
 //    [self.view setFrame:CGRectMake(0, NAVIGATION_BAR_HEIGHT ,self.view.frame.size.width,self.view.frame.size.height)];
 //}
 
+UIGestureRecognizer *tapper;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     AWSDDLogDebug(@"Sign-In Loading...");
@@ -179,7 +181,16 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_WIDTH = 200;
     if (forceSignUp) {
         [self doUserPoolSignUp];
     }
-    
+
+    tapper = [[UITapGestureRecognizer alloc]
+                initWithTarget:self action:@selector(handleSingleTap:)];
+    tapper.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapper];
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *) sender
+{
+    [self.view endEditing:YES];
 }
     
 - (void)viewWillAppear:(BOOL)animated {
@@ -200,6 +211,9 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_WIDTH = 200;
 
 // This is used to dismiss the keyboard, user just has to tap outside the
 // user name and password views and it will dismiss
+
+
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     if (touch.phase == UITouchPhaseBegan) {
@@ -364,13 +378,18 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_WIDTH = 200;
     }
     
     if (self.config.enableUserPoolsUI) {
-        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.tableFormView.center.y)];
-        if (color != nil) {
+        CGRect frameRect = self.view.frame;
+        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,
+                                                                                         frameRect.size.width,
+                                                                                         self.tableFormView.center.y) ];
+                                                    if (color != nil) {
             backgroundImageView.backgroundColor = color;
         } else {
             backgroundImageView.backgroundColor = [AWSAuthUIHelper getBackgroundColor:self.config];
         }
-        backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        self.contentView.clipsToBounds = false;
+//        backgroundImageView.clipsToBounds = false;
         [self.contentView insertSubview:backgroundImageView atIndex:0];
     }
 }
