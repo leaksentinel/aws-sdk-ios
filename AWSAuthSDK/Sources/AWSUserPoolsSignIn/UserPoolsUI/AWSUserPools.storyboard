@@ -826,7 +826,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9v8-wH-78z">
-                                <rect key="frame" x="20" y="71" width="280" height="75"/>
+                                <rect key="frame" x="20" y="70" width="280" height="75"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pLq-FM-ZZi">
                                         <rect key="frame" x="4" y="4" width="272" height="67"/>
@@ -933,7 +933,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dt2-QQ-w90">
-                                <rect key="frame" x="20" y="166" width="280" height="40"/>
+                                <rect key="frame" x="20" y="165" width="280" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5r9-PP-gLg"/>
@@ -954,7 +954,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVb-gh-d8l">
-                                <rect key="frame" x="20" y="41" width="110" height="21"/>
+                                <rect key="frame" x="20" y="40" width="110" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="HIx-wy-bk1"/>
                                 </constraints>
@@ -962,16 +962,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q51-pw-zgO">
-                                <rect key="frame" x="138" y="41" width="162" height="22"/>
+                                <rect key="frame" x="138" y="40" width="162" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="Hj0-Fe-dMV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your new password below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzB-cM-Tyh">
-                                <rect key="frame" x="27" y="18" width="266" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Please enter your new password below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzB-cM-Tyh">
+                                <rect key="frame" x="27" y="218" width="266" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1024,18 +1024,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-d3-S1D">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="712"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVq-LS-iZC">
                                                 <rect key="frame" x="8" y="0.0" width="359" height="0.0"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Please sign up for a LeakSentinel account:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ue-gB-4Be">
-                                                <rect key="frame" x="27" y="240" width="321" height="443"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cYH-jE-f4C" userLabel="Logo View">
                                                 <rect key="frame" x="77.5" y="10" width="220" height="220"/>
                                                 <constraints>
@@ -1043,8 +1037,17 @@
                                                     <constraint firstAttribute="height" constant="220" id="Vvq-T9-epV"/>
                                                 </constraints>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please sign up for a LeakSentinel account:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ue-gB-4Be">
+                                                <rect key="frame" x="51" y="230" width="273" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="GAm-3a-RyP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhW-aw-DVa" userLabel="Table Form View">
-                                                <rect key="frame" x="47.5" y="238" width="280" height="225"/>
+                                                <rect key="frame" x="47.5" y="260" width="280" height="225"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jYt-qg-M7l">
                                                         <rect key="frame" x="4" y="4" width="271" height="220"/>
@@ -1149,7 +1152,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLP-Yk-mtm" userLabel="Provider View">
-                                                <rect key="frame" x="0.0" y="566" width="375" height="146"/>
+                                                <rect key="frame" x="0.0" y="588" width="375" height="146"/>
                                                 <subviews>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or sign in with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ou0-pe-49H" userLabel="Or Sign In With Label">
                                                         <rect key="frame" x="137.5" y="0.0" width="100" height="18"/>
@@ -1226,7 +1229,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oum-gR-pnE" userLabel="Sign Up Button">
-                                                <rect key="frame" x="47.5" y="473" width="280" height="40"/>
+                                                <rect key="frame" x="47.5" y="495" width="280" height="40"/>
                                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="CZK-W0-9Ob"/>
@@ -1244,7 +1247,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XH2-6Y-cvb" userLabel="Sign In Button">
-                                                <rect key="frame" x="73.5" y="523" width="228" height="28"/>
+                                                <rect key="frame" x="73.5" y="545" width="228" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="I already have a LeakSentinel account">
                                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1254,14 +1257,14 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="jVq-LS-iZC" firstAttribute="leading" secondItem="v5a-d3-S1D" secondAttribute="leadingMargin" id="04e-CF-ZIO"/>
-                                            <constraint firstItem="cYH-jE-f4C" firstAttribute="bottom" secondItem="7ue-gB-4Be" secondAttribute="bottom" constant="-453" id="2R1-Qw-ny3"/>
+                                            <constraint firstItem="7ue-gB-4Be" firstAttribute="top" secondItem="v5a-d3-S1D" secondAttribute="top" constant="230" id="7pN-AR-hDp" userLabel="Please sign up for a LeakSentinel account:.top = Logo View.bottom - 10"/>
                                             <constraint firstItem="XH2-6Y-cvb" firstAttribute="top" secondItem="oum-gR-pnE" secondAttribute="bottom" constant="10" id="FRg-Vy-uQR"/>
                                             <constraint firstItem="rhW-aw-DVa" firstAttribute="centerX" secondItem="v5a-d3-S1D" secondAttribute="centerX" id="GVQ-Gu-Hnw"/>
                                             <constraint firstItem="WLP-Yk-mtm" firstAttribute="width" secondItem="v5a-d3-S1D" secondAttribute="width" id="MFS-XQ-Pbu"/>
+                                            <constraint firstItem="7ue-gB-4Be" firstAttribute="centerX" secondItem="v5a-d3-S1D" secondAttribute="centerX" id="P2C-FM-GAi"/>
                                             <constraint firstItem="jVq-LS-iZC" firstAttribute="bottom" secondItem="v5a-d3-S1D" secondAttribute="top" id="P8K-Zq-O0N"/>
                                             <constraint firstItem="WLP-Yk-mtm" firstAttribute="leading" secondItem="v5a-d3-S1D" secondAttribute="leading" id="TAq-HQ-BYN"/>
                                             <constraint firstItem="jVq-LS-iZC" firstAttribute="top" secondItem="v5a-d3-S1D" secondAttribute="top" id="TWd-N9-ib1"/>
-                                            <constraint firstItem="7ue-gB-4Be" firstAttribute="top" secondItem="cYH-jE-f4C" secondAttribute="bottom" constant="10" id="TaG-Iz-g63"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="jVq-LS-iZC" secondAttribute="trailing" id="bxW-vF-knh"/>
                                             <constraint firstAttribute="trailing" secondItem="WLP-Yk-mtm" secondAttribute="trailing" id="d1G-Z8-1Os"/>
                                             <constraint firstItem="oum-gR-pnE" firstAttribute="top" secondItem="rhW-aw-DVa" secondAttribute="bottom" constant="10" id="f6Z-Jl-Ivt"/>
@@ -1269,7 +1272,7 @@
                                             <constraint firstItem="cYH-jE-f4C" firstAttribute="centerX" secondItem="v5a-d3-S1D" secondAttribute="centerX" id="qzH-z3-mJp"/>
                                             <constraint firstAttribute="bottom" secondItem="WLP-Yk-mtm" secondAttribute="bottom" id="s8H-b3-y94"/>
                                             <constraint firstItem="WLP-Yk-mtm" firstAttribute="centerX" secondItem="XH2-6Y-cvb" secondAttribute="centerX" id="tu9-Tp-zMV"/>
-                                            <constraint firstItem="rhW-aw-DVa" firstAttribute="top" secondItem="cYH-jE-f4C" secondAttribute="bottom" constant="8" symbolic="YES" id="vBZ-6o-bEk"/>
+                                            <constraint firstItem="rhW-aw-DVa" firstAttribute="top" secondItem="cYH-jE-f4C" secondAttribute="bottom" constant="30" id="vBZ-6o-bEk"/>
                                             <constraint firstItem="WLP-Yk-mtm" firstAttribute="top" secondItem="XH2-6Y-cvb" secondAttribute="bottom" constant="15" id="wEn-Oe-edM"/>
                                             <constraint firstItem="cYH-jE-f4C" firstAttribute="top" secondItem="v5a-d3-S1D" secondAttribute="top" constant="10" id="y9r-MM-cMU"/>
                                         </constraints>
