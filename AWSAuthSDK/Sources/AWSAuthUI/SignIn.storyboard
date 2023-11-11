@@ -37,12 +37,6 @@
                                                     <constraint firstAttribute="width" constant="220" id="plm-eC-9LI"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please sign up for a LeakSentinel account:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HT-MW-uyD">
-                                                <rect key="frame" x="10" y="240" width="355" height="148"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QtA-4v-ezB" userLabel="Table Form View">
                                                 <rect key="frame" x="47.5" y="238" width="280" height="150"/>
                                                 <subviews>
@@ -285,9 +279,7 @@
                                             <constraint firstItem="xnp-03-ZkU" firstAttribute="leading" secondItem="dcZ-Gh-A7P" secondAttribute="trailing" constant="8" symbolic="YES" id="AzK-uH-D1E"/>
                                             <constraint firstItem="Ai6-et-eee" firstAttribute="width" secondItem="bZe-zw-idW" secondAttribute="width" id="IMt-l6-huO"/>
                                             <constraint firstAttribute="bottom" secondItem="Ai6-et-eee" secondAttribute="bottom" id="IhU-Ug-F0B"/>
-                                            <constraint firstItem="5HT-MW-uyD" firstAttribute="top" secondItem="nGX-ZG-kp2" secondAttribute="bottom" constant="10" id="PCp-OQ-0Cj"/>
                                             <constraint firstItem="QtA-4v-ezB" firstAttribute="centerX" secondItem="bZe-zw-idW" secondAttribute="centerX" id="PYW-fO-lZq"/>
-                                            <constraint firstItem="5HT-MW-uyD" firstAttribute="leading" secondItem="bZe-zw-idW" secondAttribute="leading" constant="10" id="Tne-Zh-hcX"/>
                                             <constraint firstItem="nGX-ZG-kp2" firstAttribute="top" secondItem="bZe-zw-idW" secondAttribute="top" constant="10" id="V3z-Qb-tJw"/>
                                             <constraint firstItem="dcZ-Gh-A7P" firstAttribute="leading" secondItem="bZe-zw-idW" secondAttribute="leadingMargin" id="VMn-zi-ZCq"/>
                                             <constraint firstItem="E9c-kC-Ia6" firstAttribute="top" secondItem="bZe-zw-idW" secondAttribute="top" id="VrB-pz-fHX"/>
@@ -296,14 +288,12 @@
                                             <constraint firstItem="nSr-Nt-KpM" firstAttribute="centerX" secondItem="bZe-zw-idW" secondAttribute="centerX" id="YTK-VO-k5T"/>
                                             <constraint firstItem="dcZ-Gh-A7P" firstAttribute="top" secondItem="nSr-Nt-KpM" secondAttribute="bottom" constant="10" id="dYT-zP-vnx"/>
                                             <constraint firstItem="QtA-4v-ezB" firstAttribute="top" secondItem="nGX-ZG-kp2" secondAttribute="bottom" constant="8" symbolic="YES" id="hnf-sq-M42"/>
-                                            <constraint firstAttribute="trailing" secondItem="5HT-MW-uyD" secondAttribute="trailing" constant="10" id="jiW-pu-L4d"/>
                                             <constraint firstAttribute="trailing" secondItem="Ai6-et-eee" secondAttribute="trailing" id="l0Y-ZP-1I6"/>
                                             <constraint firstItem="dcZ-Gh-A7P" firstAttribute="top" secondItem="nSr-Nt-KpM" secondAttribute="bottom" constant="10" id="mSX-5X-ZPF"/>
                                             <constraint firstItem="E9c-kC-Ia6" firstAttribute="bottom" secondItem="bZe-zw-idW" secondAttribute="top" id="onM-on-dXA"/>
                                             <constraint firstItem="Ai6-et-eee" firstAttribute="top" secondItem="dcZ-Gh-A7P" secondAttribute="bottom" id="pe7-av-rFu"/>
                                             <constraint firstItem="nSr-Nt-KpM" firstAttribute="top" secondItem="QtA-4v-ezB" secondAttribute="bottom" constant="10" id="rQw-fg-aYB"/>
                                             <constraint firstItem="dcZ-Gh-A7P" firstAttribute="width" secondItem="xnp-03-ZkU" secondAttribute="width" id="rgB-C2-1Ix"/>
-                                            <constraint firstItem="nSr-Nt-KpM" firstAttribute="top" secondItem="5HT-MW-uyD" secondAttribute="bottom" constant="10" id="t0S-kE-MuF"/>
                                             <constraint firstItem="dcZ-Gh-A7P" firstAttribute="baseline" secondItem="xnp-03-ZkU" secondAttribute="baseline" id="vqP-Xp-tw0"/>
                                             <constraint firstItem="E9c-kC-Ia6" firstAttribute="leading" secondItem="bZe-zw-idW" secondAttribute="leadingMargin" id="zRQ-iY-cRM"/>
                                         </constraints>

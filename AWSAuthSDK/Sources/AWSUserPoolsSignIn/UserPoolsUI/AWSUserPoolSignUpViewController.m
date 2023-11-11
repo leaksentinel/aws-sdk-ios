@@ -54,8 +54,6 @@ static NSString *const USERPOOLS_UI_OPERATIONS = @"AWSUserPoolsUIOperations";
 @property (nonatomic, strong) AWSFormTableCell *emailRow;
 @property (nonatomic, strong) AWSFormTableDelegate *tableDelegate;
 @property (nonatomic) BOOL hidePhoneAndEmailRows;
-@property (weak, nonatomic) IBOutlet UIButton *signupButton;
-@property (weak, nonatomic) IBOutlet UIButton *signinButton;
 @property (nonatomic) CGPoint viewOrigin;
 
 @end
