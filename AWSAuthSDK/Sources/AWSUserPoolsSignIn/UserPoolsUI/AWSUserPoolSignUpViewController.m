@@ -135,18 +135,22 @@ UIGestureRecognizer *tapper;
 }
 
 - (void)setUpBackground {
-    if ([AWSAuthUIHelper isBackgroundColorFullScreen:self.config]) {
-        self.view.backgroundColor = [AWSAuthUIHelper getBackgroundColor:self.config];
-    } else {
-        self.view.backgroundColor = [AWSAuthUIHelper getSecondaryBackgroundColor];
-    }
-    
-    self.title = @"Sign Up";
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.tableFormView.center.y + 150)];
-    backgroundImageView.backgroundColor = [AWSAuthUIHelper getBackgroundColor:self.config];
-    backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self.view insertSubview:backgroundImageView atIndex:0];
+    UIColor *color;
+    color = [AWSAuthUIHelper getBackgroundColor:self.config];
+    self.view.backgroundColor = color;
+
+    CGRect frameRect = self.view.frame;
+    UIImageView *backgroundImageView =
+        [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,
+                                                      frameRect.size.width,
+                                                      self.tableFormView.center.y) ];
+    backgroundImageView.backgroundColor = color;
+//        backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        self.contentView.clipsToBounds = false;
+//        backgroundImageView.clipsToBounds = false;
+    [self.contentView insertSubview:backgroundImageView atIndex:0];
 }
+
 
 - (void)setUpLogo:(UIImage *)image {
     if (image != nil) {
@@ -359,7 +363,7 @@ UIGestureRecognizer *tapper;
 - (void)setUpBackground {
     self.view.backgroundColor = [AWSAuthUIHelper getSecondaryBackgroundColor];
     self.title = @"Confirm";
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.tableFormView.center.y + 150)];
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.tableFormView.center.y + 150 - 150)];
     backgroundImageView.backgroundColor = [AWSAuthUIHelper getBackgroundColor:self.config];
     backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view insertSubview:backgroundImageView atIndex:0];

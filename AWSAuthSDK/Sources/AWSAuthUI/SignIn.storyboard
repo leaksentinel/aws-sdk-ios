@@ -37,6 +37,12 @@
                                                     <constraint firstAttribute="width" constant="220" id="plm-eC-9LI"/>
                                                 </constraints>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please sign up for a LeakSentinel account:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HT-MW-uyD">
+                                                <rect key="frame" x="10" y="240" width="355" height="148"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QtA-4v-ezB" userLabel="Table Form View">
                                                 <rect key="frame" x="47.5" y="238" width="280" height="150"/>
                                                 <subviews>
@@ -228,8 +234,8 @@
                                                         </state>
                                                         <variation key="default">
                                                             <mask key="constraints">
-                                                                <exclude reference="iO3-Zs-JQ7"/>
                                                                 <exclude reference="HKh-qn-6BT"/>
+                                                                <exclude reference="iO3-Zs-JQ7"/>
                                                             </mask>
                                                         </variation>
                                                     </button>
@@ -246,8 +252,8 @@
                                                         </state>
                                                         <variation key="default">
                                                             <mask key="constraints">
-                                                                <exclude reference="c3q-mr-f7L"/>
                                                                 <exclude reference="0Vf-Hv-eEm"/>
+                                                                <exclude reference="c3q-mr-f7L"/>
                                                             </mask>
                                                         </variation>
                                                     </button>
@@ -279,7 +285,9 @@
                                             <constraint firstItem="xnp-03-ZkU" firstAttribute="leading" secondItem="dcZ-Gh-A7P" secondAttribute="trailing" constant="8" symbolic="YES" id="AzK-uH-D1E"/>
                                             <constraint firstItem="Ai6-et-eee" firstAttribute="width" secondItem="bZe-zw-idW" secondAttribute="width" id="IMt-l6-huO"/>
                                             <constraint firstAttribute="bottom" secondItem="Ai6-et-eee" secondAttribute="bottom" id="IhU-Ug-F0B"/>
+                                            <constraint firstItem="5HT-MW-uyD" firstAttribute="top" secondItem="nGX-ZG-kp2" secondAttribute="bottom" constant="10" id="PCp-OQ-0Cj"/>
                                             <constraint firstItem="QtA-4v-ezB" firstAttribute="centerX" secondItem="bZe-zw-idW" secondAttribute="centerX" id="PYW-fO-lZq"/>
+                                            <constraint firstItem="5HT-MW-uyD" firstAttribute="leading" secondItem="bZe-zw-idW" secondAttribute="leading" constant="10" id="Tne-Zh-hcX"/>
                                             <constraint firstItem="nGX-ZG-kp2" firstAttribute="top" secondItem="bZe-zw-idW" secondAttribute="top" constant="10" id="V3z-Qb-tJw"/>
                                             <constraint firstItem="dcZ-Gh-A7P" firstAttribute="leading" secondItem="bZe-zw-idW" secondAttribute="leadingMargin" id="VMn-zi-ZCq"/>
                                             <constraint firstItem="E9c-kC-Ia6" firstAttribute="top" secondItem="bZe-zw-idW" secondAttribute="top" id="VrB-pz-fHX"/>
@@ -288,11 +296,14 @@
                                             <constraint firstItem="nSr-Nt-KpM" firstAttribute="centerX" secondItem="bZe-zw-idW" secondAttribute="centerX" id="YTK-VO-k5T"/>
                                             <constraint firstItem="dcZ-Gh-A7P" firstAttribute="top" secondItem="nSr-Nt-KpM" secondAttribute="bottom" constant="10" id="dYT-zP-vnx"/>
                                             <constraint firstItem="QtA-4v-ezB" firstAttribute="top" secondItem="nGX-ZG-kp2" secondAttribute="bottom" constant="8" symbolic="YES" id="hnf-sq-M42"/>
+                                            <constraint firstAttribute="trailing" secondItem="5HT-MW-uyD" secondAttribute="trailing" constant="10" id="jiW-pu-L4d"/>
                                             <constraint firstAttribute="trailing" secondItem="Ai6-et-eee" secondAttribute="trailing" id="l0Y-ZP-1I6"/>
+                                            <constraint firstItem="dcZ-Gh-A7P" firstAttribute="top" secondItem="nSr-Nt-KpM" secondAttribute="bottom" constant="10" id="mSX-5X-ZPF"/>
                                             <constraint firstItem="E9c-kC-Ia6" firstAttribute="bottom" secondItem="bZe-zw-idW" secondAttribute="top" id="onM-on-dXA"/>
                                             <constraint firstItem="Ai6-et-eee" firstAttribute="top" secondItem="dcZ-Gh-A7P" secondAttribute="bottom" id="pe7-av-rFu"/>
                                             <constraint firstItem="nSr-Nt-KpM" firstAttribute="top" secondItem="QtA-4v-ezB" secondAttribute="bottom" constant="10" id="rQw-fg-aYB"/>
                                             <constraint firstItem="dcZ-Gh-A7P" firstAttribute="width" secondItem="xnp-03-ZkU" secondAttribute="width" id="rgB-C2-1Ix"/>
+                                            <constraint firstItem="nSr-Nt-KpM" firstAttribute="top" secondItem="5HT-MW-uyD" secondAttribute="bottom" constant="10" id="t0S-kE-MuF"/>
                                             <constraint firstItem="dcZ-Gh-A7P" firstAttribute="baseline" secondItem="xnp-03-ZkU" secondAttribute="baseline" id="vqP-Xp-tw0"/>
                                             <constraint firstItem="E9c-kC-Ia6" firstAttribute="leading" secondItem="bZe-zw-idW" secondAttribute="leadingMargin" id="zRQ-iY-cRM"/>
                                         </constraints>
@@ -319,17 +330,17 @@
                     <navigationItem key="navigationItem" id="9iu-R4-umQ"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
-                        <outlet property="contentView" destination="bZe-zw-idW" id="T0x-hM-oFZ"/>
-                        <outlet property="forgotPasswordButton" destination="xnp-03-ZkU" id="Xke-MC-LrM"/>
-                        <outlet property="logoView" destination="nGX-ZG-kp2" id="mpU-bF-aVa"/>
-                        <outlet property="orSignInWithLabel" destination="9zL-4i-EOm" id="Amc-qc-2Uk"/>
-                        <outlet property="providerRow1" destination="r2a-Gn-3vS" id="dNx-ml-V0W"/>
-                        <outlet property="providerRow2" destination="W7f-vn-25X" id="oC3-pU-clE"/>
-                        <outlet property="providerRow3" destination="hXE-Fi-Ys0" id="6hi-ih-ybd"/>
-                        <outlet property="signInButton" destination="nSr-Nt-KpM" id="9Co-qX-3Fu"/>
-                        <outlet property="signUpButton" destination="dcZ-Gh-A7P" id="Uzk-17-4Rt"/>
-                        <outlet property="tableFormView" destination="QtA-4v-ezB" id="oDY-0Y-28x"/>
-                        <outlet property="tableView" destination="Ile-kr-0Dr" id="hqB-GT-7Gx"/>
+                        <outlet property="contentView" destination="bZe-zw-idW" id="hfp-p8-pDG"/>
+                        <outlet property="forgotPasswordButton" destination="xnp-03-ZkU" id="uoO-7n-C9Y"/>
+                        <outlet property="logoView" destination="nGX-ZG-kp2" id="HDM-r6-9X2"/>
+                        <outlet property="orSignInWithLabel" destination="9zL-4i-EOm" id="eaN-0R-hsF"/>
+                        <outlet property="providerRow1" destination="r2a-Gn-3vS" id="Ka2-Vv-VKs"/>
+                        <outlet property="providerRow2" destination="W7f-vn-25X" id="zO6-rq-xDQ"/>
+                        <outlet property="providerRow3" destination="hXE-Fi-Ys0" id="wVT-ga-A37"/>
+                        <outlet property="signInButton" destination="nSr-Nt-KpM" id="RLn-nl-5mF"/>
+                        <outlet property="signUpButton" destination="dcZ-Gh-A7P" id="Qu4-vh-vC3"/>
+                        <outlet property="tableFormView" destination="QtA-4v-ezB" id="rdI-d8-LIM"/>
+                        <outlet property="tableView" destination="Ile-kr-0Dr" id="F8a-6g-BZ5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jXp-4X-s3T" userLabel="First Responder" sceneMemberID="firstResponder"/>

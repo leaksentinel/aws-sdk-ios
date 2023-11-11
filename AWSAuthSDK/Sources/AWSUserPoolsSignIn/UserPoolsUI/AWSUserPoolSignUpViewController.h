@@ -22,12 +22,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AWSUserPoolSignUpViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIView *formView;
+//@property (weak, nonatomic) IBOutlet UIView *formView;
 @property (weak, nonatomic) IBOutlet UIView *tableFormView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *signUpButton;
 @property (strong, nonatomic) id<AWSUIConfiguration> config;
 @property (weak, nonatomic) IBOutlet UIImageView *logoView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 @property bool resendCode;
 @property NSString *userName;
 @property NSString *resendUserName;
