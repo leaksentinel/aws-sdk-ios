@@ -28,7 +28,6 @@ static NSString *const RESOURCES_BUNDLE = @"AWSAuthUI.bundle";
 static NSString *const SMALL_IMAGE_NAME = @"logo-aws-small";
 static NSString *const BIG_IMAGE_NAME = @"logo-aws-big";
 
-
 static NSString *const SIGNIN_STORYBOARD = @"SignIn";
 static NSString *const SIGNIN_VIEW_CONTROLLER_IDENTIFIER = @"SignIn";
 static NSString *const USERPOOLS_UI_OPERATIONS = @"AWSUserPoolsUIOperations";

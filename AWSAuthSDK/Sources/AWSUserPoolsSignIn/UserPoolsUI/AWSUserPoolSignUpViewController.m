@@ -343,6 +343,9 @@ id<AWSUIConfiguration> config = nil;
     [AWSAuthUIHelper setUpFormShadowForView:self.tableFormView];
     [self setUpBackground];
 
+    // set up logo
+    [self setUpLogo:self.config.logoImage ?: nil];
+    
     // setup button background
     [AWSAuthUIHelper applyPrimaryColorFromConfig:self.config
                                           toView:self.confirmButton];
@@ -352,12 +355,32 @@ id<AWSUIConfiguration> config = nil;
 }
 
 - (void)setUpBackground {
-    self.view.backgroundColor = [AWSAuthUIHelper getSecondaryBackgroundColor];
     self.title = @"Confirm";
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.tableFormView.center.y + 150 - 150)];
-    backgroundImageView.backgroundColor = [AWSAuthUIHelper getBackgroundColor:self.config];
-    backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self.view insertSubview:backgroundImageView atIndex:0];
+
+    UIColor *color;
+    color = [AWSAuthUIHelper getBackgroundColor:self.config];
+    self.view.backgroundColor = color;
+
+    CGRect frameRect = self.view.frame;
+    UIImageView *backgroundImageView =
+        [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,
+                                                      frameRect.size.width,
+                                                      self.tableFormView.center.y) ];
+    backgroundImageView.backgroundColor = color;
+//        backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        self.contentView.clipsToBounds = false;
+//        backgroundImageView.clipsToBounds = false;
+    [self.contentView insertSubview:backgroundImageView atIndex:0];
+}
+
+- (void)setUpLogo:(UIImage *)image {
+    if (image != nil) {
+        self.logoView.image = image;
+        self.logoView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.logoView setNeedsLayout];
+        [self.view setNeedsLayout];
+        [self.view layoutIfNeeded];
+    }
 }
 
 - (IBAction)onConfirmCode:(id)sender {

@@ -30,13 +30,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) id<AWSUIConfiguration> config;
 @property (weak, nonatomic) IBOutlet UIImageView *logoView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
-@property bool resendCode;
+
 @property NSString *userName;
 @property NSString *resendUserName;
-
-
+@property bool resendCode;
 
 @end
+
 
 @interface UserPoolSignUpConfirmationViewController : UIViewController
 
@@ -45,7 +45,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *requestCodeButton;
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;
 @property (strong, nonatomic) id<AWSUIConfiguration> config;
-@property bool resendCode;
+@property (weak, nonatomic) IBOutlet UIImageView *logoView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+
 @property NSString *userName;
 
 @end
