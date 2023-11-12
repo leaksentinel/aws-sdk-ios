@@ -218,7 +218,7 @@
                         <viewControllerLayoutGuide type="bottom" id="GCB-VV-q3w"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bRf-kC-3Qf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwZ-Mm-Vlg">
@@ -337,7 +337,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="7p7-RM-y9Z"/>
                                 </constraints>
-                                <string key="text">A confirmation code was just sent to your email address. If the confirmation email doesn't arrive within a minute or two, check your span folder.</string>
+                                <string key="text">A confirmation code was just sent to your email address. If the confirmation email doesn't arrive within a minute or two, check your spam folder.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1245,6 +1245,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="onSignUpClicked:" destination="GA1-Pd-vWl" eventType="touchUpInside" id="i4X-Dr-gT2"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XH2-6Y-cvb" userLabel="Sign In Button">
                                                 <rect key="frame" x="73.5" y="545" width="228" height="28"/>
@@ -1252,6 +1255,9 @@
                                                 <state key="normal" title="I already have a LeakSentinel account">
                                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onSignInButtonClicked:" destination="GA1-Pd-vWl" eventType="touchUpInside" id="uxd-Ms-gMy"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1301,8 +1307,11 @@
                     <connections>
                         <outlet property="contentView" destination="v5a-d3-S1D" id="F3Z-uv-kXt"/>
                         <outlet property="logoView" destination="cYH-jE-f4C" id="GD5-9F-Hsv"/>
+                        <outlet property="signInButton" destination="XH2-6Y-cvb" id="ZzW-ZQ-h5f"/>
+                        <outlet property="signUpButton" destination="oum-gR-pnE" id="1mn-Mq-puL"/>
                         <outlet property="tableFormView" destination="rhW-aw-DVa" id="Wlg-uX-PtB"/>
                         <outlet property="tableView" destination="jYt-qg-M7l" id="ccm-Q9-JWO"/>
+                        <segue destination="oYn-kQ-Tog" kind="show" identifier="SignUpConfirmSegue" id="ntm-qx-HZL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="all-Bl-Fzd" userLabel="First Responder" sceneMemberID="firstResponder"/>

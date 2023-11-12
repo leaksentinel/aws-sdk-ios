@@ -74,8 +74,6 @@ id<AWSUIConfiguration> config = nil;
 
 #pragma mark - UIViewController
 
-UIGestureRecognizer *tapper;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pool = [AWSCognitoIdentityUserPool defaultCognitoIdentityUserPool];
@@ -86,11 +84,6 @@ UIGestureRecognizer *tapper;
 //        self.userName = @"keith@sjws.org";
         [self performSegueWithIdentifier:@"SignUpConfirmSegue" sender:self];
     }
-
-    tapper = [[UITapGestureRecognizer alloc]
-                initWithTarget:self action:@selector(handleSingleTap:)];
-    tapper.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:tapper];
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *) sender
