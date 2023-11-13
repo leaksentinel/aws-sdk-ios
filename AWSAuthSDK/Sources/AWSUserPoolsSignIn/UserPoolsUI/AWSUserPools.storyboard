@@ -393,10 +393,10 @@
             </objects>
             <point key="canvasLocation" x="-230" y="744"/>
         </scene>
-        <!--Forgot Password View Controller-->
+        <!--MFA View Controller-->
         <scene sceneID="vot-MR-mTg">
             <objects>
-                <viewController storyboardIdentifier="MFA" title="MFA" id="Fee-Hn-G0A" userLabel="Forgot Password View Controller" customClass="AWSUserPoolMFAViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MFA" title="MFA" id="Fee-Hn-G0A" userLabel="MFA View Controller" customClass="AWSUserPoolMFAViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hzm-Gk-RpR"/>
                         <viewControllerLayoutGuide type="bottom" id="ugy-cr-rA5"/>
@@ -1285,8 +1285,8 @@
                                                         </state>
                                                         <variation key="default">
                                                             <mask key="constraints">
-                                                                <exclude reference="tTT-eg-Kub"/>
                                                                 <exclude reference="016-AN-SrS"/>
+                                                                <exclude reference="tTT-eg-Kub"/>
                                                             </mask>
                                                         </variation>
                                                     </button>
@@ -1321,8 +1321,8 @@
                                                         </state>
                                                         <variation key="default">
                                                             <mask key="constraints">
-                                                                <exclude reference="PWp-gF-VKR"/>
                                                                 <exclude reference="AtD-Zd-rC1"/>
+                                                                <exclude reference="PWp-gF-VKR"/>
                                                             </mask>
                                                         </variation>
                                                     </button>
