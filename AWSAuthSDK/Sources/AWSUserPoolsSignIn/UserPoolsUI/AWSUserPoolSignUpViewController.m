@@ -58,6 +58,7 @@ static NSString *const USERPOOLS_UI_OPERATIONS = @"AWSUserPoolsUIOperations";
 
 @end
 
+
 @interface UserPoolSignUpConfirmationViewController()
 
 @property (nonatomic, strong) NSString* sentTo;
@@ -65,6 +66,8 @@ static NSString *const USERPOOLS_UI_OPERATIONS = @"AWSUserPoolsUIOperations";
 @property (nonatomic, strong) AWSFormTableCell *userNameRow;
 @property (nonatomic, strong) AWSFormTableCell *confirmationCodeRow;
 @property (nonatomic, strong) AWSFormTableDelegate *tableDelegate;
+
+- (void) onAccountCreated;
 
 @end
 
@@ -298,7 +301,8 @@ id<AWSUIConfiguration> config = nil;
                                                                                   preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     NSLog(@"confirmation dialog %@", self.navigationController.viewControllers);
-                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                    // [self performSegueWithIdentifier:@"toAccount22" sender:self];
                 }];
                 [alertController addAction:ok];
                 [self presentViewController:alertController
@@ -421,17 +425,25 @@ id<AWSUIConfiguration> config = nil;
             } else {
                 //return to initial screen
                 [AWSSignInManager sharedInstance].pendingSignIn = YES;
+                
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setBool:YES forKey:@"userHasSignedIn"];
+                [defaults synchronize];
+
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Success!"
                                                                                          message:@"Your LeakSentinel account has been created."
                                                                                   preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    NSLog(@"confirmation dialog %@", self.navigationController.viewControllers);
+                    // let root view controller process sign-in
+                    UIViewController* viewC = self.navigationController.viewControllers[0];
+                    
                     [self.navigationController popToRootViewControllerAnimated:YES];
                 }];
                 [alertController addAction:ok];
                 [self presentViewController:alertController
                                    animated:YES
                                  completion:nil];
-                
             }
         });
         return nil;
