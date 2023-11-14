@@ -28,7 +28,6 @@ static NSString *const RESOURCES_BUNDLE = @"AWSAuthUI.bundle";
 static NSString *const SMALL_IMAGE_NAME = @"logo-aws-small";
 static NSString *const BIG_IMAGE_NAME = @"logo-aws-big";
 
-
 static NSString *const SIGNIN_STORYBOARD = @"SignIn";
 static NSString *const SIGNIN_VIEW_CONTROLLER_IDENTIFIER = @"SignIn";
 static NSString *const USERPOOLS_UI_OPERATIONS = @"AWSUserPoolsUIOperations";
@@ -115,27 +114,6 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_WIDTH = 200;
 
 #pragma mark - UIViewController
 
-
-//- (void)keyboardDidShow:(NSNotification *)notification {
-//    CGSize keyboardSize = ((NSValue *)[[notification userInfo]
-//                                       valueForKey:UIKeyboardFrameBeginUserInfoKey]).CGRectValue.size;
-//
-//    CGPoint buttonOrigin = self.signInButton.frame.origin;
-//    CGRect visibleRect = self.view.frame;
-//
-//    visibleRect.size.height -= keyboardSize.height;
-//
-//    if (visibleRect.size.height < buttonOrigin.y) {
-//        [self.view setFrame:CGRectMake(0,visibleRect.size.height - buttonOrigin.y, self.view.frame.size.width, self.view.frame.size.height)];
-//    }
-//}
-//
-//- (void)keyboardDidHide:(NSNotification *)notification {
-//    [self.view setFrame:CGRectMake(0, NAVIGATION_BAR_HEIGHT ,self.view.frame.size.width,self.view.frame.size.height)];
-//}
-
-UIGestureRecognizer *tapper;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     AWSDDLogDebug(@"Sign-In Loading...");
@@ -182,10 +160,6 @@ UIGestureRecognizer *tapper;
         [self doUserPoolSignUp];
     }
 
-    tapper = [[UITapGestureRecognizer alloc]
-                initWithTarget:self action:@selector(handleSingleTap:)];
-    tapper.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:tapper];
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *) sender

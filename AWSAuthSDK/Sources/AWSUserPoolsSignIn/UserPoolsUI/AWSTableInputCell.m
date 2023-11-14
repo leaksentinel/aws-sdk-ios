@@ -42,8 +42,8 @@
         if ([self.headerLabel.text isEqualToString:@"EMAIL"]) {
             self.inputBox.keyboardType = UIKeyboardTypeEmailAddress;
         }
-        if ([self.headerLabel.text isEqualToString:@"CODE"]) {
-            self.inputBox.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        if ([self.headerLabel.text isEqualToString:@"CONFIRMATION CODE"]) {
+            self.inputBox.keyboardType = UIKeyboardTypeNumberPad;
         }
         [self.inputBox becomeFirstResponder];
     });

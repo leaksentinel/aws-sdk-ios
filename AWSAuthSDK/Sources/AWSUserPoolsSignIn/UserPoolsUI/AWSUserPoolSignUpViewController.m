@@ -54,11 +54,10 @@ static NSString *const USERPOOLS_UI_OPERATIONS = @"AWSUserPoolsUIOperations";
 @property (nonatomic, strong) AWSFormTableCell *emailRow;
 @property (nonatomic, strong) AWSFormTableDelegate *tableDelegate;
 @property (nonatomic) BOOL hidePhoneAndEmailRows;
-@property (weak, nonatomic) IBOutlet UIButton *signupButton;
-@property (weak, nonatomic) IBOutlet UIButton *signinButton;
 @property (nonatomic) CGPoint viewOrigin;
 
 @end
+
 
 @interface UserPoolSignUpConfirmationViewController()
 
@@ -68,6 +67,8 @@ static NSString *const USERPOOLS_UI_OPERATIONS = @"AWSUserPoolsUIOperations";
 @property (nonatomic, strong) AWSFormTableCell *confirmationCodeRow;
 @property (nonatomic, strong) AWSFormTableDelegate *tableDelegate;
 
+- (void) onAccountCreated;
+
 @end
 
 @implementation AWSUserPoolSignUpViewController
@@ -75,8 +76,6 @@ static NSString *const USERPOOLS_UI_OPERATIONS = @"AWSUserPoolsUIOperations";
 id<AWSUIConfiguration> config = nil;
 
 #pragma mark - UIViewController
-
-UIGestureRecognizer *tapper;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -88,11 +87,6 @@ UIGestureRecognizer *tapper;
 //        self.userName = @"keith@sjws.org";
         [self performSegueWithIdentifier:@"SignUpConfirmSegue" sender:self];
     }
-
-    tapper = [[UITapGestureRecognizer alloc]
-                initWithTarget:self action:@selector(handleSingleTap:)];
-    tapper.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:tapper];
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *) sender
@@ -135,18 +129,22 @@ UIGestureRecognizer *tapper;
 }
 
 - (void)setUpBackground {
-    if ([AWSAuthUIHelper isBackgroundColorFullScreen:self.config]) {
-        self.view.backgroundColor = [AWSAuthUIHelper getBackgroundColor:self.config];
-    } else {
-        self.view.backgroundColor = [AWSAuthUIHelper getSecondaryBackgroundColor];
-    }
-    
-    self.title = @"Sign Up";
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.tableFormView.center.y + 150)];
-    backgroundImageView.backgroundColor = [AWSAuthUIHelper getBackgroundColor:self.config];
-    backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self.view insertSubview:backgroundImageView atIndex:0];
+    UIColor *color;
+    color = [AWSAuthUIHelper getBackgroundColor:self.config];
+    self.view.backgroundColor = color;
+
+    CGRect frameRect = self.view.frame;
+    UIImageView *backgroundImageView =
+        [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,
+                                                      frameRect.size.width,
+                                                      self.tableFormView.center.y) ];
+    backgroundImageView.backgroundColor = color;
+//        backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        self.contentView.clipsToBounds = false;
+//        backgroundImageView.clipsToBounds = false;
+    [self.contentView insertSubview:backgroundImageView atIndex:0];
 }
+
 
 - (void)setUpLogo:(UIImage *)image {
     if (image != nil) {
@@ -303,7 +301,8 @@ UIGestureRecognizer *tapper;
                                                                                   preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     NSLog(@"confirmation dialog %@", self.navigationController.viewControllers);
-                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                    // [self performSegueWithIdentifier:@"toAccount22" sender:self];
                 }];
                 [alertController addAction:ok];
                 [self presentViewController:alertController
@@ -348,6 +347,9 @@ UIGestureRecognizer *tapper;
     [AWSAuthUIHelper setUpFormShadowForView:self.tableFormView];
     [self setUpBackground];
 
+    // set up logo
+    [self setUpLogo:self.config.logoImage ?: nil];
+    
     // setup button background
     [AWSAuthUIHelper applyPrimaryColorFromConfig:self.config
                                           toView:self.confirmButton];
@@ -357,12 +359,32 @@ UIGestureRecognizer *tapper;
 }
 
 - (void)setUpBackground {
-    self.view.backgroundColor = [AWSAuthUIHelper getSecondaryBackgroundColor];
     self.title = @"Confirm";
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.tableFormView.center.y + 150)];
-    backgroundImageView.backgroundColor = [AWSAuthUIHelper getBackgroundColor:self.config];
-    backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self.view insertSubview:backgroundImageView atIndex:0];
+
+    UIColor *color;
+    color = [AWSAuthUIHelper getBackgroundColor:self.config];
+    self.view.backgroundColor = color;
+
+    CGRect frameRect = self.view.frame;
+    UIImageView *backgroundImageView =
+        [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,
+                                                      frameRect.size.width,
+                                                      self.tableFormView.center.y) ];
+    backgroundImageView.backgroundColor = color;
+//        backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        self.contentView.clipsToBounds = false;
+//        backgroundImageView.clipsToBounds = false;
+    [self.contentView insertSubview:backgroundImageView atIndex:0];
+}
+
+- (void)setUpLogo:(UIImage *)image {
+    if (image != nil) {
+        self.logoView.image = image;
+        self.logoView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.logoView setNeedsLayout];
+        [self.view setNeedsLayout];
+        [self.view layoutIfNeeded];
+    }
 }
 
 - (IBAction)onConfirmCode:(id)sender {
@@ -403,17 +425,25 @@ UIGestureRecognizer *tapper;
             } else {
                 //return to initial screen
                 [AWSSignInManager sharedInstance].pendingSignIn = YES;
+                
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setBool:YES forKey:@"userHasSignedIn"];
+                [defaults synchronize];
+
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Success!"
                                                                                          message:@"Your LeakSentinel account has been created."
                                                                                   preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    NSLog(@"confirmation dialog %@", self.navigationController.viewControllers);
+                    // let root view controller process sign-in
+                    UIViewController* viewC = self.navigationController.viewControllers[0];
+                    
                     [self.navigationController popToRootViewControllerAnimated:YES];
                 }];
                 [alertController addAction:ok];
                 [self presentViewController:alertController
                                    animated:YES
                                  completion:nil];
-                
             }
         });
         return nil;
