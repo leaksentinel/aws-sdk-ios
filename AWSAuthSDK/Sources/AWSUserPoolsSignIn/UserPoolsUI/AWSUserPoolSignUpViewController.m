@@ -29,7 +29,7 @@
 #define NAVIGATION_BAR_HEIGHT 64
 
 static NSString *const SIGNIN_STORYBOARD = @"SignIn";
-static NSString *const SIGNIN_VIEW_CONTROLLER_IDENTIFIER = @"SignIn";;
+static NSString *const SIGNIN_VIEW_CONTROLLER_IDENTIFIER = @"SignIn";
 static NSString *const USERPOOLS_UI_OPERATIONS = @"AWSUserPoolsUIOperations";
 
 
@@ -98,12 +98,13 @@ id<AWSUIConfiguration> config = nil;
 #pragma mark - Utility Methods
 
 - (void)setUp {
-    _userNameRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"Email" type:InputTypeText];
-    _passwordRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"Password" type:InputTypePassword];
-    _passwordConfirmRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"Confirm Password" type:InputTypePassword];
-    _emailRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"Email" type:InputTypeText];
-    _phoneNumberRow = [[AWSFormTableCell alloc] initWithPlaceHolder:@"Phone Number" type:InputTypeText];
-    _tableDelegate = [AWSFormTableDelegate new];
+    _userNameRow =          [[AWSFormTableCell alloc] initWithPlaceHolder:@"Email" type:InputTypeText];
+    _passwordRow =          [[AWSFormTableCell alloc] initWithPlaceHolder:@"Password" type:InputTypePassword];
+    _passwordConfirmRow =   [[AWSFormTableCell alloc] initWithPlaceHolder:@"Confirm Password" type:InputTypePassword];
+    _emailRow =             [[AWSFormTableCell alloc] initWithPlaceHolder:@"Email" type:InputTypeText];
+    _phoneNumberRow =       [[AWSFormTableCell alloc] initWithPlaceHolder:@"Phone Number" type:InputTypeText];
+    _tableDelegate =        [AWSFormTableDelegate new];
+    
     [self.tableDelegate addCell:self.userNameRow];
     [self.tableDelegate addCell:self.passwordRow];
     if (self.hidePhoneAndEmailRows) {
@@ -121,11 +122,9 @@ id<AWSUIConfiguration> config = nil;
     // set up logo
     [self setUpLogo:self.config.logoImage ?: nil];
     
-
     // setup button background
     [AWSAuthUIHelper applyPrimaryColorFromConfig:self.config
                                           toView:self.signUpButton];
-
 }
 
 - (void)setUpBackground {
@@ -164,6 +163,23 @@ id<AWSUIConfiguration> config = nil;
         
         NSString *userName = [self.tableDelegate getValueForCell:self.userNameRow forTableView:self.tableView];
         
+        // hard-code a few email addresses to make debugging easier
+        if (YES) {
+            
+            if ([userName isEqualToString:@"a"]) {
+                userName = @"a@sjws.org";
+            }
+            if ([userName isEqualToString:@"b"]) {
+                userName = @"b@sjws.org";
+            }
+            if ([userName isEqualToString:@"c"]) {
+                userName = @"c@sjws.org";
+            }
+            if ([userName isEqualToString:@"d"]) {
+                userName = @"d@sjws.org";
+            }
+        }
+            
         if (self.resendCode) {
             userName = self.userName;
         }
@@ -189,7 +205,7 @@ id<AWSUIConfiguration> config = nil;
     
     // Dismisses the keyboard if open before transitioning to the new storyboard
     [self.view endEditing:YES];
-
+    
     NSMutableArray * attributes = [NSMutableArray new];
     AWSCognitoIdentityUserAttributeType * phone = [AWSCognitoIdentityUserAttributeType new];
     phone.name = @"phone_number";
@@ -212,9 +228,38 @@ id<AWSUIConfiguration> config = nil;
         [attributes addObject:email];
     }
     
-    NSString *userName = [self.tableDelegate getValueForCell:self.userNameRow forTableView:self.tableView];
+    NSString *userName = [self.tableDelegate 
+                          getValueForCell:self.userNameRow
+                          forTableView:self.tableView];
+    
     NSString *password = [self.tableDelegate getValueForCell:self.passwordRow forTableView:self.tableView];
+    
     NSString *passwordConfirm = [self.tableDelegate getValueForCell:self.passwordConfirmRow forTableView:self.tableView];
+    
+    // hard-code a few email "addresses" to make debugging easier
+    if (YES) {
+        if ([userName isEqualToString:@"a"]) {
+            userName = @"a@sjws.org";
+            password = @"aaaaaa";
+            passwordConfirm = @"aaaaaa";
+        }
+        if ([userName isEqualToString:@"b"]) {
+            userName = @"b@sjws.org";
+            password = @"aaaaaa";
+            passwordConfirm = @"aaaaaa";
+        }
+        if ([userName isEqualToString:@"c"]) {
+            userName = @"c@sjws.org";
+            password = @"aaaaaa";
+            passwordConfirm = @"aaaaaa";
+        }
+        if ([userName isEqualToString:@"d"]) {
+            userName = @"d@sjws.org";
+            password = @"aaaaaa";
+            passwordConfirm = @"aaaaaa";
+        }
+    }
+    
     if ([userName isEqualToString:@""] || [password isEqualToString:@""]) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Missing Information"
                                                                                  message:@"Please enter an email address and password."
@@ -254,6 +299,27 @@ id<AWSUIConfiguration> config = nil;
     }
     
     //sign up the user
+    
+    // hard-code a few email addresses to make debugging easier
+    if (YES) {
+        if ([userName isEqualToString:@"a"]) {
+            userName = @"a@sjws.org";
+            password = @"aaaaaa";
+        }
+        if ([userName isEqualToString:@"b"]) {
+            userName = @"b@sjws.org";
+            password = @"aaaaaa";
+        }
+        if ([userName isEqualToString:@"c"]) {
+            userName = @"c@sjws.org";
+            password = @"aaaaaa";
+        }
+        if ([userName isEqualToString:@"d"]) {
+            userName = @"d@sjws.org";
+            password = @"aaaaaa";
+        }
+    }
+
     [[self.pool signUp:userName
               password:password
         userAttributes:attributes validationData:nil]
@@ -283,8 +349,10 @@ id<AWSUIConfiguration> config = nil;
             }else if(task.result.user.confirmedStatus != AWSCognitoIdentityUserStatusConfirmed){
                 self.sentTo = task.result.codeDeliveryDetails.destination;
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-                [defaults setBool:YES forKey:@"hasSignedIn"];
+                NSString *key1 = @"hasSignedInto";
+                NSString *combinedString = [key1 stringByAppendingString:userName];
+                
+                [defaults setBool:YES forKey:combinedString];
                 [defaults synchronize];
 
                 [self performSegueWithIdentifier:@"SignUpConfirmSegue" sender:sender];
@@ -293,7 +361,10 @@ id<AWSUIConfiguration> config = nil;
                 [AWSSignInManager sharedInstance].pendingSignIn = YES;
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-                [defaults setBool:YES forKey:@"hasSignedIn"];
+                NSString *key1 = @"hasSignedInto";
+                NSString *combinedString = [key1 stringByAppendingString:userName];
+                
+                [defaults setBool:YES forKey:combinedString];
                 [defaults synchronize];
 
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Success!"
@@ -427,7 +498,7 @@ id<AWSUIConfiguration> config = nil;
                 [AWSSignInManager sharedInstance].pendingSignIn = YES;
                 
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                [defaults setBool:YES forKey:@"userHasSignedIn"];
+                [defaults setBool:YES forKey:@"firstTimeSigningIn"];
                 [defaults synchronize];
 
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Success!"
